@@ -1,100 +1,214 @@
-# Cybersecurity & frontend-appsec-notes
+# Frontend AppSec Notes
 
-This repository contains my personal cybersecurity and application security learning notes.
+This repository contains my personal web security and application security learning notes from the perspective of a Frontend Engineer.
 
-As a Frontend Engineer, I work with web applications, APIs, user interfaces, CMS-driven platforms, authentication flows, and production systems. I created this repository to strengthen my understanding of web security and secure coding, and to document what I learn in a structured way.
+The purpose of this repository is to build stronger security awareness around web applications, APIs, authentication flows, authorization checks, secure coding, and developer-friendly remediation.
 
-The goal is not to publish full walkthroughs or collect lab answers.
+The focus is defensive and developer-oriented: understanding risks, improving secure implementation, and writing clearer remediation notes.
 
-The goal is to build a practical knowledge base around how security issues happen, why they matter, and how developers can prevent them when building real applications.
+This is not a collection of full walkthroughs, exploit guides, or lab answers. It is a structured learning space for notes, cheatsheets, summaries, and practical reflections that help connect AppSec concepts with real development work.
 
-## What This Repository Contains
+## Why This Repository Exists
 
-This repository will include:
+As a Frontend Engineer, I regularly work with user interfaces, APIs, CMS-driven platforms, client-side behaviour, production issues, and frontend/backend data flow.
 
-- AppSec learning notes
-- cheatsheets
-- topic summaries
-- lab summaries
-- secure coding notes
-- developer-focused remediation notes
-- security testing checklists
-- practical examples
-- notes from legal learning platforms and intentionally vulnerable applications
+Learning AppSec helps me look at those same systems through a security lens:
 
-## Main Topics
+- What can the user control?
+- Where does that input go?
+- What does the backend trust?
+- What happens if a request is modified?
+- Is this an authentication issue or an authorization issue?
+- What would a safe implementation look like?
+- How could this be tested to prevent regression?
 
-The main topics I plan to cover include:
+The goal is to better understand how web security issues happen and how developers can prevent them during normal engineering work.
 
-- HTTP, cookies, sessions, requests and responses
-- Burp Suite basics
-- Authentication vs authorization
-- Username enumeration
-- Authentication bypass
-- Broken access control
+## Learning Approach
+
+My learning approach is intentionally practical:
+
+- **10% theory** to understand the risk
+- **70% hands-on labs** to practise safely
+- **20% notes and review** to turn practice into understanding
+
+For each topic, I aim to go beyond “what payload works” and focus on:
+
+- root cause
+- impact
+- trust boundaries
+- developer mistakes
+- secure implementation
+- remediation
+- regression testing
+
+## Roadmap
+
+The roadmap is focused on web application security fundamentals first, then secure coding and developer workflow.
+
+### 1. Web Foundations
+
+Core web concepts that matter for AppSec:
+
+- HTTP requests and responses
+- cookies and sessions
+- browser/server communication
+- frontend/backend data flow
+- content discovery
+- user-controlled input
+
+### 2. Burp Suite and Manual Testing
+
+Practical request/response testing:
+
+- Proxy
+- Repeater
+- basic Intruder usage for labs
+- modifying parameters, cookies, headers, methods, and request bodies
+- comparing responses
+- understanding how applications behave when requests are changed
+
+### 3. Authentication and Authorization
+
+Understanding identity and access control:
+
+- authentication vs authorization
+- login logic
+- username enumeration
+- authentication bypass patterns
+- session handling
+- broken access control
 - IDOR
-- Cross-Site Scripting
+- horizontal and vertical privilege issues
+
+### 4. Client-Side and Browser-Based Issues
+
+Frontend-adjacent security topics:
+
+- reflected XSS
+- stored XSS
+- DOM XSS
+- sources and sinks
+- output encoding
+- safe rendering
+- dangerous DOM APIs
+- browser trust boundaries
+
+### 5. Injection and Server-Side Input Handling
+
+Input that changes backend behaviour:
+
 - SQL Injection
-- CSRF
-- SSRF
-- Path traversal
-- File upload issues
-- API security
-- CORS
-- Secure code review
-- SAST, DAST and dependency scanning
-- Threat modelling
-- Remediation and reporting
+- Boolean-based blind SQLi
+- time-based blind SQLi
+- UNION-based SQLi
+- path traversal
+- file upload issues
+- command injection basics
+- SSRF basics
 
-## My Learning Approach
+### 6. API and Configuration Security
 
-For each topic, I want to go beyond simply finding a working payload.
+Web application and API security topics:
 
-I want to understand:
-
-- what the vulnerable feature is
-- what input the user controls
-- where that input is used
-- what trust boundary is crossed
-- what the real-world impact could be
-- how the issue should be fixed
-- how developers can prevent similar issues in the future
-
-My focus is on practical understanding, secure implementation, and developer-friendly remediation.
-
-## Why This Matters to Me as a Frontend Engineer
-
-Frontend development is closely connected to application security.
-
-Even when security rules are enforced on the backend, frontend engineers still work with:
-
-- user input
-- API requests
-- authentication flows
-- session behaviour
-- client-side rendering
-- browser storage
+- API authorization
+- object-level access control
+- CORS misconfiguration
+- security headers
 - error handling
-- access-controlled UI states
-- data exposure risks
+- sensitive data exposure
+- rate limiting basics
 
-Understanding AppSec helps me think more clearly about trust boundaries, user-controlled data, and how frontend decisions can support safer application design.
+### 7. Secure Coding and Review
+
+Developer-focused AppSec practices:
+
+- secure code review
+- SAST basics
+- DAST basics
+- dependency scanning
+- secrets scanning
+- threat modelling basics
+- remediation planning
+- writing clear findings
+
+## Standard Workflow for Each Topic
+
+For each topic, I try to follow the same workflow:
+
+1. Read enough theory to understand the risk.
+2. Practise in a legal lab or local test environment.
+3. Test manually first before relying on automation.
+4. Write notes in my own words.
+5. Identify the root cause and impact.
+6. Write a developer-friendly fix.
+7. Add a checklist or takeaway for future reference.
+
+## Note Template
+
+Most notes will follow a structure similar to this:
+
+```md
+# Topic Name
+
+## TL;DR
+
+Short explanation of the issue.
+
+## What I Practised
+
+Brief summary of the lab or exercise without publishing sensitive answers.
+
+## Key Concept
+
+What the vulnerability is and why it happens.
+
+## What the User Controls
+
+Parameter, path, body, cookie, header, file, URL, or DOM source.
+
+## Where the Input Goes
+
+SQL query, HTML response, DOM sink, filesystem path, backend request, authorization check, etc.
+
+## Impact
+
+Realistic impact without exaggeration.
+
+## Developer Remediation
+
+How to fix or prevent the issue.
+
+## Review Checklist
+
+Questions to ask during code review or testing.
+
+## Main Takeaway
+
+One practical lesson from the topic.
+```
+
+## Repository Structure
+
+This repository is organised by topic, not by file type.
+
+Each topic may contain notes, cheatsheets, lab summaries, remediation notes, and review checklists in one place. This makes it easier to study a topic end-to-end instead of jumping between separate `notes` and `cheatsheets` folders.
+
+The first version of the repository is written in English. A Polish version may be added later in the `PL/` directory.
 
 ## Ethics and Scope
 
-Everything in this repository is for learning, documentation, and professional development.
+All notes and examples in this repository are for learning and professional development.
 
-All examples are intended for:
+Practice should be limited to:
 
 - legal labs
 - intentionally vulnerable applications
 - local test environments
 - authorised learning platforms
+- explicitly permitted testing scopes
 
-No real-world testing should be performed without explicit permission, clear scope, and safe harbour.
+Do not test real systems without permission, clear scope, and safe harbour.
 
-## Language
+### This repository does not include real target data, credentials, private information, or instructions for testing systems without permission.
 
-The first version of this repository will be written mainly in English.
-
-Polish notes or bilingual versions may be added later as the repository grows.
