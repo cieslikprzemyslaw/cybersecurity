@@ -19,9 +19,7 @@ Each vulnerability topic should usually contain:
 - an `overview` note for the main concept,
 - a `cheat sheet` for practical review,
 - a `labs/` folder for short lab summaries,
-- optional longer learning summaries or article drafts.
-
-Public article drafts live separately in [articles/key-web-vulnerabilities](articles/key-web-vulnerabilities/).
+- optional longer learning summaries.
 
 ### 02. Authentication Bypass and Username Enumeration
 
@@ -30,7 +28,6 @@ Public article drafts live separately in [articles/key-web-vulnerabilities](arti
 - [Learning Summary](key-web-vulnerabilities/01-authentication-bypass-username-enumeration/learning-summary.md)
 - [Practical Cheat Sheet](key-web-vulnerabilities/01-authentication-bypass-username-enumeration/cheat-sheet.md)
 - [Labs](key-web-vulnerabilities/01-authentication-bypass-username-enumeration/labs/)
-- [Article Draft](articles/key-web-vulnerabilities/01-authentication-bypass-username-enumeration.md)
 
 ### 03. Broken Access Control and IDOR
 

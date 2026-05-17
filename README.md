@@ -194,7 +194,21 @@ This repository is organised by topic, not by file type.
 
 Each topic may contain notes, cheatsheets, lab summaries, remediation notes, and review checklists in one place. This makes it easier to study a topic end-to-end instead of jumping between separate `notes` and `cheatsheets` folders.
 
-The first version of the repository is written in English. A Polish version may be added later in the `PL/` directory.
+The repository contains both English and Polish notes:
+
+- [English notes index](eng/README.md)
+- [Polish notes index](pl/README.md)
+
+Current structure:
+
+- `eng/fundamentals/` - reusable foundations before vulnerability-specific study.
+- `eng/key-web-vulnerabilities/` - the Key Web Vulnerabilities series.
+- `pl/` - Polish version following the same structure.
+- `labs/` folders - short summaries of legal training labs.
+- `overview.md` files - concise source-of-truth notes for each topic.
+- `cheat-sheet.md` files - practical review and testing workflows.
+
+The Polish version follows the same high-level structure as the English version.
 
 ## Ethics and Scope
 
