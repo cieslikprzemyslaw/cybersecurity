@@ -1,6 +1,5 @@
 # Authentication Bypass & Username Enumeration — Learning Summary
 
-> AppSec learning note from my transition from Frontend Engineering into Application Security.  
 > Based on legal training labs from TryHackMe and PortSwigger Web Security Academy.  
 > This write-up avoids flags, real credentials, and full step-by-step answer keys.
 
