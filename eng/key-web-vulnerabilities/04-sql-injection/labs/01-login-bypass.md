@@ -35,7 +35,7 @@ If this happened in a real application, an attacker could bypass authentication 
 
 ## Remediation Summary
 
-See `../sql-injection-overview.md` for the general remediation section.
+See `../overview.md` for the general remediation section.
 
 Specific to login functionality:
 

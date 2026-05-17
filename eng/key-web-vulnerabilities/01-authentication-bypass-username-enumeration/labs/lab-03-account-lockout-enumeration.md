@@ -58,7 +58,7 @@ The issue may support:
 
 ## Remediation Summary
 
-See `../authn-bypass-username-enumeration-overview.md` for the general remediation section.
+See `../overview.md` for the general remediation section.
 
 Lab-specific remediation:
 

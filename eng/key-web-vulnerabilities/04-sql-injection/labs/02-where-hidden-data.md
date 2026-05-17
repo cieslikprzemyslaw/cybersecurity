@@ -43,7 +43,7 @@ A vulnerable filter can expose records that should not be visible, such as unpub
 
 ## Remediation Summary
 
-See `../sql-injection-overview.md` for the general remediation section.
+See `../overview.md` for the general remediation section.
 
 Specific to filters:
 

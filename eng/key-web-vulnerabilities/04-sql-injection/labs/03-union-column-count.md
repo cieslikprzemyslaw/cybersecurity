@@ -43,7 +43,7 @@ Finding the column count is an early step in UNION-based SQL Injection. It can a
 
 ## Remediation Summary
 
-See `../sql-injection-overview.md` for the general remediation section.
+See `../overview.md` for the general remediation section.
 
 Specific to listing pages:
 

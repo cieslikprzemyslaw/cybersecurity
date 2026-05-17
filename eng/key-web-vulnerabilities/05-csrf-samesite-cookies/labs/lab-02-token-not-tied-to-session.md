@@ -70,7 +70,7 @@ This can allow unwanted account changes even when the application appears to hav
 
 ## Remediation Summary
 
-See `../csrf-samesite-overview.md` for the general remediation section.
+See `../overview.md` for the general remediation section.
 
 Specific to this lab:
 

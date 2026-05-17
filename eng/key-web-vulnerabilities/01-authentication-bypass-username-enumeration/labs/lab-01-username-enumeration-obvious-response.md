@@ -62,7 +62,7 @@ The issue does not reveal the password directly, but it reduces the attacker's w
 
 ## Remediation Summary
 
-See `../authn-bypass-username-enumeration-overview.md` for the general remediation section.
+See `../overview.md` for the general remediation section.
 
 Lab-specific remediation:
 

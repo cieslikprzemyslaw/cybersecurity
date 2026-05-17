@@ -56,7 +56,7 @@ This can still allow them to identify valid usernames and focus further attacks 
 
 ## Remediation Summary
 
-See `../authn-bypass-username-enumeration-overview.md` for the general remediation section.
+See `../overview.md` for the general remediation section.
 
 Lab-specific remediation:
 

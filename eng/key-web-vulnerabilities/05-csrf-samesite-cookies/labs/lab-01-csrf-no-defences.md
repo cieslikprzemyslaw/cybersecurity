@@ -53,7 +53,7 @@ In a real application, an attacker could change a victim's email address. Depend
 
 ## Remediation Summary
 
-See `../csrf-samesite-overview.md` for the general remediation section.
+See `../overview.md` for the general remediation section.
 
 Specific to this lab:
 

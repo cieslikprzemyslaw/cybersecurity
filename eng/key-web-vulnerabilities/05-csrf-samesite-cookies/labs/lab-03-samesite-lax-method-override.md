@@ -85,7 +85,7 @@ The impact depends on the endpoint. For account settings, it could lead to unwan
 
 ## Remediation Summary
 
-See `../csrf-samesite-overview.md` for the general remediation section.
+See `../overview.md` for the general remediation section.
 
 Specific to this lab:
 
