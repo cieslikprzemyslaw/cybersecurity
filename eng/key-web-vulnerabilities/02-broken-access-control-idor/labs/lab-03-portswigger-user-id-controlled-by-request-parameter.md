@@ -1,4 +1,4 @@
-# Lab 03 Summary — PortSwigger: User ID Controlled by Request Parameter
+# Lab 03 - PortSwigger: User ID Controlled by Request Parameter
 
 > **Platform:** PortSwigger Web Security Academy  
 > **Topic:** Access Control / IDOR  

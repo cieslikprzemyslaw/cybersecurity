@@ -255,9 +255,3 @@ The client can request anything. The server must decide what is allowed.
 ```
 
 Frontend controls improve user experience, but backend authorization protects the system.
-
-## Related Notes
-
-- [Overview](overview.md)
-- [Module summary](summary.md)
-- [Labs](labs/README.md)

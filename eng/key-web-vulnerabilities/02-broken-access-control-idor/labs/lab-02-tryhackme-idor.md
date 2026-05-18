@@ -1,4 +1,4 @@
-# Lab 02 Summary — TryHackMe IDOR
+# Lab 02 - TryHackMe IDOR
 
 > **Platform:** TryHackMe  
 > **Topic:** Insecure Direct Object Reference  

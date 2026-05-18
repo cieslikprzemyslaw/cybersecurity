@@ -31,7 +31,11 @@ Each vulnerability topic should usually contain:
 
 ### 03. Broken Access Control and IDOR
 
+- [Topic Index](key-web-vulnerabilities/02-broken-access-control-idor/README.md)
 - [Overview](key-web-vulnerabilities/02-broken-access-control-idor/overview.md)
+- [Learning Summary](key-web-vulnerabilities/02-broken-access-control-idor/learning-summary.md)
+- [Practical Cheat Sheet](key-web-vulnerabilities/02-broken-access-control-idor/cheat-sheet.md)
+- [Labs](key-web-vulnerabilities/02-broken-access-control-idor/labs/)
 
 ### 04. Cross-Site Scripting
 

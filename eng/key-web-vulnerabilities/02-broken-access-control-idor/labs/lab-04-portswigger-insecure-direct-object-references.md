@@ -1,4 +1,4 @@
-# Lab 04 Summary — PortSwigger: Insecure Direct Object References
+# Lab 04 - PortSwigger: Insecure Direct Object References
 
 > **Platform:** PortSwigger Web Security Academy  
 > **Topic:** Access Control / IDOR  

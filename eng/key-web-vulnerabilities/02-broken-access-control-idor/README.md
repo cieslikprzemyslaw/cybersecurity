@@ -5,9 +5,12 @@ This is the second topic in the Key Web Vulnerabilities series.
 ## Start Here
 
 1. [Overview](overview.md)
-2. [Module Summary](summary.md)
-3. [Practical Cheat Sheet](cheat-sheet.md)
-4. [Labs](labs/README.md)
+2. [Practical Cheat Sheet](cheat-sheet.md)
+3. [Lab 01 - TryHackMe Broken Access Control](labs/lab-01-tryhackme-broken-access-control.md)
+4. [Lab 02 - TryHackMe IDOR](labs/lab-02-tryhackme-idor.md)
+5. [Lab 03 - PortSwigger User ID Controlled by Request Parameter](labs/lab-03-portswigger-user-id-controlled-by-request-parameter.md)
+6. [Lab 04 - PortSwigger Insecure Direct Object References](labs/lab-04-portswigger-insecure-direct-object-references.md)
+7. [Learning Summary](learning-summary.md)
 
 ## Topic Focus
 
@@ -20,19 +23,9 @@ This module covers:
 - server-side permission checks,
 - developer-focused remediation.
 
-## Completed Labs
+## File Roles
 
-| Platform | Lab / Room | Notes |
-|---|---|---|
-| TryHackMe | Lab 01 — Broken Access Control | [Lab summary](labs/lab-01-tryhackme-broken-access-control.md) |
-| TryHackMe | Lab 02 — IDOR | [Lab summary](labs/lab-02-tryhackme-idor.md) |
-| PortSwigger | Lab 03 — User ID controlled by request parameter | [Lab summary](labs/lab-03-portswigger-user-id-controlled-by-request-parameter.md) |
-| PortSwigger | Lab 04 — Insecure direct object references | [Lab summary](labs/lab-04-portswigger-insecure-direct-object-references.md) |
-
-## Main Takeaway
-
-```text
-Authenticated does not mean authorized.
-```
-
-The backend must verify whether the current user is allowed to access the exact object or perform the exact action requested.
+- `overview.md` is the concise source of truth.
+- `cheat-sheet.md` is the practical testing and review guide.
+- `labs/` contains short legal lab summaries.
+- `learning-summary.md` is a longer topic summary.

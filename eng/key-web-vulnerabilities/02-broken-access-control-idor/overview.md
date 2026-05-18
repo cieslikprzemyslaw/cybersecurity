@@ -139,12 +139,12 @@ A user may edit their own profile, but not another user's profile.
 
 ## Practice Covered
 
-| Platform | Lab / Topic | Focus |
-|---|---|---|
-| TryHackMe | [Lab 01 — Broken Access Control](labs/lab-01-tryhackme-broken-access-control.md) | Access control basics and AuthN vs AuthZ thinking |
-| TryHackMe | [Lab 02 — IDOR](labs/lab-02-tryhackme-idor.md) | Changing object references and observing backend behaviour |
-| PortSwigger | [Lab 03 — User ID controlled by request parameter](labs/lab-03-portswigger-user-id-controlled-by-request-parameter.md) | Classic user-controlled IDOR through a request parameter |
-| PortSwigger | [Lab 04 — Insecure direct object references](labs/lab-04-portswigger-insecure-direct-object-references.md) | IDOR through transcript/files, not only `?id=123` |
+The practical work for this topic focused on:
+
+- access control basics and AuthN vs AuthZ thinking,
+- changing object references and observing backend behaviour,
+- classic user-controlled IDOR through request parameters,
+- IDOR through file and transcript references, not only `?id=123`.
 
 ---
 

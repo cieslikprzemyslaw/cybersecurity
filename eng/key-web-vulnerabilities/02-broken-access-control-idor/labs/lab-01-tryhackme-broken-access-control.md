@@ -1,4 +1,4 @@
-# Lab 01 Summary — TryHackMe Broken Access Control
+# Lab 01 - TryHackMe Broken Access Control
 
 > **Platform:** TryHackMe  
 > **Topic:** Broken Access Control  
