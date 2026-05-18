@@ -1,16 +1,17 @@
-# Broken Access Control & IDOR — AppSec Learning Notes
+# Broken Access Control & IDOR — Overview
 
-> **Learning path:** Frontend Engineer → Application Security  
-> **Sources:** TryHackMe + PortSwigger Web Security Academy  
 > **Topic:** Broken Access Control, IDOR, object references, server-side authorization  
-> **Status:** Learning notes, not a full lab walkthrough
+> **Status:** Reference notes, not a full walkthrough  
+> **Sources:** TryHackMe + PortSwigger Web Security Academy + OWASP
 
 ---
 
 ## TL;DR
 
+**Broken Access Control happens when the application does not correctly enforce what an authenticated user is allowed to access or do.**
+
 **IDOR is not about guessing an ID.**  
-The real issue is that the backend fails to check whether the authenticated user is allowed to access the object behind that ID.
+The real issue is that the backend fails to verify whether the current user is allowed to access the object behind that ID.
 
 ```text
 Authenticated user + modified object reference + missing server-side authorization = IDOR
@@ -18,44 +19,39 @@ Authenticated user + modified object reference + missing server-side authorizati
 
 ---
 
-## Labs Covered
+## Why This Matters
 
-| Platform | Lab / Topic | What I Practiced |
-|---|---|---|
-| TryHackMe | Broken Access Control | Access control basics and AuthN vs AuthZ thinking |
-| TryHackMe | IDOR | Changing object references and observing backend behaviour |
-| PortSwigger | User ID controlled by request parameter | Classic user-controlled IDOR through a request parameter |
-| PortSwigger | Insecure direct object references | IDOR through transcript/files, not only `?id=123` |
+Authentication and authorization are different controls.
 
----
-
-## Key Concepts
-
-### Authentication vs Authorization
-
-**Authentication / AuthN** asks:
+**Authentication / AuthN** answers:
 
 > Who are you?
 
-**Authorization / AuthZ** asks:
+**Authorization / AuthZ** answers:
 
 > What are you allowed to access or do?
 
-IDOR and Broken Access Control are mainly **authorization** problems. A user can be correctly logged in, but still should not be allowed to access another user's data, files, invoices, chat logs, or account details.
+A user can be correctly logged in but still should not be allowed to access another user's profile, invoice, file, transcript, order, admin action, or account setting.
+
+Broken Access Control is mainly an **authorization** problem.
 
 ---
 
 ## What is Broken Access Control?
 
-Broken Access Control happens when an application does not properly enforce access rules on the server side.
+Broken Access Control means that the application does not properly enforce access rules on the server side.
 
 Examples:
 
 - a normal user can access admin functionality,
-- user A can read user B's profile,
-- a user can download another user's file,
-- changing an ID in the URL returns another user's data,
-- the frontend hides a button but the backend still accepts the request.
+- user A can view or modify user B's data,
+- a user can download a file that belongs to someone else,
+- changing a value in a request gives access to another object,
+- the frontend hides a button but the backend still accepts the action,
+- an API endpoint trusts `userId`, `role`, or `isAdmin` from the request.
+
+The key issue is usually not whether the user is logged in.  
+The key issue is whether that user is allowed to access **that exact object** or perform **that exact action**.
 
 ---
 
@@ -63,7 +59,7 @@ Examples:
 
 **IDOR** stands for **Insecure Direct Object Reference**.
 
-It happens when the application exposes a direct reference to an object and does not verify whether the current user is allowed to access it.
+It happens when an application exposes a direct reference to an object and does not verify whether the current user is allowed to access it.
 
 Example pattern:
 
@@ -77,39 +73,89 @@ Changed to:
 GET /account?id=124
 ```
 
-If the server returns another user's account data, this is an IDOR issue.
+If the server returns another user's account data, the backend is not checking ownership correctly.
+
+The problem is not that the user changed the ID. Users can always modify requests.  
+The problem is that the backend trusted the object reference without checking authorization.
 
 ---
 
 ## Object References Are Not Always `?id=123`
 
-One of the most useful lessons was that object references can appear in many places:
+Object references can appear in many places:
 
-- query parameters: `?id=123`,
-- URL paths: `/users/123`,
-- request body: `{ "userId": 123 }`,
+- query parameters, for example `?id=123`,
+- URL paths, for example `/users/123`,
+- request body, for example `{ "userId": 123 }`,
 - hidden form fields,
 - cookies,
 - headers,
-- file names: `1.txt`, `invoice.pdf`,
+- file names, for example `1.txt` or `invoice.pdf`,
 - download links,
 - API endpoints,
 - GraphQL variables,
-- encoded values, such as Base64,
-- UUIDs.
+- UUIDs,
+- encoded values, for example Base64.
 
-In one PortSwigger lab, the insecure object reference was not a user ID. It was a transcript file reference. That was a useful reminder that IDOR is about access to an object, not only numeric IDs.
+One useful lesson from the labs was that IDOR is about **access to an object**, not only numeric IDs.
+
+In one PortSwigger lab, the insecure object reference was a transcript file reference, not a classic `id` parameter.
 
 ---
 
-## How I Think About Testing for IDOR
+## Types of Access Control Issues
 
-A simple testing workflow:
+### Horizontal Privilege Escalation
+
+A user accesses data or actions belonging to another user at the same privilege level.
+
+Example:
+
+```text
+User A reads User B's profile.
+```
+
+### Vertical Privilege Escalation
+
+A lower-privileged user performs actions reserved for a higher-privileged user.
+
+Example:
+
+```text
+A normal user accesses an admin-only function.
+```
+
+### Context-Dependent Access Control
+
+The action may be allowed in one context but not another.
+
+Example:
+
+```text
+A user may edit their own profile, but not another user's profile.
+```
+
+---
+
+## Practice Covered
+
+| Platform | Lab / Topic | Focus |
+|---|---|---|
+| TryHackMe | [Lab 01 — Broken Access Control](labs/lab-01-tryhackme-broken-access-control.md) | Access control basics and AuthN vs AuthZ thinking |
+| TryHackMe | [Lab 02 — IDOR](labs/lab-02-tryhackme-idor.md) | Changing object references and observing backend behaviour |
+| PortSwigger | [Lab 03 — User ID controlled by request parameter](labs/lab-03-portswigger-user-id-controlled-by-request-parameter.md) | Classic user-controlled IDOR through a request parameter |
+| PortSwigger | [Lab 04 — Insecure direct object references](labs/lab-04-portswigger-insecure-direct-object-references.md) | IDOR through transcript/files, not only `?id=123` |
+
+---
+
+## Testing Approach
+
+A simple workflow:
 
 1. Log in as a normal user.
-2. Find requests that reference objects.
+2. Find requests that reference objects or actions.
 3. Send the request to Burp Repeater.
-4. Change the object reference.
+4. Change the object reference or action parameter.
 5. Compare the response.
 6. Check whether the server returns another user's data or correctly denies access.
 
@@ -117,7 +163,7 @@ Useful question:
 
 > Is the backend checking that this resource belongs to the current user?
 
-A very strong test pattern is using two accounts:
+A strong real-world testing pattern is to use two test accounts:
 
 ```text
 Account A creates a resource.
@@ -132,15 +178,13 @@ If Account B can access it, that is a strong sign of Broken Access Control.
 
 If a user is not allowed to access a resource, the server should not return the data.
 
-Possible safe responses:
-
-| Situation | Expected response |
+| Situation | Expected Response |
 |---|---|
 | User is not logged in | `401 Unauthorized` or redirect to login |
 | User is logged in but lacks permission | `403 Forbidden` |
 | Application does not want to reveal resource existence | `404 Not Found` |
 
-Unsafe response:
+Unsafe behaviour:
 
 ```text
 200 OK + another user's data
@@ -155,10 +199,11 @@ Good backend practices:
 - Do not trust `userId`, `accountId`, `fileId`, `invoiceId`, `role`, or `isAdmin` from the request.
 - Get the current user from the session or token.
 - Check resource ownership before returning data.
-- Check permissions on every sensitive action.
+- Check roles and permissions for every sensitive action.
+- Apply deny-by-default access control.
 - Apply the principle of least privilege.
 - Add automated tests for access control.
-- Log suspicious attempts to access other users' resources.
+- Log suspicious access attempts without exposing sensitive data.
 
 Unsafe pattern:
 
@@ -191,21 +236,8 @@ Related principles:
 - principle of least privilege,
 - server-side authorization,
 - deny by default,
-- defense in depth.
-
----
-
-## Review Checklist
-
-When reviewing a feature, I should ask:
-
-- Does this request contain an object reference?
-- Can the user modify that reference?
-- Is the current user taken from the session/token, not from request data?
-- Does the backend check ownership?
-- Does the endpoint behave correctly for another user?
-- Does the frontend hide something that the backend still allows?
-- Would the correct response be `403`, `404`, or redirect to login?
+- defense in depth,
+- verify access per object and per action.
 
 ---
 
@@ -213,7 +245,7 @@ When reviewing a feature, I should ask:
 
 The frontend is not a security boundary.
 
-A React app can hide buttons, disable inputs, or remove links from the UI, but a user can still send a modified request using Burp, Postman, curl, or a script.
+A React app can hide buttons, disable inputs, or remove links from the UI, but a user can still send a modified request using Burp, Postman, curl, DevTools, or a script.
 
 The backend must always answer:
 
