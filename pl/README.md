@@ -20,7 +20,7 @@ Każdy temat zwykle zawiera:
 - `overview.md` - główną notatkę koncepcyjną,
 - `cheat-sheet.md` - praktyczną checklistę, jeśli istnieje,
 - `labs/` - krótkie podsumowania legalnych labów,
-- `summary.md` albo `learning-summary.md` - dłuższe podsumowanie tematu, jeśli pasuje.
+- `learning-summary.md` - dłuższe podsumowanie tematu, jeśli pasuje.
 
 ### 01. Authentication Bypass i Username Enumeration
 
@@ -34,7 +34,7 @@ Każdy temat zwykle zawiera:
 
 - [Indeks tematu](key-web-vulnerabilities/02-broken-access-control-idor/README.md)
 - [Overview](key-web-vulnerabilities/02-broken-access-control-idor/overview.md)
-- [Podsumowanie modułu](key-web-vulnerabilities/02-broken-access-control-idor/summary.md)
+- [Learning Summary](key-web-vulnerabilities/02-broken-access-control-idor/learning-summary.md)
 - [Praktyczna checklista](key-web-vulnerabilities/02-broken-access-control-idor/cheat-sheet.md)
 - [Laby](key-web-vulnerabilities/02-broken-access-control-idor/labs/)
 

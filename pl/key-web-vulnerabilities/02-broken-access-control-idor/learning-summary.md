@@ -1,8 +1,21 @@
-# Broken Access Control i IDOR - Podsumowanie modułu
+# Broken Access Control i IDOR - Learning Summary
 
 > **Temat:** Broken Access Control, IDOR, object-level authorization  
 > **Status:** Ukończone notatki modułu  
 > **Laby:** TryHackMe + PortSwigger Web Security Academy
+
+---
+
+## Overview
+
+Ta notatka podsumowuje najważniejsze punkty z labów dotyczących kontroli dostępu:
+
+- TryHackMe: Broken Access Control
+- TryHackMe: IDOR
+- PortSwigger Web Security Academy: User ID controlled by request parameter
+- PortSwigger Web Security Academy: Insecure direct object references
+
+Główny fokus: zrozumienie, jak logika autoryzacji może zawieść, gdy backend ufa referencjom do obiektów kontrolowanym przez użytkownika.
 
 ---
 
@@ -30,17 +43,6 @@ IDOR jest praktycznym przykładem tego problemu. Występuje wtedy, gdy aplikacja
 - Ograniczenia tylko po stronie frontendu są dobre dla UX, ale nie są kontrolą bezpieczeństwa.
 - Backend musi sprawdzać autoryzację dla każdego wrażliwego obiektu i każdej wrażliwej akcji.
 - Bezpieczna kontrola dostępu powinna działać w modelu deny-by-default.
-
----
-
-## Ukończone laby
-
-| Lab | Platforma | Fokus |
-|---|---|---|
-| [Lab 01](labs/lab-01-tryhackme-broken-access-control.md) | TryHackMe | AuthN vs AuthZ, kategorie kontroli dostępu, server-side enforcement |
-| [Lab 02](labs/lab-02-tryhackme-idor.md) | TryHackMe | Referencje do obiektów, podstawy IDOR, ownership checks |
-| [Lab 03](labs/lab-03-portswigger-user-id-controlled-by-request-parameter.md) | PortSwigger | Horizontal privilege escalation przez ID kontrolowane przez użytkownika |
-| [Lab 04](labs/lab-04-portswigger-insecure-direct-object-references.md) | PortSwigger | IDOR przez pliki transkryptów i przewidywalne referencje do plików |
 
 ---
 

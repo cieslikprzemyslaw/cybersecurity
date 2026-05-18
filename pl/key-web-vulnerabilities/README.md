@@ -8,7 +8,7 @@ Każdy temat jest małym modułem:
 - `overview.md` - główna notatka koncepcyjna.
 - `cheat-sheet.md` - praktyczny workflow, jeśli istnieje.
 - `labs/` - krótkie podsumowania legalnych labów, jeśli istnieją.
-- `summary.md` albo `learning-summary.md` - dłuższe podsumowanie tematu, jeśli jest przydatne.
+- `learning-summary.md` - dłuższe podsumowanie tematu, jeśli jest przydatne.
 
 ## Tematy
 

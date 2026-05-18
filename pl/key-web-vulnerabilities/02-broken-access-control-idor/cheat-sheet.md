@@ -255,9 +255,3 @@ Klient może zażądać czegokolwiek. Serwer musi zdecydować, co jest dozwolone
 ```
 
 Kontrolki we frontendzie poprawiają UX, ale system chroni autoryzacja po stronie backendu.
-
-## Powiązane notatki
-
-- [Overview](overview.md)
-- [Podsumowanie modułu](summary.md)
-- [Laby](labs/README.md)

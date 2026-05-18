@@ -139,12 +139,12 @@ Użytkownik może edytować własny profil, ale nie profil innego użytkownika.
 
 ## Zakres praktyki
 
-| Platforma | Lab / Topic | Fokus |
-|---|---|---|
-| TryHackMe | [Lab 01 - Broken Access Control](labs/lab-01-tryhackme-broken-access-control.md) | Podstawy kontroli dostępu i różnica AuthN vs AuthZ |
-| TryHackMe | [Lab 02 - IDOR](labs/lab-02-tryhackme-idor.md) | Zmiana referencji do obiektów i obserwacja zachowania backendu |
-| PortSwigger | [Lab 03 - User ID controlled by request parameter](labs/lab-03-portswigger-user-id-controlled-by-request-parameter.md) | Klasyczny IDOR przez parametr kontrolowany przez użytkownika |
-| PortSwigger | [Lab 04 - Insecure direct object references](labs/lab-04-portswigger-insecure-direct-object-references.md) | IDOR przez pliki/transkrypty, nie tylko `?id=123` |
+Praktyka dla tego tematu skupiała się na:
+
+- podstawach kontroli dostępu i różnicy AuthN vs AuthZ,
+- zmianie referencji do obiektów i obserwacji zachowania backendu,
+- klasycznym IDOR przez parametry kontrolowane przez użytkownika,
+- IDOR przez referencje do plików i transkryptów, nie tylko `?id=123`.
 
 ---
 
