@@ -17,3 +17,4 @@ Each topic is organised as a small module:
 3. [Cross-Site Scripting](03-cross-site-scripting-xss/)
 4. [SQL Injection](04-sql-injection/)
 5. [CSRF and SameSite Cookies](05-csrf-samesite-cookies/)
+6. [Path Traversal and File Access Bugs](06-path-traversal-file-access/)
