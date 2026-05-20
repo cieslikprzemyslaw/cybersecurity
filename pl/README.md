@@ -40,7 +40,10 @@ Każdy temat zwykle zawiera:
 
 ### 03. Cross-Site Scripting
 
+- [Indeks tematu](key-web-vulnerabilities/03-cross-site-scripting-xss/README.md)
 - [Overview](key-web-vulnerabilities/03-cross-site-scripting-xss/overview.md)
+- [Practical Cheat Sheet](key-web-vulnerabilities/03-cross-site-scripting-xss/cheat-sheet.md)
+- [Laby](key-web-vulnerabilities/03-cross-site-scripting-xss/labs/)
 
 ### 04. SQL Injection
 

@@ -1,148 +1,260 @@
-# Cross-Site Scripting (XSS) - notatki AppSec
+# Cross-Site Scripting (XSS) — Notatki AppSec
 
-> Ścieżka nauki: Frontend Engineer -> Application Security  
-> Temat: Reflected XSS, Stored XSS, DOM XSS, source, sink, output encoding, safe rendering  
-> Status: notatki edukacyjne, nie pełny walkthrough labów
+> **Ścieżka nauki:** Frontend Engineer → Application Security
+> **Źródła:** TryHackMe + PortSwigger Web Security Academy
+> **Temat:** Reflected XSS, Stored XSS, DOM XSS, source, sink, context, output encoding, safe rendering
+> **Status:** Notatki do nauki, nie pełny walkthrough labów
+
+---
 
 ## TL;DR
 
-XSS nie polega tylko na wstrzyknięciu `<script>`.
+**XSS dzieje się wtedy, gdy niezaufane dane są renderowane w taki sposób, że przeglądarka może potraktować je jako kod, a nie zwykły tekst.**
 
-Prawdziwy problem polega na tym, że niezaufane dane są renderowane w miejscu, w którym przeglądarka może potraktować je jako kod.
+Najważniejsze pytanie to nie tylko:
+
+> Czy mogę odpalić JavaScript?
+
+Lepsze pytanie AppSec brzmi:
+
+> Gdzie dane użytkownika wchodzą do aplikacji i gdzie są renderowane?
 
 ```text
-Niezaufane dane + niebezpieczny kontekst renderowania = potencjalny XSS
+Untrusted input + unsafe browser context = possible XSS
 ```
 
-Z perspektywy frontend developera najważniejsze pytanie brzmi:
-
-> Czy ta wartość jest renderowana jako bezpieczny tekst, czy przeglądarka może zinterpretować ją jako HTML/JavaScript?
+---
 
 ## Czym jest XSS?
 
-Cross-Site Scripting występuje wtedy, gdy aplikacja umieszcza niezaufane dane na stronie w sposób, który pozwala przeglądarce potraktować je jako wykonywalny kod.
+Cross-Site Scripting to client-side injection issue. Pozwala na wykonanie attacker-controlled JavaScript albo aktywnej treści w przeglądarce innego użytkownika, w kontekście podatnej aplikacji.
 
-Problemem nie jest sam fakt, że użytkownik może wpisać coś niebezpiecznego. Użytkownik zawsze może kontrolować input.
+W zależności od aplikacji i uprawnień ofiary, XSS może pozwolić na:
 
-Problemem jest to, że aplikacja nie obsłużyła tych danych bezpiecznie przed renderowaniem.
+- wykonywanie akcji jako ofiara,
+- odczyt danych widocznych dla ofiary,
+- modyfikację widoku strony,
+- przechwytywanie danych wpisywanych przez użytkownika,
+- nadużywanie funkcji aplikacji,
+- atakowanie adminów, jeśli payload wykonuje się w panelu administracyjnym.
 
-## Reflected XSS
+Impact zależy od:
 
-Reflected XSS występuje, gdy input z requestu jest od razu zwracany w response.
+- gdzie payload się wykonuje,
+- kto go zobaczy,
+- co aplikacja pozwala zrobić temu użytkownikowi,
+- czy dostępne są dane wrażliwe albo akcje administracyjne.
 
-Przykład:
+---
 
-```http
-GET /search?q=test
+## Główne typy XSS
+
+### Reflected XSS
+
+Reflected XSS występuje wtedy, gdy dane z aktualnego requestu są umieszczane w natychmiastowej odpowiedzi w niebezpieczny sposób.
+
+Typowy pattern:
+
+```text
+GET /search?q=userInput
 ```
 
-Jeśli wartość `q` trafia do HTML bez poprawnego encodingu, może stać się podatna zależnie od kontekstu.
+Aplikacja odbija `userInput` w HTML response bez bezpiecznego encode’owania.
 
-Pytania podczas testowania:
+Najważniejsza myśl:
 
-- Który parametr kontroluję?
-- Czy moja wartość pojawia się w response?
-- Czy jest zakodowana, czy zwrócona raw?
-- W jakim kontekście jest odbita?
-- Czy ofiara musiałaby kliknąć spreparowany link?
+```text
+request input → immediate response → browser execution
+```
 
-## Stored XSS
+Często wykorzystuje się to przez specjalnie przygotowany link.
 
-Stored XSS występuje, gdy złośliwy input jest zapisany przez aplikację i później wyświetlany innym użytkownikom.
+---
+
+### Stored XSS
+
+Stored XSS występuje wtedy, gdy niezaufane dane są zapisywane przez aplikację i później renderowane użytkownikom w niebezpieczny sposób.
 
 Typowe miejsca:
 
 - komentarze,
-- profile użytkowników,
 - support tickets,
-- chat messages,
-- CMS content,
-- product reviews,
-- admin panels.
+- profile użytkowników,
+- reviews,
+- wiadomości czatu,
+- admin dashboards,
+- CMS content.
 
-Stored XSS może mieć większy impact niż reflected XSS, bo payload może wykonać się u każdego użytkownika, który otworzy daną stronę.
-
-Ważne pytanie:
-
-> Kto zobaczy tę zapisaną treść i jakie ma uprawnienia?
-
-## DOM XSS
-
-DOM XSS występuje, gdy JavaScript w przeglądarce bierze dane kontrolowane przez atakującego i zapisuje je do strony przez niebezpieczne API.
-
-Schemat:
+Najważniejsza myśl:
 
 ```text
-attacker-controlled source -> unsafe sink -> browser execution
+input saved → later rendered → browser execution for future viewers
 ```
 
-Przykład:
+Stored XSS może być groźniejszy niż reflected XSS, bo ofiara nie musi kliknąć specjalnego linku. Wystarczy, że otworzy stronę, na której payload został zapisany.
+
+---
+
+### DOM XSS
+
+DOM XSS występuje wtedy, gdy JavaScript po stronie przeglądarki bierze dane kontrolowane przez atakującego i zapisuje je do strony przez unsafe API.
+
+Najważniejsza myśl:
+
+```text
+browser-controlled source → unsafe JavaScript sink → DOM execution
+```
+
+Payload może nie być widoczny w oryginalnej odpowiedzi serwera. Może pojawić się dopiero po wykonaniu JavaScriptu w przeglądarce.
+
+Przykład ryzykownego flow:
 
 ```js
-const name = new URLSearchParams(window.location.search).get('name');
-document.getElementById('welcome').innerHTML = name;
+const name = new URLSearchParams(window.location.search).get("name");
+document.getElementById("welcome").innerHTML = name;
 ```
 
 Tutaj:
 
-- source: `window.location.search`,
-- sink: `innerHTML`.
+- source: `window.location.search`
+- sink: `innerHTML`
 
-Bezpieczniejsza wersja dla zwykłego tekstu:
+Jeśli `name` jest kontrolowane przez atakującego, może to prowadzić do DOM XSS.
+
+---
+
+## Source i Sink
+
+### Source
+
+**Source** to miejsce, z którego pochodzą dane kontrolowane przez użytkownika.
+
+Typowe DOM XSS sources:
 
 ```js
-const name = new URLSearchParams(window.location.search).get('name');
-document.getElementById('welcome').textContent = name;
+location.href
+location.search
+location.hash
+document.referrer
+localStorage
+sessionStorage
+postMessage
 ```
 
-## Source i sink
+### Sink
 
-Source to miejsce, z którego pochodzi data kontrolowana przez atakującego.
+**Sink** to miejsce, w którym dane są używane w potencjalnie niebezpieczny sposób.
 
-Przykłady:
+Typowe dangerous sinks:
 
-- `location.search`,
-- `location.hash`,
-- `location.href`,
-- `document.referrer`,
-- `localStorage`,
-- `sessionStorage`,
-- `postMessage`.
+```js
+innerHTML
+outerHTML
+document.write()
+insertAdjacentHTML()
+eval()
+new Function()
+setTimeout("string")
+setInterval("string")
+```
 
-Sink to miejsce, w którym dane są używane w potencjalnie niebezpieczny sposób.
+Dobre pytanie do code review:
 
-Przykłady:
+```text
+Czy attacker-controlled data może trafić do unsafe sink?
+```
 
-- `innerHTML`,
-- `outerHTML`,
-- `document.write()`,
-- `insertAdjacentHTML()`,
-- `eval()`,
-- `setTimeout(string)`,
-- React `dangerouslySetInnerHTML`.
+---
 
-## Dlaczego kontekst ma znaczenie
+## XSS Context ma znaczenie
 
-Ten sam input może być bezpieczny w jednym kontekście i niebezpieczny w innym.
+Ten sam payload nie działa wszędzie. XSS zależy od kontekstu, w którym input jest renderowany.
 
-Dane mogą trafić do:
+Typowe konteksty:
 
 - HTML body,
 - HTML attribute,
 - JavaScript string,
 - URL,
 - CSS,
-- DOM API.
+- DOM po wykonaniu JavaScriptu.
 
-Dlatego testowanie XSS to nie tylko sprawdzenie, czy wartość pojawia się na stronie.
+### HTML Body Context
 
-Lepsze pytanie brzmi:
+Przykład:
 
-> Gdzie pojawia się wartość i jak przeglądarka ją zinterpretuje?
+```html
+<p>You searched for: USER_INPUT</p>
+```
 
-## Frontend Developer Takeaway
+Jeśli aplikacja nie encode’uje outputu, payload może zostać potraktowany jako HTML/aktywny content.
 
-React pomaga, bo domyślnie escapuje wartości renderowane w JSX.
+### HTML Attribute Context
+
+Przykład:
+
+```html
+<input value="USER_INPUT">
+```
+
+Jeśli `<` i `>` są encoded, tworzenie nowego taga może nie działać. Atakujący może próbować wyjść z istniejącego atrybutu i dodać nowy atrybut/event handler.
+
+Lekcja z laba attribute-context:
+
+```text
+" zamyka istniejący value attribute
+prawdziwy event handler, np. onfocus, może wykonać JavaScript
+```
+
+Najważniejsza lekcja to nie konkretny payload, tylko zrozumienie kontekstu i tego, jak przeglądarka parsuje końcowy HTML.
+
+---
+
+## Sanitization vs Output Encoding
+
+### Sanitization
+
+Sanitization usuwa albo neutralizuje niebezpieczną treść.
+
+Cel:
+
+```text
+Usunąć unsafe tags, attributes, scripts, event handlers albo dangerous URLs z rich text.
+```
+
+Sanitization jest potrzebna, gdy aplikacja naprawdę musi pozwalać na część HTML, np. rich text albo CMS content.
+
+### Output Encoding
+
+Output encoding zamienia specjalne znaki tak, aby przeglądarka wyświetliła je jako tekst, a nie interpretowała jako markup albo kod.
+
+Przykład:
+
+```html
+<script>
+```
+
+staje się:
+
+```html
+&lt;script&gt;
+```
+
+Przeglądarka pokazuje tekst, ale go nie wykonuje.
+
+Najważniejsze:
+
+```text
+Output encoding musi być context-aware.
+```
+
+HTML body, HTML attributes, JavaScript strings, URLs i CSS wymagają innego podejścia.
+
+---
+
+## React i XSS
+
+React pomaga ograniczyć XSS, bo normalne JSX rendering domyślnie escapuje wartości.
 
 Zwykle bezpieczniejsze:
 
@@ -150,62 +262,124 @@ Zwykle bezpieczniejsze:
 <p>{userInput}</p>
 ```
 
-Bardziej ryzykowne:
+React traktuje `userInput` jako tekst, nie jako HTML.
+
+Ryzykowne:
 
 ```jsx
 <div dangerouslySetInnerHTML={{ __html: userInput }} />
 ```
 
-React nie chroni jednak automatycznie przed każdym XSS.
+Ryzykowne poza Reactem:
 
-XSS nadal może pojawić się przez:
-
-- `dangerouslySetInnerHTML`,
-- bezpośrednią manipulację DOM,
-- niebezpieczne renderowanie markdown albo rich text,
-- CMS content,
-- third-party components,
-- unsafe URL handling,
-- źle sanitizowany HTML z API.
-
-Wzorzec do code review:
-
-```text
-user-controlled data -> unsafe rendering API
+```js
+document.getElementById("app").innerHTML = userInput;
 ```
 
-## Jak zapobiegać XSS
+React pomaga, ale nie chroni przed wszystkim. Szczególnie uważać trzeba na:
+
+- `dangerouslySetInnerHTML`,
+- markdown rendering,
+- CMS content,
+- rich text editors,
+- HTML z API,
+- direct DOM manipulation,
+- third-party libraries renderujące HTML.
+
+---
+
+## Co przerobiłem
+
+| Platforma | Lab / temat | Główna lekcja |
+|---|---|---|
+| TryHackMe | Intro to Cross-site Scripting | Typy XSS, podstawowe payloady, reflected/stored/DOM |
+| PortSwigger | Reflected XSS into HTML context with nothing encoded | Input odbity w HTML może się wykonać, jeśli nie jest encoded |
+| PortSwigger | Stored XSS into HTML context with nothing encoded | Stored payload może wykonać się później u innych użytkowników |
+| PortSwigger | DOM XSS in `document.write` sink using `location.search` source | DOM XSS to source-to-sink flow w JavaScript po stronie przeglądarki |
+| PortSwigger | Reflected XSS into attribute with angle brackets HTML-encoded | Payload musi pasować do kontekstu renderowania |
+
+---
+
+## Remediation dla developerów
 
 Dobre praktyki:
 
-- używać context-aware output encoding,
-- traktować input użytkownika jako tekst, nie HTML,
-- używać `textContent` zamiast `innerHTML` dla zwykłego tekstu,
-- sanitizować rich text/HTML, jeśli aplikacja naprawdę musi pozwalać na HTML,
-- unikać `eval()`, `document.write()`, inline event handlers i unsafe DOM APIs,
-- unikać React `dangerouslySetInnerHTML`, jeśli HTML nie jest zaufany albo sanitizowany,
-- używać Content Security Policy jako dodatkowej warstwy, nie jedynej ochrony,
-- dodawać testy regresji dla ryzykownych ścieżek renderowania.
+- traktuj wszystkie dane od użytkownika jako niezaufane,
+- encode output zależnie od kontekstu,
+- unikaj unsafe DOM sinks typu `innerHTML`, jeśli wystarczy renderowanie tekstu,
+- używaj `textContent` zamiast `innerHTML` dla zwykłego tekstu,
+- unikaj `dangerouslySetInnerHTML`, chyba że naprawdę jest potrzebne,
+- sanitizuj rich text/HTML sprawdzonym sanitizerem i strict allowlist,
+- waliduj input przy wejściu, ale nie polegaj tylko na walidacji,
+- używaj bezpiecznych defaultów frameworka,
+- dodaj CSP jako defence-in-depth, ale nie jako jedyny fix,
+- przeglądaj dokładnie markdown/CMS/rich text rendering,
+- dodaj regression tests sprawdzające, że input wygląda jak tekst, a nie wykonuje się jako kod.
 
-## Review Checklist
+Ryzykowny pattern:
 
-- Czy te dane pochodzą od użytkownika albo niezaufanego źródła?
-- Czy są renderowane jako tekst, czy jako HTML?
-- Czy trafiają do `innerHTML`, `outerHTML`, `document.write()`, `eval()` albo `dangerouslySetInnerHTML`?
-- Czy encoding pasuje do kontekstu?
-- Jeśli HTML jest dozwolony, czy jest sanitizowany allowlistą?
-- Czy tę treść zobaczy inny użytkownik albo admin?
-- Czy CSP zmniejszyłoby impact, jeśli coś zostanie przeoczone?
-- Czy istnieje test regresji dla tej ścieżki renderowania?
+```js
+element.innerHTML = userInput;
+```
 
-## Główna lekcja
+Bezpieczniejszy pattern dla tekstu:
 
-XSS to problem niebezpiecznego przepływu danych do przeglądarki.
+```js
+element.textContent = userInput;
+```
 
-Dla frontend developera łączy się to bezpośrednio z codzienną pracą: renderowaniem danych z API, CMS, markdown, formularzy, parametrów URL i rich text.
+Bezpieczniejszy pattern w React:
 
-Przeglądarka wykona kod, jeśli przypadkiem damy jej kod.
+```jsx
+<p>{userInput}</p>
+```
 
-Kluczowy nawyk:
+---
 
-> Śledź przepływ danych od source do sink i upewnij się, że niezaufane dane są renderowane bezpiecznie.
+## Checklist do review
+
+Podczas code review albo testowania zapytaj:
+
+- Skąd pochodzi ten input?
+- Czy użytkownik może go kontrolować?
+- Gdzie jest renderowany?
+- Czy jest renderowany jako tekst, HTML, JavaScript, URL czy CSS?
+- Czy output encoding jest poprawny dla tego kontekstu?
+- Czy używamy raw HTML rendering?
+- Czy używamy `innerHTML`, `document.write` albo `dangerouslySetInnerHTML`?
+- Czy markdown/rich text/CMS content jest sanitizowany?
+- Czy te same dane mogą być wyświetlone później innemu użytkownikowi?
+- Czy jest regression test pokazujący, że payload-like input jest wyświetlany bezpiecznie?
+
+---
+
+## OWASP / AppSec mapping
+
+Powiązana kategoria:
+
+- **OWASP Top 10: Injection / XSS-related client-side injection**
+
+Powiązane zasady:
+
+- never trust user input,
+- context-aware output encoding,
+- safe rendering APIs,
+- defence in depth,
+- secure defaults,
+- avoid unsafe browser sinks.
+
+---
+
+## Najważniejszy wniosek
+
+XSS zależy od kontekstu.
+
+```text
+Ten sam input może być bezpieczny w jednym miejscu i niebezpieczny w innym.
+```
+
+Jako Frontend Engineer najważniejszy nawyk to śledzenie data flow:
+
+```text
+source → transformation → rendering context → browser behaviour
+```
