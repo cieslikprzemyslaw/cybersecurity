@@ -6,7 +6,8 @@ This is the third topic in the Key Web Vulnerabilities series.
 
 1. [Overview](./overview.md)
 2. [Cheat Sheet](./cheat-sheet.md)
-3. [Labs](./labs/README.md)
+3. [Framework Risky Patterns](./framework-risky-patterns/README.md)
+4. [Labs](./labs/README.md)
 
 ## Topic Focus
 
@@ -21,7 +22,7 @@ This module covers:
 - output encoding,
 - sanitization,
 - safe frontend rendering,
-- React-specific XSS considerations,
+- framework-specific risky rendering patterns,
 - developer-focused remediation.
 
 ## Labs Covered
@@ -33,6 +34,17 @@ This module covers:
 | PortSwigger | Stored XSS into HTML context with nothing encoded | User input saved and rendered later |
 | PortSwigger | DOM XSS in `document.write` sink using `location.search` source | Source → sink flow in browser-side JavaScript |
 | PortSwigger | Reflected XSS into attribute with angle brackets HTML-encoded | Attribute context and event handler injection |
+
+## Framework Risky Patterns
+
+- [React](./framework-risky-patterns/react.md)
+- [Angular](./framework-risky-patterns/angular.md)
+- [Vue](./framework-risky-patterns/vue.md)
+- [Svelte](./framework-risky-patterns/svelte.md)
+- [Plain JavaScript and DOM APIs](./framework-risky-patterns/plain-javascript-dom.md)
+- [PHP](./framework-risky-patterns/php.md)
+- [Server-Side Templates](./framework-risky-patterns/server-side-templates.md)
+- [Markdown, CMS and Rich Text](./framework-risky-patterns/markdown-cms-rich-text.md)
 
 ## Key Idea
 
@@ -53,3 +65,5 @@ Is it rendered as text or interpreted as HTML/JavaScript?
 ```
 
 Safe rendering is not only a backend concern. Frontend code can introduce XSS through unsafe DOM APIs, raw HTML rendering, risky markdown/rich text handling, or poorly reviewed CMS content rendering.
+
+For stack-specific review notes, use [Framework Risky Patterns](./framework-risky-patterns/README.md).

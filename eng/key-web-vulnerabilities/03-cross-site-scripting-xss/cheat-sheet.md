@@ -161,31 +161,18 @@ Do not memorize only one payload. Understand what the browser will parse after t
 
 ---
 
-## 8. React Review Checklist
+## 8. Framework and Rendering Pattern Review
 
-Check for:
+Use the dedicated [Framework Risky Patterns](./framework-risky-patterns/README.md) notes for stack-specific review.
 
-- `dangerouslySetInnerHTML`,
-- `innerHTML` / `outerHTML`,
-- `document.write`,
-- raw HTML from CMS/API,
-- markdown rendering with raw HTML enabled,
-- rich text editors,
-- `html-react-parser` or similar libraries,
-- third-party components that render HTML,
-- user-controlled URLs in links or redirects.
+Quick routing:
 
-Safer default:
-
-```jsx
-<p>{userInput}</p>
-```
-
-Risky pattern:
-
-```jsx
-<div dangerouslySetInnerHTML={{ __html: userInput }} />
-```
+| Area | Use |
+|---|---|
+| React, Angular, Vue, Svelte | Framework-specific raw HTML and URL review |
+| Plain JavaScript / DOM APIs | Source-to-sink checks for unsafe DOM APIs |
+| PHP / server-side templates | Context-aware output escaping checks |
+| Markdown, CMS, rich text | Sanitization and allowlist review |
 
 ---
 
