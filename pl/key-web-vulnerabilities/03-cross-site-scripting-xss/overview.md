@@ -252,39 +252,19 @@ HTML body, HTML attributes, JavaScript strings, URLs i CSS wymagają innego pode
 
 ---
 
-## React i XSS
+## Ryzykowne wzorce frameworkowe i renderowania
 
-React pomaga ograniczyć XSS, bo normalne JSX rendering domyślnie escapuje wartości.
+Nowoczesne frameworki zwykle sprawiają, że normalne renderowanie tekstu jest bezpieczniejsze, ale XSS może wrócić, gdy kod omija te domyślne zabezpieczenia.
 
-Zwykle bezpieczniejsze:
+Szczególnie sprawdzaj:
 
-```jsx
-<p>{userInput}</p>
-```
-
-React traktuje `userInput` jako tekst, nie jako HTML.
-
-Ryzykowne:
-
-```jsx
-<div dangerouslySetInnerHTML={{ __html: userInput }} />
-```
-
-Ryzykowne poza Reactem:
-
-```js
-document.getElementById("app").innerHTML = userInput;
-```
-
-React pomaga, ale nie chroni przed wszystkim. Szczególnie uważać trzeba na:
-
-- `dangerouslySetInnerHTML`,
-- markdown rendering,
-- CMS content,
-- rich text editors,
-- HTML z API,
+- raw HTML rendering,
 - direct DOM manipulation,
-- third-party libraries renderujące HTML.
+- framework escape/sanitization bypass APIs,
+- markdown, CMS albo rich text renderowany jako HTML,
+- user-controlled URLs.
+
+Notatki per stack są w [ryzykownych wzorcach frameworkowych](./framework-risky-patterns/README.md).
 
 ---
 
