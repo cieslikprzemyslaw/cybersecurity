@@ -54,6 +54,27 @@ Każdy temat zwykle zawiera:
 - [Practical Cheat Sheet](key-web-vulnerabilities/05-csrf-samesite-cookies/cheat-sheet.md)
 - [Laby](key-web-vulnerabilities/05-csrf-samesite-cookies/labs/)
 
+### 06. Path Traversal i File Access Bugs
+
+- [Indeks tematu](key-web-vulnerabilities/06-path-traversal-file-access/README.md)
+- [Core Concepts](key-web-vulnerabilities/06-path-traversal-file-access/01-core-concepts.md)
+- [Where to Test Checklist](key-web-vulnerabilities/06-path-traversal-file-access/02-where-to-test-cheatsheet.md)
+- [Payloads and Bypasses Cheatsheet](key-web-vulnerabilities/06-path-traversal-file-access/03-payloads-and-bypasses-cheatsheet.md)
+- [LFI / RFI Cheatsheet](key-web-vulnerabilities/06-path-traversal-file-access/04-lfi-rfi-cheatsheet.md)
+- [Fixes / Review Cheatsheet](key-web-vulnerabilities/06-path-traversal-file-access/05-remediation-cheatsheet.md)
+- [Laby](key-web-vulnerabilities/06-path-traversal-file-access/labs/)
+
+### 07. File Upload Vulnerabilities
+
+- [Indeks tematu](key-web-vulnerabilities/07-file-upload-vulnerabilities/README.md)
+- [Core Concepts](key-web-vulnerabilities/07-file-upload-vulnerabilities/01-core-concepts.md)
+- [Upload Request Anatomy](key-web-vulnerabilities/07-file-upload-vulnerabilities/02-upload-request-anatomy.md)
+- [Validation and Filter Bypass Cheatsheet](key-web-vulnerabilities/07-file-upload-vulnerabilities/03-validation-and-filter-bypass-cheatsheet.md)
+- [Black-Box Testing Methodology](key-web-vulnerabilities/07-file-upload-vulnerabilities/04-black-box-testing-methodology.md)
+- [Remediation Cheatsheet](key-web-vulnerabilities/07-file-upload-vulnerabilities/05-remediation-cheatsheet.md)
+- [Laby](key-web-vulnerabilities/07-file-upload-vulnerabilities/labs/)
+- [Pliki testowe do labów](key-web-vulnerabilities/07-file-upload-vulnerabilities/lab-test-files/README.md)
+
 ## Rekomendowana kolejność
 
 1. Fundamenty 01-03.
@@ -62,3 +83,5 @@ Każdy temat zwykle zawiera:
 4. XSS.
 5. SQL Injection.
 6. CSRF i SameSite cookies.
+7. Path Traversal i File Access Bugs.
+8. File Upload Vulnerabilities.
