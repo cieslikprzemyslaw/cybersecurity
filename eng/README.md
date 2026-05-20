@@ -21,7 +21,7 @@ Each vulnerability topic should usually contain:
 - a `labs/` folder for short lab summaries,
 - optional longer learning summaries.
 
-### 02. Authentication Bypass and Username Enumeration
+### 01. Authentication Bypass and Username Enumeration
 
 - [Topic Index](key-web-vulnerabilities/01-authentication-bypass-username-enumeration/README.md)
 - [Overview](key-web-vulnerabilities/01-authentication-bypass-username-enumeration/overview.md)
@@ -29,7 +29,7 @@ Each vulnerability topic should usually contain:
 - [Practical Cheat Sheet](key-web-vulnerabilities/01-authentication-bypass-username-enumeration/cheat-sheet.md)
 - [Labs](key-web-vulnerabilities/01-authentication-bypass-username-enumeration/labs/)
 
-### 03. Broken Access Control and IDOR
+### 02. Broken Access Control and IDOR
 
 - [Topic Index](key-web-vulnerabilities/02-broken-access-control-idor/README.md)
 - [Overview](key-web-vulnerabilities/02-broken-access-control-idor/overview.md)
@@ -37,21 +37,42 @@ Each vulnerability topic should usually contain:
 - [Practical Cheat Sheet](key-web-vulnerabilities/02-broken-access-control-idor/cheat-sheet.md)
 - [Labs](key-web-vulnerabilities/02-broken-access-control-idor/labs/)
 
-### 04. Cross-Site Scripting
+### 03. Cross-Site Scripting
 
 - [Overview](key-web-vulnerabilities/03-cross-site-scripting-xss/overview.md)
 
-### 05. SQL Injection
+### 04. SQL Injection
 
 - [Overview](key-web-vulnerabilities/04-sql-injection/overview.md)
 - [Practical Cheat Sheet](key-web-vulnerabilities/04-sql-injection/cheat-sheet.md)
 - [Labs](key-web-vulnerabilities/04-sql-injection/labs/)
 
-### 06. CSRF and SameSite Cookies
+### 05. CSRF and SameSite Cookies
 
 - [Overview](key-web-vulnerabilities/05-csrf-samesite-cookies/overview.md)
 - [Practical Cheat Sheet](key-web-vulnerabilities/05-csrf-samesite-cookies/cheat-sheet.md)
 - [Labs](key-web-vulnerabilities/05-csrf-samesite-cookies/labs/)
+
+### 06. Path Traversal and File Access Bugs
+
+- [Topic Index](key-web-vulnerabilities/06-path-traversal-file-access/README.md)
+- [Core Concepts](key-web-vulnerabilities/06-path-traversal-file-access/01-core-concepts.md)
+- [Where to Test Checklist](key-web-vulnerabilities/06-path-traversal-file-access/02-where-to-test-cheatsheet.md)
+- [Payloads and Bypasses Cheatsheet](key-web-vulnerabilities/06-path-traversal-file-access/03-payloads-and-bypasses-cheatsheet.md)
+- [LFI / RFI Cheatsheet](key-web-vulnerabilities/06-path-traversal-file-access/04-lfi-rfi-cheatsheet.md)
+- [Fixes / Review Cheatsheet](key-web-vulnerabilities/06-path-traversal-file-access/05-remediation-cheatsheet.md)
+- [Labs](key-web-vulnerabilities/06-path-traversal-file-access/labs/)
+
+### 07. File Upload Vulnerabilities
+
+- [Topic Index](key-web-vulnerabilities/07-file-upload-vulnerabilities/README.md)
+- [Core Concepts](key-web-vulnerabilities/07-file-upload-vulnerabilities/01-core-concepts.md)
+- [Upload Request Anatomy](key-web-vulnerabilities/07-file-upload-vulnerabilities/02-upload-request-anatomy.md)
+- [Validation and Filter Bypass Cheatsheet](key-web-vulnerabilities/07-file-upload-vulnerabilities/03-validation-and-filter-bypass-cheatsheet.md)
+- [Black-Box Testing Methodology](key-web-vulnerabilities/07-file-upload-vulnerabilities/04-black-box-testing-methodology.md)
+- [Remediation Cheatsheet](key-web-vulnerabilities/07-file-upload-vulnerabilities/05-remediation-cheatsheet.md)
+- [Labs](key-web-vulnerabilities/07-file-upload-vulnerabilities/labs/)
+- [Lab Test Files](key-web-vulnerabilities/07-file-upload-vulnerabilities/lab-test-files/README.md)
 
 ## Recommended Reading Order
 
@@ -61,6 +82,8 @@ Each vulnerability topic should usually contain:
 4. XSS.
 5. SQL injection.
 6. CSRF and SameSite cookies.
+7. Path traversal and file access bugs.
+8. File upload vulnerabilities.
 
 ## File Role Guide
 
