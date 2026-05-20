@@ -39,7 +39,10 @@ Each vulnerability topic should usually contain:
 
 ### 03. Cross-Site Scripting
 
+- [Topic Index](key-web-vulnerabilities/03-cross-site-scripting-xss/README.md)
 - [Overview](key-web-vulnerabilities/03-cross-site-scripting-xss/overview.md)
+- [Practical Cheat Sheet](key-web-vulnerabilities/03-cross-site-scripting-xss/cheat-sheet.md)
+- [Labs](key-web-vulnerabilities/03-cross-site-scripting-xss/labs/)
 
 ### 04. SQL Injection
 
