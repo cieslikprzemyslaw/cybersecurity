@@ -1,5 +1,5 @@
-# Lab Test Files
+# Pliki testowe do labów
 
-For legal labs, training environments and authorised testing only.
+Tylko do legalnych labów, środowisk treningowych i autoryzowanego testowania.
 
-Use safe marker files first. Command-execution files only when a lab explicitly requires them.
+Najpierw używaj bezpiecznych plików markerów. Plików wykonujących komendy używaj tylko wtedy, gdy lab wyraźnie tego wymaga.

@@ -6,7 +6,7 @@ Cross-Site Request Forgery (CSRF) to podatność, w której atakujący nakłania
 
 Atakujący nie musi kraść hasła ani session cookie. Przeglądarka może automatycznie dołączyć cookie sesyjne ofiary do requestu wysłanego do docelowej aplikacji. Jeśli aplikacja ufa samemu cookie, akcja zmieniająca stan może zostać wykonana bez świadomej intencji użytkownika.
 
-## What I Practised
+## Co ćwiczyłem
 
 Ćwiczyłem CSRF w labach TryHackMe i PortSwigger.
 
@@ -22,7 +22,7 @@ Zakres praktyki:
 - testowanie obejścia `SameSite=Lax` przez method override,
 - zrozumienie, dlaczego CORS, Referer i custom headers nie są pełną ochroną same w sobie.
 
-## Key Concept
+## Kluczowa koncepcja
 
 CSRF występuje wtedy, gdy serwer traktuje request jako intencjonalny tylko dlatego, że zawiera poprawne session cookie.
 
@@ -48,7 +48,7 @@ Typowe funkcje podatne na CSRF:
 
 CSRF token pomaga tylko wtedy, gdy jest silny, nieprzewidywalny, walidowany po stronie serwera i powiązany z sesją użytkownika.
 
-## What the User Controls
+## Co kontroluje użytkownik
 
 W labach atakujący kontrolował:
 
@@ -80,7 +80,7 @@ GET /my-account/change-email?email=...&_method=POST
 
 Przeglądarka widziała request jako `GET`, a backend traktował go jako akcję typu `POST`.
 
-## Impact
+## Wpływ
 
 Wpływ CSRF zależy od tego, co robi podatna funkcja.
 
@@ -95,7 +95,7 @@ Realistyczny impact:
 
 CSRF zwykle nie pozwala atakującemu odczytać odpowiedzi, ponieważ przeglądarka ma mechanizmy ochronne takie jak Same-Origin Policy. Odczyt odpowiedzi nie zawsze jest jednak potrzebny, jeśli sama akcja została wykonana.
 
-## Developer Remediation
+## Remediacja dla developerów
 
 Rekomendowane poprawki:
 
@@ -134,7 +134,7 @@ Podczas testowania lub code review zapytaj:
 - Czy CORS jest bezpieczny dla wrażliwych endpointów?
 - Czy aplikacja polega tylko na Referer lub custom headerach?
 
-## Main Takeaway
+## Główna lekcja
 
 CSRF polega na nadużyciu normalnego zachowania przeglądarki, a nie na kradzieży cookie.
 

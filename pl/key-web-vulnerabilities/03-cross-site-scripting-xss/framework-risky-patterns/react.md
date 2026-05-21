@@ -88,7 +88,7 @@ Bezpieczniej:
 - Czy renderowany jest content z CMS albo markdown?
 - Czy można użyć zwykłego JSX?
 
-## Developer takeaway
+## Lekcja dla developera
 
 ```text
 React pomaga ograniczać XSS domyślnie, ale tylko jeśli dane zostają w normalnym JSX rendering.

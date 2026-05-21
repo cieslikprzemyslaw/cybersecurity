@@ -1,10 +1,10 @@
-# Anatomia upload requestu
+# Anatomia requestu uploadu
 
 ## TL;DR
 
-Większość uploadów używa `multipart/form-data`. Każdy plik jest osobną częścią request body i ma własne nagłówki.
+Większość uploadów używa `multipart/form-data`. Każdy plik jest osobną częścią body requestu i ma własne nagłówki.
 
-## Example
+## Przykład
 
 ```http
 POST /my-account/avatar HTTP/2
@@ -24,24 +24,24 @@ Content-Type: image/png
 
 `filename` jest kontrolowany przez użytkownika i nie powinien być zaufany.
 
-## File Part Content-Type
+## Content-Type części pliku
 
-Top-level request Content-Type to `multipart/form-data`.
+Główny `Content-Type` requestu to `multipart/form-data`.
 
-File part Content-Type, np. `image/png`, dotyczy konkretnego pliku i można go zmienić w Burp.
+`Content-Type` części pliku, np. `image/png`, dotyczy konkretnego pliku i można go zmienić w Burp.
 
 ## Co sprawdzać w Burp
 
 - endpoint
-- field name
-- filename
-- file part Content-Type
-- content pliku
+- nazwa pola formularza
+- nazwa pliku
+- `Content-Type` części pliku
+- zawartość pliku
 - CSRF token
-- response
+- odpowiedź
 - final URL
-- response Content-Type po wejściu w plik
+- `Content-Type` odpowiedzi po wejściu w plik
 
-## Main takeaway
+## Główna lekcja
 
-W file upload testing request body jest często ważniejsze niż UI.
+W testowaniu uploadu body requestu jest często ważniejsze niż UI.

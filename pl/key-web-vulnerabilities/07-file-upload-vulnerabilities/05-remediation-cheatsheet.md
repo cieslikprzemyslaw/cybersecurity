@@ -1,21 +1,21 @@
-# File Upload Remediation Cheatsheet
+# Ściąga z remediacji uploadu plików
 
 ## TL;DR
 
-Nie ufaj uploadowanym plikom. Waliduj server-side, zapisuj bezpiecznie, zmieniaj nazwy plików i blokuj code execution w upload directories.
+Nie ufaj uploadowanym plikom. Waliduj je po stronie serwera, zapisuj bezpiecznie, zmieniaj nazwy plików i blokuj wykonywanie kodu w katalogach uploadu.
 
-## Key Controls
+## Kluczowe zabezpieczenia
 
-- server-side validation
-- strict allowlists
-- server-generated filenames
-- safe storage outside executable web root
-- disabled code execution in upload directories
-- safe response headers
-- size limits
-- regression tests
+- walidacja po stronie serwera
+- ścisłe allowlisty
+- nazwy plików generowane po stronie serwera
+- bezpieczny zapis poza wykonywalnym web rootem
+- wyłączone wykonywanie kodu w katalogach uploadu
+- bezpieczne nagłówki odpowiedzi
+- limity rozmiaru
+- testy regresji
 
-## Regression Test Ideas
+## Pomysły na testy regresji
 
 ```text
 shell.php
@@ -25,12 +25,12 @@ shell.php.jpg
 shell.jpg.php
 shell.php%00.jpg
 shell.PHP
-SVG with script
-HTML upload
-oversized files
-path traversal filenames
+SVG ze skryptem
+upload HTML
+zbyt duże pliki
+nazwy plików z path traversal
 ```
 
-## Main takeaway
+## Główna lekcja
 
-Najmocniejsza poprawka to bezpieczny design uploadu: validate, rename, store safely, prevent execution.
+Najmocniejsza poprawka to bezpieczny projekt uploadu: waliduj, zmieniaj nazwy, zapisuj bezpiecznie i uniemożliwiaj wykonanie kodu.

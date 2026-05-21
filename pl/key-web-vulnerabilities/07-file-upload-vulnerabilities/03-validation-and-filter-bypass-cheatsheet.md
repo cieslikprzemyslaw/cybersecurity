@@ -1,25 +1,25 @@
-# Cheatsheet walidacji i bypassów
+# Ściąga z walidacji i bypassów filtrów
 
 ## TL;DR
 
-Walidacja uploadu często składa się z kilku słabych checks. Jeden check rzadko wystarcza.
+Walidacja uploadu często składa się z kilku słabych kontroli. Jedna kontrola rzadko wystarcza.
 
-## Client-Side Validation
+## Walidacja po stronie klienta
 
-Client-side validation działa w przeglądarce. Pomaga UX, ale nie jest security boundary.
+Walidacja po stronie klienta działa w przeglądarce. Pomaga UX, ale nie jest granicą bezpieczeństwa.
 
-### Cztery bypassy client-side
+### Cztery bypassy walidacji po stronie klienta
 
 1. Wyłącz JavaScript.
-2. Zmodyfikuj incoming page response w Burp.
-3. Zmodyfikuj upload request w Burp.
-4. Wyślij request bezpośrednio do upload endpointu.
+2. Zmodyfikuj odpowiedź z kodem strony w Burp.
+3. Zmodyfikuj request uploadu w Burp.
+4. Wyślij request bezpośrednio do endpointu uploadu.
 
-## Server-Side Validation
+## Walidacja po stronie serwera
 
-Server-side validation testujemy przez enumerację.
+Walidację po stronie serwera testujemy przez enumerację.
 
-## Extension Validation Test Cases
+## Przypadki testowe walidacji rozszerzeń
 
 ```text
 shell.php
@@ -31,15 +31,15 @@ shell.php.jpg
 shell.PHP
 ```
 
-## Blacklist vs Allowlist
+## Blacklista vs allowlista
 
-Blacklist blokuje znane złe rozszerzenia. Jest krucha.
+Blacklista blokuje znane złe rozszerzenia. Jest krucha, bo trzeba przewidzieć każdy niebezpieczny wariant.
 
-Allowlist pozwala tylko na konkretne oczekiwane rozszerzenia, np. `.jpg`, `.jpeg`, `.png`, `.webp`.
+Allowlista pozwala tylko na konkretne oczekiwane rozszerzenia, np. `.jpg`, `.jpeg`, `.png`, `.webp`.
 
-## MIME / Content-Type Validation
+## Walidacja MIME / Content-Type
 
-Słaby serwer może ufać file part Content-Type:
+Słaby serwer może ufać `Content-Type` części pliku:
 
 ```http
 Content-Type: image/png
@@ -47,18 +47,18 @@ Content-Type: image/png
 
 To można zmienić w Burp.
 
-## Magic Bytes
+## Magic bytes
 
 ```text
 PNG  -> 89 50 4E 47 0D 0A 1A 0A
 JPEG -> FF D8 FF DB
 ```
 
-Magic bytes są lepsze niż samo extension/Content-Type, ale nie są pełną ochroną.
+Magic bytes są lepsze niż samo rozszerzenie albo `Content-Type`, ale nie są pełną ochroną.
 
-## Obfuscated File Extension Bypass
+## Bypass przez zaciemnione rozszerzenie pliku
 
-Legal-lab test cases:
+Przypadki testowe do legalnych labów:
 
 ```text
 shell.php
@@ -72,15 +72,22 @@ shell.php%2ejpg
 shell%2ephp.jpg
 ```
 
+Cel nie polega na zapamiętaniu payloadów. Chodzi o zrozumienie, jak nazwa pliku jest obsługiwana na różnych etapach:
+
+1. walidacja
+2. zapis
+3. finalny URL
+4. wykonanie po stronie serwera
+
 ### Obserwacja z PortSwigger
 
 ```text
-shell.php         -> rejected
-shell.php.jpg     -> accepted, but served as image
-shell.jpg.php     -> rejected
-shell.php%00.jpg  -> accepted and stored as shell.php
+shell.php         -> odrzucony
+shell.php.jpg     -> zaakceptowany, ale serwowany jako obraz
+shell.jpg.php     -> odrzucony
+shell.php%00.jpg  -> zaakceptowany i zapisany jako shell.php
 ```
 
-## Main takeaway
+## Główna lekcja
 
-Upload validation musi być warstwowy. Najważniejsze są safe storage i disabled execution w upload directory.
+Walidacja uploadu musi być warstwowa. Najważniejsze są bezpieczny zapis i wyłączenie wykonywania kodu w katalogu uploadu.

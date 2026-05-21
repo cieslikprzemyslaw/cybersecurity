@@ -1,28 +1,28 @@
-# TryHackMe Upload Vulnerabilities - Learning Summary
+# TryHackMe Upload Vulnerabilities - podsumowanie nauki
 
-## Scope
+## Zakres
 
-This room introduced common file upload risks and filtering techniques.
+Ten room wprowadzał typowe ryzyka uploadu plików i techniki filtrowania.
 
-VM nie działała stabilnie podczas nauki, więc room został użyty głównie jako materiał do czytania, a praktyka została przeniesiona do PortSwigger labs.
+VM nie działała stabilnie podczas nauki, więc room został użyty głównie jako materiał do czytania, a praktyka została przeniesiona do labów PortSwigger.
 
-## Key Concepts
+## Kluczowe pojęcia
 
-- file overwrite risk
-- RCE through uploaded files
-- client-side filtering
-- server-side extension filtering
-- MIME / Content-Type validation
+- ryzyko nadpisania pliku
+- RCE przez uploadowane pliki
+- filtrowanie po stronie klienta
+- filtrowanie rozszerzeń po stronie serwera
+- walidacja MIME / `Content-Type`
 - magic bytes
-- black-box methodology
+- metodologia black-box
 
-## Client-Side Filtering Bypasses
+## Bypassy filtrowania po stronie klienta
 
-- disable JavaScript
-- modify the incoming page response in Burp
-- modify the upload request in Burp
-- send the request directly to the upload endpoint
+- wyłączenie JavaScriptu
+- modyfikacja odpowiedzi z kodem strony w Burp
+- modyfikacja requestu uploadu w Burp
+- wysłanie requestu bezpośrednio do endpointu uploadu
 
-## Main Takeaway
+## Główna lekcja
 
-Upload accepted nie wystarczy. Check final filename, storage location, response Content-Type and whether the file is executed or served statically.
+Zaakceptowany upload nie wystarczy. Trzeba sprawdzić finalną nazwę pliku, miejsce zapisu, `Content-Type` odpowiedzi oraz to, czy plik jest wykonywany, czy serwowany statycznie.

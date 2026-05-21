@@ -1,10 +1,10 @@
-# PHP Upload Risks
+# PHP - ryzyka związane z uploadem
 
-## Why PHP Matters in Upload Labs
+## Dlaczego PHP ma znaczenie w labach uploadu
 
-Classic PHP deployments may execute `.php` files directly from web-accessible directories.
+Klasyczne wdrożenia PHP mogą wykonywać pliki `.php` bezpośrednio z katalogów dostępnych przez web.
 
-## Executable Extensions
+## Wykonywalne rozszerzenia
 
 ```text
 .php
@@ -17,8 +17,8 @@ Classic PHP deployments may execute `.php` files directly from web-accessible di
 .pht
 ```
 
-Whether these execute depends on web server and PHP configuration.
+To, czy te pliki zostaną wykonane, zależy od konfiguracji serwera webowego i PHP.
 
-## Main Takeaway
+## Główna lekcja
 
-In PHP environments, upload directory execution rules are critical.
+W środowiskach PHP krytyczne są reguły wykonywania kodu w katalogach uploadu.

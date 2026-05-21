@@ -33,13 +33,13 @@ Najważniejsza lekcja: trzeba było zrozumieć, jak wyjść z istniejącego attr
 
 ---
 
-## Root Cause
+## Przyczyna źródłowa
 
 Aplikacja umieszczała user-controlled input w HTML attribute bez bezpiecznego encodingu dla pełnego kontekstu atrybutu.
 
 ---
 
-## Dlaczego context miał znaczenie
+## Dlaczego kontekst miał znaczenie
 
 Basic HTML-body payload może nie zadziałać w attribute context.
 
@@ -53,13 +53,13 @@ To pokazało, że XSS nie polega na zapamiętaniu jednego payloadu. Chodzi o zro
 
 ---
 
-## Impact
+## Wpływ
 
 Atakujący mógłby stworzyć request, w którym reflected input modyfikuje wygenerowany HTML attribute i powoduje wykonanie JavaScriptu w przeglądarce ofiary.
 
 ---
 
-## Developer Remediation
+## Remediacja dla developerów
 
 - Używaj context-aware output encoding dla HTML attributes.
 - Bezpiecznie quote attributes.
@@ -69,7 +69,7 @@ Atakujący mógłby stworzyć request, w którym reflected input modyfikuje wyge
 
 ---
 
-## Regression Test Idea
+## Pomysł na test regresji
 
 Sprawdź, że quotes, angle brackets i event-handler-like input są bezpiecznie encoded, gdy trafiają do HTML attributes.
 

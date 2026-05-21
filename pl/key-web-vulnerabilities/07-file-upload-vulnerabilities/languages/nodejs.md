@@ -1,15 +1,15 @@
-# Node.js Upload Risks
+# Node.js - ryzyka związane z uploadem
 
-In Node.js/Express applications, uploading a `.js` file normally does not execute it on the server.
+W aplikacjach Node.js/Express upload pliku `.js` zwykle nie powoduje jego wykonania na serwerze.
 
-Main risks:
+Główne ryzyka:
 
-- path traversal through filename
-- unsafe static file serving
+- path traversal przez nazwę pliku
+- niebezpieczne serwowanie plików statycznych
 - stored XSS through HTML/SVG
-- file overwrite
-- unsafe parsing of uploaded content
+- nadpisanie pliku
+- niebezpieczne parsowanie uploadowanej zawartości
 
-## Main Takeaway
+## Główna lekcja
 
-In Node.js, unsafe storage, static serving and processing are often more relevant than direct execution.
+W Node.js niebezpieczny zapis, statyczne serwowanie i przetwarzanie plików są często bardziej istotne niż bezpośrednie wykonanie uploadowanego pliku.

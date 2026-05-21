@@ -48,7 +48,7 @@ source → context → sink/rendering → browser behaviour
 
 ---
 
-## Developer takeaway
+## Lekcja dla developera
 
 Developerzy powinni unikać renderowania niezaufanych danych jako HTML, chyba że jest to naprawdę potrzebne i bezpiecznie sanitizowane.
 

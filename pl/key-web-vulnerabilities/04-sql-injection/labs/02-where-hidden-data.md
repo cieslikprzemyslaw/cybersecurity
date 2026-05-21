@@ -130,7 +130,7 @@ AND released = 1
 
 To pozwoliło aplikacji zwrócić produkty, które normalnie były ukryte.
 
-## Impact
+## Wpływ
 
 W prawdziwej aplikacji taki błąd mógłby pozwolić użytkownikowi ominąć filtry i zobaczyć dane, które nie powinny być widoczne.
 

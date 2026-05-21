@@ -1,39 +1,39 @@
-# PortSwigger Lab 01 - Remote Code Execution via Web Shell Upload
+# PortSwigger Lab 01 - Remote Code Execution przez upload web shella
 
-## What I Tested
+## Co testowałem
 
-I tested whether the avatar upload feature allowed a PHP file to be uploaded and executed by the server.
+Testowałem, czy funkcja uploadu avatara pozwala wgrać plik PHP i wykonać go po stronie serwera.
 
-## What I Found
+## Co znalazłem
 
-The application accepted a PHP file and stored it in a web-accessible avatar directory.
+Aplikacja zaakceptowała plik PHP i zapisała go w katalogu avatarów dostępnym z poziomu weba.
 
-Example:
+Przykład:
 
 ```text
 /files/avatars/shell.php?cmd=cat+/home/carlos/secret
 ```
 
-## Root Cause
+## Przyczyna źródłowa
 
-The application allowed executable server-side files to be uploaded and served from a location where the web server executed them.
+Aplikacja pozwalała wgrywać wykonywalne pliki server-side i serwowała je z miejsca, w którym serwer webowy je wykonywał.
 
-## Impact
+## Wpływ
 
-An attacker could execute commands on the server and read sensitive files.
+Atakujący mógł wykonywać komendy na serwerze i czytać wrażliwe pliki.
 
-## Remediation
+## Remediacja
 
-- reject executable extensions
-- store uploads outside executable web roots
-- disable script execution in upload directories
-- generate safe server-side filenames
-- validate file type server-side
+- odrzucaj wykonywalne rozszerzenia
+- przechowuj uploady poza wykonywalnym web rootem
+- wyłącz wykonywanie skryptów w katalogach uploadu
+- generuj bezpieczne nazwy plików po stronie serwera
+- waliduj typ pliku po stronie serwera
 
-## Developer Takeaway
+## Lekcja dla developera
 
-Never let user-uploaded files be executed as code.
+Nigdy nie pozwalaj, żeby pliki wgrywane przez użytkownika były wykonywane jako kod.
 
-## Main Takeaway
+## Główna lekcja
 
-The dangerous part was not only the upload. The dangerous part was that the uploaded PHP file was executable.
+Niebezpieczny był nie tylko sam upload. Kluczowe było to, że uploadowany plik PHP mógł zostać wykonany.

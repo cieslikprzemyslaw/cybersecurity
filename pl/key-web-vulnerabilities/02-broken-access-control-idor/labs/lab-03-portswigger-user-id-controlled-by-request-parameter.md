@@ -36,13 +36,13 @@ Jeśli backend przyjmuje zmieniony identyfikator i zwraca dane innego użytkowni
 
 ---
 
-## Root Cause
+## Przyczyna źródłowa
 
 Backend zaufał identyfikatorowi kontrolowanemu przez użytkownika bez sprawdzenia, czy zalogowany użytkownik ma prawo do żądanego konta.
 
 ---
 
-## Impact
+## Wpływ
 
 Atakujący mógłby uzyskać dostęp do danych konta albo wrażliwych informacji innego użytkownika.
 

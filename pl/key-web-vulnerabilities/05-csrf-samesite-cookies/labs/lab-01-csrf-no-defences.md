@@ -13,7 +13,7 @@ Kontrolowanym inputem był parametr `email` w request body.
 
 Atakujący kontrolował też zewnętrzny formularz HTML hostowany na exploit serverze.
 
-## What Happened
+## Co się stało
 
 Przechwyciłem request zmiany emaila:
 
@@ -41,17 +41,17 @@ Utworzyłem zewnętrzny formularz HTML, który automatycznie wysyłał taki sam 
 
 Po zapisaniu payloadu na exploit serverze i wysłaniu go do ofiary lab został rozwiązany. Musiałem użyć nowej, unikalnej wartości emaila, ponieważ wcześniej użyte wartości mogły blokować ukończenie laba.
 
-## What I Learned
+## Czego się nauczyłem
 
 `POST` nie chroni przed CSRF. Złośliwa strona może stworzyć i automatycznie wysłać formularz.
 
 Serwer zaakceptował request, ponieważ przeglądarka automatycznie dołączyła session cookie ofiary. Aplikacja nie miała tokena ani dodatkowej walidacji potwierdzającej intencję użytkownika.
 
-## Impact
+## Wpływ
 
 W prawdziwej aplikacji atakujący mógłby zmienić adres email ofiary. W zależności od aplikacji mogłoby to pomóc w przejęciu konta, nadużyciu resetu hasła albo niechcianej zmianie ustawień konta.
 
-## Remediation Summary
+## Podsumowanie remediacji
 
 Zobacz `../overview.md` dla ogólnej sekcji remediation.
 
@@ -63,6 +63,6 @@ Specyficznie dla tego laba:
 - odrzucać requesty bez tokena lub z błędnym tokenem,
 - używać SameSite cookies jako dodatkowej warstwy defence-in-depth.
 
-## Main Takeaway
+## Główna lekcja
 
 Session cookie potwierdza, że przeglądarka jest uwierzytelniona. Nie potwierdza, że użytkownik świadomie wysłał request.

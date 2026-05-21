@@ -26,7 +26,7 @@ GET /image?filename=/var/www/images/../../../etc/passwd
 
 Input zaczynał się od oczekiwanego base path, ale finalna resolved path wychodziła poza ten katalog.
 
-## Root cause
+## Przyczyna źródłowa
 
 Aplikacja prawdopodobnie sprawdzała początek stringa, a nie finalną canonical path.
 

@@ -6,7 +6,7 @@ Username enumeration występuje wtedy, gdy aplikacja zdradza, czy username albo 
 
 Nie zawsze daje to bezpośredni dostęp do konta, ale pomaga atakującemu skupić dalsze ataki na prawdziwych użytkownikach.
 
-## What I Practised
+## Co ćwiczyłem
 
 Przećwiczyłem trzy laby na poziomie beginner-to-medium dotyczące username enumeration:
 
@@ -16,13 +16,13 @@ Przećwiczyłem trzy laby na poziomie beginner-to-medium dotyczące username enu
 
 Celem nie było tylko ukończenie labów, ale zrozumienie, jak porównywać odpowiedzi logowania, izolować zmienne i rozpoznawać sygnały zdradzające poprawne username’y.
 
-## Key Concept
+## Kluczowa koncepcja
 
 Authentication bypass i username enumeration to słabości związane z mechanizmem uwierzytelniania. Username enumeration występuje wtedy, gdy flow logowania daje inne informacje zwrotne w zależności od tego, czy username istnieje.
 
 Różnica może być oczywista, na przykład osobne komunikaty dla niepoprawnego username i błędnego hasła. Może też być subtelna, na przykład brakujący znak interpunkcyjny, lekko inna długość odpowiedzi albo account lockout, który pojawia się tylko dla istniejących kont.
 
-## What the User Controls
+## Co kontroluje użytkownik
 
 W tych ćwiczeniach główne kontrolowane inputy to:
 
@@ -48,7 +48,7 @@ Backend zwykle sprawdza:
 
 Jeśli aplikacja zwraca różne odpowiedzi dla różnych gałęzi tej logiki, te różnice mogą wyciekać informacje.
 
-## Impact
+## Wpływ
 
 Username enumeration może pomóc atakującemu zidentyfikować prawdziwe konta i skupić na nich dalsze ataki.
 
@@ -63,7 +63,7 @@ Realistyczny impact obejmuje:
 
 Ten problem zwykle nie ujawnia haseł bezpośrednio, ale ułatwia i ukierunkowuje kolejne ataki.
 
-## Developer Remediation
+## Remediacja dla developerów
 
 Developerzy powinni zapewnić spójne zachowanie przy nieudanych próbach logowania.
 
@@ -98,6 +98,6 @@ Dobry nawyk implementacyjny to użycie jednej wspólnej stałej albo template’
 - Czy rate limiting działa spójnie?
 - Czy nieudane próby logowania są logowane i monitorowane?
 
-## Main Takeaway
+## Główna lekcja
 
 Flow logowania nie powinien zdradzać, która część próby uwierzytelnienia była poprawna. Nawet małe różnice w komunikacie, długości odpowiedzi, timingu albo account lockout mogą pomóc atakującemu zidentyfikować poprawne konta.

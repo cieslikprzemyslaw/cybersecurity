@@ -1,15 +1,15 @@
-# Cloud Storage Upload Notes
+# Cloud storage - notatki o uploadzie
 
-Cloud storage changes the risk model. RCE may be less likely, but public exposure and stored XSS may still matter.
+Cloud storage zmienia model ryzyka. RCE może być mniej prawdopodobne, ale publiczne ujawnienie plików i stored XSS nadal mogą mieć znaczenie.
 
-Check:
+Sprawdź:
 
-- bucket/object permissions
-- public access
-- predictable URLs
-- user-controlled Content-Type metadata
-- same-origin risks
+- uprawnienia bucketa lub obiektu
+- publiczny dostęp
+- przewidywalne URL-e
+- metadane `Content-Type` kontrolowane przez użytkownika
+- ryzyka związane z same-origin
 
-## Main Takeaway
+## Główna lekcja
 
-Cloud upload security is often about access control, metadata, object naming and browser rendering behaviour.
+Bezpieczeństwo uploadu do cloud storage często dotyczy kontroli dostępu, metadanych, nazw obiektów i sposobu renderowania plików przez przeglądarkę.

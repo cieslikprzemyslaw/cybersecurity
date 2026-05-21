@@ -25,7 +25,7 @@ Aplikacja zapisywała niezaufany input i później renderowała go w HTML contex
 
 ---
 
-## Root Cause
+## Przyczyna źródłowa
 
 Aplikacja ufała stored user-generated content i renderowała go jako aktywny HTML.
 
@@ -35,7 +35,7 @@ stored input → later response → browser execution
 
 ---
 
-## Impact
+## Wpływ
 
 Stored XSS może być groźniejszy niż reflected XSS, bo ofiara nie musi kliknąć crafted link. Wystarczy, że otworzy stronę, gdzie payload został zapisany.
 
@@ -48,7 +48,7 @@ Możliwy impact:
 
 ---
 
-## Developer Remediation
+## Remediacja dla developerów
 
 - Encode output przy renderowaniu stored user content.
 - Sanitizuj tylko wtedy, gdy aplikacja musi wspierać ograniczony HTML/rich text.
@@ -58,7 +58,7 @@ Możliwy impact:
 
 ---
 
-## Regression Test Idea
+## Pomysł na test regresji
 
 Utwórz content zawierający HTML-like input i sprawdź, czy jest wyświetlany jako tekst, a nie wykonywany, zarówno dla normalnego użytkownika, jak i admina.
 

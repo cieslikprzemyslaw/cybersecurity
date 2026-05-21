@@ -52,7 +52,7 @@ Jeśli URL jest kontrolowany przez użytkownika, może używać niebezpiecznego 
 - Czy protokoły są ograniczone do bezpiecznych wartości, np. `https:`?
 - Czy renderowany jest raw CMS/markdown content?
 
-## Developer takeaway
+## Lekcja dla developera
 
 ```text
 Vue jest bezpieczny przy normalnej interpolacji tekstu, ale v-html renderuje raw HTML i wymaga security review.

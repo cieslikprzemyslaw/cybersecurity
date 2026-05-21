@@ -1,8 +1,8 @@
-# .NET Upload Risks
+# .NET - ryzyka związane z uploadem
 
-Risk depends on classic ASP.NET vs ASP.NET Core, IIS configuration and storage location.
+Ryzyko zależy od tego, czy aplikacja używa klasycznego ASP.NET czy ASP.NET Core, a także od konfiguracji IIS i miejsca zapisu plików.
 
-Potentially dangerous file types can include:
+Potencjalnie niebezpieczne typy plików:
 
 ```text
 .aspx
@@ -11,6 +11,6 @@ Potentially dangerous file types can include:
 .config
 ```
 
-## Main Takeaway
+## Główna lekcja
 
-In .NET, direct execution depends on IIS and application configuration, but unsafe storage and public serving remain major risks.
+W .NET bezpośrednie wykonanie zależy od IIS i konfiguracji aplikacji, ale niebezpieczny zapis i publiczne serwowanie plików pozostają dużym ryzykiem.

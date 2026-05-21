@@ -94,7 +94,7 @@ document.getElementById("welcome").textContent = name;
 - Czy jest sanitizacja, jeśli HTML jest potrzebny?
 - Czy URL schemes są walidowane?
 
-## Developer takeaway
+## Lekcja dla developera
 
 ```text
 DOM XSS często jest flow source-to-sink: dane kontrolowane przez atakującego trafiają do niebezpiecznego DOM API.

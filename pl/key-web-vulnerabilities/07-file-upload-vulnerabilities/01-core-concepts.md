@@ -1,42 +1,42 @@
-# File Upload Vulnerabilities - Podstawowe koncepty
+# Podatności w uploadzie plików - podstawowe pojęcia
 
 ## TL;DR
 
-File upload vulnerability pojawia się wtedy, gdy aplikacja przyjmuje pliki od użytkownika, ale waliduje, zapisuje, serwuje albo przetwarza je niebezpiecznie.
+Podatność w uploadzie plików pojawia się wtedy, gdy aplikacja przyjmuje pliki od użytkownika, ale waliduje, zapisuje, serwuje albo przetwarza je w niebezpieczny sposób.
 
 Najważniejsze pytanie to nie tylko:
 
-> Czy mogę uploadować plik?
+> Czy mogę wgrać plik?
 
 Lepsze pytanie AppSec:
 
-> Co aplikacja robi z tym plikiem po uploadzie?
+> Co aplikacja robi z tym plikiem po wgraniu?
 
 ## Dlaczego upload jest ryzykowny
 
-Uploadowany plik to user-controlled input. Użytkownik może kontrolować filename, extension, Content-Type części pliku, content, size, metadata i encoded/obfuscated characters.
+Uploadowany plik to dane kontrolowane przez użytkownika. Użytkownik może kontrolować nazwę pliku, rozszerzenie, `Content-Type` konkretnej części pliku, zawartość, rozmiar, metadane oraz znaki zakodowane lub zaciemnione.
 
 ## Główne skutki
 
 - Remote Code Execution
 - Stored XSS
-- File Overwrite
-- Path Traversal przez filename
-- Information Disclosure
+- nadpisanie pliku
+- path traversal przez nazwę pliku
+- ujawnienie informacji
 
-## Mental model
+## Model myślenia
 
-Upload accepted nie oznacza automatycznie code execution.
+Zaakceptowany upload nie oznacza automatycznie wykonania kodu.
 
 Zawsze sprawdzaj:
 
-- final stored filename
+- finalną nazwę zapisanego pliku
 - final URL
-- response Content-Type
-- czy plik jest static content
+- `Content-Type` odpowiedzi
+- czy plik jest treścią statyczną
 - czy serwer go wykonuje
-- czy działa access control
+- czy działa kontrola dostępu
 
-## Main takeaway
+## Główna lekcja
 
-File upload staje się niebezpieczny, gdy user-controlled files są akceptowane, a potem niebezpiecznie zapisywane, serwowane, parsowane albo wykonywane.
+Upload plików staje się niebezpieczny, gdy pliki kontrolowane przez użytkownika są akceptowane, a potem niebezpiecznie zapisywane, serwowane, parsowane albo wykonywane.

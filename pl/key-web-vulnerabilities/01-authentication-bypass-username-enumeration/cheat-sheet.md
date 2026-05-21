@@ -206,7 +206,7 @@ Unikaj tych błędów:
 - zbyt agresywne testowanie bez zrozumienia rate limitów,
 - publikowanie haseł, tokenów, cookies albo bezpośrednich odpowiedzi z labów w notatkach na GitHubie.
 
-## Developer Remediation
+## Remediacja dla developerów
 
 Developerzy powinni:
 
@@ -251,6 +251,6 @@ Dla prawdziwych aplikacji używaj uzgodnionych kont testowych, zatwierdzonego za
 - Czy rate limiting działa spójnie?
 - Czy developer zrozumiałby z mojego raportu, jak to naprawić?
 
-## Main Takeaway
+## Główna lekcja
 
 Testowanie authentication to nie tylko szukanie poprawnego hasła. To analiza tego, jak aplikacja zachowuje się, gdy logowanie się nie udaje. Każda powtarzalna różnica może stać się sygnałem dla atakującego.

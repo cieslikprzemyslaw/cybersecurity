@@ -98,7 +98,7 @@ content jest renderowany w różnych kontekstach
 - Czy content jest pokazywany innym użytkownikom?
 - Czy CSP jest skonfigurowane jako defence-in-depth?
 
-## Developer takeaway
+## Lekcja dla developera
 
 ```text
 Rich text to nadal user/content-controlled input. Jeśli staje się HTML, wymaga sanitizacji i context-aware rendering.

@@ -26,7 +26,7 @@ GET /image?filename=/etc/passwd
 
 Blokowanie traversal sequences takich jak `../` nie wystarcza, jeśli backend nadal akceptuje pełne ścieżki filesystemu.
 
-## Root cause
+## Przyczyna źródłowa
 
 Aplikacja ufała parametrowi `filename` i nie sprawdzała finalnej resolved path.
 

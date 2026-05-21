@@ -280,7 +280,7 @@ Notatki per stack są w [ryzykownych wzorcach frameworkowych](./framework-risky-
 
 ---
 
-## Remediation dla developerów
+## Remediacja dla developerów
 
 Dobre praktyki:
 

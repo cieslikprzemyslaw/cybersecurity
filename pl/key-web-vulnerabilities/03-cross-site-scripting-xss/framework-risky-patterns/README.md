@@ -46,7 +46,7 @@ Podczas review kodu pytaj:
 - Czy możliwe są `javascript:` URLs, event handlery albo niebezpieczne tagi?
 - Czy CSP jest tylko defence-in-depth, a nie jedyną ochroną?
 
-## Developer takeaway
+## Lekcja dla developera
 
 Frameworki pomagają, ale nie zastępują bezpiecznych decyzji przy renderowaniu.
 

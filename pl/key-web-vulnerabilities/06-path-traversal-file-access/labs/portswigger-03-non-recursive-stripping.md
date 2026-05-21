@@ -22,7 +22,7 @@ GET /image?filename=....//....//....//etc/passwd
 
 Aplikacja próbowała usuwać traversal sequences, ale filtr był słaby i nierekurencyjny.
 
-## Root cause
+## Przyczyna źródłowa
 
 Backend prawdopodobnie usuwał `../` raz, ale nie sprawdzał ponownie wyniku po transformacji.
 

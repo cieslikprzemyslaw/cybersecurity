@@ -86,7 +86,7 @@ To nie był błąd payloadu SQL Injection. Problem wynikał z niedopasowania tok
 
 Token CSRF był powiązany z cookie sesyjnym, więc podczas testowania ręcznego aktualny token CSRF i aktualne cookie sesyjne muszą do siebie pasować.
 
-## Impact
+## Wpływ
 
 W prawdziwej aplikacji taki błąd mógłby pozwolić atakującemu ominąć logowanie i uzyskać dostęp do innego konta, w tym konta administracyjnego.
 

@@ -1,49 +1,49 @@
-# PortSwigger Lab 03 - Web Shell Upload via Obfuscated File Extension
+# PortSwigger Lab 03 - Upload web shella przez zaciemnione rozszerzenie pliku
 
-## What I Tested
+## Co testowałem
 
-I tested how the application handled filename and extension validation.
+Testowałem, jak aplikacja obsługuje walidację nazwy pliku i rozszerzenia.
 
-## What I Found
+## Co znalazłem
 
 ```text
-shell.php                  -> rejected
-shell.php + image/png      -> rejected
-shell.php.jpg              -> accepted, but served as image
-shell.jpg.php              -> rejected
-shell.php%00.jpg           -> accepted and stored as shell.php
-shell.php?cmd=...          -> executed after successful storage as .php
+shell.php                  -> odrzucony
+shell.php + image/png      -> odrzucony
+shell.php.jpg              -> zaakceptowany, ale serwowany jako obraz
+shell.jpg.php              -> odrzucony
+shell.php%00.jpg           -> zaakceptowany i zapisany jako shell.php
+shell.php?cmd=...          -> wykonany po skutecznym zapisaniu jako .php
 ```
 
-## Why `shell.php.jpg` Was Not Enough
+## Dlaczego `shell.php.jpg` nie wystarczył
 
-The upload was accepted, but the final file was served as an image:
+Upload został zaakceptowany, ale finalny plik był serwowany jako obraz:
 
 ```http
 Content-Type: image/jpeg
 ```
 
-The PHP code appeared in the response body as text, which showed that the server did not execute it.
+Kod PHP pojawił się w body odpowiedzi jako tekst, co pokazało, że serwer go nie wykonał.
 
-## Why `shell.php%00.jpg` Worked
+## Dlaczego `shell.php%00.jpg` zadziałał
 
-The validation accepted the filename because it appeared to end with an allowed image extension.
+Walidacja zaakceptowała nazwę pliku, ponieważ wyglądała tak, jakby kończyła się dozwolonym rozszerzeniem obrazu.
 
-However, the application stored the file as:
+Aplikacja zapisała jednak plik jako:
 
 ```text
 shell.php
 ```
 
-The uploaded file was then executed as PHP by the server.
+Uploadowany plik został następnie wykonany przez serwer jako PHP.
 
-## Root Cause
+## Przyczyna źródłowa
 
-Weak filename/extension validation and unsafe handling of encoded/null-byte characters in the filename.
+Słaba walidacja nazwy pliku i rozszerzenia oraz niebezpieczna obsługa znaków zakodowanych lub znaków null byte w nazwie pliku.
 
-## Regression Test Idea
+## Pomysł na test regresji
 
-The application should reject or safely handle:
+Aplikacja powinna odrzucać albo bezpiecznie obsługiwać:
 
 ```text
 shell.php
@@ -56,6 +56,6 @@ shell.pHp
 shell%2ephp.jpg
 ```
 
-## Main Takeaway
+## Główna lekcja
 
-The key bug was the difference between what the validation saw and what the application finally stored.
+Kluczowym błędem była różnica między tym, co widziała walidacja, a tym, co aplikacja finalnie zapisała.

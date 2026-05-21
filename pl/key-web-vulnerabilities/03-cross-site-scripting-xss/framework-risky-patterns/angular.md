@@ -67,7 +67,7 @@ Bezpośrednia manipulacja DOM może ominąć zabezpieczenia template Angulara. J
 - Czy URL-e są walidowane?
 - Czy content jest sanitizowany przez ścisłą allowlistę?
 
-## Developer takeaway
+## Lekcja dla developera
 
 ```text
 Jeśli kod Angular mówi “bypass security”, traktuj to jako punkt security review.

@@ -51,7 +51,7 @@ Frontend nie jest granicą bezpieczeństwa. Użytkownik może wysłać request p
 
 Narzędzia pomagają, ale analiza jest ważniejsza. Burp Intruder albo ffuf mogą wysłać wiele requestów, ale to człowiek musi zrozumieć, co oznacza różnica w odpowiedzi.
 
-## Impact
+## Wpływ
 
 Username enumeration może pomóc atakującemu:
 

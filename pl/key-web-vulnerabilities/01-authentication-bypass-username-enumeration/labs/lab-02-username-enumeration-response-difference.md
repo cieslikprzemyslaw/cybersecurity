@@ -18,7 +18,7 @@ password
 
 Request był wysyłany do endpointu logowania metodą POST jako dane form-encoded.
 
-## What Happened
+## Co się stało
 
 Aplikacja wyświetlała komunikat błędu, który wyglądał generycznie dla nieudanych prób logowania.
 
@@ -34,7 +34,7 @@ Przydatne sygnały w response:
 - Burp Grep - Extract pomógł wyciągnąć sam komunikat ostrzegawczy,
 - poprawne logowanie później zwróciło `302` redirect i nowe session cookie.
 
-## What I Learned
+## Czego się nauczyłem
 
 Nauczyłem się, że generyczne komunikaty nie wystarczą, jeśli surowe odpowiedzi nie są naprawdę identyczne.
 
@@ -48,13 +48,13 @@ Małe różnice mają znaczenie, w tym:
 
 Nauczyłem się też, że Burp Grep - Extract jest przydatny do szybkiego porównywania wielu odpowiedzi. Zamiast ręcznie czytać cały HTML, wyciągnąłem tylko komunikat ostrzegawczy i porównałem tę kolumnę w Intruderze.
 
-## Impact
+## Wpływ
 
 W prawdziwej aplikacji atakujący może automatycznie porównywać odpowiedzi i wykrywać małe różnice, których zwykły użytkownik nie zauważy.
 
 To nadal może pozwolić na identyfikację poprawnych username’ów i skupienie dalszych ataków na prawdziwych kontach.
 
-## Remediation Summary
+## Podsumowanie remediacji
 
 Zobacz `../overview.md`, aby poznać ogólną sekcję remediation.
 
@@ -67,6 +67,6 @@ Lab-specific remediation:
 - porównywać status code, długość odpowiedzi, redirecty, cookies i timing,
 - dodać negatywne testy authentication do QA/security testing.
 
-## Main Takeaway
+## Główna lekcja
 
 Komunikat może wyglądać generycznie w przeglądarce, ale nadal wyciekać informacje przez małe różnice w surowej odpowiedzi.

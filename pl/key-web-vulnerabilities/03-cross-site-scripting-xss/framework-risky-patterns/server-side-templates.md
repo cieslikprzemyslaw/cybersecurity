@@ -92,7 +92,7 @@ Escaping dla jednego kontekstu może nie być bezpieczny dla innego.
 - Czy output trafia do HTML body, attribute, JavaScript, URL albo CSS?
 - Czy można użyć normalnego escaped output?
 
-## Developer takeaway
+## Lekcja dla developera
 
 ```text
 Autoescaping pomaga, ale raw output features omijają zabezpieczenia template engine.

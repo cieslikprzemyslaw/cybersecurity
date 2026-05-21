@@ -18,7 +18,7 @@ password
 
 Request był wysyłany do endpointu logowania metodą POST jako dane form-encoded.
 
-## What Happened
+## Co się stało
 
 Próba logowania losowym username i losowym password zwróciła komunikat, że username jest niepoprawny.
 
@@ -34,7 +34,7 @@ Ważne sygnały w response:
 - późniejsze poprawne logowanie zwróciło `302` redirect do strony konta,
 - poprawna odpowiedź ustawiła również nowe session cookie.
 
-## What I Learned
+## Czego się nauczyłem
 
 Nauczyłem się, że username enumeration może być bardzo proste, gdy aplikacja pokazuje różne komunikaty dla błędnego username i błędnego hasła.
 
@@ -54,13 +54,13 @@ username = znany kandydat
 password = zmienny
 ```
 
-## Impact
+## Wpływ
 
 W prawdziwej aplikacji taki problem może pomóc atakującym zbudować listę poprawnych username’ów. Następnie mogą użyć tej listy do password spraying, credential stuffing, phishingu albo celowanych prób brute-force.
 
 Problem nie ujawnia hasła bezpośrednio, ale zmniejsza pracę atakującego.
 
-## Remediation Summary
+## Podsumowanie remediacji
 
 Zobacz `../overview.md`, aby poznać ogólną sekcję remediation.
 
@@ -73,6 +73,6 @@ Lab-specific remediation:
 - testować odpowiedzi logowania z poprawnymi i błędnymi username’ami,
 - dodać rate limiting i monitoring powtarzanych nieudanych prób.
 
-## Main Takeaway
+## Główna lekcja
 
 Komunikaty błędów logowania nie mogą zdradzać, czy błędną częścią był username czy password.

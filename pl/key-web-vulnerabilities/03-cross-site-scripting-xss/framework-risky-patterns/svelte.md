@@ -40,7 +40,7 @@ Svelte traktuje `userInput` jako tekst i escapuje znaki HTML.
 - Czy unsafe URL schemes są zablokowane?
 - Czy można użyć normalnego renderowania tekstu?
 
-## Developer takeaway
+## Lekcja dla developera
 
 ```text
 W Svelte {@html} oznacza raw HTML rendering i powinno odpalać security review.

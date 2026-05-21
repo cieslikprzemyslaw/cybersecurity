@@ -1,49 +1,49 @@
-# PortSwigger Lab 02 - Web Shell Upload via Content-Type Restriction Bypass
+# PortSwigger Lab 02 - Upload web shella przez bypass ograniczenia Content-Type
 
-## What I Tested
+## Co testowałem
 
-I tested whether the upload validation trusted the file part Content-Type header.
+Testowałem, czy walidacja uploadu ufa nagłówkowi `Content-Type` konkretnej części pliku.
 
-## What I Found
+## Co znalazłem
 
-The application rejected the PHP file when it was sent as:
+Aplikacja odrzucała plik PHP, gdy został wysłany jako:
 
 ```http
 Content-Type: application/octet-stream
 ```
 
-The response said:
+Odpowiedź zawierała komunikat:
 
 ```text
 Only image/jpeg and image/png are allowed
 ```
 
-The same PHP file was accepted when the file part Content-Type was changed to:
+Ten sam plik PHP został zaakceptowany po zmianie `Content-Type` części pliku na:
 
 ```http
 Content-Type: image/png
 ```
 
-The filename remained:
+Nazwa pliku pozostała taka sama:
 
 ```text
 shell.php
 ```
 
-The server later executed the uploaded PHP file.
+Serwer później wykonał uploadowany plik PHP.
 
-## Root Cause
+## Przyczyna źródłowa
 
-The application trusted a user-controlled multipart header as the main validation mechanism.
+Aplikacja ufała kontrolowanemu przez użytkownika nagłówkowi multipart jako głównemu mechanizmowi walidacji.
 
-## Impact
+## Wpływ
 
-An attacker could upload a PHP web shell disguised as an image and execute commands on the server.
+Atakujący mógł wgrać PHP web shell podszywający się pod obraz i wykonywać komendy na serwerze.
 
-## Regression Test Idea
+## Pomysł na test regresji
 
-Uploading `shell.php` with `Content-Type: image/png` should not result in an executable file being stored or accessible.
+Upload `shell.php` z `Content-Type: image/png` nie powinien skutkować zapisaniem ani udostępnieniem wykonywalnego pliku.
 
-## Main Takeaway
+## Główna lekcja
 
-`Content-Type` in a multipart upload request is a hint, not proof.
+`Content-Type` w requestcie multipart uploadu jest wskazówką, a nie dowodem.

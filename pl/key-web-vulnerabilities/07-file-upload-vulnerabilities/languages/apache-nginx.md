@@ -1,13 +1,13 @@
-# Apache / Nginx Upload Configuration Notes
+# Apache / Nginx - notatki o konfiguracji uploadu
 
-Uploads are safer when stored outside the executable web root.
+Uploady są bezpieczniejsze, gdy są przechowywane poza wykonywalnym web rootem.
 
-Risky pattern:
+Ryzykowny wzorzec:
 
 ```text
 /var/www/html/uploads/shell.php
 ```
 
-## Main Takeaway
+## Główna lekcja
 
-Web server configuration can turn a weak upload feature into RCE.
+Konfiguracja serwera webowego może zmienić słabą funkcję uploadu w RCE.

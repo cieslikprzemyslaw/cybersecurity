@@ -32,13 +32,13 @@ Jeśli użytkownik może zmienić wskazany plik i uzyskać dostęp do transkrypt
 
 ---
 
-## Root Cause
+## Przyczyna źródłowa
 
 Backend pozwalał na bezpośredni dostęp do plików transkryptów bez sprawdzenia ownership albo permission.
 
 ---
 
-## Impact
+## Wpływ
 
 Atakujący mógłby uzyskać dostęp do prywatnego transkryptu rozmowy innego użytkownika.
 

@@ -26,7 +26,7 @@ Po dwóch krokach decode payload staje się:
 ../../../etc/passwd
 ```
 
-## Root cause
+## Przyczyna źródłowa
 
 Aplikacja prawdopodobnie walidowała albo filtrowała input przed późniejszym decode, który stworzył poprawną traversal sequence.
 

@@ -43,7 +43,7 @@ Sama odpowiedź serwera nie tłumaczyła całej podatności. Problem pojawiał s
 
 ---
 
-## Root Cause
+## Przyczyna źródłowa
 
 Client-side JavaScript używał danych kontrolowanych przez atakującego i przekazywał je do dangerous sink.
 
@@ -53,13 +53,13 @@ location.search → JavaScript processing → document.write() → DOM execution
 
 ---
 
-## Impact
+## Wpływ
 
 Atakujący mógłby stworzyć URL powodujący wykonanie JavaScriptu w przeglądarce ofiary po przetworzeniu parametru przez podatną stronę.
 
 ---
 
-## Developer Remediation
+## Remediacja dla developerów
 
 - Unikaj `document.write()` dla danych kontrolowanych przez użytkownika.
 - Unikaj unsafe DOM sinks takich jak `innerHTML`, `outerHTML`, `insertAdjacentHTML` dla untrusted input.
@@ -69,7 +69,7 @@ Atakujący mógłby stworzyć URL powodujący wykonanie JavaScriptu w przegląda
 
 ---
 
-## Regression Test Idea
+## Pomysł na test regresji
 
 Dodaj test albo review rule sprawdzający, że URL parameters nie są zapisywane do DOM przez unsafe sinks.
 

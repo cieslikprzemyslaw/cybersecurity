@@ -26,7 +26,7 @@ GET /image?filename=../../../etc/passwd
 
 Backend używał parametru `filename` kontrolowanego przez użytkownika do odczytu pliku z filesystemu serwera.
 
-## Root cause
+## Przyczyna źródłowa
 
 Aplikacja nie walidowała finalnej resolved path przed odczytem pliku.
 

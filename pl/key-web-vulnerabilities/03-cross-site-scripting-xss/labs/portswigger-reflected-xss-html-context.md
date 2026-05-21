@@ -27,7 +27,7 @@ To tworzyło reflected XSS, ponieważ przeglądarka mogła zinterpretować attac
 
 ---
 
-## Root Cause
+## Przyczyna źródłowa
 
 Aplikacja renderowała dane z requestu w HTML context bez context-aware output encoding.
 
@@ -37,7 +37,7 @@ request parameter → HTML response → browser interprets as markup/code
 
 ---
 
-## Impact
+## Wpływ
 
 Atakujący mógłby stworzyć link powodujący wykonanie JavaScriptu w przeglądarce ofiary.
 
@@ -50,7 +50,7 @@ W zależności od aplikacji i uprawnień ofiary może to prowadzić do:
 
 ---
 
-## Developer Remediation
+## Remediacja dla developerów
 
 - Encode output przed renderowaniem user input w HTML.
 - Traktuj query parameters jako niezaufane.
@@ -60,7 +60,7 @@ W zależności od aplikacji i uprawnień ofiary może to prowadzić do:
 
 ---
 
-## Regression Test Idea
+## Pomysł na test regresji
 
 Wyślij payload-like input do search field i sprawdź, czy pojawia się jako escaped text w response.
 

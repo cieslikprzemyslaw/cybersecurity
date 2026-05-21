@@ -90,7 +90,7 @@ Bezpieczniejsze podejścia:
 - Czy raw HTML jest naprawdę potrzebny?
 - Czy autoescape template jest włączony?
 
-## Developer takeaway
+## Lekcja dla developera
 
 ```text
 W PHP bezpośrednie echo user-controlled data bez escaping to częsty risk XSS.

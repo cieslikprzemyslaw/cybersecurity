@@ -115,7 +115,7 @@ UNION SELECT NULL,NULL,NULL
 
 Ponieważ liczba kolumn się zgadzała, a `NULL` był kompatybilny typowo, baza zaakceptowała zapytanie.
 
-## Impact
+## Wpływ
 
 Ustalenie liczby kolumn jest zwykle krokiem przygotowawczym do bardziej zaawansowanego UNION-based SQL Injection.
 

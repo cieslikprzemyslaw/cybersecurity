@@ -15,7 +15,7 @@ Kontrolowane inputy:
 - parametr query `_method`,
 - URL przekierowania hostowany na exploit serverze.
 
-## What Happened
+## Co się stało
 
 Normalny request zmiany emaila używał `POST`:
 
@@ -66,7 +66,7 @@ Finalny exploit użył top-level navigation:
 </html>
 ```
 
-## What I Learned
+## Czego się nauczyłem
 
 SameSite `Lax` nie oznacza, że CSRF jest niemożliwy.
 
@@ -77,13 +77,13 @@ Kluczowa różnica:
 - przeglądarka widzi top-level `GET`,
 - backend traktuje request jako `POST`.
 
-## Impact
+## Wpływ
 
 W prawdziwej aplikacji niebezpieczny method override mógłby pozwolić atakującemu obejść oczekiwane zachowanie `SameSite=Lax` i wykonać akcję zmieniającą stan jako ofiara.
 
 Impact zależy od endpointu. Dla ustawień konta mogłoby to oznaczać niechciane zmiany danych użytkownika.
 
-## Remediation Summary
+## Podsumowanie remediacji
 
 Zobacz `../overview.md` dla ogólnej sekcji remediation.
 
@@ -95,6 +95,6 @@ Specyficznie dla tego laba:
 - traktować SameSite jako defence-in-depth, nie zamiennik CSRF tokenów,
 - sprawdzić framework-level method override behaviour.
 
-## Main Takeaway
+## Główna lekcja
 
 SameSite `Lax` pomaga, ale nie jest pełną ochroną CSRF. Zachowanie backendu, takie jak method override, może zamienić dozwoloną przez przeglądarkę nawigację `GET` w akcję zmieniającą stan.

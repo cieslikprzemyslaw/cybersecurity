@@ -20,7 +20,7 @@ kolejność requestów
 
 Główne zachowanie testowe polegało na wysyłaniu kilku błędnych haseł dla tego samego username i porównywaniu reakcji aplikacji.
 
-## What Happened
+## Co się stało
 
 Dla losowych albo nieistniejących username’ów powtarzane błędne próby logowania nadal zwracały normalny generyczny komunikat błędu.
 
@@ -36,7 +36,7 @@ Ważne sygnały w response:
 - jedna próba z hasłem zwróciła inny pattern odpowiedzi,
 - poprawne logowanie zwróciło redirect do strony konta i nowe session cookie.
 
-## What I Learned
+## Czego się nauczyłem
 
 Nauczyłem się, że mechanizmy bezpieczeństwa też mogą wyciekać informacje, jeśli są wdrożone niespójnie.
 
@@ -44,7 +44,7 @@ Account lockout jest przydatny, ale jeśli pojawia się tylko dla istniejących 
 
 Nauczyłem się też, że ten typ problemu może nie być widoczny po jednym request. Trzeba testować zachowanie aplikacji przez kilka prób.
 
-## Impact
+## Wpływ
 
 W prawdziwej aplikacji atakujący mógłby użyć zachowania account lockout do identyfikacji poprawnych użytkowników.
 
@@ -56,7 +56,7 @@ Problem może wspierać:
 - phishing skierowany do znanych użytkowników,
 - nadużycie account lockout albo denial of service wobec prawdziwych użytkowników.
 
-## Remediation Summary
+## Podsumowanie remediacji
 
 Zobacz `../overview.md`, aby poznać ogólną sekcję remediation.
 
@@ -71,6 +71,6 @@ Lab-specific remediation:
 - alertować przy wzorcach password spraying i credential stuffing,
 - rozważyć MFA dla wrażliwych kont.
 
-## Main Takeaway
+## Główna lekcja
 
 Account lockout jest przydatną ochroną, ale jeśli zachowuje się inaczej dla istniejących i nieistniejących użytkowników, staje się sygnałem username enumeration.

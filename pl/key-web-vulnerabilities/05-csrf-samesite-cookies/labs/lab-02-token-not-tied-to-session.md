@@ -15,7 +15,7 @@ Kontrolowane inputy:
 - parametr `csrf`,
 - zewnętrzny formularz HTML hostowany na exploit serverze.
 
-## What Happened
+## Co się stało
 
 Aplikacja dodawała CSRF token do requestu zmiany emaila:
 
@@ -46,7 +46,7 @@ Po potwierdzeniu tego użyłem exploit servera z formularzem zawierającym:
 
 Lab został rozwiązany po użyciu świeżego tokena i unikalnej wartości emaila.
 
-## What I Learned
+## Czego się nauczyłem
 
 Samo istnienie CSRF tokena w requestcie nie wystarcza.
 
@@ -62,13 +62,13 @@ Nauczyłem się też czytać sygnały z odpowiedzi:
 - `302 /login` zwykle oznacza brakujące lub wygasłe session cookie,
 - `email already in use` może oznaczać, że CSRF token został zaakceptowany i request dotarł do logiki biznesowej.
 
-## Impact
+## Wpływ
 
 W prawdziwej aplikacji atakujący mógłby użyć własnego poprawnego tokena do sfałszowania requestu przeciwko innemu zalogowanemu użytkownikowi, jeśli token byłby akceptowany między sesjami.
 
 To może pozwolić na niechciane zmiany konta mimo pozornej ochrony CSRF.
 
-## Remediation Summary
+## Podsumowanie remediacji
 
 Zobacz `../overview.md` dla ogólnej sekcji remediation.
 
@@ -80,6 +80,6 @@ Specyficznie dla tego laba:
 - bezpiecznie rotować i unieważniać tokeny,
 - testować cross-session token reuse podczas security review.
 
-## Main Takeaway
+## Główna lekcja
 
 CSRF token musi być czymś więcej niż obecnym parametrem. Musi być nieprzewidywalny, walidowany po stronie serwera i powiązany z sesją użytkownika.
