@@ -78,6 +78,16 @@ Each vulnerability topic should usually contain:
 - [Labs](key-web-vulnerabilities/07-file-upload-vulnerabilities/labs/)
 - [Lab Test Files](key-web-vulnerabilities/07-file-upload-vulnerabilities/lab-test-files/README.md)
 
+### 08. Server-Side Request Forgery
+
+- [Topic Index](key-web-vulnerabilities/08-server-side-request-forgery-ssrf/README.md)
+- [Core Concepts](key-web-vulnerabilities/08-server-side-request-forgery-ssrf/01-core-concepts.md)
+- [Where to Test Cheatsheet](key-web-vulnerabilities/08-server-side-request-forgery-ssrf/02-where-to-test-cheatsheet.md)
+- [SSRF Testing Workflow](key-web-vulnerabilities/08-server-side-request-forgery-ssrf/03-ssrf-testing-workflow.md)
+- [Bypasses and Filtering Cheatsheet](key-web-vulnerabilities/08-server-side-request-forgery-ssrf/04-bypasses-and-filtering-cheatsheet.md)
+- [Remediation Cheatsheet](key-web-vulnerabilities/08-server-side-request-forgery-ssrf/05-remediation-cheatsheet.md)
+- [Labs](key-web-vulnerabilities/08-server-side-request-forgery-ssrf/labs/)
+
 ## Recommended Reading Order
 
 1. Fundamentals 01-03.
@@ -88,6 +98,7 @@ Each vulnerability topic should usually contain:
 6. CSRF and SameSite cookies.
 7. Path traversal and file access bugs.
 8. File upload vulnerabilities.
+9. Server-side request forgery.
 
 ## File Role Guide
 
