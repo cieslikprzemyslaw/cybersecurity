@@ -79,6 +79,16 @@ Każdy temat zwykle zawiera:
 - [Laby](key-web-vulnerabilities/07-file-upload-vulnerabilities/labs/)
 - [Pliki testowe do labów](key-web-vulnerabilities/07-file-upload-vulnerabilities/lab-test-files/README.md)
 
+### 08. Server-Side Request Forgery
+
+- [Indeks tematu](key-web-vulnerabilities/08-server-side-request-forgery-ssrf/README.md)
+- [Podstawowe pojęcia](key-web-vulnerabilities/08-server-side-request-forgery-ssrf/01-core-concepts.md)
+- [Gdzie testować SSRF](key-web-vulnerabilities/08-server-side-request-forgery-ssrf/02-where-to-test-cheatsheet.md)
+- [Workflow testowania SSRF](key-web-vulnerabilities/08-server-side-request-forgery-ssrf/03-ssrf-testing-workflow.md)
+- [Bypassy i filtrowanie](key-web-vulnerabilities/08-server-side-request-forgery-ssrf/04-bypasses-and-filtering-cheatsheet.md)
+- [Remediacja](key-web-vulnerabilities/08-server-side-request-forgery-ssrf/05-remediation-cheatsheet.md)
+- [Laby](key-web-vulnerabilities/08-server-side-request-forgery-ssrf/labs/)
+
 ## Rekomendowana kolejność
 
 1. Fundamenty 01-03.
@@ -89,3 +99,4 @@ Każdy temat zwykle zawiera:
 6. CSRF i SameSite cookies.
 7. Path Traversal i File Access Bugs.
 8. File Upload Vulnerabilities.
+9. Server-Side Request Forgery.

@@ -19,3 +19,4 @@ Każdy temat jest małym modułem:
 5. [CSRF i SameSite Cookies](05-csrf-samesite-cookies/)
 6. [Path Traversal i File Access Bugs](06-path-traversal-file-access/)
 7. [File Upload Vulnerabilities](07-file-upload-vulnerabilities/)
+8. [Server-Side Request Forgery](08-server-side-request-forgery-ssrf/)
