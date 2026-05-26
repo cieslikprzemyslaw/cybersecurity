@@ -25,8 +25,8 @@ Kategoria jest kompletna dopiero wtedy, gdy zawiera:
 
 | Kategoria | Status | Notatki |
 |---|---:|---|
-| [A01 Broken Access Control](01-broken-access-control/01-overview.md) | Ukończone po review laba | Zawiera wieloetapowy lab PortSwigger dotyczący access control, checklistę, przykładowe znalezisko i testy regresji. |
-| [A02 Security Misconfiguration](02-security-misconfiguration/01-overview.md) | Ukończone po review praktyki | Zawiera zadanie TryHackMe dotyczące verbose API error disclosure, checklistę, przykładowe znalezisko i testy regresji. |
+| [A01 Broken Access Control](a01-broken-access-control/01-overview.md) | Ukończone po review laba | Zawiera wieloetapowy lab PortSwigger dotyczący access control, checklistę, przykładowe znalezisko i testy regresji. |
+| [A02 Security Misconfiguration](a02-security-misconfiguration/01-overview.md) | Ukończone po review praktyki | Zawiera zadanie TryHackMe dotyczące verbose API error disclosure, checklistę, przykładowe znalezisko i testy regresji. |
 | A03: Software Supply Chain Failures | Planowane | Zadanie praktyczne: review zależności npm, ryzykownych skryptów, lockfile i wyników audytu. |
 | A04: Cryptographic Failures | Planowane | Zadanie praktyczne: sekrety, założenia TLS, przechowywanie danych i obsługa tokenów. |
 | A05: Injection | Planowane | Istniejące notatki SQLi można zmapować tutaj. |
