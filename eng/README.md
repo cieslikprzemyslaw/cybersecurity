@@ -21,6 +21,18 @@ Each vulnerability topic should usually contain:
 - a `labs/` folder for short lab summaries,
 - optional longer learning summaries.
 
+## [OWASP Top 10 2025 Mapping Sprint](owasp-top-10-2025/)
+
+Practical mapping from AppSec learning notes to OWASP Top 10 2025 categories:
+
+- [OWASP Top 10 2025 Index](owasp-top-10-2025/README.md)
+- [Coverage Matrix](owasp-top-10-2025/coverage-matrix.md)
+- [A01: Broken Access Control - overview](owasp-top-10-2025/01-broken-access-control/01-overview.md)
+- [A01: Broken Access Control - labs and practice](owasp-top-10-2025/01-broken-access-control/02-labs-or-practice.md)
+- [A01: Broken Access Control - checklist](owasp-top-10-2025/01-broken-access-control/03-checklist.md)
+- [A01: Broken Access Control - regression tests](owasp-top-10-2025/01-broken-access-control/04-regression-tests.md)
+- [A01: example finding](owasp-top-10-2025/01-broken-access-control/security-findings/01-example-finding.md)
+
 ### 01. Authentication Bypass and Username Enumeration
 
 - [Topic Index](key-web-vulnerabilities/01-authentication-bypass-username-enumeration/README.md)
