@@ -6,7 +6,7 @@ User Management API ujawnia verbose debug information, gdy nienumeryczny user ID
 
 Odpowiedź zawiera wewnętrzne szczegóły implementacji, takie jak backendowa ścieżka pliku, nazwa funkcji, numer linii, typ wyjątku, traceback i wrażliwa wartość flagi labowej.
 
-To zachowanie wskazuje na niebezpieczną produkcyjną obsługę błędów i mapuje się na OWASP Top 10 2025 A02: Security Misconfiguration.
+To zachowanie wskazuje na niebezpieczną produkcyjną obsługę błędów i mapuje się na OWASP Top 10 2025 A02 Security Misconfiguration.
 
 ## Affected area
 
@@ -14,7 +14,7 @@ To zachowanie wskazuje na niebezpieczną produkcyjną obsługę błędów i mapu
 - Endpoint: `GET /api/user/<user_id>`
 - Dotknięte zachowanie: Obsługa błędu invalid user ID
 - Typ użytkownika: Każdy użytkownik, który może dotrzeć do endpointu
-- Mapowanie OWASP: A02:2025 Security Misconfiguration
+- Mapowanie OWASP: A02 Security Misconfiguration
 
 ## Severity
 
@@ -175,7 +175,7 @@ Szczegółowe przypadki testowe są opisane w [04-regression-tests.md](../04-reg
 
 ## Mapowanie OWASP
 
-- OWASP Top 10 2025: A02 Security Misconfiguration
+- OWASP Top 10 2025 A02 Security Misconfiguration
 - Powiązane przyszłe mapowanie: A10 Mishandling Exceptional Conditions
 - Powiązany obszar review: production-safe error handling i debug information disclosure
 

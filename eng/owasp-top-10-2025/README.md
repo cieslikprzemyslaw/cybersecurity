@@ -25,8 +25,8 @@ A category is complete only when it has:
 
 | Category | Status | Notes |
 |---|---:|---|
-| [A01: Broken Access Control](01-broken-access-control/01-overview.md) | Completed after lab review | Includes a PortSwigger multi-step access control lab, checklist, example finding and regression tests. |
-| [A02: Security Misconfiguration](02-security-misconfiguration/01-overview.md) | Completed after practice review | Includes a TryHackMe verbose API error disclosure task, checklist, example finding and regression tests. |
+| [A01 Broken Access Control](01-broken-access-control/01-overview.md) | Completed after lab review | Includes a PortSwigger multi-step access control lab, checklist, example finding and regression tests. |
+| [A02 Security Misconfiguration](02-security-misconfiguration/01-overview.md) | Completed after practice review | Includes a TryHackMe verbose API error disclosure task, checklist, example finding and regression tests. |
 | A03: Software Supply Chain Failures | Planned | Practical review task: npm dependency review, risky scripts, lockfile and audit review. |
 | A04: Cryptographic Failures | Planned | Practical review task: secrets, TLS assumptions, storage and token handling. |
 | A05: Injection | Planned | Existing SQLi notes can be mapped here. |

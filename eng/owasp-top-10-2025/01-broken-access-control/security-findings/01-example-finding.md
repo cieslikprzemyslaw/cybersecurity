@@ -12,7 +12,7 @@ The first step is protected, but the final state-changing confirmation step does
 - Endpoint: `POST /admin-roles`
 - Affected action: User role upgrade
 - User type: Normal authenticated user
-- OWASP mapping: A01:2025 Broken Access Control
+- OWASP mapping: A01 Broken Access Control
 
 ## Severity
 
@@ -128,7 +128,7 @@ Detailed test cases are captured in [04-regression-tests.md](../04-regression-te
 
 ## OWASP mapping
 
-- OWASP Top 10 2025: A01 Broken Access Control
+- OWASP Top 10 2025 A01 Broken Access Control
 - Related weakness pattern: vertical privilege escalation
 - Related review area: server-side authorization on state-changing endpoints
 

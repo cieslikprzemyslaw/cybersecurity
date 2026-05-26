@@ -179,7 +179,7 @@ Główne wnioski:
 
 ## Pomysły na przyszłą praktykę
 
-Możliwa następna praktyka związana z A01:
+Możliwa następna praktyka związana z A01 obejmuje:
 
 - PortSwigger: Method-based access control can be circumvented
 - PortSwigger: URL-based access control can be circumvented

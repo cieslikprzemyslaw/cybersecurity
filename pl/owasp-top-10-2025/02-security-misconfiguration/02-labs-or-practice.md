@@ -207,7 +207,7 @@ Główne takeaways:
 
 ## Pomysły na przyszłą praktykę
 
-Możliwa kolejna praktyka związana z A02:
+Możliwa kolejna praktyka związana z A02 obejmuje:
 
 - zreviewować lokalną aplikację pod debug mode i verbose error responses,
 - sprawdzić security headers i CORS na deploymentcie testowym,

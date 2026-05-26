@@ -1,8 +1,8 @@
-# A02: Security Misconfiguration
+# A02 Security Misconfiguration
 
 ## Zakres
 
-Ta notatka mapuje moją praktyczną naukę na **OWASP Top 10 2025: A02 Security Misconfiguration**.
+Ta notatka mapuje moją praktyczną naukę na **OWASP Top 10 2025 A02 Security Misconfiguration**.
 
 Jest napisana z perspektywy Frontend Engineera przechodzącego w stronę AppSec. Fokus nie jest tylko na rozwiązaniu laba, ale na rozpoznawaniu niebezpiecznego zachowania produkcyjnego, review symptomów konfiguracji z poziomu przeglądarki/API oraz opisaniu, jak problem powinien być naprawiony i testowany regresyjnie.
 
@@ -178,6 +178,6 @@ Bezpieczniejsza implementacja powinna:
 
 ## Zewnętrzne referencje
 
-- OWASP Top 10 2025: A02 Security Misconfiguration: https://owasp.org/Top10/2025/A02_2025-Security_Misconfiguration/
+- OWASP Top 10 2025 A02 Security Misconfiguration: https://owasp.org/Top10/2025/A02_2025-Security_Misconfiguration/
 - OWASP Cheat Sheet Series: Error Handling: https://cheatsheetseries.owasp.org/cheatsheets/Error_Handling_Cheat_Sheet.html
 - OWASP Cheat Sheet Series: HTTP Headers: https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html

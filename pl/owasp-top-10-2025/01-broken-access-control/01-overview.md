@@ -1,8 +1,8 @@
-# A01: Broken Access Control
+# A01 Broken Access Control
 
 ## Zakres
 
-Ta notatka mapuje moją praktyczną naukę access control na **OWASP Top 10 2025: A01 Broken Access Control**.
+Ta notatka mapuje moją praktyczną naukę access control na **OWASP Top 10 2025 A01 Broken Access Control**.
 
 Jest napisana z perspektywy Frontend Engineera przechodzącego w stronę AppSec. Fokus nie jest tylko na rozwiązaniu laba, ale na zrozumieniu, jak taki typ problemu wygląda w prawdziwych aplikacjach oraz jak powinien być reviewowany, naprawiany i testowany regresyjnie.
 
@@ -128,6 +128,6 @@ Bezpieczniejsza implementacja powinna:
 
 ## Zewnętrzne referencje
 
-- OWASP Top 10 2025: A01 Broken Access Control: https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/
+- OWASP Top 10 2025 A01 Broken Access Control: https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/
 - PortSwigger Web Security Academy: Access control vulnerabilities: https://portswigger.net/web-security/access-control
 - Ukończony lab PortSwigger: Multi-step process with no access control on one step: https://portswigger.net/web-security/access-control/lab-multi-step-process-with-no-access-control-on-one-step

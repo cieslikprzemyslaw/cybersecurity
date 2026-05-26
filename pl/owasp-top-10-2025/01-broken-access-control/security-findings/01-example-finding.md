@@ -12,7 +12,7 @@ Pierwszy krok jest chroniony, ale finalny krok potwierdzenia zmieniający stan n
 - Endpoint: `POST /admin-roles`
 - Dotknięta akcja: Podniesienie roli użytkownika
 - Typ użytkownika: Normalny uwierzytelniony użytkownik
-- Mapowanie OWASP: A01:2025 Broken Access Control
+- Mapowanie OWASP: A01 Broken Access Control
 
 ## Severity
 
@@ -128,7 +128,7 @@ Szczegółowe przypadki testowe są opisane w [04-regression-tests.md](../04-reg
 
 ## Mapowanie OWASP
 
-- OWASP Top 10 2025: A01 Broken Access Control
+- OWASP Top 10 2025 A01 Broken Access Control
 - Powiązany weakness pattern: vertical privilege escalation
 - Powiązany obszar review: server-side authorization na endpointach zmieniających stan
 

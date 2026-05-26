@@ -6,7 +6,7 @@ The User Management API exposes verbose debug information when a non-numeric use
 
 The response includes internal implementation details such as a backend file path, function name, line number, exception type, traceback and a sensitive lab flag value.
 
-This behaviour indicates unsafe production-style error handling and maps to OWASP Top 10 2025 A02: Security Misconfiguration.
+This behaviour indicates unsafe production-style error handling and maps to OWASP Top 10 2025 A02 Security Misconfiguration.
 
 ## Affected area
 
@@ -14,7 +14,7 @@ This behaviour indicates unsafe production-style error handling and maps to OWAS
 - Endpoint: `GET /api/user/<user_id>`
 - Affected behaviour: Invalid user ID error handling
 - User type: Any user who can reach the endpoint
-- OWASP mapping: A02:2025 Security Misconfiguration
+- OWASP mapping: A02 Security Misconfiguration
 
 ## Severity
 
@@ -175,7 +175,7 @@ Detailed test cases are captured in [04-regression-tests.md](../04-regression-te
 
 ## OWASP mapping
 
-- OWASP Top 10 2025: A02 Security Misconfiguration
+- OWASP Top 10 2025 A02 Security Misconfiguration
 - Related future mapping: A10 Mishandling Exceptional Conditions
 - Related review area: production-safe error handling and debug information disclosure
 
