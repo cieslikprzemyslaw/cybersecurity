@@ -203,7 +203,9 @@ Current structure:
 
 - `eng/fundamentals/` - reusable foundations before vulnerability-specific study.
 - `eng/key-web-vulnerabilities/` - the Key Web Vulnerabilities series.
+- `eng/owasp-top-10-2025/` - practical OWASP Top 10 2025 mapping sprint.
 - `pl/` - Polish version following the same structure.
+- `pl/owasp-top-10-2025/` - Polish version of the OWASP Top 10 2025 mapping sprint.
 - `labs/` folders - short summaries of legal training labs.
 - `overview.md` files - concise source-of-truth notes for each topic.
 - `cheat-sheet.md` files - practical review and testing workflows.

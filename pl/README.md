@@ -22,6 +22,18 @@ Każdy temat zwykle zawiera:
 - `labs/` - krótkie podsumowania legalnych labów,
 - `learning-summary.md` - dłuższe podsumowanie tematu, jeśli pasuje.
 
+## [OWASP Top 10 2025 Mapping Sprint](owasp-top-10-2025/)
+
+Praktyczne mapowanie nauki AppSec na kategorie OWASP Top 10 2025:
+
+- [Indeks OWASP Top 10 2025](owasp-top-10-2025/README.md)
+- [Coverage Matrix](owasp-top-10-2025/coverage-matrix.md)
+- [A01: Broken Access Control - overview](owasp-top-10-2025/01-broken-access-control/01-overview.md)
+- [A01: Broken Access Control - laby i praktyka](owasp-top-10-2025/01-broken-access-control/02-labs-or-practice.md)
+- [A01: Broken Access Control - checklista](owasp-top-10-2025/01-broken-access-control/03-checklist.md)
+- [A01: Broken Access Control - testy regresji](owasp-top-10-2025/01-broken-access-control/04-regression-tests.md)
+- [A01: przykładowe znalezisko](owasp-top-10-2025/01-broken-access-control/security-findings/01-example-finding.md)
+
 ### 01. Authentication Bypass i Username Enumeration
 
 - [Indeks tematu](key-web-vulnerabilities/01-authentication-bypass-username-enumeration/README.md)
