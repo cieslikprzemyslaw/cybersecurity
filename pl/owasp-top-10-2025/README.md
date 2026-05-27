@@ -18,6 +18,7 @@ Kategoria jest kompletna dopiero wtedy, gdy zawiera:
 - `02-labs-or-practice.md`
 - `03-checklist.md`
 - `04-regression-tests.md`
+- opcjonalny `05-learning-notes.md` dla dłuższej konsolidacji nauki
 - `security-findings/01-example-finding.md`
 - wpis w `coverage-matrix.md`
 
@@ -26,8 +27,8 @@ Kategoria jest kompletna dopiero wtedy, gdy zawiera:
 | Kategoria | Status | Notatki |
 |---|---:|---|
 | [A01 Broken Access Control](a01-broken-access-control/01-overview.md) | Ukończone po review laba | Zawiera wieloetapowy lab PortSwigger dotyczący access control, checklistę, przykładowe znalezisko i testy regresji. |
-| [A02 Security Misconfiguration](a02-security-misconfiguration/01-overview.md) | Ukończone po dwóch review praktycznych | Zawiera zadanie TryHackMe dotyczące verbose API error disclosure, lab PortSwigger z wystawionym `phpinfo()`, checklistę, dwa znaleziska i testy regresji. |
-| [A03 Software Supply Chain Failures](a03-software-supply-chain-failures/01-overview.md) | Ukończone po review paczek i CI/CD | Zawiera review npm package, lifecycle scripts, lockfile/reproducibility, checklistę CI/CD, przykładowe znalezisko i testy regresji. |
+| [A02 Security Misconfiguration](a02-security-misconfiguration/01-overview.md) | Ukończone po dwóch review praktycznych | Zawiera zadanie TryHackMe dotyczące verbose API error disclosure, lab PortSwigger z wystawionym `phpinfo()`, learning notes, checklistę, dwa znaleziska i testy regresji. |
+| [A03 Software Supply Chain Failures](a03-software-supply-chain-failures/01-overview.md) | Ukończone po review paczek i CI/CD | Zawiera review npm package, lifecycle scripts, lockfile/reproducibility, learning notes, checklistę CI/CD, przykładowe znalezisko i testy regresji. |
 | A04: Cryptographic Failures | Planowane | Zadanie praktyczne: sekrety, założenia TLS, przechowywanie danych i obsługa tokenów. |
 | A05: Injection | Planowane | Istniejące notatki SQLi można zmapować tutaj. |
 | A06: Insecure Design | Planowane | Potrzebne praktyczne ćwiczenie design review. |

@@ -6,12 +6,21 @@ Ten plik dokumentuje praktyczne review A03:2025 - Software Supply Chain Failures
 
 Ta kategoria jest bardziej związana z procesem, buildem, zależnościami i CI/CD niż z klasycznym request/response testing.
 
-## Zakres praktyki
+## Ukończona praktyka
 
+### OWASP Juice Shop - review repozytorium GitHub
+
+**Cel:** OWASP Juice Shop
+**Źródło:** review repozytorium GitHub
 **Typ celu:** publiczny projekt open-source Node/JavaScript  
 **Focus:** review paczek i CI/CD  
 **Kategoria:** A03:2025 - Software Supply Chain Failures  
 **Status:** ukończone po review i quizie
+**Główny pattern:** review supply chain dla npm lifecycle scripts, powtarzalności zależności, SBOM i kontroli GitHub Actions
+
+Link zewnętrzny:
+
+- https://github.com/juice-shop/juice-shop
 
 Sprawdzone obszary:
 
@@ -32,7 +41,7 @@ Sprawdzone obszary:
 
 ### Co sprawdziłem
 
-W `package.json` skupiłem się na:
+W `package.json` skupiłem się na punktach review supply chain:
 
 - `scripts`,
 - `dependencies` i `devDependencies`,
@@ -41,27 +50,13 @@ W `package.json` skupiłem się na:
 - build/package scripts,
 - SBOM.
 
-Najciekawszy skrypt:
+Głównym punktem review był skrypt `postinstall`:
 
 ```json
 "postinstall": "cd frontend && npm install && cd .. && npm run build:frontend && (npm run --silent build:server || cd .)"
 ```
 
-### Czego nauczyłem się o `postinstall`
-
-`postinstall` uruchamia się automatycznie po `npm install`. Taki skrypt może być uzasadniony w złożonym projekcie, ale z perspektywy supply chain jest ważnym punktem review, bo wykonuje kod podczas instalacji.
-
-W tym przykładzie skrypt:
-
-1. wchodzi do katalogu `frontend`,
-2. uruchamia kolejne `npm install`,
-3. wraca do root,
-4. buduje frontend,
-5. próbuje zbudować server.
-
-Pytanie AppSec nie brzmi "czy `postinstall` jest zawsze zły", tylko:
-
-> Czy skrypt wykonuje wyłącznie oczekiwane, przejrzane komendy i czy jest bezpieczny lokalnie oraz w CI/CD?
+Nie jest to automatycznie podatność, ale jest to ważny punkt review, bo npm lifecycle scripts mogą wykonywać kod podczas instalacji.
 
 ### Zależności warte dodatkowego review
 
@@ -153,29 +148,25 @@ curl https://cli-assets.heroku.com/install.sh | sh
 
 Taki wzorzec pobiera i od razu wykonuje zdalny skrypt, więc trzeba sprawdzić wersjonowanie, checksum/signature verification, uprawnienia joba i dostęp do sekretów.
 
-## Czego się nauczyłem
+## Najważniejsze wnioski
 
-1. Supply chain review to nie tylko CVE w zależnościach.
-2. `--ignore-scripts` jest praktyczną kontrolą dla jobów, które nie potrzebują lifecycle scripts.
-3. Brak lockfile i dynamiczny `npm install` osłabiają powtarzalność buildów.
-4. SBOM jest inventory komponentów, nie automatyczną poprawką.
-5. Pinning GitHub Actions do SHA ma znaczenie security i reproducibility.
-6. `curl | sh` w CI/CD wymaga bardzo uważnego review.
+Najważniejsze lekcje A03 z tej praktyki:
 
-## Real-world review angle
+1. `postinstall` i lifecycle scripts są ważnym punktem review supply chain.
+2. `--ignore-scripts` może ograniczać install-time code execution, gdy jest użyte świadomie.
+3. Brak lockfiles może osłabiać powtarzalność buildów.
+4. `npm ci` jest zwykle mocniejsze niż `npm install` w CI, jeśli istnieje lockfile.
+5. SBOM daje widoczność dependencies, ale sam nie naprawia podatności.
+6. `curl | sh` wymaga uważnego review w CI/CD.
+7. SHA-pinned GitHub Actions poprawiają powtarzalność i zmniejszają ryzyko third-party actions.
 
-W realnym projekcie sprawdziłbym:
+Dłuższe refleksje i real-world review angle są w:
 
-- czy lockfile jest commitowany,
-- czy CI używa `npm ci`,
-- gdzie lifecycle scripts są uruchamiane,
-- czy można użyć `--ignore-scripts`,
-- czy akcje GitHub są przypięte do SHA,
-- czy sekrety są dostępne w jobach uruchamiających zależności,
-- czy działa dependency scanning i secret scanning,
-- czy SBOM jest generowany,
-- czy Docker base images są reviewowane,
-- czy artefakty release są powiązane z testowanym commitem.
+- [A03 learning notes](05-learning-notes.md)
+- [A03 overview](01-overview.md)
+- [A03 checklista](03-checklist.md)
+- [A03 testy regresji](04-regression-tests.md)
+- [Przykładowe znalezisko supply chain](security-findings/01-example-finding.md)
 
 ## Powiązane notatki
 
@@ -184,7 +175,3 @@ W realnym projekcie sprawdziłbym:
 - [Security Misconfiguration](../a02-security-misconfiguration/01-overview.md)
 - [File Upload Vulnerabilities](../../key-web-vulnerabilities/07-file-upload-vulnerabilities/README.md)
 - [SSRF Basics](../../key-web-vulnerabilities/08-server-side-request-forgery-ssrf/README.md)
-
-## Podsumowanie
-
-Najważniejszy wniosek: A03 wymaga patrzenia na cały proces dostarczania aplikacji. Bez powtarzalnego install/build i bez review CI/CD projekt może mieć ryzyko nawet wtedy, gdy sam kod aplikacji wygląda poprawnie.

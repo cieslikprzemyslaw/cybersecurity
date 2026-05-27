@@ -9,6 +9,10 @@
 **Status:** Ukończone  
 **Główny pattern:** Verbose API error response ujawniający informacje debugowe i wrażliwe dane
 
+Link zewnętrzny:
+
+- https://tryhackme.com/room/owasptopten2025two
+
 ## Kontekst laba
 
 To było celowo podatne zadanie edukacyjne użyte do legalnej praktyki i dokumentacji.
@@ -122,71 +126,9 @@ To nie jest głównie Broken Access Control, bo problem nie dotyczył brakujący
 
 Root problemem była niebezpieczna produkcyjna obsługa błędów i debug information disclosure.
 
-## Co mnie zmyliło lub było warte zauważenia
-
-### Numeryczne ID zwracały tego samego użytkownika
-
-Na początku zmiana numerycznych ID wyglądała jak oczywisty test, bo endpoint był `/api/user/<user_id>`. Jednak każde numeryczne ID zwracało tego samego dummy usera.
-
-To była wskazówka, że zadanie prawdopodobnie nie dotyczy IDOR ani Broken Access Control.
-
-### Fraza "User ID must be numeric" była wskazówką
-
-Ważnym testem nie było tylko próbowanie innych numerycznych ID. Lepszy test A02 brzmiał:
-
-> Co się stanie, gdy aplikacja dostanie input łamiący oczekiwany format?
-
-Podanie wartości nienumerycznej wywołało verbose error response.
-
-### 400 vs 404
-
-Dla requestu takiego jak:
-
-```http
-GET /api/user/admin
-```
-
-bezpieczna odpowiedź powinna zwykle wyglądać tak:
-
-```http
-400 Bad Request
-```
-
-bo endpoint istnieje, ale format inputu jest niepoprawny.
-
-`404 Not Found` może być użyte w niektórych projektach, ale dla błędów walidacji inputu `400 Bad Request` jest zwykle czytelniejsze.
-
-## Jak testowałbym to w prawdziwej aplikacji
-
-Szukałbym tego patternu w:
-
-- publicznych endpointach API,
-- route'ach user lookup,
-- parametrach search i filter,
-- stronach admin i status,
-- endpointach health lub debug,
-- przetwarzaniu uploadów,
-- JSON APIs,
-- route'ach opartych o CMS,
-- stronach błędów reverse proxy i web servera,
-- deploymentach staging lub preview.
-
-Dla każdego obszaru testowałbym:
-
-- valid input jako baseline,
-- brakujący input,
-- niepoprawne typy,
-- bardzo długie wartości,
-- znaki specjalne,
-- nieoczekiwane metody HTTP,
-- bezpośredni dostęp do typowych ścieżek debug/config,
-- czy błędy zawierają traceback, ścieżki plików, sekrety lub szczegóły frameworka.
-
 ## Review result
 
 Praktyczna lekcja z tego laba jest prosta: invalid input jest normalny, ale debug output nie może stać się częścią publicznego API.
-
-Z nietechnicznej perspektywy to jak pokazanie klientowi wewnętrznej instrukcji serwisowej, notatek pracowników i sekretnych kodów magazynowych za każdym razem, gdy wpisze niepoprawny numer konta.
 
 Główne takeaways:
 
@@ -204,6 +146,10 @@ Główne takeaways:
 **Lab:** Information disclosure on debug page
 **Status:** Ukończone
 **Główny pattern:** Publiczny debug endpoint ujawniający konfigurację i sekret aplikacyjny
+
+Link zewnętrzny:
+
+- https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-on-debug-page
 
 ## Kontekst laba
 
@@ -301,15 +247,21 @@ Należy:
 - sprawdzić logi, artifacty deploymentu i historię repozytorium,
 - dodać secret scanning i deployment checks.
 
-## Czego się nauczyłem
+## Najważniejsze wnioski
 
-Najważniejsze lekcje z tego laba:
+Dwa praktyczne patterny A02 z tych labów:
 
-- Wszystko wysłane do przeglądarki należy traktować jako widoczne dla użytkownika.
-- HTML comments nie są kontrolą bezpieczeństwa.
-- Ukrycie linku nie chroni backendowego endpointu.
-- Publiczny `phpinfo()` może ujawnić konfigurację, ścieżki, moduły, zmienne środowiskowe i sekrety.
-- Ujawniony sekret należy traktować jako skompromitowany i obrócić.
+1. invalid input powodujący verbose debug/traceback disclosure,
+2. publiczny debug endpoint ujawniający `phpinfo()` i sekret aplikacyjny.
+
+Dłuższe refleksje i real-world review angle są w:
+
+- [A02 learning notes](05-learning-notes.md)
+- [A02 overview](01-overview.md)
+- [A02 checklista](03-checklist.md)
+- [A02 testy regresji](04-regression-tests.md)
+- [Verbose API error finding](security-findings/01-example-finding.md)
+- [Public debug endpoint finding](security-findings/02-public-debug-endpoint-phpinfo.md)
 
 ## Powiązane notatki wewnętrzne
 
@@ -319,13 +271,3 @@ Najważniejsze lekcje z tego laba:
 - [Path Traversal / File Access Bugs](../../key-web-vulnerabilities/06-path-traversal-file-access/README.md)
 - [SSRF Basics](../../key-web-vulnerabilities/08-server-side-request-forgery-ssrf/README.md)
 - [File Upload Vulnerabilities](../../key-web-vulnerabilities/07-file-upload-vulnerabilities/README.md)
-
-## Pomysły na przyszłą praktykę
-
-Możliwa kolejna praktyka związana z A02 obejmuje:
-
-- zreviewować lokalną aplikację pod debug mode i verbose error responses,
-- sprawdzić security headers i CORS na deploymentcie testowym,
-- wykonać content discovery dla wystawionych `.env`, backupów, logów lub ścieżek debug w legalnym labie,
-- porównać konfigurację development vs production w przykładowym projekcie,
-- napisać testy regresji dla generycznej obsługi błędów API.
