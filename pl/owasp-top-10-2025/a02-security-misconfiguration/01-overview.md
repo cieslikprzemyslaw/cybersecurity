@@ -52,9 +52,13 @@ Zamiast zwrócić kontrolowany błąd dla klienta, aplikacja zwraca informacje d
 
 Atakujący używa tych informacji do rozpoznania aplikacji i planowania kolejnych ataków na stack.
 
-## Praktyczny przykład z tego sprintu
+## Praktyczne wzorce z tego sprintu
 
-Ćwiczenie wystawiało User Management API:
+W tym temacie przećwiczyłem dwa typowe wzorce A02.
+
+### Wzorzec 1: Verbose error / debug response
+
+Lab TryHackMe wystawiał User Management API:
 
 ```http
 GET /api/user/<user_id>
@@ -77,6 +81,26 @@ Jednak po podaniu wartości nienumerycznej, na przykład `admin`, API zwracało 
 
 To jest Security Misconfiguration, bo wewnętrzne informacje debugowe i wrażliwe dane pojawiły się w odpowiedzi widocznej dla klienta. Pełne dowody z laba są w [02-labs-or-practice.md](02-labs-or-practice.md), a wersja raportowa dowodów jest w [security-findings/01-example-finding.md](security-findings/01-example-finding.md).
 
+### Wzorzec 2: Publiczny debug endpoint / `phpinfo()`
+
+Lab PortSwigger pokazał debug endpoint odkrywalny z poziomu HTML source:
+
+```html
+<!-- <a href=/cgi-bin/phpinfo.php>Debug</a> -->
+```
+
+Link nie był widoczny w UI, ale nadal został wysłany do przeglądarki. Bezpośrednie wejście na endpoint:
+
+```http
+GET /cgi-bin/phpinfo.php
+```
+
+zwracało publiczną stronę `phpinfo()`.
+
+Strona ujawniała szczegóły konfiguracji serwera i PHP, między innymi wersję PHP, system operacyjny, ścieżki do plików konfiguracyjnych, załadowane moduły, ustawienia środowiska oraz wrażliwy `SECRET_KEY`.
+
+To również jest Security Misconfiguration, bo funkcjonalność diagnostyczna/developerska była dostępna publicznie. Wersja raportowa jest w [security-findings/02-public-debug-endpoint-phpinfo.md](security-findings/02-public-debug-endpoint-phpinfo.md).
+
 ## Typowe przykłady
 
 Przykłady Security Misconfiguration:
@@ -84,6 +108,8 @@ Przykłady Security Misconfiguration:
 - debug mode włączony na produkcji,
 - verbose errors zwracane użytkownikom,
 - stack trace'y ujawniane w odpowiedziach API,
+- publiczne debug endpointy takie jak `phpinfo()`,
+- publiczne `/debug`, `/config`, `/status`, `/server-status`, `/actuator` lub `/health`,
 - domyślne konta lub hasła zostawione aktywne,
 - niepotrzebne route'y, usługi, pluginy albo strony admina wystawione publicznie,
 - endpointy testowe lub stagingowe dostępne z internetu,
@@ -107,6 +133,8 @@ Typowe przyczyny:
 - brak checklisty hardeningowej dla deploymentu,
 - brak automatycznych sprawdzeń nagłówków bezpieczeństwa lub wystawionych plików,
 - domyślne zachowanie frameworka pozostawione bez review,
+- debug files przypadkowo wdrożone na produkcję,
+- poleganie na ukrytych linkach zamiast na usunięciu lub ochronie endpointu,
 - niejasna odpowiedzialność za konfigurację bezpieczeństwa,
 - configuration drift między środowiskami.
 
@@ -130,6 +158,8 @@ W tym labie aplikacja ujawniła flagę i wewnętrzny traceback. W prawdziwej apl
 - szczegóły wewnętrznej architektury.
 
 Takie informacje mogą wspierać dalsze ataki, na przykład path traversal, LFI, injection, SSRF, credential attacks albo ukierunkowaną eksploatację znanego frameworka/komponentu.
+
+Jeśli zostanie ujawniony `SECRET_KEY` lub podobny sekret aplikacyjny, należy traktować go jako skompromitowany. W zależności od sposobu użycia sekretu atakujący może próbować manipulować podpisanymi cookies, sesjami, tokenami CSRF, JWT, reset tokenami lub innymi danymi zaufanymi przez aplikację. Taki sekret powinien zostać obrócony.
 
 ## Powiązane notatki wewnętrzne
 
@@ -155,6 +185,7 @@ Ważne obserwacje frontend/AppSec:
 - Client-side error handling nie powinien wyświetlać surowych wyjątków backendowych.
 - Nagłówki bezpieczeństwa i zachowanie CORS często da się zreviewować z przeglądarki.
 - Endpointy debugowe i wewnętrzne API nie powinny być odkrywalne z publicznych assetów frontendowych.
+- Ukrycie linku w HTML comment nie chroni backendowego endpointu.
 
 Kluczowa lekcja:
 
@@ -170,6 +201,9 @@ Bezpieczniejsza implementacja powinna:
 - zwracać generyczne komunikaty błędów dla klienta,
 - logować szczegółowe błędy techniczne tylko server-side,
 - trzymać sekrety poza exception messages i response bodies,
+- usuwać debug files z produkcyjnych deploymentów,
+- blokować publiczny dostęp do endpointów diagnostycznych,
+- obracać sekrety, które zostały ujawnione,
 - standaryzować formaty error responses API,
 - usuwać niepotrzebne usługi, route'y, pluginy i strony testowe,
 - chronić endpointy admin, debug, config i status,

@@ -16,6 +16,14 @@ Ukończone ćwiczenie pokazało User Management API, w którym:
 
 Poniższe testy regresji mają zapobiec temu patternowi.
 
+Drugi ukończony lab pokazał publiczny endpoint:
+
+```http
+GET /cgi-bin/phpinfo.php
+```
+
+który zwracał stronę `phpinfo()` i ujawniał konfigurację oraz `SECRET_KEY`. Testy powinny więc obejmować także brak publicznych debug pages i brak sekretów w odpowiedziach.
+
 ## Positive tests
 
 ### 1. Valid numeric user ID nadal działa
@@ -123,9 +131,59 @@ JWT_SECRET
 SECRET_KEY
 TOKEN
 flag
+phpinfo()
+PHP Version
 ```
 
 Te checki nie są pełnym rozwiązaniem bezpieczeństwa, ale są użytecznymi regression guards dla tej konkretnej klasy podatności.
+
+## Debug endpoint checks
+
+### 6. `phpinfo()` nie jest publicznie dostępne
+
+```gherkin
+Given the application is running with production-safe configuration
+When a user sends GET /cgi-bin/phpinfo.php
+Then the response should be 404 or 403
+And the response body should not contain phpinfo output
+And the response body should not contain SECRET_KEY
+And the response body should not contain environment variables
+```
+
+Preferowane zachowanie produkcyjne to `404 Not Found`, bo debug file nie powinien być wdrożony.
+
+Jeśli diagnostyka jest celowo wspierana, endpoint musi być ograniczony do zaufanego/admin/internal access.
+
+### 7. HTML source nie ujawnia debug links
+
+Publiczny HTML nie powinien zawierać:
+
+```text
+/cgi-bin/phpinfo.php
+/phpinfo.php
+/debug
+/config
+/server-status
+/actuator
+```
+
+Ten test ogranicza przypadkowe ujawnienie ścieżek, ale sam nie wystarcza. Backendowy endpoint musi być usunięty lub zablokowany nawet wtedy, gdy link zniknie z HTML.
+
+### 8. Production artifact nie zawiera znanych debug files
+
+Build/deployment check powinien failować, jeśli artifact produkcyjny zawiera:
+
+```text
+phpinfo.php
+debug.php
+test.php
+info.php
+.env
+.env.production
+backup.zip
+database.sql
+dump.sql
+```
 
 ## Weryfikacja zachowania
 
@@ -184,7 +242,11 @@ Kroki manualnej weryfikacji:
 3. Wyślij invalid requests, na przykład `GET /api/user/admin`, `GET /api/user/abc` i `GET /api/user/%27`.
 4. Potwierdź, że odpowiedź jest kontrolowanym błędem dla klienta.
 5. Potwierdź, że nie ma traceback, ścieżki pliku, nazwy funkcji, numeru linii, typu wyjątku, debug object ani wrażliwej wartości.
-6. Potwierdź, że frontend nie renderuje raw backend errors.
+6. Wyślij `GET /cgi-bin/phpinfo.php`.
+7. Potwierdź, że endpoint zwraca `404` albo `403`.
+8. Potwierdź, że odpowiedź nie zawiera `phpinfo()`, `PHP Version`, `SECRET_KEY` ani zmiennych środowiskowych.
+9. Potwierdź, że publiczny HTML nie zawiera debug links.
+10. Potwierdź, że frontend nie renderuje raw backend errors.
 
 ## Automation idea
 
@@ -234,4 +296,7 @@ Poprawka jest akceptowalna tylko wtedy, gdy:
 - valid API behaviour nadal działa,
 - frontend error handling pozostaje przyjazny dla użytkownika,
 - testy pokrywają zarówno valid, jak i invalid cases,
+- publiczne debug pages są usunięte albo zablokowane,
+- ujawnione sekrety zostały obrócone,
+- production artifacts nie zawierają znanych debug files,
 - testy failują, jeśli verbose debug strings pojawią się ponownie.

@@ -196,6 +196,121 @@ Główne takeaways:
 - wrażliwe wartości nigdy nie powinny być częścią exception messages,
 - dobra poprawka wymaga testów sprawdzających zarówno bezpieczny status błędu, jak i brak debug strings.
 
+---
+
+### Lab 2: PortSwigger - Information Disclosure on Debug Page
+
+**Platforma:** PortSwigger Web Security Academy
+**Lab:** Information disclosure on debug page
+**Status:** Ukończone
+**Główny pattern:** Publiczny debug endpoint ujawniający konfigurację i sekret aplikacyjny
+
+## Kontekst laba
+
+W tym labie aplikacja nie pokazywała debug linku w UI, ale link był obecny w HTML source jako komentarz:
+
+```html
+<!-- <a href=/cgi-bin/phpinfo.php>Debug</a> -->
+```
+
+To był dobry przykład A02, bo problem nie polegał na samym komentarzu. Komentarz był tylko wskazówką discovery. Prawdziwym problemem było to, że backendowy debug endpoint nadal istniał i był publicznie dostępny.
+
+## Co ćwiczyłem
+
+W tym labie ćwiczyłem:
+
+- sprawdzanie HTML source jako części reconu,
+- rozpoznawanie ukrytych lub pozostawionych debug links,
+- bezpośredni dostęp do odkrytego endpointu,
+- ocenę ryzyka publicznego `phpinfo()`,
+- rozróżnienie między discoverability a właściwą podatnością,
+- opisanie wpływu ujawnionego sekretu,
+- zaplanowanie remediacji i testów regresji.
+
+## Zaobserwowane zachowanie
+
+Po wejściu bezpośrednio na endpoint:
+
+```http
+GET /cgi-bin/phpinfo.php
+```
+
+aplikacja zwracała publiczną stronę `phpinfo()`.
+
+Strona ujawniała szczegóły konfiguracji PHP i serwera, między innymi:
+
+- wersję PHP,
+- szczegóły systemu operacyjnego,
+- Server API,
+- ścieżkę do głównego pliku konfiguracyjnego PHP,
+- dodatkowe pliki `.ini`,
+- załadowane moduły i rozszerzenia,
+- ustawienia PHP,
+- dane środowiskowe/konfiguracyjne,
+- wrażliwy `SECRET_KEY`.
+
+Prawdziwy sekret został celowo zredagowany:
+
+```text
+<redacted-secret-key>
+```
+
+## Co było podatne
+
+Podatne było publiczne wystawienie debug endpointu:
+
+```http
+GET /cgi-bin/phpinfo.php
+```
+
+Komentarz HTML ułatwił znalezienie endpointu, ale nie był właściwym zabezpieczeniem ani główną podatnością.
+
+## Dlaczego to jest Security Misconfiguration
+
+To jest Security Misconfiguration, bo funkcjonalność diagnostyczna/developerska została wdrożona lub pozostawiona w publicznym środowisku.
+
+W produkcji `phpinfo()` nie powinno być publicznie dostępne. Taka strona może ujawnić wystarczająco dużo informacji, żeby ułatwić fingerprinting, ukierunkowane testy kolejnych podatności lub wykorzystanie ujawnionego sekretu.
+
+## Bezpieczne zachowanie
+
+Najlepszy wynik dla produkcji:
+
+```http
+HTTP/1.1 404 Not Found
+```
+
+bo debug file nie powinien być w ogóle wdrożony.
+
+Jeśli diagnostyka jest naprawdę potrzebna, powinna być dostępna tylko dla zaufanego/admin/internal access. Wtedy użytkownik bez uprawnień powinien dostać:
+
+```http
+HTTP/1.1 403 Forbidden
+```
+
+lub challenge uwierzytelnienia, zależnie od projektu aplikacji.
+
+## Ważna uwaga remediacyjna
+
+Usunięcie strony nie wystarcza, jeśli sekret został ujawniony.
+
+Należy:
+
+- usunąć lub zablokować debug endpoint,
+- usunąć debug reference z HTML/templates/frontend assets,
+- obrócić ujawniony `SECRET_KEY`,
+- sprawdzić logi, artifacty deploymentu i historię repozytorium,
+- dodać secret scanning i deployment checks.
+
+## Czego się nauczyłem
+
+Najważniejsze lekcje z tego laba:
+
+- Wszystko wysłane do przeglądarki należy traktować jako widoczne dla użytkownika.
+- HTML comments nie są kontrolą bezpieczeństwa.
+- Ukrycie linku nie chroni backendowego endpointu.
+- Publiczny `phpinfo()` może ujawnić konfigurację, ścieżki, moduły, zmienne środowiskowe i sekrety.
+- Ujawniony sekret należy traktować jako skompromitowany i obrócić.
+
 ## Powiązane notatki wewnętrzne
 
 - [HTTP, Request/Response i podstawy Auth](../../fundamentals/01-http-request-response-auth.md)

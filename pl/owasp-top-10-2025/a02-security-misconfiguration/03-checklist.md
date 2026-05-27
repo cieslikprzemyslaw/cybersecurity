@@ -74,6 +74,7 @@ Dla każdego ważnego endpointu testuj:
 - Co dzieje się dla znaków specjalnych?
 - Co dzieje się dla nieoczekiwanych metod HTTP?
 - Co dzieje się przy próbie dostępu do typowych ścieżek debug/config?
+- Czy `/phpinfo.php`, `/cgi-bin/phpinfo.php`, `/debug`, `/server-status` lub `/actuator` są publicznie dostępne?
 - Czy odpowiedź ujawnia szczegóły wewnętrzne?
 - Czy odpowiedź ujawnia wrażliwe wartości?
 - Czy odpowiedź pozostaje bezpieczna dla przypadków `400`, `401`, `403`, `404` i `500`?
@@ -95,6 +96,9 @@ Szukaj:
 - `Exception`,
 - `ValueError`,
 - `TypeError`,
+- `phpinfo()`,
+- `PHP Version`,
+- `SECRET_KEY`,
 - ścieżek plików takich jak `/app/...`, `/var/www/...`, `C:\...`,
 - nazw frameworków,
 - stack trace'ów,
@@ -157,6 +161,8 @@ Red flags:
 - zmienne środowiskowe drukowane w odpowiedziach,
 - zbyt permisywny CORS, na przykład odbijanie dowolnego Origin,
 - publiczne pliki `.env`, `.git`, backup, log lub config,
+- publiczne `phpinfo()` lub inne strony diagnostyczne,
+- debug links pozostawione w HTML comments,
 - niechronione endpointy `/debug`, `/config`, `/admin`, `/status`, `/health`, `/actuator` lub `/server-status`,
 - brak separacji środowisk,
 - "To tylko staging, więc nie potrzebuje hardeningu."
@@ -174,6 +180,9 @@ Bezpieczniejsza implementacja powinna:
 - standaryzować API error responses,
 - oddzielić konfigurację produkcyjną od developerskiej,
 - blokować dostęp do endpointów debug/config/internal,
+- usuwać `phpinfo.php`, `debug.php`, `info.php` i podobne pliki z produkcyjnych artifactów,
+- usuwać debug references z HTML, templates i frontend bundles,
+- obracać sekrety ujawnione przez debug output lub diagnostic pages,
 - wyłączyć directory listing,
 - usunąć domyślne credentials,
 - usunąć niepotrzebne usługi, pluginy, route'y i strony testowe,
@@ -203,6 +212,9 @@ ValueError
 DATABASE_URL
 API_KEY
 JWT_SECRET
+phpinfo()
+PHP Version
+SECRET_KEY
 ```
 
 Szczegółowe informacje powinny trafiać do logów server-side, monitoringu albo error trackingu, a nie do użytkownika.
