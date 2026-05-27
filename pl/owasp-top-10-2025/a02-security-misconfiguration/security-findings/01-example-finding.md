@@ -176,7 +176,7 @@ Szczegółowe przypadki testowe są opisane w [04-regression-tests.md](../04-reg
 ## Mapowanie OWASP
 
 - OWASP Top 10 2025 A02 Security Misconfiguration
-- Powiązane przyszłe mapowanie: A10 Mishandling Exceptional Conditions
+- Powiązane przyszłe mapowanie: A10 Mishandling of Exceptional Conditions
 - Powiązany obszar review: production-safe error handling i debug information disclosure
 
 ## Developer takeaway

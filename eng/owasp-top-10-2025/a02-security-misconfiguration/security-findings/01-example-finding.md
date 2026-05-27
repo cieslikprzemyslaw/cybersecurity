@@ -176,7 +176,7 @@ Detailed test cases are captured in [04-regression-tests.md](../04-regression-te
 ## OWASP mapping
 
 - OWASP Top 10 2025 A02 Security Misconfiguration
-- Related future mapping: A10 Mishandling Exceptional Conditions
+- Related future mapping: A10 Mishandling of Exceptional Conditions
 - Related review area: production-safe error handling and debug information disclosure
 
 ## Developer takeaway

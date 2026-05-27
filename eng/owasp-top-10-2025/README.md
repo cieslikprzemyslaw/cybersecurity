@@ -34,7 +34,7 @@ A category is complete only when it has:
 | A07: Authentication Failures | Planned | Existing authentication bypass and username enumeration notes can be mapped here. |
 | A08: Software or Data Integrity Failures | Planned | Practical review task: unsafe updates, CI/CD trust, package integrity. |
 | A09: Security Logging and Alerting Failures | Planned | Practical logging and alerting review task. |
-| A10: Mishandling Exceptional Conditions | Planned | Practical error-handling and edge-case review task. |
+| A10: Mishandling of Exceptional Conditions | Planned | Practical error-handling and edge-case review task. |
 
 ## Related internal notes
 

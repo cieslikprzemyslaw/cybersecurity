@@ -34,7 +34,7 @@ Kategoria jest kompletna dopiero wtedy, gdy zawiera:
 | A07: Authentication Failures | Planowane | Istniejące notatki o authentication bypass i username enumeration można zmapować tutaj. |
 | A08: Software or Data Integrity Failures | Planowane | Zadanie praktyczne: niebezpieczne aktualizacje, zaufanie w CI/CD, integralność pakietów. |
 | A09: Security Logging and Alerting Failures | Planowane | Praktyczne zadanie review logowania i alertowania. |
-| A10: Mishandling Exceptional Conditions | Planowane | Praktyczne zadanie review obsługi błędów i edge case'ów. |
+| A10: Mishandling of Exceptional Conditions | Planowane | Praktyczne zadanie review obsługi błędów i edge case'ów. |
 
 ## Powiązane notatki wewnętrzne
 
