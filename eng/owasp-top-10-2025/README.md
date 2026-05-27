@@ -18,6 +18,7 @@ A category is complete only when it has:
 - `02-labs-or-practice.md`
 - `03-checklist.md`
 - `04-regression-tests.md`
+- optional `05-learning-notes.md` for longer personal consolidation
 - `security-findings/01-example-finding.md`
 - an entry in `coverage-matrix.md`
 
@@ -26,8 +27,8 @@ A category is complete only when it has:
 | Category | Status | Notes |
 |---|---:|---|
 | [A01 Broken Access Control](a01-broken-access-control/01-overview.md) | Completed after lab review | Includes a PortSwigger multi-step access control lab, checklist, example finding and regression tests. |
-| [A02 Security Misconfiguration](a02-security-misconfiguration/01-overview.md) | Completed after two practice reviews | Includes a TryHackMe verbose API error disclosure task, a PortSwigger exposed `phpinfo()` debug page lab, checklist, two findings and regression tests. |
-| [A03 Software Supply Chain Failures](a03-software-supply-chain-failures/01-overview.md) | Completed after package and CI/CD review | Includes an npm package review, lifecycle script notes, lockfile/reproducibility review, CI/CD checklist, example finding and regression checks. |
+| [A02 Security Misconfiguration](a02-security-misconfiguration/01-overview.md) | Completed after two practice reviews | Includes a TryHackMe verbose API error disclosure task, a PortSwigger exposed `phpinfo()` debug page lab, learning notes, checklist, two findings and regression tests. |
+| [A03 Software Supply Chain Failures](a03-software-supply-chain-failures/01-overview.md) | Completed after package and CI/CD review | Includes an npm package review, lifecycle script notes, lockfile/reproducibility review, learning notes, CI/CD checklist, example finding and regression checks. |
 | A04: Cryptographic Failures | Planned | Practical review task: secrets, TLS assumptions, storage and token handling. |
 | A05: Injection | Planned | Existing SQLi notes can be mapped here. |
 | A06: Insecure Design | Planned | Practical design-review exercise needed. |
