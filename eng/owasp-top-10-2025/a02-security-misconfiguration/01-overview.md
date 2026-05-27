@@ -1,183 +1,243 @@
-# A02 Security Misconfiguration
+# A02:2025 - Security Misconfiguration
 
-## Scope
+## What This OWASP Category Means
 
-This note maps my practical learning to **OWASP Top 10 2025 A02 Security Misconfiguration**.
+Security Misconfiguration happens when an application, API, server, framework, CMS, cloud service, reverse proxy, deployment process, or environment is configured in an unsafe way.
 
-It is written from the perspective of a Frontend Engineer moving into AppSec. The focus is not only on solving a lab, but on recognising unsafe production behaviour, reviewing configuration symptoms from the browser/API layer, and describing how the issue should be fixed and regression-tested.
-
-## What this category means
-
-Security Misconfiguration happens when an application, API, framework, server, container, cloud service, CMS, reverse proxy or deployment environment is configured in an unsafe way.
-
-The application code may appear to work, but the surrounding configuration or runtime behaviour can still expose:
-
-- sensitive information,
-- unnecessary functionality,
-- weak defaults,
-- debug features,
-- unsafe error handling,
-- insecure platform behaviour.
+The application code may look correct, but the system can still be vulnerable because something around it has been left exposed, enabled, too permissive, too verbose, or not hardened for production.
 
 In simple terms:
 
-> The application is vulnerable because something around it has been left too open, too verbose, too permissive or too close to a development setup.
+> Security Misconfiguration is when the application or its environment is set up in a way that exposes information, functionality, files, debug tools, or behaviour that should not be publicly available.
 
-## Why it matters
+## Why It Matters
 
-Security Misconfiguration often gives attackers information or access they should not have.
+Modern applications depend on many layers:
 
-Misconfigurations can expose:
-
-- debug pages,
-- stack traces,
-- internal file paths,
-- framework or server versions,
+- frontend application,
+- backend APIs,
+- web server,
+- application server,
+- reverse proxy,
+- CMS,
+- framework settings,
 - environment variables,
-- API keys or tokens,
+- secrets management,
+- build process,
+- deployment process,
+- cloud services,
+- logging and monitoring,
+- third-party tooling.
+
+A single unsafe setting can expose information that helps an attacker understand the application, target the stack more accurately, or chain the issue with another vulnerability.
+
+Security Misconfiguration often feels less dramatic than SQL Injection or Broken Access Control, but it can be very serious because it may reveal:
+
+- secrets,
+- internal paths,
+- stack traces,
+- framework details,
+- server versions,
+- environment variables,
+- debug endpoints,
+- test functionality,
 - backup files,
-- development endpoints,
-- default credentials,
-- overly permissive CORS settings,
-- unnecessary services or routes,
-- missing hardening headers.
+- configuration files,
+- sensitive error messages.
 
-For an attacker, this reduces guesswork. A verbose error or exposed debug page can reveal how the application is built, where files are stored, which framework is used, and which parts of the application may be worth attacking next.
+## Practical Patterns From My Labs
 
-## Abuse case
+During this topic, I practised two common A02 patterns.
 
-A user sends unexpected input to a public API endpoint.
+### Pattern 1: Verbose Error / Debug Response
 
-Instead of returning a controlled client-facing error, the application returns debug information including a traceback, internal file path, function name, line number and a sensitive value.
+A TryHackMe lab exposed detailed debug information when invalid input was provided to an API endpoint.
 
-The attacker uses this information for reconnaissance and to plan follow-on attacks against the application stack.
-
-## Practical example from this sprint
-
-The practice task exposed a User Management API:
+The application expected a numeric user ID:
 
 ```http
 GET /api/user/<user_id>
-GET /api/user/123
 ```
 
-The API documentation stated that the user ID must be numeric.
+When a non-numeric value such as `admin` was supplied, the API returned a verbose error response containing:
 
-A normal numeric value returned a generic user object:
+- internal traceback,
+- backend file path,
+- function name,
+- line number,
+- exception type,
+- sensitive flag value.
 
-```json
+This showed that the application handled invalid input unsafely and returned developer/debug information to the client.
+
+Secure behaviour should return a generic client-facing error such as:
+
+```http
+HTTP/1.1 400 Bad Request
+Content-Type: application/json
+
 {
-  "email": "john@example.com",
-  "id": "9999",
-  "name": "John Doe"
+  "error": "Invalid user ID"
 }
 ```
 
-However, when a non-numeric value such as `admin` was supplied, the API returned a verbose debug object instead of a controlled error. The response exposed a traceback, internal file path, function name, line number, exception type and a sensitive lab value.
+Detailed traceback information should be logged server-side only.
 
-This is Security Misconfiguration because internal debug information and sensitive data appeared in a client-facing error response. The full lab evidence is kept in [02-labs-or-practice.md](02-labs-or-practice.md), and the report-style evidence is kept in [security-findings/01-example-finding.md](security-findings/01-example-finding.md).
+### Pattern 2: Exposed Debug Page / `phpinfo()`
 
-## Common examples
+A PortSwigger lab exposed a hidden debug endpoint through an HTML comment:
 
-Examples of Security Misconfiguration include:
+```html
+<!-- <a href=/cgi-bin/phpinfo.php>Debug</a> -->
+```
+
+The link was not visible in the UI, but it was still present in the HTML source. Visiting the endpoint directly exposed a `phpinfo()` page.
+
+The page disclosed detailed server and PHP configuration information, including:
+
+- PHP version,
+- operating system details,
+- Server API,
+- loaded configuration file paths,
+- additional `.ini` files,
+- PHP modules/extensions,
+- registered streams,
+- PHP settings,
+- environment/configuration data,
+- a sensitive `SECRET_KEY`.
+
+This showed that a development/debug endpoint was left publicly accessible.
+
+Secure behaviour should be:
+
+- the debug file is not deployed to production,
+- the endpoint returns `404 Not Found`,
+- or, if diagnostic access is genuinely required, it is restricted to trusted/internal/admin access and returns `403 Forbidden` for unauthorised users.
+
+## Common Examples
+
+Security Misconfiguration can include:
 
 - debug mode enabled in production,
-- verbose errors returned to users,
-- stack traces exposed in API responses,
-- default accounts or passwords left enabled,
-- unnecessary routes, services, plugins or admin pages exposed,
-- test or staging endpoints reachable from the internet,
-- missing or weak security headers,
-- overly permissive CORS configuration,
+- verbose stack traces shown to users,
+- exposed debug endpoints such as `phpinfo()`,
+- public `/debug`, `/config`, `/status`, `/server-status`, `/actuator`, or `/health` endpoints,
+- exposed `.env`, backup files, logs, source maps, or configuration files,
 - directory listing enabled,
-- exposed configuration files such as `.env`, backups, logs or old deployment files,
-- public source maps without an accepted reason,
-- cloud storage buckets or services with excessive permissions,
-- inconsistent configuration between environments.
+- default accounts or default passwords,
+- unnecessary services or features enabled,
+- weak CORS configuration,
+- missing or weak security headers,
+- outdated framework/server defaults,
+- sensitive information in HTML comments or JavaScript,
+- test/admin functionality deployed to production,
+- secrets included in exception messages,
+- unsafe differences between development, staging, and production environments.
 
-## Common root causes
+## Common Root Causes
 
-Common root causes include:
+Typical causes include:
 
-- development settings accidentally deployed to production,
-- missing global error handling,
-- exception messages containing sensitive data,
-- secrets included in error messages or logs,
-- lack of environment-specific configuration,
-- no production hardening checklist,
-- no automated checks for security headers or exposed files,
-- default framework behaviour left unchanged,
-- unclear ownership of security configuration,
-- configuration drift between environments.
+- development settings used in production,
+- debug files deployed accidentally,
+- weak environment separation,
+- missing hardening checklist,
+- no deployment review for sensitive files,
+- no secret scanning,
+- no automated checks for debug endpoints,
+- framework/server defaults not reviewed,
+- verbose error handling left enabled,
+- lack of centralised error handling,
+- sensitive values included in exception messages,
+- assuming hidden frontend links are secure,
+- relying on obscurity instead of removal or server-side protection.
 
 ## Impact
 
 The impact depends on what is exposed.
 
-In this lab, the application exposed a flag and internal traceback information. In a real application, similar behaviour could expose:
+Possible impacts include:
 
-- API keys,
-- JWT signing secrets,
-- database connection strings,
-- usernames or emails,
-- internal paths,
-- framework details,
-- source code locations,
-- SQL queries,
-- stack traces,
-- cloud metadata,
-- service names,
-- internal architecture details.
+- sensitive data disclosure,
+- application secret leakage,
+- environment variable leakage,
+- internal path disclosure,
+- framework and version fingerprinting,
+- improved attacker reconnaissance,
+- targeted exploitation against known versions,
+- easier chaining with other vulnerabilities,
+- session/token manipulation if secrets are exposed,
+- disclosure of implementation details,
+- loss of confidence in production hardening.
 
-This information can support further attacks such as path traversal, LFI, injection, SSRF, credential attacks or targeted exploitation of a known framework/component.
+If a `SECRET_KEY` or similar application secret is exposed, the risk can be high. Depending on how the application uses the secret, an attacker may be able to forge or manipulate trusted values such as signed cookies, session data, CSRF tokens, JWTs, reset tokens, or other protected application data.
 
-## Related internal notes
+The exact impact depends on the application, but exposed secrets should always be treated seriously and rotated.
 
-This category connects with several topics I have already studied:
+## Related Vulnerabilities I Have Already Practised
 
-- [HTTP, Request/Response and Auth Basics](../../fundamentals/01-http-request-response-auth.md) - useful for recognising unsafe status codes, headers and response bodies.
-- [Burp Suite Proxy and Repeater](../../fundamentals/02-burp-suite-proxy-repeater.md) - useful for comparing normal and error responses.
-- [Content Discovery / Attack Surface](../../fundamentals/03-content-discovery-attack-surface.md) - useful for finding exposed debug, config, backup or admin paths.
-- [Path Traversal / File Access Bugs](../../key-web-vulnerabilities/06-path-traversal-file-access/README.md) - related when exposed paths or files reveal the filesystem.
-- [SSRF Basics](../../key-web-vulnerabilities/08-server-side-request-forgery-ssrf/README.md) - related when configuration exposes internal services or metadata endpoints.
-- [File Upload Vulnerabilities](../../key-web-vulnerabilities/07-file-upload-vulnerabilities/README.md) - related when server/web-server configuration allows uploaded files to execute or be served unsafely.
+Related topics from my previous learning:
 
-## My takeaway as a Frontend Engineer
+- [HTTP, Request/Response and Auth Basics](../../fundamentals/01-http-request-response-auth.md)
+- [Content Discovery / Attack Surface](../../fundamentals/03-content-discovery-attack-surface.md)
+- [Authentication Bypass / Username Enumeration](../../key-web-vulnerabilities/01-authentication-bypass-username-enumeration/README.md)
+- [Broken Access Control / IDOR](../../key-web-vulnerabilities/02-broken-access-control-idor/README.md)
+- [CSRF + SameSite Cookies](../../key-web-vulnerabilities/05-csrf-samesite-cookies/README.md)
+- [Path Traversal / File Access Bugs](../../key-web-vulnerabilities/06-path-traversal-file-access/README.md)
+- [File Upload Vulnerabilities](../../key-web-vulnerabilities/07-file-upload-vulnerabilities/README.md)
+- [SSRF Basics](../../key-web-vulnerabilities/08-server-side-request-forgery-ssrf/README.md)
 
-As a Frontend Engineer, I may not always configure the backend, server or infrastructure directly, but I can still identify misconfiguration symptoms from the browser, DevTools, API responses and Burp Suite.
+These topics are related because misconfiguration often increases the impact of other vulnerabilities. For example, exposed stack traces can help with path traversal testing, exposed framework versions can help with targeted vulnerability research, and exposed secrets may affect authentication/session security.
 
-Important frontend/AppSec observations:
+## My Takeaway as a Frontend Engineer
 
-- API responses should not expose stack traces or internal file paths.
-- UI error messages should be user-friendly, not developer-debug output.
-- Frontend applications should not rely on secrets embedded in client-side code.
-- Production builds should not expose source maps, debug flags or development-only features unless there is a clear accepted reason.
-- Client-side error handling should not display raw backend exceptions directly.
-- Security headers and CORS behaviour can often be reviewed from the browser.
-- Debug endpoints and internal APIs should not be discoverable from public frontend assets.
+Frontend code can support security, but it cannot be the security boundary.
 
-The key lesson:
+Anything sent to the browser should be treated as visible to the user, including:
 
-> Production systems should fail safely. Invalid input should produce a controlled, generic response, while detailed debugging information should stay in server-side logs.
+- HTML comments,
+- hidden links,
+- JavaScript files,
+- source maps,
+- client-side routes,
+- API URLs,
+- feature flags,
+- debug references.
 
-## What good looks like
+Removing a link from the UI or hiding it inside a comment does not protect the backend endpoint.
 
-A safer implementation should:
+The real fix must happen through production-safe configuration, backend/server controls, deployment hardening, secret management, and access control where appropriate.
+
+As a Frontend Engineer moving into AppSec, this category is important because many misconfiguration issues are visible from the browser, DevTools, Burp Suite, response headers, page source, JavaScript bundles, or public endpoints.
+
+## What Good Looks Like
+
+A safer application should:
 
 - disable debug mode in production,
-- use production-specific configuration,
-- validate input before business logic runs,
-- return generic client-facing error messages,
-- log detailed technical errors server-side only,
-- keep secrets out of exception messages and response bodies,
-- standardise API error response formats,
-- remove unnecessary services, routes, plugins and test pages,
-- protect admin, debug, config and status endpoints,
-- harden headers and CORS behaviour,
-- add regression tests that fail if debug information appears in responses.
+- avoid returning stack traces to users,
+- use generic client-facing error messages,
+- log detailed errors server-side only,
+- never include secrets in error messages,
+- remove debug files from production deployments,
+- block public access to diagnostic endpoints,
+- rotate exposed secrets immediately,
+- run secret scanning in CI/CD,
+- review public assets before deployment,
+- harden server/framework defaults,
+- apply security headers consistently,
+- separate development, staging, and production configuration,
+- verify that sensitive endpoints are not discoverable or publicly accessible.
 
-## External references
+## Summary
 
-- OWASP Top 10 2025 A02 Security Misconfiguration: https://owasp.org/Top10/2025/A02_2025-Security_Misconfiguration/
-- OWASP Cheat Sheet Series: Error Handling: https://cheatsheetseries.owasp.org/cheatsheets/Error_Handling_Cheat_Sheet.html
-- OWASP Cheat Sheet Series: HTTP Headers: https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html
+Security Misconfiguration is not always a complex exploit. Sometimes the issue is simply that the application exposes something it should not.
+
+The two key patterns I practised were:
+
+1. invalid input causing verbose debug output and traceback disclosure,
+2. a hidden debug endpoint exposing `phpinfo()` and a sensitive application secret.
+
+The main lesson:
+
+> Production applications should fail safely, expose minimal information, and never make development/debug functionality publicly accessible.

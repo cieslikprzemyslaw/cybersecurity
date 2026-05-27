@@ -1,189 +1,41 @@
-# A02 Checklist: Security Misconfiguration
+# A02:2025 - Security Misconfiguration Checklist
 
-Use this checklist during code review, API review, manual testing, frontend deployment review or AppSec review.
+## Purpose
 
-The main question is:
+Use this checklist when reviewing applications, APIs, frontend assets, deployment configuration, or environments for Security Misconfiguration issues.
 
-> Does the application expose unsafe behaviour because configuration, error handling or platform hardening is too open, too verbose or too close to development mode?
+This checklist focuses on practical AppSec review questions from a developer and tester perspective.
 
-## 1. Understand the surface
-
-Before testing, identify:
-
-- What application, API or service is exposed?
-- Is this production, staging, preview or a local lab?
-- Which framework, server, CMS, container or cloud service is involved?
-- Which endpoints are public?
-- Which endpoints should be internal only?
-- What error format does the application use?
-- Are there admin, debug, status, health or config endpoints?
-- Are frontend bundles, source maps or static assets exposed?
-
-Examples of sensitive configuration areas:
-
-- error handling,
-- debug mode,
-- security headers,
-- CORS,
-- cookies,
-- source maps,
-- admin routes,
-- cloud storage,
-- default accounts,
-- exposed files,
-- unnecessary services or plugins.
-
-## 2. Error handling and debug output
-
-Check:
-
-- Are debug or development settings disabled in production?
-- Are error responses generic and safe for users?
-- Are technical details logged server-side only?
-- Does the API return stack traces?
-- Does the API reveal internal file paths?
-- Does the API reveal function names, class names, line numbers or framework details?
-- Does the API expose exception types such as `ValueError`, `TypeError`, `NullReferenceException` or database errors?
-- Does the API expose SQL queries, schema names, table names or connection details?
-- Does the API expose secrets, tokens, flags, API keys or environment variables?
-- Does the API return consistent and safe error formats?
-
-## 3. Code review questions
+## Core Question
 
 Ask:
 
-- Where is production configuration defined?
-- Is there a clear separation between development, staging and production settings?
-- Is debug mode controlled by an environment variable or deployment profile?
-- Is there a global error handler?
-- Are exceptions converted into generic client-facing responses?
-- Are secrets ever included in exception messages?
-- Are raw backend errors passed directly to the frontend?
-- Are default framework settings reviewed before deployment?
-- Are unnecessary routes, plugins or services disabled?
-- Are hardening checks part of deployment or CI?
+> Is the application exposing anything that should only be visible to developers, administrators, infrastructure, logs, or trusted internal systems?
 
-## 4. Testing questions
+## 1. Error Handling Review
 
-For each important endpoint, test:
+### Testing Questions
 
-- What happens with valid input?
-- What happens when required parameters are missing?
-- What happens when parameters use the wrong type?
-- What happens when IDs are non-numeric, too long, negative, decimal or malformed?
-- What happens with special characters?
-- What happens with unexpected HTTP methods?
-- What happens when common debug/config paths are requested?
-- Does the response reveal internal details?
-- Does the response expose sensitive values?
-- Does the response remain safe across `400`, `401`, `403`, `404` and `500` cases?
+- Does invalid input return a safe generic error?
+- Does the application expose stack traces?
+- Does the response include file paths?
+- Does the response include function names?
+- Does the response include line numbers?
+- Does the response include framework errors?
+- Does the response include database errors?
+- Does the response include exception types such as `ValueError`, `TypeError`, `NullReferenceException`, `SQLException`, or similar?
+- Does the response expose secrets, tokens, flags, environment variables, or configuration values?
+- Are detailed errors only logged server-side?
 
-Example invalid input tests:
+### Example Bad Response
 
-```http
-GET /api/user/admin
-GET /api/user/abc
-GET /api/user/-1
-GET /api/user/1.5
-GET /api/user/%27
-GET /api/user/999999999999999999999999
+```text
+Traceback (most recent call last):
+  File "/app/app.py", line 21, in get_user
+ValueError: Invalid user ID format
 ```
 
-Look for:
-
-- `Traceback`,
-- `Exception`,
-- `ValueError`,
-- `TypeError`,
-- file paths such as `/app/...`, `/var/www/...`, `C:\...`,
-- framework names,
-- stack traces,
-- database errors,
-- secrets,
-- tokens,
-- API keys,
-- environment variable names or values.
-
-## 5. Frontend-specific checks
-
-Frontend review can reveal misconfiguration symptoms quickly.
-
-Review:
-
-- Are source maps exposed in production without a clear reason?
-- Are debug flags or development messages visible in the console?
-- Are backend errors displayed directly in the UI?
-- Are API errors rendered raw to the user?
-- Are sensitive values present in JavaScript bundles?
-- Are internal endpoints listed in frontend assets?
-- Are staging, preview or internal URLs exposed in the client bundle?
-- Are comments in HTML or JavaScript revealing hidden routes, credentials, tickets or internal notes?
-- Does the frontend handle `400`, `401`, `403` and `500` responses safely?
-
-But also confirm:
-
-- The backend response is safe even without frontend filtering.
-- Raw backend exceptions are not part of the public API contract.
-- Secrets are not embedded in client-side code.
-
-## 6. Header and platform checks
-
-Check response headers and platform behaviour:
-
-- Are security headers present and appropriate?
-- Is `Content-Security-Policy` configured where practical?
-- Is `X-Content-Type-Options` present?
-- Is `Referrer-Policy` present?
-- Is `Permissions-Policy` present where useful?
-- Is `Strict-Transport-Security` enabled for HTTPS production sites?
-- Is clickjacking protection configured with `frame-ancestors` or `X-Frame-Options`?
-- Are server/framework versions exposed unnecessarily?
-- Is CORS configured safely?
-- Are cookies configured with `HttpOnly`, `Secure` and `SameSite` where appropriate?
-- Is directory listing disabled?
-- Are backup, log, config or temporary files blocked from public access?
-- Are admin/debug/status endpoints protected?
-
-## 7. Developer red flags
-
-Red flags include:
-
-- `debug=True` in production,
-- development error pages exposed publicly,
-- exception messages returned directly to API clients,
-- `res.send(error)` or equivalent patterns,
-- raw backend error objects passed to the frontend,
-- secrets embedded in exception messages,
-- environment variables printed in responses,
-- overly permissive CORS such as reflecting arbitrary origins,
-- public `.env`, `.git`, backup, log or config files,
-- unprotected `/debug`, `/config`, `/admin`, `/status`, `/health`, `/actuator` or `/server-status` endpoints,
-- missing environment separation,
-- "It is only staging, so it does not need hardening."
-
-## 8. Remediation checklist
-
-A safer implementation should:
-
-- disable debug mode in production,
-- add a global error handler,
-- return generic client-facing error messages,
-- log detailed errors server-side only,
-- remove secrets from exception messages,
-- validate input before business logic runs,
-- standardise API error responses,
-- separate production configuration from development configuration,
-- block access to debug/config/internal endpoints,
-- disable directory listing,
-- remove default credentials,
-- remove unnecessary services, plugins, routes and test pages,
-- harden security headers,
-- review CORS settings,
-- add automated regression tests for error disclosure.
-
-## 9. Safe implementation notes
-
-For invalid input, prefer a controlled response such as:
+### Safer Response
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -194,27 +46,325 @@ Content-Type: application/json
 }
 ```
 
-Do not return:
+### Red Flags
+
+- `Traceback`
+- `Stack trace`
+- `Exception`
+- `ValueError`
+- `TypeError`
+- `SQL syntax`
+- `/app/`
+- `/var/www/`
+- `/home/`
+- `C:\`
+- `SECRET_KEY`
+- `DATABASE_URL`
+- `API_KEY`
+- `JWT_SECRET`
+- `AWS_ACCESS_KEY`
+- `DEBUG=true`
+
+## 2. Debug Endpoint Review
+
+### Testing Questions
+
+- Are debug endpoints publicly accessible?
+- Are diagnostic pages deployed to production?
+- Is `phpinfo()` exposed?
+- Are framework debug pages accessible?
+- Are `/debug`, `/config`, `/status`, `/health`, `/server-status`, `/actuator`, or similar endpoints exposed?
+- Are debug URLs referenced in HTML comments or JavaScript?
+- Are old test/admin/development routes still deployed?
+- Are debug endpoints protected by authentication and authorization?
+- Should the endpoint exist at all in production?
+
+### Common Paths to Check
 
 ```text
-Traceback
-File "/app/app.py"
-ValueError
-DATABASE_URL
-API_KEY
-JWT_SECRET
+/debug
+/config
+/status
+/health
+/server-status
+/actuator
+/phpinfo.php
+/cgi-bin/phpinfo.php
+.env
+.env.local
+.env.production
+config.php
+backup.zip
+backup.tar.gz
+app.log
+error.log
 ```
 
-Detailed information should go to server-side logs, monitoring or error tracking tools, not to the user.
+### Red Flags
 
-## 10. Review outcome
+- Public `phpinfo()` page.
+- Debug endpoint linked in HTML comments.
+- Diagnostic output exposed without authentication.
+- Server, framework, or environment configuration shown to users.
+- Sensitive values such as `SECRET_KEY` exposed.
+- Debug endpoint hidden only by URL or UI.
 
-A feature should pass the A02 review only if:
+## 3. HTML / Frontend Asset Review
 
-- production debug behaviour is disabled,
-- invalid input returns controlled errors,
-- client-facing responses do not expose stack traces, paths, exception types or secrets,
-- unnecessary endpoints and files are not publicly reachable,
-- headers, CORS and cookies are configured intentionally,
-- frontend code does not expose secrets or raw debug output,
-- regression tests exist for the observed misconfiguration class.
+### Testing Questions
+
+- Do HTML comments reveal hidden endpoints?
+- Do comments reveal debug URLs?
+- Do JavaScript bundles contain internal API URLs?
+- Are source maps publicly available?
+- Are feature flags exposed client-side?
+- Are secrets accidentally placed in frontend code?
+- Are development-only routes included in production builds?
+- Are staging or internal URLs visible?
+- Are comments treated as safe even though they are sent to the browser?
+
+### Important Rule
+
+> Anything sent to the browser should be treated as visible to the user.
+
+This includes:
+
+- HTML,
+- CSS,
+- JavaScript,
+- comments,
+- hidden inputs,
+- source maps,
+- client-side routes,
+- bundled configuration.
+
+## 4. Secrets and Environment Variables
+
+### Testing Questions
+
+- Are secrets stored in source code?
+- Are secrets exposed in error responses?
+- Are secrets exposed in debug pages?
+- Are secrets exposed in frontend bundles?
+- Are secrets exposed in logs?
+- Are secrets exposed through environment dumps?
+- Is secret scanning enabled in CI/CD?
+- Are exposed secrets rotated?
+- Are separate secrets used per environment?
+
+### Red Flags
+
+- `SECRET_KEY`
+- `JWT_SECRET`
+- `SESSION_SECRET`
+- `DATABASE_URL`
+- `DB_PASSWORD`
+- `API_KEY`
+- `PRIVATE_KEY`
+- `AWS_SECRET_ACCESS_KEY`
+- `.env` files in web root
+- secrets inside exception messages
+
+### Remediation Checklist
+
+- Remove exposed secrets.
+- Rotate exposed secrets immediately.
+- Review where the secret was used.
+- Check git history.
+- Check logs and artifacts.
+- Add secret scanning.
+- Use a proper secrets manager where possible.
+
+## 5. Response Header Review
+
+### Testing Questions
+
+- Are security headers present?
+- Are server/framework versions exposed unnecessarily?
+- Is CORS configured safely?
+- Are cookies configured securely?
+- Are debug or internal headers exposed?
+
+### Headers to Review
+
+```text
+Content-Security-Policy
+X-Frame-Options
+Strict-Transport-Security
+X-Content-Type-Options
+Referrer-Policy
+Permissions-Policy
+Access-Control-Allow-Origin
+Access-Control-Allow-Credentials
+Set-Cookie
+Server
+X-Powered-By
+```
+
+### Red Flags
+
+- `X-Powered-By` exposing technology unnecessarily.
+- `Server` exposing detailed versions.
+- `Access-Control-Allow-Origin: *` on sensitive APIs.
+- `Access-Control-Allow-Credentials: true` with overly broad origins.
+- Cookies missing `HttpOnly`, `Secure`, or appropriate `SameSite`.
+- No `Content-Security-Policy` where the application needs browser-side hardening.
+
+## 6. File and Directory Exposure
+
+### Testing Questions
+
+- Is directory listing enabled?
+- Are backup files accessible?
+- Are log files accessible?
+- Are `.env` files accessible?
+- Are source maps accessible?
+- Are old deployment files accessible?
+- Are uploaded files served from a safe location?
+- Are config files inside the web root?
+
+### Common Sensitive Files
+
+```text
+.env
+.env.local
+.env.production
+config.php
+config.json
+settings.py
+web.config
+appsettings.json
+backup.zip
+backup.tar.gz
+database.sql
+dump.sql
+error.log
+access.log
+package-lock.json
+composer.lock
+```
+
+Not every file is equally sensitive, but unexpected public access should be reviewed.
+
+## 7. Production Hardening Questions
+
+- Is debug mode disabled?
+- Are verbose errors disabled?
+- Are detailed errors logged server-side only?
+- Are default credentials removed?
+- Are unused routes disabled?
+- Are unused services disabled?
+- Are unnecessary modules removed?
+- Are production and staging configurations separated?
+- Are secrets stored outside the codebase?
+- Is deployment output reviewed?
+- Are test/debug files excluded from production builds?
+- Are server defaults hardened?
+
+## 8. Code Review Questions
+
+- Can exception messages include secrets?
+- Are errors handled centrally?
+- Is input validated before risky logic runs?
+- Are framework debug settings environment-specific?
+- Are development utilities excluded from production builds?
+- Are debug routes registered only in development?
+- Are environment variables ever returned to the client?
+- Are internal paths exposed in API responses?
+- Are sensitive values accidentally logged or returned?
+
+## 9. Testing Questions
+
+- What happens when invalid input is supplied?
+- What happens when required parameters are missing?
+- What happens when a parameter has the wrong type?
+- What happens when the value is very long?
+- What happens when special characters are supplied?
+- Does the API return safe errors consistently?
+- Can hidden endpoints be found through comments, JS, or crawling?
+- Are debug/config endpoints publicly reachable?
+- Does content discovery find unexpected files?
+
+## 10. Developer Red Flags
+
+Be careful when you see:
+
+- commented-out debug links,
+- TODO comments referencing internal routes,
+- debug tools in production,
+- `phpinfo()` files,
+- `.env` files near public folders,
+- verbose API errors,
+- stack traces in browser responses,
+- secrets in exception messages,
+- development credentials,
+- staging URLs in production JavaScript,
+- production builds containing source maps without a reason,
+- server/framework versions exposed in headers,
+- permissive CORS copied from development.
+
+## 11. Remediation Checklist
+
+For verbose errors:
+
+- Add central/global error handling.
+- Return generic client-facing messages.
+- Log technical details server-side only.
+- Disable debug mode in production.
+- Validate input before deeper application logic.
+- Remove secrets from exception messages.
+- Add regression tests for invalid input.
+
+For exposed debug endpoints:
+
+- Remove debug files from production.
+- Block debug paths at the server/reverse proxy level.
+- Restrict diagnostic tools to internal/admin access if absolutely required.
+- Remove debug references from HTML and frontend bundles.
+- Rotate any exposed secrets.
+- Review git history and deployment artifacts.
+- Add CI/CD checks for known debug files.
+
+For exposed secrets:
+
+- Remove the exposure.
+- Rotate the secret.
+- Check logs and artifacts.
+- Check repository history.
+- Add secret scanning.
+- Review the impact of the exposed secret.
+- Ensure secrets are environment-specific.
+
+## 12. Safe Implementation Notes
+
+Good production behaviour should include:
+
+- minimal error responses,
+- server-side logging,
+- centralised exception handling,
+- environment-specific configuration,
+- no public debug pages,
+- no secrets in client responses,
+- no debug URLs in HTML comments,
+- no development-only tools in production,
+- controlled diagnostic access,
+- secure default configuration,
+- automated checks in CI/CD.
+
+## Frontend Engineer Takeaway
+
+Frontend can support security, but frontend is not the security boundary.
+
+Do not rely on:
+
+- hidden links,
+- HTML comments,
+- disabled buttons,
+- hidden inputs,
+- client-side routes,
+- client-side checks,
+- obscured URLs.
+
+If a debug endpoint exists on the server and is publicly reachable, hiding the link in the frontend does not protect it.
+
+The backend, server configuration, deployment pipeline, and environment hardening must prevent sensitive debug functionality from being exposed.

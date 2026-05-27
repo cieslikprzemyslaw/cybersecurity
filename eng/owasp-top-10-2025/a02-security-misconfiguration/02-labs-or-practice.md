@@ -1,67 +1,31 @@
-# A02 Labs and Practice: Security Misconfiguration
+# A02:2025 - Security Misconfiguration: Labs and Practice
 
-## Completed practice
+## Purpose
 
-### TryHackMe
+This file documents the practical work completed for A02:2025 - Security Misconfiguration.
 
-**Room/module:** OWASP Top 10 2025: Application Design Flaws  
-**Task:** Task 2 - AS02: Security Misconfigurations  
-**Status:** Completed  
-**Main pattern:** Verbose API error response exposing debug information and sensitive data
+The goal was not only to complete labs, but to understand common misconfiguration patterns and turn them into reusable AppSec review knowledge.
 
-## Lab context
+## Completed Practice
 
-This was an intentionally vulnerable learning task used for legal practice and documentation.
+### Lab 1: TryHackMe - OWASP Top 10 2025: Application Design Flaws
 
-The lab presented a User Management API with the following documented endpoint:
+**Task:** AS02: Security Misconfigurations
+**Platform:** TryHackMe
+**Category:** A02:2025 - Security Misconfiguration
+**Status:** Completed
+
+#### What I Practised
+
+I tested a User Management API that exposed an endpoint similar to:
 
 ```http
 GET /api/user/<user_id>
 ```
 
-Example:
-
-```http
-GET /api/user/123
-```
-
 The page stated that the user ID must be numeric.
 
-This was a good A02 exercise because the issue was not found by bypassing authentication or changing ownership checks. The issue appeared when the application received unexpected input and returned unsafe debug information.
-
-## What I practised
-
-In this lab, I practised:
-
-- reading API documentation exposed by the application,
-- testing expected input first,
-- testing invalid input after understanding the expected format,
-- comparing normal responses with error responses,
-- identifying verbose error output,
-- recognising traceback disclosure,
-- distinguishing Security Misconfiguration from IDOR or Broken Access Control,
-- thinking about safe production error handling,
-- turning lab evidence into an AppSec-style finding.
-
-## Important distinction
-
-The issue was not that the user could access another user's record by changing an ID.
-
-The issue was that invalid input caused the application to expose debug details and a sensitive value in the API response.
-
-This makes the vulnerability a Security Misconfiguration issue, not primarily an IDOR or Broken Access Control issue.
-
-## Observed behaviour
-
-### Normal numeric request
-
-A numeric user ID returned a generic user object:
-
-```http
-GET /api/user/123
-```
-
-Example response:
+When numeric values were supplied, the API returned the same dummy user-like response:
 
 ```json
 {
@@ -71,146 +35,348 @@ Example response:
 }
 ```
 
-Changing numeric IDs returned similar dummy data. This suggested that simple ID enumeration was not the main issue in this task.
-
-### Invalid non-numeric request
-
-A non-numeric value such as `admin` triggered a verbose error response:
+The important behaviour appeared when a non-numeric value was supplied, such as:
 
 ```http
 GET /api/user/admin
 ```
 
-The response included debug information similar to:
-
-```json
-{
-  "debug_info": {
-    "flag": "<redacted-lab-flag>",
-    "error": "Invalid user ID format: admin. Flag: <redacted-lab-flag>",
-    "traceback": "Traceback (most recent call last):\n  File \"/app/app.py\", line 21, in get_user\n    raise ValueError(...)\nValueError: Invalid user ID format: admin. Flag: <redacted-lab-flag>\n"
-  }
-}
-```
-
-The real lab flag was intentionally redacted from these notes. Secrets, flags, tokens and real sensitive values should not be committed to the repository.
-
-## What was vulnerable
-
-The vulnerable behaviour was the error response returned for invalid input:
-
-```http
-GET /api/user/admin
-```
+Instead of returning a safe generic error, the API returned verbose debug information.
 
 The response exposed:
 
-- an internal file path: `/app/app.py`,
-- a function name: `get_user`,
-- a line number: `line 21`,
-- an exception type: `ValueError`,
-- traceback details,
-- a sensitive lab flag value.
+- debug information,
+- a flag value,
+- an internal traceback,
+- backend file path,
+- function name,
+- line number,
+- exception type.
 
-## Why this is Security Misconfiguration
+The sensitive value is intentionally redacted in my notes:
 
-This is Security Misconfiguration because the application exposed verbose debug information and sensitive data through a client-facing API error.
+```text
+<redacted-lab-flag>
+```
 
-It is not mainly IDOR because the issue was not about accessing another user's object by changing an ID.
+#### What Was Vulnerable
 
-It is not mainly Broken Access Control because the issue was not about missing authorization checks.
+The application failed to handle invalid input safely.
 
-The root problem was unsafe production-style error handling and debug information disclosure.
+The issue was not that user IDs could be enumerated. The more important issue was that invalid input triggered a verbose debug/error response that exposed internal implementation details and sensitive data.
 
-## What confused me or was worth noticing
+This is Security Misconfiguration because the application returned developer/debug information to the client.
 
-### Numeric IDs returned the same user
+#### Why It Matters
 
-At first, changing numeric IDs seemed like the obvious test because the endpoint was `/api/user/<user_id>`. However, every numeric ID returned the same dummy user.
+Verbose errors can help an attacker understand:
 
-That was a clue that the task was probably not about IDOR or Broken Access Control.
+- backend language,
+- file paths,
+- function names,
+- exception types,
+- application structure,
+- possible input validation weaknesses,
+- where to focus later testing.
 
-### The phrase "User ID must be numeric" was a hint
+In real applications, similar behaviour could expose:
 
-The important test was not only trying different numeric IDs. The better A02 test was:
+- API keys,
+- environment variables,
+- database connection strings,
+- framework details,
+- stack traces,
+- internal file paths,
+- secret values.
 
-> What happens when the application receives input that breaks the expected format?
+#### Secure Behaviour
 
-Supplying a non-numeric value triggered the verbose error response.
-
-### 400 vs 404
-
-For a request like:
+For invalid input such as:
 
 ```http
 GET /api/user/admin
 ```
 
-a safe response should normally be:
+the API should return a generic response such as:
 
 ```http
-400 Bad Request
+HTTP/1.1 400 Bad Request
+Content-Type: application/json
+
+{
+  "error": "Invalid user ID"
+}
 ```
 
-because the endpoint exists, but the input format is invalid.
+The detailed traceback should be logged server-side only.
 
-A `404 Not Found` may be used in some designs, but for input validation errors `400 Bad Request` is usually clearer.
+---
 
-## How I would test this in a real app
+### Lab 2: PortSwigger - Information Disclosure on Debug Page
 
-I would look for this pattern in:
+**Platform:** PortSwigger Web Security Academy
+**Lab:** Information disclosure on debug page
+**Category:** Information Disclosure / Security Misconfiguration
+**Status:** Completed
 
-- public API endpoints,
-- user lookup routes,
-- search and filter parameters,
-- admin and status pages,
-- health or debug endpoints,
-- upload processing,
-- JSON APIs,
-- CMS-backed routes,
-- reverse-proxy and web-server error pages,
-- staging or preview deployments.
+#### What I Practised
 
-For each area, I would test:
+I reviewed the application normally and inspected the page source.
 
-- valid input first,
-- missing input,
-- invalid types,
-- very long values,
-- special characters,
-- unexpected HTTP methods,
-- direct access to common debug/config paths,
-- whether errors contain tracebacks, file paths, secrets or framework details.
+Inside the HTML source, I found a commented-out debug link:
 
-## Review result
+```html
+<!-- <a href=/cgi-bin/phpinfo.php>Debug</a> -->
+```
 
-The practical lesson from this lab is simple: invalid input is normal, but debug output must not become part of the public API.
+Although this link was not visible in the UI, it was still delivered to the browser inside the HTML source.
 
-From a non-technical point of view, this is like showing a customer the internal repair manual, staff notes and secret storage codes whenever they type an invalid account number.
+I then visited the endpoint directly:
 
-The main takeaways:
+```http
+GET /cgi-bin/phpinfo.php
+```
 
-- the endpoint worked for expected numeric input,
-- the unsafe behaviour appeared only when the input format was broken,
-- the API returned implementation details that belonged in server-side logs,
-- sensitive values should never be included in exception messages,
-- a good fix needs tests that check both the safe error status and the absence of debug strings.
+The endpoint returned a public `phpinfo()` page.
 
-## Related internal notes
+#### What Was Exposed
 
+The `phpinfo()` page disclosed detailed server and PHP configuration information, including:
+
+- PHP version,
+- operating system details,
+- Server API,
+- PHP configuration file path,
+- loaded `php.ini` path,
+- additional `.ini` files,
+- registered PHP streams,
+- loaded modules/extensions,
+- PHP settings,
+- environment/configuration data,
+- a sensitive `SECRET_KEY`.
+
+The real `SECRET_KEY` value is intentionally not stored in this repository:
+
+```text
+<redacted-secret-key>
+```
+
+#### Why It Was Vulnerable
+
+The real vulnerability was not just the HTML comment.
+
+The real issue was that the debug endpoint was publicly accessible.
+
+The comment only helped with discovery. The endpoint itself should not have existed publicly in a production-like environment.
+
+This is Security Misconfiguration because development/debug functionality was deployed or left accessible in a public environment.
+
+#### Why Hiding the Link Was Not Enough
+
+Hiding a link in an HTML comment is not a security control.
+
+Anything sent to the browser should be treated as visible to the user, including:
+
+- HTML comments,
+- hidden elements,
+- JavaScript files,
+- source maps,
+- client-side routes,
+- API URLs.
+
+A user can discover these using:
+
+- View Source,
+- DevTools,
+- Burp Suite,
+- browser cache,
+- crawling,
+- content discovery tools.
+
+#### Secure Behaviour
+
+In production, `/cgi-bin/phpinfo.php` should not be publicly accessible.
+
+The best secure outcome is:
+
+```http
+HTTP/1.1 404 Not Found
+```
+
+because the debug file should not be deployed at all.
+
+If diagnostic functionality is genuinely required, it should be restricted to trusted internal/admin access only. In that case, an unauthorised user should receive:
+
+```http
+HTTP/1.1 403 Forbidden
+```
+
+or an authentication challenge depending on the application design.
+
+#### Important Remediation Note
+
+Because a secret was exposed, the remediation is not only to remove the page.
+
+The exposed secret should be rotated.
+
+## What I Learned
+
+### 1. Security Misconfiguration Often Appears as Information Disclosure
+
+A02 is not always about a complex exploit. It is often about something that should not be visible but is visible because of unsafe configuration.
+
+Examples from these labs:
+
+- verbose error output,
+- traceback disclosure,
+- public debug endpoint,
+- `phpinfo()` exposure,
+- environment/configuration leak,
+- exposed application secret.
+
+### 2. Invalid Input Is Useful for Testing Error Handling
+
+When an application says:
+
+```text
+User ID must be numeric
+```
+
+it is useful to test what happens with non-numeric input.
+
+The goal is not always SQL Injection or IDOR. Sometimes the important result is how the application fails.
+
+Useful test values:
+
+```text
+admin
+abc
+test
+-1
+0
+1.5
+999999999999999999999
+'
+%27
+```
+
+### 3. HTML Comments Can Leak Useful Recon Information
+
+HTML comments may reveal:
+
+- hidden endpoints,
+- old functionality,
+- debug tools,
+- internal notes,
+- temporary links,
+- development-only routes.
+
+A comment does not secure anything. If it is sent to the browser, it is visible.
+
+### 4. Debug Pages Are Dangerous in Public Environments
+
+Debug pages such as `phpinfo()` can expose a large amount of sensitive technical information.
+
+Even if some settings look safe, such as `display_errors=Off`, the page itself may still disclose environment details, paths, modules, and secrets.
+
+### 5. Secrets Must Not Be Stored in Error Messages or Exposed Debug Output
+
+If a secret is exposed, the fix must include:
+
+- removing the exposure,
+- rotating the secret,
+- checking where else it was used,
+- reviewing logs and deployment artifacts,
+- adding secret scanning.
+
+## What Confused Me or Needed Clarification
+
+### 1. `400` vs `404` vs `403`
+
+For invalid input to an existing API endpoint, `400 Bad Request` is usually appropriate.
+
+Example:
+
+```http
+GET /api/user/admin
+```
+
+The endpoint exists, but the input is invalid.
+
+For a debug page that should not exist publicly, `404 Not Found` is usually better.
+
+Example:
+
+```http
+GET /cgi-bin/phpinfo.php
+```
+
+If the diagnostic endpoint intentionally exists but only authorised users should access it, then `403 Forbidden` is appropriate for authenticated users without permission.
+
+### 2. The Comment Was Not the Vulnerability by Itself
+
+The HTML comment was a discovery clue.
+
+The real vulnerability was the public debug endpoint and the exposed configuration/secret.
+
+### 3. Removing the Comment Is Not Enough
+
+Removing the HTML comment reduces discoverability, but it does not fix the issue if `/cgi-bin/phpinfo.php` still exists.
+
+The endpoint must be removed, blocked, or strictly protected.
+
+### 4. Changing the URL Is Not a Proper Fix
+
+Changing `/cgi-bin/phpinfo.php` to another hidden URL is security by obscurity.
+
+A better fix is to remove the debug file from production or restrict it properly.
+
+## Real-World Review Angle
+
+In a real application, I would look for this A02 pattern in:
+
+- HTML comments,
+- JavaScript bundles,
+- source maps,
+- robots.txt,
+- sitemap.xml,
+- old test routes,
+- admin/debug links,
+- `/debug`,
+- `/config`,
+- `/status`,
+- `/health`,
+- `/server-status`,
+- `/actuator`,
+- `/phpinfo.php`,
+- `/cgi-bin/phpinfo.php`,
+- `.env`,
+- `.bak`,
+- `.old`,
+- log files,
+- verbose API errors,
+- stack traces,
+- response headers,
+- deployment artifacts.
+
+I would also review whether debug tools or diagnostic pages are deployed to production.
+
+## Related Notes
+
+- [Content Discovery / Attack Surface](../../fundamentals/03-content-discovery-attack-surface.md)
 - [HTTP, Request/Response and Auth Basics](../../fundamentals/01-http-request-response-auth.md)
 - [Burp Suite Proxy and Repeater](../../fundamentals/02-burp-suite-proxy-repeater.md)
-- [Content Discovery / Attack Surface](../../fundamentals/03-content-discovery-attack-surface.md)
 - [Path Traversal / File Access Bugs](../../key-web-vulnerabilities/06-path-traversal-file-access/README.md)
 - [SSRF Basics](../../key-web-vulnerabilities/08-server-side-request-forgery-ssrf/README.md)
 - [File Upload Vulnerabilities](../../key-web-vulnerabilities/07-file-upload-vulnerabilities/README.md)
 
-## Future practice ideas
+## Summary
 
-Possible next A02-related practice:
+The two practical A02 patterns I completed were:
 
-- review a local app for debug mode and verbose error responses,
-- check security headers and CORS behaviour on a test deployment,
-- perform content discovery for exposed `.env`, backup, log or debug paths in a legal lab,
-- compare development vs production configuration in a sample project,
-- write regression tests for generic API error handling.
+1. invalid input causing verbose debug/traceback disclosure,
+2. public debug endpoint exposing `phpinfo()` and a sensitive application secret.
+
+The main lesson:
+
+> Production systems should not expose debug information, stack traces, diagnostic pages, secrets, environment details, or internal configuration to users.
