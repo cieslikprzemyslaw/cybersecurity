@@ -1,18 +1,33 @@
 # Frontend AppSec Notes
 
-This repository contains my personal web security and application security learning notes from the perspective of a Frontend Engineer.
+Personal web security and application security notes from the perspective of a Frontend Engineer.
 
-The purpose of this repository is to build stronger security awareness around web applications, APIs, authentication flows, authorization checks, secure coding, and developer-friendly remediation.
+This repository is defensive and developer-oriented. It focuses on understanding web risks, practising in legal labs, improving secure implementation, and writing clearer remediation notes. It is not a collection of full walkthroughs, exploit guides, or lab answers.
 
-The focus is defensive and developer-oriented: understanding risks, improving secure implementation, and writing clearer remediation notes.
+## Start Here
 
-This is not a collection of full walkthroughs, exploit guides, or lab answers. It is a structured learning space for notes, cheatsheets, summaries, and practical reflections that help connect AppSec concepts with real development work.
+| Area | Link | Best for |
+|---|---|---|
+| English notes | [eng/README.md](eng/README.md) | Main learning path and English topic index. |
+| Polish notes | [pl/README.md](pl/README.md) | Polish version of the learning path. |
+| OWASP Top 10 2025 EN | [eng/owasp-top-10-2025/README.md](eng/owasp-top-10-2025/README.md) | Mapping practical notes to OWASP categories. |
+| OWASP Top 10 2025 PL | [pl/owasp-top-10-2025/README.md](pl/owasp-top-10-2025/README.md) | Polish OWASP mapping sprint. |
+| Coverage Matrix EN | [eng/owasp-top-10-2025/coverage-matrix.md](eng/owasp-top-10-2025/coverage-matrix.md) | Current OWASP coverage and next actions. |
+| Coverage Matrix PL | [pl/owasp-top-10-2025/coverage-matrix.md](pl/owasp-top-10-2025/coverage-matrix.md) | Polish coverage tracking. |
 
-## Why This Repository Exists
+## What This Repository Covers
 
-As a Frontend Engineer, I regularly work with user interfaces, APIs, CMS-driven platforms, client-side behaviour, production issues, and frontend/backend data flow.
+The notes are built around practical AppSec learning:
 
-Learning AppSec helps me look at those same systems through a security lens:
+- web fundamentals: HTTP, cookies, sessions, auth, request/response flow,
+- Burp Suite basics and manual request testing,
+- authentication and authorization issues,
+- XSS, SQL injection, CSRF, path traversal, file upload bugs and SSRF,
+- API and configuration security,
+- OWASP Top 10 2025 mapping,
+- developer-friendly remediation and regression testing.
+
+The goal is to connect AppSec concepts with real development work:
 
 - What can the user control?
 - Where does that input go?
@@ -22,195 +37,59 @@ Learning AppSec helps me look at those same systems through a security lens:
 - What would a safe implementation look like?
 - How could this be tested to prevent regression?
 
-The goal is to better understand how web security issues happen and how developers can prevent them during normal engineering work.
-
 ## Learning Approach
 
-My learning approach is intentionally practical:
+The learning model is intentionally practical:
 
-- **10% theory** to understand the risk
-- **70% hands-on labs** to practise safely
-- **20% notes and review** to turn practice into understanding
+- **10% theory** to understand the risk.
+- **70% hands-on labs** to practise safely.
+- **20% notes and review** to turn practice into understanding.
 
-For each topic, I aim to go beyond “what payload works” and focus on:
+For each topic, the focus is root cause, impact, trust boundaries, developer mistakes, secure implementation, remediation and regression testing.
 
-- root cause
-- impact
-- trust boundaries
-- developer mistakes
-- secure implementation
-- remediation
-- regression testing
+## Repository Structure
 
-## Roadmap
+| Path | Purpose |
+|---|---|
+| `eng/fundamentals/` | Reusable Web AppSec foundations before vulnerability-specific study. |
+| `eng/key-web-vulnerabilities/` | English topic modules for common web vulnerability classes. |
+| `eng/owasp-top-10-2025/` | Practical OWASP Top 10 2025 mapping sprint in English. |
+| `pl/fundamentals/` | Polish fundamentals. |
+| `pl/key-web-vulnerabilities/` | Polish topic modules. |
+| `pl/owasp-top-10-2025/` | Polish OWASP Top 10 2025 mapping sprint. |
+| `labs/` folders | Short summaries of legal training labs. |
+| `overview.md` files | Concise source-of-truth notes for each topic. |
+| `cheat-sheet.md` files | Practical testing, review and remediation checklists. |
 
-The roadmap is focused on web application security fundamentals first, then secure coding and developer workflow.
+## Recommended Path
 
-### 1. Web Foundations
+1. Start with [English notes](eng/README.md) or [Polish notes](pl/README.md).
+2. Complete the Web AppSec fundamentals.
+3. Work through the Key Web Vulnerabilities topics in order.
+4. Use the OWASP Top 10 2025 mapping to connect topics with review-style outputs.
+5. Revisit checklists and regression-test notes during future code or AppSec reviews.
 
-Core web concepts that matter for AppSec:
+## Topic Workflow
 
-- HTTP requests and responses
-- cookies and sessions
-- browser/server communication
-- frontend/backend data flow
-- content discovery
-- user-controlled input
-
-### 2. Burp Suite and Manual Testing
-
-Practical request/response testing:
-
-- Proxy
-- Repeater
-- basic Intruder usage for labs
-- modifying parameters, cookies, headers, methods, and request bodies
-- comparing responses
-- understanding how applications behave when requests are changed
-
-### 3. Authentication and Authorization
-
-Understanding identity and access control:
-
-- authentication vs authorization
-- login logic
-- username enumeration
-- authentication bypass patterns
-- session handling
-- broken access control
-- IDOR
-- horizontal and vertical privilege issues
-
-### 4. Client-Side and Browser-Based Issues
-
-Frontend-adjacent security topics:
-
-- reflected XSS
-- stored XSS
-- DOM XSS
-- sources and sinks
-- output encoding
-- safe rendering
-- dangerous DOM APIs
-- browser trust boundaries
-
-### 5. Injection and Server-Side Input Handling
-
-Input that changes backend behaviour:
-
-- SQL Injection
-- Boolean-based blind SQLi
-- time-based blind SQLi
-- UNION-based SQLi
-- path traversal
-- file upload issues
-- command injection basics
-- SSRF basics
-
-### 6. API and Configuration Security
-
-Web application and API security topics:
-
-- API authorization
-- object-level access control
-- CORS misconfiguration
-- security headers
-- error handling
-- sensitive data exposure
-- rate limiting basics
-
-### 7. Secure Coding and Review
-
-Developer-focused AppSec practices:
-
-- secure code review
-- SAST basics
-- DAST basics
-- dependency scanning
-- secrets scanning
-- threat modelling basics
-- remediation planning
-- writing clear findings
-
-## Standard Workflow for Each Topic
-
-For each topic, I try to follow the same workflow:
+Most topics follow the same pattern:
 
 1. Read enough theory to understand the risk.
 2. Practise in a legal lab or local test environment.
-3. Test manually first before relying on automation.
+3. Test manually before relying on automation.
 4. Write notes in my own words.
 5. Identify the root cause and impact.
 6. Write a developer-friendly fix.
 7. Add a checklist or takeaway for future reference.
 
-## Note Template
+## File Roles
 
-Most notes will follow a structure similar to this:
-
-```md
-# Topic Name
-
-## TL;DR
-
-Short explanation of the issue.
-
-## What I Practised
-
-Brief summary of the lab or exercise without publishing sensitive answers.
-
-## Key Concept
-
-What the vulnerability is and why it happens.
-
-## What the User Controls
-
-Parameter, path, body, cookie, header, file, URL, or DOM source.
-
-## Where the Input Goes
-
-SQL query, HTML response, DOM sink, filesystem path, backend request, authorization check, etc.
-
-## Impact
-
-Realistic impact without exaggeration.
-
-## Developer Remediation
-
-How to fix or prevent the issue.
-
-## Review Checklist
-
-Questions to ask during code review or testing.
-
-## Main Takeaway
-
-One practical lesson from the topic.
-```
-
-## Repository Structure
-
-This repository is organised by topic, not by file type.
-
-Each topic may contain notes, cheatsheets, lab summaries, remediation notes, and review checklists in one place. This makes it easier to study a topic end-to-end instead of jumping between separate `notes` and `cheatsheets` folders.
-
-The repository contains both English and Polish notes:
-
-- [English notes index](eng/README.md)
-- [Polish notes index](pl/README.md)
-
-Current structure:
-
-- `eng/fundamentals/` - reusable foundations before vulnerability-specific study.
-- `eng/key-web-vulnerabilities/` - the Key Web Vulnerabilities series.
-- `eng/owasp-top-10-2025/` - practical OWASP Top 10 2025 mapping sprint.
-- `pl/` - Polish version following the same structure.
-- `pl/owasp-top-10-2025/` - Polish version of the OWASP Top 10 2025 mapping sprint.
-- `labs/` folders - short summaries of legal training labs.
-- `overview.md` files - concise source-of-truth notes for each topic.
-- `cheat-sheet.md` files - practical review and testing workflows.
-
-The Polish version follows the same high-level structure as the English version.
+- `README.md` - index, topic scope and navigation.
+- `overview.md` - concise source of truth for a topic.
+- `cheat-sheet.md` - practical workflow and checklist.
+- `labs/*.md` - short summaries of legal training labs.
+- `learning-summary.md` or similar - deeper consolidation and personal takeaways.
+- `coverage-matrix.md` - OWASP category coverage and next actions.
+- `security-findings/*.md` - example finding write-ups for practice.
 
 ## Ethics and Scope
 
@@ -218,13 +97,12 @@ All notes and examples in this repository are for learning and professional deve
 
 Practice should be limited to:
 
-- legal labs
-- intentionally vulnerable applications
-- local test environments
-- authorised learning platforms
-- explicitly permitted testing scopes
+- legal labs,
+- intentionally vulnerable applications,
+- local test environments,
+- authorised learning platforms,
+- explicitly permitted testing scopes.
 
-Do not test real systems without permission, clear scope, and safe harbour.
+Do not test real systems without permission, clear scope and safe harbour.
 
-### This repository does not include real target data, credentials, private information, or instructions for testing systems without permission.
-
+This repository does not include real target data, credentials, private information, or instructions for testing systems without permission.
