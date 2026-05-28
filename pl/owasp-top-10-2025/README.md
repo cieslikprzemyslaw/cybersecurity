@@ -29,7 +29,7 @@ Kategoria jest kompletna dopiero wtedy, gdy zawiera:
 | [A01 Broken Access Control](a01-broken-access-control/01-overview.md) | Ukończone po review laba | Zawiera wieloetapowy lab PortSwigger dotyczący access control, checklistę, przykładowe znalezisko i testy regresji. |
 | [A02 Security Misconfiguration](a02-security-misconfiguration/01-overview.md) | Ukończone po dwóch review praktycznych | Zawiera zadanie TryHackMe dotyczące verbose API error disclosure, lab PortSwigger z wystawionym `phpinfo()`, learning notes, checklistę, dwa znaleziska i testy regresji. |
 | [A03 Software Supply Chain Failures](a03-software-supply-chain-failures/01-overview.md) | Ukończone po review paczek i CI/CD | Zawiera review npm package, lifecycle scripts, lockfile/reproducibility, learning notes, checklistę CI/CD, przykładowe znalezisko i testy regresji. |
-| A04: Cryptographic Failures | Planowane | Zadanie praktyczne: sekrety, założenia TLS, przechowywanie danych i obsługa tokenów. |
+| [A04 Cryptographic Failures](a04-cryptographic-failures/01-overview.md) | Ukończone po dwóch labach tokenów uwierzytelniających | Zawiera laby PortSwigger o słabych remember-me cookies, review Base64/MD5, checklistę, learning notes, przykładowe znalezisko i testy regresji. |
 | A05: Injection | Planowane | Istniejące notatki SQLi można zmapować tutaj. |
 | A06: Insecure Design | Planowane | Potrzebne praktyczne ćwiczenie design review. |
 | A07: Authentication Failures | Planowane | Istniejące notatki o authentication bypass i username enumeration można zmapować tutaj. |
