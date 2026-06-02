@@ -30,7 +30,7 @@ A category is complete only when it has:
 | [A02 Security Misconfiguration](a02-security-misconfiguration/01-overview.md) | Completed after two practice reviews | Includes a TryHackMe verbose API error disclosure task, a PortSwigger exposed `phpinfo()` debug page lab, learning notes, checklist, two findings and regression tests. |
 | [A03 Software Supply Chain Failures](a03-software-supply-chain-failures/01-overview.md) | Completed after package and CI/CD review | Includes an npm package review, lifecycle script notes, lockfile/reproducibility review, learning notes, CI/CD checklist, example finding and regression checks. |
 | [A04 Cryptographic Failures](a04-cryptographic-failures/01-overview.md) | Completed after two authentication-token labs | Includes PortSwigger weak remember-me cookie labs, Base64/MD5 token review, checklist, learning notes, example finding and regression tests. |
-| A05: Injection | Planned | Existing SQLi notes can be mapped here. |
+| [A05: Injection](a05-injection/01-overview.md) | Completed after SQLi labs | Includes SQL Injection overview, UNION-based and blind SQLi labs, checklist, learning notes, two findings and regression tests. |
 | A06: Insecure Design | Planned | Practical design-review exercise needed. |
 | A07: Authentication Failures | Planned | Existing authentication bypass and username enumeration notes can be mapped here. |
 | A08: Software or Data Integrity Failures | Planned | Practical review task: unsafe updates, CI/CD trust, package integrity. |
