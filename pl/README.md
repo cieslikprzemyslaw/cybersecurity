@@ -2,15 +2,16 @@
 
 Ten katalog jest polską wersją praktycznej ścieżki nauki Web AppSec.
 
-Najpierw warto przejść przez fundamenty, potem moduły z konkretnymi podatnościami. Mapowanie OWASP Top 10 2025 przydaje się wtedy, gdy chcesz połączyć notatki z szerszym frameworkiem review AppSec.
+Najpierw warto przejść przez fundamenty, potem threat modeling, a nastepnie moduły z konkretnymi podatnościami. Mapowanie OWASP Top 10 2025 przydaje się wtedy, gdy chcesz połączyć notatki z szerszym frameworkiem review AppSec.
 
 ## Zacznij tutaj
 
 | Krok | Obszar | Użyj, gdy chcesz... |
 |---:|---|---|
 | 1 | [Fundamenty Web AppSec](fundamentals/README.md) | zbudować podstawy request/response, auth, Burpa i attack surface. |
-| 2 | [Key Web Vulnerabilities](key-web-vulnerabilities/README.md) | uczyć się po jednej klasie podatności: notatki, checklisty i laby. |
-| 3 | [OWASP Top 10 2025 Mapping Sprint](owasp-top-10-2025/README.md) | zmapować praktykę na kategorie OWASP i format review. |
+| 2 | [Threat Modeling](threat-modeling/README.md) | identyfikowac zagrozenia projektowe, granice zaufania, pomysly na walidacje i mitygacje. |
+| 3 | [Key Web Vulnerabilities](key-web-vulnerabilities/README.md) | uczyć się po jednej klasie podatności: notatki, checklisty i laby. |
+| 4 | [OWASP Top 10 2025 Mapping Sprint](owasp-top-10-2025/README.md) | zmapować praktykę na kategorie OWASP i format review. |
 
 ## Fundamenty Web AppSec
 
@@ -21,6 +22,13 @@ Podstawy przed przejściem do konkretnych podatności:
 | HTTP, request/response i podstawy auth | [Otwórz](fundamentals/01-http-request-response-auth.md) |
 | Burp Suite, Proxy i podstawy Repeatera | [Otwórz](fundamentals/02-burp-suite-proxy-repeater.md) |
 | Content discovery i attack surface | [Otwórz](fundamentals/03-content-discovery-attack-surface.md) |
+
+## Threat Modeling
+
+| Temat | Notatki |
+|---|---|
+| Indeks threat modelingu | [Otwórz](threat-modeling/README.md) |
+| Simple web application threat model | [Otwórz](threat-modeling/simple-web-application-threat-model/README.md) |
 
 ## Key Web Vulnerabilities
 
@@ -57,7 +65,8 @@ Podstawy przed przejściem do konkretnych podatności:
 7. Path Traversal i File Access Bugs.
 8. File Upload Vulnerabilities.
 9. Server-Side Request Forgery.
-10. Mapowanie OWASP Top 10 2025.
+10. Mini-projekt threat modelingu.
+11. Mapowanie OWASP Top 10 2025.
 
 ## Rola plików
 

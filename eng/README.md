@@ -2,15 +2,16 @@
 
 This directory is organised as a practical Web AppSec learning path.
 
-Start with the fundamentals, then work through the key vulnerability topics. Use the OWASP Top 10 2025 mapping when you want to connect the notes to a broader AppSec review framework.
+Start with the fundamentals, then practise threat modeling, then work through the key vulnerability topics. Use the OWASP Top 10 2025 mapping when you want to connect the notes to a broader AppSec review framework.
 
 ## Start Here
 
 | Step | Area | Use this when you want to... |
 |---:|---|---|
 | 1 | [Web AppSec Fundamentals](fundamentals/README.md) | build the request/response, auth, Burp and attack-surface basics. |
-| 2 | [Key Web Vulnerabilities](key-web-vulnerabilities/README.md) | study one vulnerability class at a time with notes, checklists and labs. |
-| 3 | [OWASP Top 10 2025 Mapping Sprint](owasp-top-10-2025/README.md) | map practical learning to OWASP categories and review outputs. |
+| 2 | [Threat Modeling](threat-modeling/README.md) | identify design-level threats, trust boundaries, validation ideas and mitigations. |
+| 3 | [Key Web Vulnerabilities](key-web-vulnerabilities/README.md) | study one vulnerability class at a time with notes, checklists and labs. |
+| 4 | [OWASP Top 10 2025 Mapping Sprint](owasp-top-10-2025/README.md) | map practical learning to OWASP categories and review outputs. |
 
 ## Web AppSec Fundamentals
 
@@ -21,6 +22,13 @@ Foundation notes before vulnerability-specific study:
 | HTTP, requests, responses and auth basics | [Open](fundamentals/01-http-request-response-auth.md) |
 | Burp Suite, Proxy and Repeater basics | [Open](fundamentals/02-burp-suite-proxy-repeater.md) |
 | Content discovery and attack surface | [Open](fundamentals/03-content-discovery-attack-surface.md) |
+
+## Threat Modeling
+
+| Topic | Notes |
+|---|---|
+| Threat modeling index | [Open](threat-modeling/README.md) |
+| Simple web application threat model | [Open](threat-modeling/simple-web-application-threat-model/README.md) |
 
 ## Key Web Vulnerabilities
 
@@ -57,7 +65,8 @@ Foundation notes before vulnerability-specific study:
 7. Path traversal and file access bugs.
 8. File upload vulnerabilities.
 9. Server-side request forgery.
-10. OWASP Top 10 2025 mapping.
+10. Threat modeling mini-project.
+11. OWASP Top 10 2025 mapping.
 
 ## File Role Guide
 

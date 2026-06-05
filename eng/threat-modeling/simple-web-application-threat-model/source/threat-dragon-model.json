@@ -1,0 +1,1222 @@
+{
+  "version": "2.6.2",
+  "summary": {
+    "title": "Simple Web Application Threat Model",
+    "owner": "",
+    "description": "",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [
+      {
+        "id": 0,
+        "title": "Web Application Architecture",
+        "diagramType": "STRIDE",
+        "placeholder": "New STRIDE diagram description",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.6.2",
+        "cells": [
+          {
+            "position": {
+              "x": 566,
+              "y": 239.99999999999932
+            },
+            "size": {
+              "width": 500,
+              "height": 350
+            },
+            "attrs": {
+              "label": {
+                "text": "Server-side boundary"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "zIndex": -1,
+            "id": "9882f2c6-0a16-4b6d-8023-397b488987cd",
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Server-side boundary",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [
+                "87d5961a-5a68-4b38-b846-a63df1deeacd",
+                "db5ca88b-f0a4-48ef-aec8-b7ab14d5bf9e"
+              ],
+              "containedElements": [
+                "8c160c72-75a3-4cb3-b0d8-4d5d6612e542",
+                "ce27127d-530b-488d-a565-960f637457e9"
+              ]
+            }
+          },
+          {
+            "angle": 270,
+            "position": {
+              "x": 79.9999999999988,
+              "y": 165.00000000000023
+            },
+            "size": {
+              "width": 360,
+              "height": 490
+            },
+            "attrs": {
+              "label": {
+                "text": "Client-side boundary"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "zIndex": -1,
+            "id": "2057d37c-af8f-4eb6-9ea0-5852e430a87c",
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Client-side boundary",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [
+                "ec723df7-313a-4d8b-93e8-b11174428e0a",
+                "87d5961a-5a68-4b38-b846-a63df1deeacd",
+                "db5ca88b-f0a4-48ef-aec8-b7ab14d5bf9e"
+              ],
+              "containedElements": [
+                "7c40de81-ebcb-46ea-a3a8-df1380886f1c",
+                "448dfaf2-7959-4aca-aeec-31b99b621999"
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 250,
+              "y": 80
+            },
+            "size": {
+              "width": 112.5,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "User"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 1,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "43d484ca-eec9-47e3-8a89-6c87d3f2eb5a"
+                },
+                {
+                  "group": "right",
+                  "id": "dbd8e115-5f6c-46c9-9133-05fcada679fd"
+                },
+                {
+                  "group": "bottom",
+                  "id": "85f6b1a3-ff89-4baf-9e41-08b8a26e0418"
+                },
+                {
+                  "group": "left",
+                  "id": "fef16d8e-580f-4dcb-9e5d-d438f8393afb"
+                }
+              ]
+            },
+            "id": "f6c27599-2822-4229-81bc-2ec5139245c5",
+            "data": {
+              "type": "tm.Actor",
+              "name": "User",
+              "description": "",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "providesAuthentication": false,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 251.25,
+              "y": 445
+            },
+            "size": {
+              "width": 110,
+              "height": 110
+            },
+            "attrs": {
+              "text": {
+                "text": "React Frontend"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 2,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "3701fcb6-ee1a-4572-aca5-4128f8f8b121"
+                },
+                {
+                  "group": "right",
+                  "id": "c96a1b14-10cc-4094-8e40-6cc53e757766"
+                },
+                {
+                  "group": "bottom",
+                  "id": "8342d315-da55-4066-b9ed-5e396fc75d1c"
+                },
+                {
+                  "group": "left",
+                  "id": "96fa19a8-6163-4ad4-8920-28d88ebabffe"
+                }
+              ]
+            },
+            "id": "7c40de81-ebcb-46ea-a3a8-df1380886f1c",
+            "data": {
+              "type": "tm.Process",
+              "name": "React Frontend",
+              "description": "Validation:\nUse SAST and code review to identify console.log(), console.info(), console.debug(), and other debug statements that may expose tokens, personal data, API responses, internal identifiers, or implementation details.\n\nUse DAST as a supporting check by reviewing the browser console and runtime errors in the production build.\n\nValidation status:\nNot tested. Hypothetical threat model.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "95b69e64-f159-4df2-b9c5-7c89c073f970",
+                  "title": "Sensitive Information Exposed in Browser Console",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "The React application may expose sensitive information through console.log(), console.info(), console.debug(), or unhandled error messages. This may include API responses, tokens, user data, internal identifiers, feature flags, or implementation details.\n",
+                  "mitigation": "Remove debug logging from production builds. Never log tokens, credentials, personal data, or complete API responses. Use a controlled logging utility, environment-based log levels, and review production bundles for debug statements.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 6,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 580,
+              "y": 445
+            },
+            "size": {
+              "width": 130,
+              "height": 110
+            },
+            "attrs": {
+              "text": {
+                "text": "Backend API"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 3,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "3701fcb6-ee1a-4572-aca5-4128f8f8b121"
+                },
+                {
+                  "group": "right",
+                  "id": "c96a1b14-10cc-4094-8e40-6cc53e757766"
+                },
+                {
+                  "group": "bottom",
+                  "id": "8342d315-da55-4066-b9ed-5e396fc75d1c"
+                },
+                {
+                  "group": "left",
+                  "id": "96fa19a8-6163-4ad4-8920-28d88ebabffe"
+                }
+              ]
+            },
+            "id": "8c160c72-75a3-4cb3-b0d8-4d5d6612e542",
+            "data": {
+              "type": "tm.Process",
+              "name": "Backend API",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "d71898d1-5e14-4ba6-b7f8-7c440753bff0",
+                  "title": "Broken Object-Level Authorization",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "The backend may allow a user to access or modify another user's object by changing an object identifier in the request.\n",
+                  "mitigation": "Validation:\nVerify that the backend identifies the authenticated user from a validated session cookie or access token and does not trust a client-supplied userId. Review and test whether every object request checks that the authenticated user has permission to access or modify the requested resource.\n\nTest modified object identifiers while keeping the same authenticated session to confirm that one user cannot access another user's data.\n\nMitigation:\nVerify object ownership and permissions on every request. Do not rely on hidden frontend controls or client-supplied user identifiers.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 2,
+                  "score": ""
+                },
+                {
+                  "id": "2192519a-486a-43b2-8017-5b96a8910aae",
+                  "title": "Missing Audit Logging",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "Sensitive actions may not be recorded with enough information to determine who performed them and when.\n",
+                  "mitigation": "Validation:\nReview whether sensitive backend operations create structured audit events containing the authenticated user ID, action performed, target resource, timestamp, request or correlation ID, outcome, source IP where appropriate, and relevant application context.\n\nVerify that audit logs cannot be modified by ordinary users and that security-relevant events can be searched and traced across related requests.\n\nValidation status:\nNot tested. Hypothetical threat model.\n\nMitigation:\nCreate structured audit logs for security-sensitive operations. Record who performed the action, what action was attempted, which resource was affected, when it occurred, and whether it succeeded or failed.\n\nInclude useful context such as:\n\nauthenticated user ID,\ntimestamp in UTC,\naction and target resource,\nrequest or correlation ID,\nsuccess or failure result,\nsource IP where reliable,\nuser agent where useful.\n\nDo not log passwords, full session tokens, access tokens, sensitive personal data, payment details, or complete request bodies by default. Protect logs from tampering and define retention and access-control rules.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 2,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 2
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 927,
+              "y": 470
+            },
+            "size": {
+              "width": 120,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Database"
+              },
+              "topLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 4,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "e7362a38-1d93-461e-9e50-f39869f87e5a"
+                },
+                {
+                  "group": "right",
+                  "id": "1849f6b2-d7d2-4415-afe4-2fed16687be2"
+                },
+                {
+                  "group": "bottom",
+                  "id": "dbcf43f1-3a16-41df-9cb0-d66ebf768ef5"
+                },
+                {
+                  "group": "left",
+                  "id": "773f278d-ada7-4c39-9243-ab243a40d6a0"
+                }
+              ]
+            },
+            "id": "ce27127d-530b-488d-a565-960f637457e9",
+            "data": {
+              "type": "tm.Store",
+              "name": "Database",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isALog": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 271.25,
+              "y": 240
+            },
+            "size": {
+              "width": 70,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Browser"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 5,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "3701fcb6-ee1a-4572-aca5-4128f8f8b121"
+                },
+                {
+                  "group": "right",
+                  "id": "c96a1b14-10cc-4094-8e40-6cc53e757766"
+                },
+                {
+                  "group": "bottom",
+                  "id": "8342d315-da55-4066-b9ed-5e396fc75d1c"
+                },
+                {
+                  "group": "left",
+                  "id": "96fa19a8-6163-4ad4-8920-28d88ebabffe"
+                }
+              ]
+            },
+            "id": "448dfaf2-7959-4aca-aeec-31b99b621999",
+            "data": {
+              "type": "tm.Process",
+              "name": "Browser",
+              "description": "An attacker who steals a session cookie or access token may impersonate a legitimate user.\n\nValidation:\nVerify that session cookies use the Secure, HttpOnly and appropriate SameSite attributes. Check that tokens are not stored in localStorage unless there is a justified design reason, sessions expire correctly, and logout invalidates the active session.\n\nValidation status:\nNot tested. Hypothetical threat model.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "f639ab3f-2570-4d10-b4a8-01efb024209f",
+                  "title": "Session or Token Theft",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "An attacker who steals a session cookie or access token may impersonate a legitimate user.\n",
+                  "mitigation": "Use Secure, HttpOnly and appropriate SameSite cookie settings. Protect against XSS, rotate tokens, expire sessions and invalidate compromised sessions.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 3,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "User interaction",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": [
+                "2057d37c-af8f-4eb6-9ea0-5852e430a87c"
+              ]
+            },
+            "labels": [
+              "User interaction"
+            ],
+            "id": "ec723df7-313a-4d8b-93e8-b11174428e0a",
+            "source": {
+              "cell": "f6c27599-2822-4229-81bc-2ec5139245c5",
+              "port": "85f6b1a3-ff89-4baf-9e41-08b8a26e0418"
+            },
+            "target": {
+              "cell": "448dfaf2-7959-4aca-aeec-31b99b621999",
+              "port": "3701fcb6-ee1a-4572-aca5-4128f8f8b121"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Loads and executes application",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "Loads and executes application"
+            ],
+            "id": "f5dfd448-8881-4a41-9b37-dd5936b3f8b3",
+            "source": {
+              "cell": "448dfaf2-7959-4aca-aeec-31b99b621999",
+              "port": "8342d315-da55-4066-b9ed-5e396fc75d1c"
+            },
+            "target": {
+              "cell": "7c40de81-ebcb-46ea-a3a8-df1380886f1c",
+              "port": "3701fcb6-ee1a-4572-aca5-4128f8f8b121"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Renders UI / updates DOM",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "Renders UI / updates DOM"
+            ],
+            "id": "9239f170-8ae1-443e-b8d3-a19f2fc91d1e",
+            "source": {
+              "cell": "7c40de81-ebcb-46ea-a3a8-df1380886f1c",
+              "port": "96fa19a8-6163-4ad4-8920-28d88ebabffe"
+            },
+            "target": {
+              "cell": "448dfaf2-7959-4aca-aeec-31b99b621999",
+              "port": "96fa19a8-6163-4ad4-8920-28d88ebabffe"
+            },
+            "vertices": [
+              {
+                "x": 120,
+                "y": 450
+              },
+              {
+                "x": 140,
+                "y": 300
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "API responses",
+              "description": "Validation:\nReview API responses and compare returned fields with what the React application actually uses. Check whether the API exposes unnecessary personal data, internal identifiers, roles, permissions, security-related fields, or records belonging to other users.\n\nValidation status:\nNot tested. Hypothetical threat model.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "b74afb67-c814-493a-a489-88a039bd1693",
+                  "title": "Excessive Data Returned by API",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "The API may return fields or records that the current user does not need or is not authorised to access.\n",
+                  "mitigation": "Return only required fields, enforce server-side authorisation and use response schemas or DTOs to prevent accidental data exposure.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 4,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "9882f2c6-0a16-4b6d-8023-397b488987cd",
+                "2057d37c-af8f-4eb6-9ea0-5852e430a87c"
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "API responses"
+            ],
+            "id": "87d5961a-5a68-4b38-b846-a63df1deeacd",
+            "source": {
+              "cell": "8c160c72-75a3-4cb3-b0d8-4d5d6612e542",
+              "port": "3701fcb6-ee1a-4572-aca5-4128f8f8b121"
+            },
+            "target": {
+              "cell": "7c40de81-ebcb-46ea-a3a8-df1380886f1c",
+              "port": "3701fcb6-ee1a-4572-aca5-4128f8f8b121"
+            },
+            "vertices": [
+              {
+                "x": 520,
+                "y": 420
+              },
+              {
+                "x": 400,
+                "y": 420
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "HTTPS API requests",
+              "description": "Validation:\nReview whether the backend independently identifies the authenticated user, verifies their permissions, validates all client-controlled values, and returns only the data and actions they are authorised to access. Test modified requests to confirm that changing userId, role, price, or object identifiers does not bypass server-side controls.\n\nValidation status:\nNot tested. Hypothetical threat model.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "996d7306-b05a-4de8-b11e-aa27896880aa",
+                  "title": "Modified API Request",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "A user can modify frontend-generated API requests before they reach the backend, including values such as userId, role, price or object identifiers.",
+                  "mitigation": "Apply a zero-trust approach to all frontend input. Treat every request field as attacker-controlled. Enforce authentication, authorisation, input validation, ownership checks, and business rules on the backend. Return only the data required for the authenticated user and requested operation.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 1,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "9882f2c6-0a16-4b6d-8023-397b488987cd",
+                "2057d37c-af8f-4eb6-9ea0-5852e430a87c"
+              ],
+              "threatFrequency": {
+                "tampering": 2,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "HTTPS API requests"
+            ],
+            "id": "db5ca88b-f0a4-48ef-aec8-b7ab14d5bf9e",
+            "source": {
+              "cell": "7c40de81-ebcb-46ea-a3a8-df1380886f1c",
+              "port": "c96a1b14-10cc-4094-8e40-6cc53e757766"
+            },
+            "target": {
+              "cell": "8c160c72-75a3-4cb3-b0d8-4d5d6612e542",
+              "port": "96fa19a8-6163-4ad4-8920-28d88ebabffe"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Database queries",
+              "description": "Validation:\nReview the backend data-access code and verify that:\n\nuntrusted input is never concatenated into query strings,\nprepared statements or parameterised queries are used consistently,\nORM raw query usage is identified and reviewed,\ninputs with a limited set of valid values use strict allowlists,\ndatabase accounts follow least privilege,\nSQL or database error details are not exposed to users.\n\nUse SAST and manual code review to identify unsafe query construction. Where authorised, test relevant endpoints with controlled injection payloads and compare application responses.\n\nValidation status:\nNot tested. Hypothetical threat model.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "c177fc5e-42c8-495f-b194-c3951922fa18",
+                  "title": "Injection in Database Query",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "User-controlled input may be included in database queries without safe parameterisation or strict query construction. This could allow an attacker to alter query logic, access unauthorised data, modify records, bypass authentication, or trigger database errors.\n",
+                  "mitigation": "Use parameterised queries or prepared statements. For NoSQL databases, enforce strict input types and schemas, reject operator-shaped input, and avoid passing user-controlled objects directly into query filters. Apply least-privilege permissions to the database account.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 7,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "Database queries"
+            ],
+            "id": "84d3024d-cd5c-455e-b968-7363390ba545",
+            "source": {
+              "cell": "8c160c72-75a3-4cb3-b0d8-4d5d6612e542",
+              "port": "c96a1b14-10cc-4094-8e40-6cc53e757766"
+            },
+            "target": {
+              "cell": "ce27127d-530b-488d-a565-960f637457e9",
+              "port": "773f278d-ada7-4c39-9243-ab243a40d6a0"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Query results",
+              "description": "Validation:\nreview selected fields and query scope,\ncheck whether raw database objects are returned,\nverify authorisation before data retrieval,\ncompare returned data with what the API/frontend actually needs.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "818d3fda-5a78-4360-9afc-61c9a9a7ccb1",
+                  "title": "Sensitive Data Returned from Database",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "Database queries may return more records or fields than the current user is authorised to access.\n",
+                  "mitigation": "Enforce authorisation before and after data retrieval, limit selected fields, use scoped queries, and avoid returning raw database objects directly to the client.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 8,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "Query results"
+            ],
+            "id": "fe0359de-c431-4ed9-bd8d-d2b8d8dce58b",
+            "source": {
+              "cell": "ce27127d-530b-488d-a565-960f637457e9",
+              "port": "e7362a38-1d93-461e-9e50-f39869f87e5a"
+            },
+            "target": {
+              "cell": "8c160c72-75a3-4cb3-b0d8-4d5d6612e542",
+              "port": "3701fcb6-ee1a-4572-aca5-4128f8f8b121"
+            },
+            "vertices": [
+              {
+                "x": 880,
+                "y": 410
+              },
+              {
+                "x": 750,
+                "y": 410
+              }
+            ]
+          }
+        ],
+        "description": "Data flow between the user, React frontend, backend API and database."
+      }
+    ],
+    "diagramTop": 3,
+    "reviewer": "",
+    "threatTop": 8
+  }
+}
