@@ -1,25 +1,51 @@
 # A05: Injection - Laby i praktyka
 
-Ta kategoria używa obecnie SQL Injection jako praktycznego przykładu A05.
+Ta kategoria zawiera obecnie praktykę dla SQL Injection i NoSQL Injection.
 
 ## Ukończone laby SQL Injection
 
 - [UNION-based SQL Injection - retrieving data from other tables](sql-injection/labs/01-union-retrieve-data-from-other-tables.md)
 - [Blind SQL Injection with conditional responses](sql-injection/labs/02-blind-conditional-responses.md)
 
+## Ukończona praktyka NoSQL Injection
+
+### TryHackMe
+
+- NoSQL Injection room
+- podstawy dokumentów i kolekcji MongoDB,
+- filtry zapytań MongoDB i zagnieżdżone operatory,
+- obejście uwierzytelniania przez Operator Injection,
+- ekstrakcja true/false przy użyciu `$regex`,
+- świadomość Syntax Injection w custom JavaScript-style queries.
+
+### PortSwigger Web Security Academy
+
+- [Detecting NoSQL injection](nosql-injection/labs/01-detecting-nosql-injection.md)
+- [Exploiting NoSQL injection to extract data](nosql-injection/labs/02-extracting-data-with-a-boolean-oracle.md)
+- [Porównanie labów NoSQL](nosql-injection/labs/summary.md)
+
 ## Pokrycie praktyczne
 
 Ukończona praktyka obejmuje:
 
-- identyfikowanie danych kontrolowanych przez użytkownika, które trafiają do zapytania SQL,
-- rozpoznawanie widocznych dowodów SQLi w odpowiedziach HTTP,
-- używanie `UNION SELECT` do potwierdzenia ekspozycji danych w legalnym labie,
-- używanie różnic w odpowiedzi do rozumowania o blind SQLi,
-- przekładanie dowodów z laba na język security findingu,
-- definiowanie remediacji i testów regresji.
+- identyfikowanie danych kontrolowanych przez użytkownika, które trafiają do zapytania bazy,
+- odróżnianie prostej wartości od zagnieżdżonego obiektu, operatora lub wyrażenia,
+- rozpoznawanie dowodów injection w odpowiedziach HTTP,
+- używanie baseline'u przed interpretacją błędów lub zmian odpowiedzi,
+- porównywanie warunków true i false,
+- używanie zachowania odpowiedzi jako boolean oracle,
+- ustalanie długości sekretu,
+- ekstrakcję znaków sekretu po jednej pozycji,
+- używanie Burp Intruder dopiero po ręcznym potwierdzeniu oracle,
+- przekładanie dowodów technicznych na remediację i testy regresji.
 
 ## Aktualne ograniczenia
 
-Ten katalog A05 nie zawiera jeszcze osobnej praktyki dla NoSQL Injection, OS Command Injection, SSTI, prompt injection ani innych klas injection zależnych od konkretnego interpretera.
+Ten katalog A05 nie zawiera jeszcze ukończonych modułów praktycznych dla:
 
-Te tematy powinny zostać dodane jako osobne moduły po wykonaniu praktycznych labów lub zadań review.
+- OS Command Injection,
+- Server-Side Template Injection,
+- AI Prompt Injection,
+- mapowania XSS pod A05.
+
+Te tematy powinny zostać dodane dopiero po ukończeniu odpowiedniej nauki i praktyki.

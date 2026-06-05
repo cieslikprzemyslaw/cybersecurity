@@ -1,64 +1,112 @@
 # A05: Injection - Learning Notes
 
-## Czego nauczyłem się do tej pory
+## Szerszy model mentalny
 
-SQL Injection pomogło mi zrozumieć szerszy model A05 Injection:
+SQL Injection i NoSQL Injection pomogły mi zrozumieć szerszy model A05:
 
 ```text
-input -> interpreter -> zmienione zachowanie
+kontrolowany input -> interpreter/query engine -> zmienione zachowanie
 ```
 
-Najważniejsza lekcja: problemem nie jest sam payload. Problem pojawia się wtedy, gdy aplikacja pozwala, aby dane użytkownika stały się częścią składni SQL.
+Payload nie jest sam w sobie przyczyną źródłową. Podatność istnieje, gdy aplikacja pozwala, aby niezaufany input stał się składnią query, operatorem query albo częścią wykonywalnego wyrażenia.
 
-## Ważne obserwacje SQL Injection
+## Lekcje SQL Injection
 
 - Pojedynczy apostrof może zepsuć zapytanie SQL, gdy input trafia do kontekstu stringa.
-- Komentarz SQL może naprawić zapytanie przez zakomentowanie pozostałej części oryginalnego SQL.
+- Komentarz SQL może naprawić zapytanie przez zakomentowanie pozostałego SQL.
 - `UNION SELECT` wymaga tej samej liczby kolumn co oryginalne zapytanie.
-- `NULL` jest przydatny do testowania liczby kolumn, bo pasuje do wielu typów.
-- `NULL,NULL` potwierdza strukturę, ale samo w sobie nie dowodzi ekstrakcji danych.
-- Test z `'abc','def'` potwierdził, że kolumny tekstowe były widoczne w odpowiedzi HTML.
-- Blind SQLi wymagało innego sposobu myślenia, bo dane nie były zwracane bezpośrednio.
+- `NULL` jest przydatny przy testowaniu liczby kolumn.
+- Blind SQLi wymaga wiarygodnej wyroczni true/false, a nie bezpośrednio wyświetlonych danych.
+
+## Lekcje NoSQL Injection
+
+### NoSQL to nie jeden język zapytań
+
+Różne bazy NoSQL używają różnych modeli danych i systemów query. W MongoDB zapytania często używają obiektów strukturalnych albo tablic asocjacyjnych.
+
+### Wartość może stać się logiką query
+
+Najważniejsze pytanie:
+
+```text
+Czy mój input nadal jest prostą wartością,
+czy stał się zagnieżdżonym obiektem albo operatorem query?
+```
+
+Pole logowania, które powinno zawierać string, może być niebezpieczne, jeśli backend akceptuje strukturę typu:
+
+```php
+['$ne' => 'test']
+```
+
+### Operator Injection i Syntax Injection to różne problemy
+
+Operator Injection zmienia query przez strukturalne operatory, takie jak `$ne`, `$nin` albo `$regex`.
+
+Syntax Injection wychodzi z wyrażenia query i dodaje nową składnię. W MongoDB jest to zwykle rzadsze i może dotyczyć custom JavaScript-style query logic, na przykład `$where`.
+
+### Background endpoints mają znaczenie
+
+W labie z ekstrakcją danych widoczna strona była:
+
+```text
+/my-account?id=wiener
+```
+
+Podatny request danych był requestem w tle:
+
+```text
+/user/lookup?user=wiener
+```
+
+To utrwaliło, że w AppSec trzeba sprawdzać HTTP history, fetch/XHR traffic i API calls, a nie tylko pasek adresu.
+
+### Blind extraction to problem oracle
+
+Endpoint nie zwracał hasła bezpośrednio. Ujawniał, czy zdanie o haśle jest prawdziwe.
+
+Przykładowe pytania koncepcyjne:
+
+```text
+Czy hasło administratora ma długość 8?
+Czy znak na indeksie 0 to a?
+Czy znak na indeksie 1 to b?
+```
+
+Jedna odpowiedź oznaczała true, inna false.
 
 ## Lekcja o encodingu
 
-W jednym zadaniu THM zakodowany payload pojawił się w wygenerowanym zapytaniu SQL jako literalny tekst, na przykład `%20`, `%27` albo `%7C`. To oznaczało, że payload nie został zdekodowany na oczekiwanej warstwie i był potraktowany jako tekst, a nie składnia SQL.
+Raw payloady i encoded payloady nie są wymienne.
 
-Ważna lekcja:
-
-```text
-Raw payload w UI, jeśli frontend koduje input.
-Zakodowany payload w bezpośrednim URL albo Burp Repeater.
-```
-
-## Lekcja blind SQLi
-
-Blind SQL Injection polega na zbudowaniu wiarygodnej wyroczni true/false.
-
-W labie PortSwigger:
-
-```text
-Welcome back = TRUE
-Brak Welcome back = FALSE
-```
-
-To pozwoliło potwierdzić tabelę users, potwierdzić użytkownika administrator, ustalić długość hasła i wyciągnąć hasło znak po znaku.
+- Raw payload może być właściwy w UI, które samo wykonuje encoding.
+- Encoded characters są potrzebne przy bezpośredniej edycji request target.
+- `&` jest szczególnie ważne, bo niezakodowany ampersand może rozdzielić parametry.
+- Podwójny albo błędny encoding może zamienić zamierzoną składnię w literalny tekst.
 
 ## Błędy i korekty
 
-- Na początku zapomniałem, że komentarze SQL są ważne po zepsuciu zapytania apostrofem.
-- Początkowo pomyliłem precyzyjną terminologię interpretera. W SQL Injection właściwym interpreterem jest baza danych / silnik SQL, a nie obiekt połączenia PHP.
+- Najpierw testowałem endpoint `/login`, bo cel dotyczył hasła administratora. Podatna funkcja w labie nie była requestem logowania.
+- Potem testowałem `/my-account?id=...`, ale ta trasa zwracała redirecty i nie była faktycznym user lookup.
+- Prawdziwy request `/user/lookup` znalazłem w Burp HTTP history.
+- Początkowo próbowałem umieścić regex string w wyrażeniu bez zastosowania go do `this.password`.
+- Próbowałem tworzyć osobny parametr query `password`, ale podatny endpoint używał tylko wyrażenia w `user`.
+- Miałem request z błędnym i powtarzanym encodingiem, na przykład sekwencjami `%u...`.
+- Nauczyłem się, że `this.password[0]` indeksuje pierwszy znak stringa JavaScript; hasło nie musi być tablicą.
+- Nauczyłem się, dlaczego Cluster Bomb pasował do każdej kombinacji pozycji hasła i litery, a Pitchfork parowałby payloady zamiast testować pełny zestaw kombinacji.
 
 ## Aktualne rozumienie
 
-Na moim obecnym poziomie AppSec powinienem umieć wyjaśnić:
+Powinienem umieć wyjaśnić:
 
 - jaki input kontroluję,
-- gdzie jest przetwarzany,
-- jakie dowody potwierdzają SQLi,
-- jaki jest realny wpływ,
-- jak developer powinien to naprawić.
+- który endpoint naprawdę go przetwarza,
+- czy input jest wartością, obiektem, operatorem albo składnią,
+- jaki parser albo query engine go przetwarza,
+- jaki dowód pokazuje, że query się zmieniło,
+- jak oracle może ujawniać dane bez bezpośredniego wyświetlania,
+- jaka jest przyczyna źródłowa,
+- jak developer powinien to naprawić,
+- jakie testy regresji powinny zapobiec powrotowi problemu.
 
-Nie muszę pamiętać każdego zaawansowanego payloadu SQLi dla każdej bazy, ale powinienem rozumieć mechanizm, impact i remediację.
-
-Szczegółowe porównanie labów SQLi trzymam w [sql-injection/learning-summary.md](sql-injection/learning-summary.md), żeby ten plik pozostał skupiony na szerszym modelu A05.
+Nie muszę pamiętać każdego operatora albo payloadu. Muszę rozumieć struktury danych, budowę query, dowody, impact i remediację.

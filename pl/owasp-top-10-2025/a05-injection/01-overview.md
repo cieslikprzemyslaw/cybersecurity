@@ -24,11 +24,16 @@ Przykłady interpreterów lub silników przetwarzających:
 - przeglądarka / silnik JavaScript,
 - system LLM lub agent wykonujący instrukcje.
 
-## Aktualny przykład praktyczny
+## Aktualne przykłady praktyczne
 
-SQL Injection jest pierwszym ukończonym modułem praktycznym w tej kategorii.
+SQL Injection i NoSQL Injection są ukończonymi modułami praktycznymi w tej kategorii.
 
-Szczegółowe notatki SQLi znajdują się w [sql-injection/](sql-injection/README.md). Ten overview zostaje przy szerszym modelu A05, zamiast powtarzać payloady i szczegóły labów.
+Szczegółowe notatki znajdują się w:
+
+- [SQL Injection](sql-injection/README.md)
+- [NoSQL Injection](nosql-injection/README.md)
+
+Ten overview zostaje przy szerszym modelu A05, zamiast powtarzać payloady i szczegóły labów zależne od konkretnej bazy.
 
 ## Ważne rozróżnienie AppSec
 
@@ -44,4 +49,4 @@ Injection to nie tylko znalezienie działającego payloadu. W AppSec ważne są 
 
 ## Aktualny zakres
 
-Ta sekcja zawiera obecnie ukończone notatki dla SQL Injection. Inne tematy A05 zostaną dodane po ich przećwiczeniu i opisaniu.
+Ta sekcja zawiera obecnie ukończone notatki dla SQL Injection i NoSQL Injection. Inne tematy A05 zostaną dodane po ich przećwiczeniu i opisaniu.
