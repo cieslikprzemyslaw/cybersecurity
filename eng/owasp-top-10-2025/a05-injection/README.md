@@ -1,61 +1,49 @@
 # A05: Injection
 
-This folder contains my learning notes for **OWASP Top 10 2025 - A05: Injection**.
+This folder contains my learning notes for OWASP Top 10 2025 - A05: Injection.
 
-The main mental model for this category is:
+## Start Here
 
-```text
-Untrusted input reaches an interpreter and changes the meaning of a query, command, template, expression, prompt, or backend operation.
-```
+- [Overview](01-overview.md)
+- [Labs and practice](02-labs-or-practice.md)
+- [Checklist](03-checklist.md)
+- [Regression test ideas](04-regression-tests.md)
+- [Learning notes](05-learning-notes.md)
 
-For this section, I started with SQL Injection because it is one of the clearest examples of this model:
+## Topic Scope
 
-```text
-user input -> SQL query -> database interpreter -> changed query behaviour
-```
+This section currently covers:
 
-## Completed so far
+- [SQL Injection](sql-injection/README.md)
+- [NoSQL Injection](nosql-injection/README.md)
 
-- SQL Injection theory
-- SQL Injection types
-- UNION-based SQL Injection lab
-- Boolean-based blind SQL Injection lab
-- SQLi filter bypass and encoding notes
-- Out-of-band SQL Injection awareness notes
-- SQL Injection security finding examples
+Future A05 topics such as OS Command Injection, Server-Side Template Injection, AI Prompt Injection, and XSS mapping should be added as separate modules after the relevant theory, labs, review, and debrief are completed.
 
-## Current structure
+## Direct Lab Links
 
-```text
-a05-injection/
-  README.md
-  01-overview.md
-  02-labs-or-practice.md
-  03-checklist.md
-  04-regression-tests.md
-  05-learning-notes.md
+SQL Injection:
 
-  sql-injection/
-    README.md
-    01-overview.md
-    02-types-of-sqli.md
-    03-in-band-sqli.md
-    04-union-based-sqli.md
-    05-blind-sqli.md
-    06-out-of-band-sqli.md
-    07-filter-bypass-and-encoding.md
-    08-remediation.md
-    cheat-sheet.md
-    regression-tests.md
-    learning-summary.md
+- [UNION-based SQL Injection - retrieving data from other tables](sql-injection/labs/01-union-retrieve-data-from-other-tables.md)
+- [Blind SQL Injection with conditional responses](sql-injection/labs/02-blind-conditional-responses.md)
 
-    labs/
-      01-union-retrieve-data-from-other-tables.md
-      02-blind-conditional-responses.md
+NoSQL Injection:
 
-  security-findings/
-    01-example-finding-union-based-sqli.md
-    02-example-finding-blind-sqli.md
-```
+- [Detecting NoSQL injection](nosql-injection/labs/01-detecting-nosql-injection.md)
+- [Exploiting NoSQL injection to extract data](nosql-injection/labs/02-extracting-data-with-a-boolean-oracle.md)
+- [NoSQL lab comparison](nosql-injection/labs/summary.md)
 
-Future A05 topics such as NoSQL Injection, OS Command Injection, SSTI, AI Prompt Injection, and XSS mapping will be added later as separate sections after I complete the relevant learning and labs.
+## File Roles
+
+- `01-overview.md` explains the wider injection model and common root causes.
+- `02-labs-or-practice.md` records completed legal practice and current limits.
+- `03-checklist.md` is a practical review and testing checklist.
+- `04-regression-tests.md` collects fix-verification ideas.
+- `05-learning-notes.md` captures personal lessons and corrections.
+- `security-findings/` contains example report write-ups based on authorised labs.
+
+## Example Findings
+
+- [UNION-based SQL Injection in category filter](security-findings/01-example-finding-union-based-sqli.md)
+- [Boolean-based blind SQL Injection in TrackingId cookie](security-findings/02-example-finding-blind-sqli.md)
+- [NoSQL Syntax Injection in product filter](security-findings/03-example-finding-nosql-syntax-injection-detection.md)
+- [NoSQL Syntax Injection allowing blind credential extraction](security-findings/04-example-finding-nosql-blind-extraction.md)

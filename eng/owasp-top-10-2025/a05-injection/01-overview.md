@@ -24,11 +24,16 @@ Examples of interpreters or processing engines include:
 - browser / JavaScript engine
 - LLM or agent instruction-following system
 
-## Current practical example
+## Current practical examples
 
-SQL Injection is the first completed practical module in this category.
+SQL Injection and NoSQL Injection are the completed practical modules in this category.
 
-The detailed SQLi notes live in [sql-injection/](sql-injection/README.md). This overview keeps the wider A05 model separate from SQL-specific payloads and lab details.
+The detailed notes live in:
+
+- [SQL Injection](sql-injection/README.md)
+- [NoSQL Injection](nosql-injection/README.md)
+
+This overview keeps the wider A05 model separate from database-specific payloads and lab details.
 
 ## Key AppSec distinction
 
@@ -44,4 +49,4 @@ Injection is not only about finding a working payload. For AppSec, the important
 
 ## Current focus
 
-This section currently contains completed notes for SQL Injection only. Other A05 injection topics will be added after they are studied and tested.
+This section currently contains completed notes for SQL Injection and NoSQL Injection. Other A05 injection topics will be added after they are studied and tested.
