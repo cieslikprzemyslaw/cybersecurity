@@ -55,16 +55,63 @@ Używaj tej checklisty podczas nauki, code review albo autoryzowanych testów.
 - Czy podatny request widać dopiero w Burp HTTP history albo DevTools?
 - Czy redirecty ukrywają endpoint, który faktycznie przetwarza dane?
 
+## Kontrole OS Command Injection
+
+### Data flow i kontekst wykonania
+
+- Który parametr requestu, pole body, nagłówek, cookie, nazwa pliku albo route value jest kontrolowany przez użytkownika?
+- Dokąd trafia ta wartość po sparsowaniu HTTP requestu?
+- Czy dociera do API uruchamiania procesów?
+- Czy executable jest stały po stronie serwera, czy klient może na niego wpływać?
+- Czy pełna komenda jest budowana jako jeden sklejony string?
+- Czy shell albo command interpreter jest wywoływany jawnie?
+- Czy kod używa `shell: true`, `sh -c`, `bash -c`, `cmd /c` albo PowerShella do interpretacji stringa?
+- Czy komenda i argumenty są przekazywane osobno?
+- Czy użytkownik może wprowadzić dodatkowe flagi, nawet bez udziału shella?
+- Czy można użyć separatora końca opcji `--`, jeśli wspiera go wywoływany program?
+
+### Dowody i kontrolowane testowanie
+
+- Jaki jest normalny request i normalny czas odpowiedzi?
+- Czy nieszkodliwy marker pojawia się bezpośrednio w odpowiedzi?
+- Czy kontrolowane opóźnienie powtarza się i skaluje z wybraną wartością?
+- Czy test tworzy przewidywalny plik albo inny niedestrukcyjny side effect?
+- Czy aplikacja może wykonać kontrolowany outbound request w autoryzowanym labie OAST?
+- Czy zmiana statusu odpowiedzi jest tylko błędem aplikacji, czy istnieje niezależny dowód wykonania?
+- Czy założenia o systemie operacyjnym wynikają z dowodów, czy tylko z zachowania payloadu?
+
+### Kontekst komendy
+
+- Czy kontrolowana wartość znajduje się w pojedynczych albo podwójnych cudzysłowach?
+- Czy input jest wstawiany przed czy po stałych argumentach?
+- Czy separator po wstrzykniętej komendzie izoluje ją od dalszego stałego tekstu?
+- Czy niezakodowany `&` rozdzieli parametry formularza albo query, zanim backend otrzyma zamierzoną wartość?
+- Czy input jest dekodowany raz czy więcej razy przed wykonaniem?
+- Czy shell interpretuje nowe linie, pipe'y, operatory warunkowe, substitutions albo redirection?
+
+### Direct i blind behaviour
+
+- Czy output komendy wraca w tej samej odpowiedzi HTTP?
+- Jeśli output jest ukryty, czy timing daje powtarzalny dowód?
+- Czy stdout można przekierować do zapisywalnej i web-readable lokalizacji w labie?
+- Czy dostępna jest interakcja zewnętrzna dla outputu asynchronicznego albo niedostępnego przez HTTP?
+- Czy obserwowany side effect pochodzi z wstrzykniętej komendy, a nie z normalnego zachowania aplikacji?
+
 ## Dowody, których szukam
 
 - komunikaty błędów bazy albo interpretera,
-- HTTP 500 albo kontrolowany błąd po syntax-sensitive input,
+- HTTP `500` albo kontrolowany błąd po syntax-sensitive input,
 - różne body odpowiedzi dla warunku true i false,
 - lookup zwracający innego użytkownika,
 - dodatkowe produkty albo rekordy w odpowiedzi,
 - różnica długości odpowiedzi albo marker w treści,
 - potwierdzona długość sekretu przez powtarzalne warunki,
-- jeden poprawny znak dla każdej pozycji sekretu.
+- jeden poprawny znak dla każdej pozycji sekretu,
+- output komendy bezpośrednio w odpowiedzi HTTP,
+- powtarzalne i proporcjonalne opóźnienie odpowiedzi,
+- przewidywalny plik utworzony przez output redirection,
+- autoryzowana interakcja DNS albo HTTP outbound,
+- zmiany procesu, filesystemu albo stanu aplikacji, które nie należą do zamierzonej funkcji.
 
 ## Kontrole bezpiecznej implementacji
 
@@ -77,9 +124,17 @@ Używaj tej checklisty podczas nauki, code review albo autoryzowanych testów.
 - Zagnieżdżone obiekty i input w kształcie operatorów są odrzucane tam, gdzie nie są wymagane.
 - Dane użytkownika nie są wstawiane do `$where` ani custom JavaScript.
 - Hasła są weryfikowane przez porównanie z hashem, a nie query z plaintext password.
-- Produkcja nie ujawnia szczegółowych błędów bazy ani interpretera.
-- Rate limiting i monitoring utrudniają automatyczną ekstrakcję.
-- Testy regresji obejmują payloady stringowe i object-shaped payloads.
+- Komendy OS są unikane, jeśli biblioteka języka albo service API może wykonać zadanie.
+- Dane użytkownika nigdy nie są doklejane do stringa komendy shella.
+- Przy koniecznym uruchamianiu procesu używany jest stały executable i osobna lista argumentów.
+- Shell execution jest wyłączone, chyba że istnieje przejrzany i udokumentowany powód.
+- Komendy, flagi i ograniczone argumenty używają ścisłych allowlist.
+- Argument injection jest rozważane także wtedy, gdy metaznaki shella nie są interpretowane.
+- Proces aplikacji działa zgodnie z least privilege.
+- Katalogi zapisywalne są ograniczone, a web root nie jest niepotrzebnie zapisywalny.
+- Process execution ma timeouty, limity outputu i resource controls.
+- Produkcja nie ujawnia szczegółowych błędów bazy, interpretera, procesu ani stack trace.
+- Testy regresji obejmują stringi, obiekty, składnię shella, flagi komend, timing i side effects.
 
 ## Kąt frontend/AppSec
 
@@ -87,9 +142,12 @@ Używaj tej checklisty podczas nauki, code review albo autoryzowanych testów.
 - Nie zakładaj, że hidden fields, cookies albo predefiniowane linki kategorii są zaufane.
 - Nie traktuj GET vs POST jako mechanizmu bezpieczeństwa.
 - Sprawdzaj background API requests, nie tylko pasek adresu.
-- Granicą bezpieczeństwa jest sposób, w jaki backend parsuje input i buduje zapytanie.
+- Frontendowy walidator emaila nie chroni backendowego process-execution sink.
+- URL encoding zmienia reprezentację transportową, nie poziom zaufania.
+- Granicą bezpieczeństwa jest sposób, w jaki backend parsuje input i buduje zapytanie, komendę albo listę argumentów.
 
 Dłuższe checklisty tematyczne:
 
 - [SQL Injection cheat sheet](sql-injection/cheat-sheet.md)
 - [NoSQL Injection cheat sheet](nosql-injection/cheat-sheet.md)
+- [OS Command Injection cheat sheet](os-command-injection/cheatsheet.md)

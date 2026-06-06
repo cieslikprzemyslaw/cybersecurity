@@ -1,6 +1,8 @@
 # A05: Injection - Laby i praktyka
 
-Ta kategoria zawiera obecnie praktykę dla SQL Injection i NoSQL Injection.
+Ta kategoria zawiera obecnie ukończoną praktykę dla SQL Injection, NoSQL Injection i OS Command Injection.
+
+Wszystkie opisane testy praktyczne były wykonywane wyłącznie w TryHackMe, PortSwigger Web Security Academy, lokalnych labach albo innym jawnie autoryzowanym środowisku.
 
 ## Ukończone laby SQL Injection
 
@@ -24,18 +26,38 @@ Ta kategoria zawiera obecnie praktykę dla SQL Injection i NoSQL Injection.
 - [Exploiting NoSQL injection to extract data](nosql-injection/labs/02-extracting-data-with-a-boolean-oracle.md)
 - [Porównanie labów NoSQL](nosql-injection/labs/summary.md)
 
+## Ukończona praktyka OS Command Injection
+
+### TryHackMe
+
+- teoria OS Command Injection,
+- przykład PHP z `exec()` i tytułem piosenki kontrolowanym przez użytkownika,
+- przykład Python Flask z `subprocess.Popen(..., shell=True)`,
+- direct/verbose oraz blind command injection,
+- timing, output redirection i ogólne dowody out-of-band,
+- różnice między komendami Linux i Windows,
+- priorytety defensywne oraz ograniczenia samej sanitizacji.
+
+### PortSwigger Web Security Academy
+
+- [Simple OS command injection](os-command-injection/labs/01-simple-command-injection.md)
+- [Blind OS command injection z output redirection](os-command-injection/labs/02-blind-command-injection-output-redirection.md)
+- [Porównanie labów OS Command Injection](os-command-injection/labs/summary.md)
+
 ## Pokrycie praktyczne
 
 Ukończona praktyka obejmuje:
 
-- identyfikowanie danych kontrolowanych przez użytkownika, które trafiają do zapytania bazy,
-- odróżnianie prostej wartości od zagnieżdżonego obiektu, operatora lub wyrażenia,
-- rozpoznawanie dowodów injection w odpowiedziach HTTP,
+- identyfikowanie danych kontrolowanych przez użytkownika, które trafiają do interpretera albo mechanizmu wykonania,
+- odróżnianie danych od wykonywalnej składni,
+- rozpoznawanie, kiedy backend może budować pełną komendę shella,
+- oddzielanie faktów od założeń o oryginalnej komendzie backendowej,
 - używanie baseline'u przed interpretacją błędów lub zmian odpowiedzi,
-- porównywanie warunków true i false,
-- używanie zachowania odpowiedzi jako boolean oracle,
-- ustalanie długości sekretu,
-- ekstrakcję znaków sekretu po jednej pozycji,
+- używanie outputu komendy jako bezpośredniego dowodu,
+- używanie powtarzalnego i proporcjonalnego timingu jako dowodu blind,
+- używanie side effectu w pliku i osobnego endpointu do odzyskania ukrytego outputu,
+- rozumienie, dlaczego odpowiedź `500` nie dowodzi automatycznie sukcesu ani porażki wykonania,
+- odróżnianie shell injection od argument injection,
 - używanie Burp Intruder dopiero po ręcznym potwierdzeniu oracle,
 - przekładanie dowodów technicznych na remediację i testy regresji.
 
@@ -43,7 +65,6 @@ Ukończona praktyka obejmuje:
 
 Ten katalog A05 nie zawiera jeszcze ukończonych modułów praktycznych dla:
 
-- OS Command Injection,
 - Server-Side Template Injection,
 - AI Prompt Injection,
 - mapowania XSS pod A05.
