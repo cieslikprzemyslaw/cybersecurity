@@ -1,6 +1,8 @@
 # A05: Injection - Labs and Practice
 
-This category currently contains practical work for SQL Injection and NoSQL Injection.
+This category currently contains completed practical work for SQL Injection, NoSQL Injection, and OS Command Injection.
+
+All practical testing documented here was performed only in TryHackMe, PortSwigger Web Security Academy, local labs, or another explicitly authorised environment.
 
 ## Completed SQL Injection labs
 
@@ -24,27 +26,45 @@ This category currently contains practical work for SQL Injection and NoSQL Inje
 - [Exploiting NoSQL injection to extract data](nosql-injection/labs/02-extracting-data-with-a-boolean-oracle.md)
 - [NoSQL lab comparison](nosql-injection/labs/summary.md)
 
+## Completed OS Command Injection practice
+
+### TryHackMe
+
+- OS Command Injection theory
+- PHP `exec()` example using a user-controlled song title
+- Python Flask example using `subprocess.Popen(..., shell=True)`
+- Direct/verbose versus blind command injection
+- Timing, output redirection, and high-level out-of-band evidence
+- Linux and Windows command differences
+- Defensive priorities and the limits of sanitisation
+
+### PortSwigger Web Security Academy
+
+- [Simple OS command injection](os-command-injection/labs/01-simple-command-injection.md)
+- [Blind OS command injection with output redirection](os-command-injection/labs/02-blind-command-injection-output-redirection.md)
+- [OS Command Injection lab comparison](os-command-injection/labs/summary.md)
+
 ## Practice coverage
 
 The completed practice covers:
 
-- identifying user-controlled input that reaches a database query,
-- distinguishing a simple value from a nested query object or operator,
-- recognising visible injection evidence in HTTP responses,
-- using a baseline before interpreting errors or response changes,
-- detecting syntax-sensitive query construction with a single quote,
-- comparing true and false conditions,
-- using response behaviour as a boolean oracle,
-- determining a secret length,
-- extracting secret characters one position at a time,
-- using Burp Intruder only after manually confirming the oracle,
-- translating technical evidence into remediation and regression tests.
+- identifying user-controlled input that reaches an interpreter or execution mechanism,
+- distinguishing data from executable syntax,
+- recognising when a backend may build a full shell command,
+- separating facts from assumptions about the original backend command,
+- establishing a normal baseline before interpreting response changes,
+- using direct command output as evidence,
+- using repeatable and proportional timing as blind evidence,
+- using a file side effect and a separate retrieval endpoint to recover hidden output,
+- understanding why a `500` response does not automatically prove that execution failed,
+- explaining why a closing separator may be required to isolate an injected command,
+- distinguishing shell injection from argument injection,
+- translating lab evidence into root cause, remediation, and regression tests.
 
 ## Current limits
 
 This folder does not yet contain completed practical modules for:
 
-- OS Command Injection,
 - Server-Side Template Injection,
 - AI Prompt Injection,
 - XSS mapping under A05.
