@@ -12,6 +12,7 @@ Start with the fundamentals, then practise threat modeling, then work through th
 | 2 | [Threat Modeling](threat-modeling/README.md) | identify design-level threats, trust boundaries, validation ideas and mitigations. |
 | 3 | [Key Web Vulnerabilities](key-web-vulnerabilities/README.md) | study one vulnerability class at a time with notes, checklists and labs. |
 | 4 | [OWASP Top 10 2025 Mapping Sprint](owasp-top-10-2025/README.md) | map practical learning to OWASP categories and review outputs. |
+| 5 | [OWASP Top 10 for LLM Applications 2025](owasp-top-10-for-llm-applications-2025/README.md) | review Prompt Injection, RAG, agents, tools and LLM application controls. |
 
 ## Web AppSec Fundamentals
 
@@ -54,6 +55,13 @@ Foundation notes before vulnerability-specific study:
 | A03 Software Supply Chain Failures | [Overview](owasp-top-10-2025/a03-software-supply-chain-failures/01-overview.md), [Labs and Practice](owasp-top-10-2025/a03-software-supply-chain-failures/02-labs-or-practice.md), [Checklist](owasp-top-10-2025/a03-software-supply-chain-failures/03-checklist.md), [Regression Tests](owasp-top-10-2025/a03-software-supply-chain-failures/04-regression-tests.md), [Example Finding](owasp-top-10-2025/a03-software-supply-chain-failures/security-findings/01-example-finding.md) |
 | A04 Cryptographic Failures | [Overview](owasp-top-10-2025/a04-cryptographic-failures/01-overview.md), [Labs and Practice](owasp-top-10-2025/a04-cryptographic-failures/02-labs-or-practice.md), [Checklist](owasp-top-10-2025/a04-cryptographic-failures/03-checklist.md), [Regression Tests](owasp-top-10-2025/a04-cryptographic-failures/04-regression-tests.md), [Example Finding](owasp-top-10-2025/a04-cryptographic-failures/security-findings/01-example-finding.md) |
 
+## OWASP Top 10 for LLM Applications 2025
+
+| Resource | Link |
+|---|---|
+| LLM application security index | [Open](owasp-top-10-for-llm-applications-2025/README.md) |
+| LLM01 Prompt Injection | [Open](owasp-top-10-for-llm-applications-2025/llm01-prompt-injection/README.md) |
+
 ## Recommended Reading Order
 
 1. Fundamentals 01-03.
@@ -67,6 +75,7 @@ Foundation notes before vulnerability-specific study:
 9. Server-side request forgery.
 10. Threat modeling mini-project.
 11. OWASP Top 10 2025 mapping.
+12. LLM01 Prompt Injection awareness.
 
 ## File Role Guide
 
