@@ -12,6 +12,7 @@ Najpierw warto przejść przez fundamenty, potem threat modeling, a nastepnie mo
 | 2 | [Threat Modeling](threat-modeling/README.md) | identyfikowac zagrozenia projektowe, granice zaufania, pomysly na walidacje i mitygacje. |
 | 3 | [Key Web Vulnerabilities](key-web-vulnerabilities/README.md) | uczyć się po jednej klasie podatności: notatki, checklisty i laby. |
 | 4 | [OWASP Top 10 2025 Mapping Sprint](owasp-top-10-2025/README.md) | zmapować praktykę na kategorie OWASP i format review. |
+| 5 | [OWASP Top 10 for LLM Applications 2025](owasp-top-10-for-llm-applications-2025/README.md) | przejrzeć Prompt Injection, RAG, agentów, tools i kontrole aplikacji LLM. |
 
 ## Fundamenty Web AppSec
 
@@ -54,6 +55,13 @@ Podstawy przed przejściem do konkretnych podatności:
 | A03 Software Supply Chain Failures | [Overview](owasp-top-10-2025/a03-software-supply-chain-failures/01-overview.md), [Laby i praktyka](owasp-top-10-2025/a03-software-supply-chain-failures/02-labs-or-practice.md), [Checklista](owasp-top-10-2025/a03-software-supply-chain-failures/03-checklist.md), [Testy regresji](owasp-top-10-2025/a03-software-supply-chain-failures/04-regression-tests.md), [Przykładowe znalezisko](owasp-top-10-2025/a03-software-supply-chain-failures/security-findings/01-example-finding.md) |
 | A04 Cryptographic Failures | [Overview](owasp-top-10-2025/a04-cryptographic-failures/01-overview.md), [Laby i praktyka](owasp-top-10-2025/a04-cryptographic-failures/02-labs-or-practice.md), [Checklista](owasp-top-10-2025/a04-cryptographic-failures/03-checklist.md), [Testy regresji](owasp-top-10-2025/a04-cryptographic-failures/04-regression-tests.md), [Przykładowe znalezisko](owasp-top-10-2025/a04-cryptographic-failures/security-findings/01-example-finding.md) |
 
+## OWASP Top 10 for LLM Applications 2025
+
+| Zasób | Link |
+|---|---|
+| Indeks bezpieczeństwa aplikacji LLM | [Otwórz](owasp-top-10-for-llm-applications-2025/README.md) |
+| LLM01 Prompt Injection | [Otwórz](owasp-top-10-for-llm-applications-2025/llm01-prompt-injection/README.md) |
+
 ## Rekomendowana kolejność
 
 1. Fundamenty 01-03.
@@ -67,6 +75,7 @@ Podstawy przed przejściem do konkretnych podatności:
 9. Server-Side Request Forgery.
 10. Mini-projekt threat modelingu.
 11. Mapowanie OWASP Top 10 2025.
+12. LLM01 Prompt Injection awareness.
 
 ## Rola plików
 
