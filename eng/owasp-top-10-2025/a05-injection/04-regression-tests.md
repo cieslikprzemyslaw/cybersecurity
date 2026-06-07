@@ -99,6 +99,60 @@ Regression tests should prove that previously dangerous input is now treated as 
 - Tests cover expected values, boundary values, option-like values, whitespace, encoding, and metacharacters.
 - Logging records denied or failed execution attempts without storing secrets.
 
+## Server-Side Template Injection regression tests
+
+### Template source separation
+
+- User-controlled values are passed to static templates as data only.
+- No request, profile, CMS, imported, or stored user value is compiled as template source.
+- Status or message parameters use server-selected identifiers mapped to fixed messages.
+- Dynamic template compilation APIs are absent or explicitly guarded from user-controlled input.
+
+### Evaluation resistance
+
+- Engine-specific harmless expressions remain literal text, are safely encoded, or are rejected.
+- Responses do not contain calculated expression results from user-controlled template-like input.
+- Malformed template-like input does not expose engine internals, template paths, stack traces, or runtime objects.
+- Stored template-looking text remains data when rendered later by every consumer.
+
+### Side-effect resistance
+
+- Template-like input cannot read, create, modify, or delete files.
+- Template-like input cannot start child processes.
+- Template-like input cannot trigger outbound network interactions.
+- Template-like input cannot access application secrets, environment variables, or database clients.
+
+### Context and sandbox checks
+
+- Templates expose only approved variables, helpers, filters, plugins, and globals.
+- Powerful runtime, filesystem, process, network, database, and service-container objects are not available in template context.
+- User-authored template features, when intentionally supported, enforce sandbox policy, allowlists, quotas, timeouts, and isolation.
+- Template engine and framework security settings are covered by configuration tests.
+
+## XSS regression tests
+
+- The original reflected payload no longer executes.
+- Stored content is safe for all affected roles and pages.
+- DOM-based source-to-sink paths no longer reach unsafe sinks.
+- Normal JSX rendering remains escaped.
+- Sanitised rich text removes dangerous tags, event handlers, and URL schemes.
+- Preview and live CMS rendering use equivalent protections.
+- Related components consuming the same field remain safe.
+- CSP reports do not hide an unfixed rendering vulnerability.
+
+## Prompt Injection awareness regression tests
+
+The full test set belongs under LLM01. A05 keeps a small cross-reference set:
+
+- Direct user input cannot broaden authorization.
+- Policy-style markup is treated as untrusted user content.
+- Retrieved documents cannot change tool permissions.
+- Prompt Injection cannot retrieve data outside current-user access.
+- Tool calls require schema validation and authorization.
+- Dangerous actions still require approval.
+- Model-generated HTML, SQL, or shell content is not trusted by downstream systems.
+- Logs distinguish proposed actions from successful execution.
+
 ## Application behaviour expectations
 
 - Invalid input returns a controlled response, not a raw database, shell, process, or stack-trace error.
@@ -129,3 +183,5 @@ For each injection fix, confirm:
 - automated tests prevent the issue from returning.
 
 For the expanded OS Command Injection test set, see [os-command-injection/regression-tests.md](os-command-injection/regression-tests.md).
+For the expanded SSTI test set, see [server-side-template-injection/regression-tests.md](server-side-template-injection/regression-tests.md).
+For LLM-specific testing, see [LLM01 testing and regression tests](../../owasp-top-10-for-llm-applications-2025/llm01-prompt-injection/12-testing-and-regression-tests.md).

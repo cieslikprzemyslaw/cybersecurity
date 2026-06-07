@@ -17,8 +17,11 @@ This section currently covers:
 - [SQL Injection](sql-injection/README.md)
 - [NoSQL Injection](nosql-injection/README.md)
 - [OS Command Injection](os-command-injection/README.md)
+- [Server-Side Template Injection](server-side-template-injection/README.md)
+- [Cross-Site Scripting mapping](xss-injection-mapping/README.md)
+- [AI Prompt Injection awareness](ai-prompt-injection-awareness/README.md)
 
-Future A05 topics such as Server-Side Template Injection, AI Prompt Injection, and XSS mapping should be added as separate modules only after the relevant theory, labs, review, and debrief are completed.
+Prompt Injection is related to the injection concept, but OWASP documents the full topic separately in the OWASP Top 10 for LLM Applications as LLM01:2025 Prompt Injection. This A05 folder keeps only a short awareness mapping.
 
 ## Direct Lab Links
 
@@ -39,6 +42,31 @@ Future A05 topics such as Server-Side Template Injection, AI Prompt Injection, a
 - [Blind OS command injection with output redirection](os-command-injection/labs/02-blind-command-injection-output-redirection.md)
 - [OS Command Injection lab comparison](os-command-injection/labs/summary.md)
 
+### Server-Side Template Injection
+
+- [Basic server-side template injection using ERB](server-side-template-injection/labs/01-basic-ssti-erb.md)
+- [SSTI practical work comparison](server-side-template-injection/labs/summary.md)
+
+## Related Injection Mappings
+
+### Cross-Site Scripting
+
+Cross-Site Scripting is included in OWASP A05:2025 Injection because attacker-controlled data reaches the browser interpreter and is treated as executable content.
+
+- [XSS Injection Mapping](xss-injection-mapping/README.md)
+- [XSS Testing Cheatsheet](xss-injection-mapping/testing-cheatsheet.md)
+
+### AI Prompt Injection
+
+Prompt Injection is an injection-style risk for LLM applications. Full notes live under:
+
+```text
+eng/owasp-top-10-for-llm-applications-2025/
+  llm01-prompt-injection/
+```
+
+- [AI Prompt Injection Awareness](ai-prompt-injection-awareness/README.md)
+
 ## File Roles
 
 - `01-overview.md` explains the wider injection model and common root causes.
@@ -56,3 +84,4 @@ Future A05 topics such as Server-Side Template Injection, AI Prompt Injection, a
 - [NoSQL Syntax Injection in product filter](security-findings/03-example-finding-nosql-syntax-injection-detection.md)
 - [NoSQL Syntax Injection allowing blind credential extraction](security-findings/04-example-finding-nosql-blind-extraction.md)
 - [Blind OS Command Injection in feedback submission](security-findings/05-example-finding-blind-os-command-injection.md)
+- [Server-Side Template Injection in dynamic message rendering](security-findings/06-example-finding-server-side-template-injection.md)

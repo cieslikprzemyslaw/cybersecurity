@@ -1,6 +1,6 @@
 # A05: Injection - Labs and Practice
 
-This category currently contains completed practical work for SQL Injection, NoSQL Injection, and OS Command Injection.
+This category currently contains completed practical work for SQL Injection, NoSQL Injection, OS Command Injection, and Server-Side Template Injection.
 
 All practical testing documented here was performed only in TryHackMe, PortSwigger Web Security Academy, local labs, or another explicitly authorised environment.
 
@@ -44,6 +44,21 @@ All practical testing documented here was performed only in TryHackMe, PortSwigg
 - [Blind OS command injection with output redirection](os-command-injection/labs/02-blind-command-injection-output-redirection.md)
 - [OS Command Injection lab comparison](os-command-injection/labs/summary.md)
 
+## Completed Server-Side Template Injection practice
+
+### TryHackMe
+
+- SSTI theory and engine-specific practical work
+- Smarty / PHP template evaluation and security policy awareness
+- Pug / Node.js expression evaluation and process API lessons
+- Jinja2 / Python object traversal and subprocess API lessons
+- SSTImap awareness for authorised lab use
+
+### PortSwigger Web Security Academy
+
+- [Basic server-side template injection using ERB](server-side-template-injection/labs/01-basic-ssti-erb.md)
+- [SSTI practical work comparison](server-side-template-injection/labs/summary.md)
+
 ## Practice coverage
 
 The completed practice covers:
@@ -59,13 +74,15 @@ The completed practice covers:
 - understanding why a `500` response does not automatically prove that execution failed,
 - explaining why a closing separator may be required to isolate an injected command,
 - distinguishing shell injection from argument injection,
+- distinguishing reflected text from server-side template evaluation,
+- fingerprinting a template engine with harmless, engine-specific evidence,
+- separating SSTI root cause from deeper impacts such as file access or process execution,
 - translating lab evidence into root cause, remediation, and regression tests.
 
 ## Current limits
 
 This folder does not yet contain completed practical modules for:
 
-- Server-Side Template Injection,
 - AI Prompt Injection,
 - XSS mapping under A05.
 
