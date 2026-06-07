@@ -79,4 +79,6 @@ Walidacja pomaga, ale nie powinna być jedyną granicą między niezaufanym inpu
 
 ## Aktualny zakres
 
-Ta sekcja zawiera obecnie ukończone notatki dla SQL Injection, NoSQL Injection, OS Command Injection i Server-Side Template Injection. Inne tematy A05 zostaną dodane po ich przećwiczeniu, review i debriefie.
+Ta sekcja zawiera obecnie ukończone notatki dla SQL Injection, NoSQL Injection, OS Command Injection i Server-Side Template Injection oraz mapowania A05 dla Cross-Site Scripting i AI Prompt Injection awareness.
+
+Głębsze moduły praktyczne XSS albo LLM-specific powinny zostać dodane dopiero po odpowiedniej nauce, testach, review i debriefie.

@@ -81,9 +81,9 @@ The completed practice covers:
 
 ## Current limits
 
-This folder does not yet contain completed practical modules for:
+This folder contains completed practical modules for SQL Injection, NoSQL Injection, OS Command Injection, and Server-Side Template Injection.
 
-- AI Prompt Injection,
-- XSS mapping under A05.
+Cross-Site Scripting and AI Prompt Injection are present here as A05 mappings and awareness notes, not as newly completed A05 lab modules. Deeper practice should be added only after the relevant learning and practical review are completed:
 
-Those topics should be added only after the relevant learning and practical work are completed.
+- additional reflected, stored, or DOM XSS labs if the A05 mapping needs evidence beyond the existing key-web-vulnerability notes,
+- LLM01-specific labs or application review tasks under `../../owasp-top-10-for-llm-applications-2025/`.

@@ -81,9 +81,9 @@ Ukończona praktyka obejmuje:
 
 ## Aktualne ograniczenia
 
-Ten katalog A05 nie zawiera jeszcze ukończonych modułów praktycznych dla:
+Ten katalog zawiera ukończone moduły praktyczne dla SQL Injection, NoSQL Injection, OS Command Injection i Server-Side Template Injection.
 
-- AI Prompt Injection,
-- mapowania XSS pod A05.
+Cross-Site Scripting i AI Prompt Injection są tutaj obecne jako mapowania A05 oraz notatki awareness, a nie jako nowe ukończone moduły labowe A05. Głębszą praktykę warto dodać dopiero po odpowiedniej nauce i review:
 
-Te tematy powinny zostać dodane dopiero po ukończeniu odpowiedniej nauki i praktyki.
+- dodatkowe laby reflected, stored albo DOM XSS, jeśli mapowanie A05 będzie wymagało dowodów wykraczających poza istniejące notatki key-web-vulnerabilities,
+- laby LLM01 albo zadania app review w `../../owasp-top-10-for-llm-applications-2025/`.

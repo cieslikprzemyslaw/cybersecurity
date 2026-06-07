@@ -80,4 +80,6 @@ Validation is useful, but it should not be the only boundary between untrusted i
 
 ## Current focus
 
-This section currently contains completed notes for SQL Injection, NoSQL Injection, OS Command Injection, and Server-Side Template Injection. Other A05 injection topics will be added only after they are studied, tested, reviewed, and debriefed.
+This section currently contains completed notes for SQL Injection, NoSQL Injection, OS Command Injection, and Server-Side Template Injection, plus A05 mappings for Cross-Site Scripting and AI Prompt Injection awareness.
+
+Deeper XSS or LLM-specific practical modules should be added only after the relevant learning, testing, review, and debrief are completed.
