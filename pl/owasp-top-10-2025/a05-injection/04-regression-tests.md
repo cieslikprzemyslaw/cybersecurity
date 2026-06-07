@@ -99,6 +99,60 @@ Testy regresji powinny potwierdzać, że wcześniej niebezpieczne dane wejściow
 - Testy obejmują wartości oczekiwane, boundary values, wartości wyglądające jak opcje, whitespace, encoding i metaznaki.
 - Logowanie zapisuje odrzucone albo nieudane próby wykonania bez zapisywania sekretów.
 
+## Testy regresji Server-Side Template Injection
+
+### Oddzielenie danych od źródła szablonu
+
+- Wartości kontrolowane przez użytkownika są przekazywane do statycznych szablonów wyłącznie jako dane.
+- Żadna wartość z requestu, profilu, CMS, importu albo zapisanych danych użytkownika nie jest kompilowana jako źródło szablonu.
+- Parametry statusu albo komunikatu używają identyfikatorów wybieranych po stronie serwera i mapowanych na stałe komunikaty.
+- API dynamicznej kompilacji szablonów są nieobecne albo jawnie odcięte od danych kontrolowanych przez użytkownika.
+
+### Odporność na ewaluację
+
+- Nieszkodliwe wyrażenia specyficzne dla template engine pozostają literalnym tekstem, są bezpiecznie zakodowane albo odrzucone.
+- Odpowiedzi nie zawierają obliczonych wyników wyrażeń pochodzących z inputu użytkownika.
+- Niepoprawny input wyglądający jak szablon nie ujawnia internals silnika, ścieżek szablonów, stack trace ani runtime objects.
+- Zapisany tekst wyglądający jak template syntax pozostaje danymi przy każdym późniejszym renderowaniu.
+
+### Odporność na side effects
+
+- Input wyglądający jak template syntax nie może czytać, tworzyć, modyfikować ani usuwać plików.
+- Input wyglądający jak template syntax nie może uruchamiać child processes.
+- Input wyglądający jak template syntax nie może wywoływać outbound network interactions.
+- Input wyglądający jak template syntax nie może uzyskiwać dostępu do sekretów aplikacji, zmiennych środowiskowych ani database clients.
+
+### Context i sandbox
+
+- Szablony wystawiają tylko zatwierdzone zmienne, helpery, filtry, pluginy i globals.
+- Potężne obiekty runtime, filesystem, process, network, database i service container nie są dostępne w template context.
+- Funkcje user-authored templates, jeśli są celowe, egzekwują sandbox policy, allowlisty, quota, timeouty i izolację.
+- Ustawienia bezpieczeństwa template engine i frameworka są objęte testami konfiguracji.
+
+## Testy regresji XSS
+
+- Oryginalny reflected payload nie wykonuje się.
+- Stored content jest bezpieczny dla wszystkich affected roles i pages.
+- DOM-based source-to-sink paths nie trafiają już do unsafe sinks.
+- Normalne JSX rendering pozostaje escaped.
+- Sanitised rich text usuwa dangerous tags, event handlers i URL schemes.
+- Preview i live CMS rendering używają równoważnych ochron.
+- Powiązane komponenty konsumujące to samo pole pozostają bezpieczne.
+- CSP reports nie ukrywają nienaprawionej rendering vulnerability.
+
+## Testy regresji Prompt Injection awareness
+
+Pełny zestaw należy do LLM01. A05 zachowuje mały zestaw cross-reference:
+
+- Direct user input nie może rozszerzyć authorization.
+- Policy-style markup jest traktowany jako untrusted user content.
+- Retrieved documents nie mogą zmienić tool permissions.
+- Prompt Injection nie może pobrać danych spoza current-user access.
+- Tool calls wymagają schema validation i authorization.
+- Dangerous actions nadal wymagają approval.
+- Model-generated HTML, SQL albo shell content nie jest zaufany przez downstream systems.
+- Logi odróżniają proposed actions od successful execution.
+
 ## Oczekiwania wobec zachowania aplikacji
 
 - Niepoprawne dane wejściowe powinny zwracać kontrolowaną odpowiedź, a nie błąd bazy danych.
@@ -132,3 +186,5 @@ Dla każdej poprawki injection potwierdź, że:
 - istnieją testy zapobiegające powrotowi problemu.
 
 Rozszerzony zestaw testów dla OS Command Injection: [os-command-injection/regression-tests.md](os-command-injection/regression-tests.md).
+Rozszerzony zestaw testów dla SSTI: [server-side-template-injection/regression-tests.md](server-side-template-injection/regression-tests.md).
+Testy specyficzne dla LLM: [LLM01 testing and regression tests](../../owasp-top-10-for-llm-applications-2025/llm01-prompt-injection/12-testing-and-regression-tests.md).

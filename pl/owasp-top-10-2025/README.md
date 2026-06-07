@@ -30,7 +30,7 @@ Kategoria jest kompletna dopiero wtedy, gdy zawiera:
 | [A02 Security Misconfiguration](a02-security-misconfiguration/01-overview.md) | Ukończone po dwóch review praktycznych | Zawiera zadanie TryHackMe dotyczące verbose API error disclosure, lab PortSwigger z wystawionym `phpinfo()`, learning notes, checklistę, dwa znaleziska i testy regresji. |
 | [A03 Software Supply Chain Failures](a03-software-supply-chain-failures/01-overview.md) | Ukończone po review paczek i CI/CD | Zawiera review npm package, lifecycle scripts, lockfile/reproducibility, learning notes, checklistę CI/CD, przykładowe znalezisko i testy regresji. |
 | [A04 Cryptographic Failures](a04-cryptographic-failures/01-overview.md) | Ukończone po dwóch labach tokenów uwierzytelniających | Zawiera laby PortSwigger o słabych remember-me cookies, review Base64/MD5, checklistę, learning notes, przykładowe znalezisko i testy regresji. |
-| [A05: Injection](a05-injection/01-overview.md) | Ukończone po labach SQLi, NoSQL i OS Command Injection | Zawiera notatki SQL Injection, NoSQL Injection i OS Command Injection, laby UNION-based SQLi, blind SQLi, NoSQL detection/extraction oraz command injection direct/blind, checklistę, learning notes, pięć znalezisk i testy regresji. |
+| [A05: Injection](a05-injection/01-overview.md) | Ukończone po praktyce SQLi, NoSQL, OS Command Injection i SSTI | Zawiera SQL Injection, NoSQL Injection, OS Command Injection, SSTI, mapowanie XSS, Prompt Injection awareness, powiązane laby, checklistę, learning notes, findingi i testy regresji. |
 | A06: Insecure Design | Planowane | Potrzebne praktyczne ćwiczenie design review. |
 | A07: Authentication Failures | Planowane | Istniejące notatki o authentication bypass i username enumeration można zmapować tutaj. |
 | A08: Software or Data Integrity Failures | Planowane | Zadanie praktyczne: niebezpieczne aktualizacje, zaufanie w CI/CD, integralność pakietów. |
@@ -47,3 +47,4 @@ Kategoria jest kompletna dopiero wtedy, gdy zawiera:
 - [SSRF Basics](../key-web-vulnerabilities/08-server-side-request-forgery-ssrf/README.md)
 - [SQL Injection](../key-web-vulnerabilities/04-sql-injection/README.md)
 - [XSS](../key-web-vulnerabilities/03-cross-site-scripting-xss/README.md)
+- [OWASP Top 10 for LLM Applications 2025](../owasp-top-10-for-llm-applications-2025/README.md)

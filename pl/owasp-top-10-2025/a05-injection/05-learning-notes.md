@@ -4,18 +4,21 @@ Ten plik jest krótkim indeksem notatek z nauki A05. Dłuższe refleksje tematyc
 
 ## Szerszy model mentalny
 
-SQL Injection, NoSQL Injection i OS Command Injection wzmacniają ten sam szerszy model A05:
+SQL Injection, NoSQL Injection, OS Command Injection i Server-Side Template Injection wzmacniają ten sam szerszy model A05:
 
 ```text
 kontrolowany input -> interpreter albo mechanizm wykonania -> zmienione zachowanie
 ```
 
-Payload nie jest sam w sobie przyczyną źródłową. Podatność istnieje, gdy aplikacja pozwala, aby niezaufany input stał się składnią query, operatorem query, częścią wykonywalnego wyrażenia, składnią shella albo niebezpiecznym argumentem procesu.
+Payload nie jest sam w sobie przyczyną źródłową. Podatność istnieje, gdy aplikacja pozwala, aby niezaufany input stał się składnią query, operatorem query, składnią szablonu, częścią wykonywalnego wyrażenia, składnią shella albo niebezpiecznym argumentem procesu.
 
 ## Szczegółowe notatki
 
 - [Lekcje SQL i NoSQL Injection](learning-notes/sql-and-nosql-injection.md)
 - [Lekcje OS Command Injection](learning-notes/os-command-injection.md)
+- [Lekcje Server-Side Template Injection](server-side-template-injection/learning-summary.md)
+- [AI Prompt Injection awareness](ai-prompt-injection-awareness/README.md)
+- [XSS Injection mapping](xss-injection-mapping/README.md)
 
 ## Lekcje przekrojowe
 
@@ -24,6 +27,10 @@ Payload nie jest sam w sobie przyczyną źródłową. Podatność istnieje, gdy 
 - Background requests i API calls są ważniejsze niż widoczny URL w przeglądarce.
 - Generyczna odpowiedź `500` jest wskazówką, nie dowodem skutecznego wykorzystania.
 - Mocny dowód jest konkretny, powtarzalny, kontrolowany i powiązany z podejrzanym interpreterem albo ścieżką wykonania.
+- Reflection potwierdza kontrolę inputu; nie potwierdza server-side template evaluation.
+- Obliczony wynik wyrażenia szablonu potwierdza ewaluację, ale głębsze możliwości wymagają osobnych dowodów.
+- Browser-side script execution i model-generated instructions wymagają realistycznej analizy impactu, a nie zawyżonych claimów.
+- Model output nie jest tym samym co zweryfikowane tool execution, data access albo state change.
 - Root cause powinien opisywać nieudaną granicę między danymi a wykonaniem, nie tylko payload.
 - Remediacja powinna usuwać niebezpieczne granice interpretera tam, gdzie to możliwe, a dopiero potem dodawać walidację, least privilege, monitoring i testy regresji.
 
@@ -34,7 +41,7 @@ Powinienem umieć wyjaśnić:
 - jaki input kontroluję,
 - który endpoint naprawdę go przetwarza,
 - czy input jest wartością, obiektem, operatorem, składnią shella albo argumentem procesu,
-- jaki parser, query engine, shell albo process API go przetwarza,
+- jaki parser, query engine, shell, process API albo template engine go przetwarza,
 - jaki dowód pokazuje, że zachowanie interpretera albo wykonania się zmieniło,
 - jak oracle albo side effect może ujawniać ukryte zachowanie,
 - co jest faktem, a co założeniem,

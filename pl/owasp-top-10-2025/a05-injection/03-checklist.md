@@ -97,6 +97,57 @@ Używaj tej checklisty podczas nauki, code review albo autoryzowanych testów.
 - Czy dostępna jest interakcja zewnętrzna dla outputu asynchronicznego albo niedostępnego przez HTTP?
 - Czy obserwowany side effect pochodzi z wstrzykniętej komendy, a nie z normalnego zachowania aplikacji?
 
+## Kontrole Server-Side Template Injection
+
+### Data flow i kontekst renderowania
+
+- Która funkcja kompiluje albo renderuje server-side templates?
+- Czy dane z requestu, profilu, CMS, dokumentu, emaila albo komunikatu statusu mogą trafić do źródła szablonu?
+- Czy input użytkownika jest przekazywany jako zmienna do statycznego szablonu, czy doklejany do stringa szablonu?
+- Czy użytkownik może kontrolować delimitery, wyrażenia, nazwy helperów, filtry albo partiale?
+- Czy wartość jest renderowana raz, a potem oceniana ponownie przez drugi przebieg template engine?
+
+### Dowody i fingerprinting
+
+- Czy unikalny marker pojawia się w odpowiedzi i w którym miejscu?
+- Czy reflection potwierdza tylko kontrolę inputu, a nie ewaluację szablonu?
+- Czy nieszkodliwe wyrażenie specyficzne dla silnika zwraca obliczony wynik?
+- Czy szczegółowe błędy ujawniają template engine, runtime, ścieżkę szablonu, token parsera albo stack trace?
+- Czy założenia o silniku są poparte runtime evidence, kodem źródłowym, package files albo udokumentowaną architekturą?
+- Czy generyczny błąd `500` jest traktowany jako wskazówka, a nie dowód?
+
+### Impact i ograniczanie skutków
+
+- Jakie globals, locals, helpery, filtry, pluginy, obiekty i funkcje są dostępne w template context?
+- Czy szablon może dotrzeć do konfiguracji, sekretów, filesystem API, database clients, network clients albo process API?
+- Czy side effects w pliku, sieci albo procesie są testowane tylko w autoryzowanych labach albo środowiskach testowych?
+- Czy uprawnienia procesu aplikacji ograniczają skutki ewentualnego błędu?
+- Czy sandbox szablonu jest traktowany jako defence in depth i czy jego policy zostało sprawdzone?
+
+## Kontrole Cross-Site Scripting
+
+- Czy wszystkie wartości kontrolowane przez atakującego są prześledzone od source do browser sink?
+- Czy output encoding pasuje do finalnego kontekstu HTML, attribute, JavaScript, CSS albo URL?
+- Czy raw HTML jest sanityzowany maintained allowlist-based library?
+- Czy React escape hatches takie jak `dangerouslySetInnerHTML` są sprawdzone?
+- Czy CMS rich-text fields są traktowane zgodnie z realnym poziomem zaufania?
+- Czy dangerous URL schemes są odrzucane?
+- Czy reflected, stored i DOM-based paths są testowane?
+- Czy CSP jest defence in depth, a nie głównym fixem?
+
+## Kontrole AI Prompt Injection awareness
+
+- Czy funkcja używa LLM, agenta, RAG albo external-content ingestion?
+- Czy system/developer instructions są oddzielone od user-controlled input?
+- Czy retrieved content jest jasno traktowany jako untrusted data?
+- Czy access control jest egzekwowany przed retrieval?
+- Czy tools są ograniczone przez least privilege?
+- Czy tool arguments są walidowane poza modelem?
+- Czy high-risk actions wymagają human approval?
+- Czy model output jest traktowany jako untrusted przed downstream use?
+- Czy testy obejmują direct i indirect Prompt Injection?
+- Czy raportowanie odróżnia model output od verified execution i impact?
+
 ## Dowody, których szukam
 
 - komunikaty błędów bazy albo interpretera,
@@ -111,6 +162,12 @@ Używaj tej checklisty podczas nauki, code review albo autoryzowanych testów.
 - powtarzalne i proporcjonalne opóźnienie odpowiedzi,
 - przewidywalny plik utworzony przez output redirection,
 - autoryzowana interakcja DNS albo HTTP outbound,
+- wyrażenie szablonu zastąpione obliczonym wynikiem,
+- błąd template engine albo stack trace powiązany z kontrolowanym inputem,
+- zapisana wartość oceniana później przez server-side template,
+- browser-side script execution albo meaningful DOM/browser side effect,
+- zachowanie modelu zmienione przez user albo retrieved content,
+- zweryfikowany LLM tool call, data access albo state change,
 - zmiany procesu, filesystemu albo stanu aplikacji, które nie należą do zamierzonej funkcji.
 
 ## Kontrole bezpiecznej implementacji
@@ -133,8 +190,17 @@ Używaj tej checklisty podczas nauki, code review albo autoryzowanych testów.
 - Proces aplikacji działa zgodnie z least privilege.
 - Katalogi zapisywalne są ograniczone, a web root nie jest niepotrzebnie zapisywalny.
 - Process execution ma timeouty, limity outputu i resource controls.
+- Server-side templates są statyczne i kontrolowane przez developerów.
+- Dane kontrolowane przez użytkownika są przekazywane wyłącznie jako dane, zmienne albo locals.
+- Dynamiczna kompilacja szablonów z requestu albo zapisanych danych użytkownika jest unikana.
+- Template context wystawia tylko minimalny zestaw wymaganych obiektów i helperów.
+- Funkcje user-authored templates, jeśli są celowe, używają sandboxingu, allowlist, quota i izolacji.
+- Browser output używa context-aware encoding i safe DOM APIs.
+- Raw HTML jest sanityzowany maintained allowlist-based HTML sanitiserem, jeśli jest naprawdę wymagany.
+- Funkcje LLM i agentów egzekwują authorization, retrieval scope, tool permissions i high-risk approvals poza modelem.
+- Model-generated HTML, SQL, shell content albo tool arguments są traktowane jako untrusted przed downstream use.
 - Produkcja nie ujawnia szczegółowych błędów bazy, interpretera, procesu ani stack trace.
-- Testy regresji obejmują stringi, obiekty, składnię shella, flagi komend, timing i side effects.
+- Testy regresji obejmują stringi, obiekty, składnię szablonów, składnię shella, flagi komend, timing i side effects.
 
 ## Kąt frontend/AppSec
 
@@ -151,3 +217,6 @@ Dłuższe checklisty tematyczne:
 - [SQL Injection cheat sheet](sql-injection/cheat-sheet.md)
 - [NoSQL Injection cheat sheet](nosql-injection/cheat-sheet.md)
 - [OS Command Injection cheat sheet](os-command-injection/cheatsheet.md)
+- [Server-Side Template Injection cheat sheet](server-side-template-injection/cheat-sheet.md)
+- [XSS testing cheatsheet](xss-injection-mapping/testing-cheatsheet.md)
+- [LLM01 Prompt Injection checklist](../../owasp-top-10-for-llm-applications-2025/llm01-prompt-injection/awareness-checklist.md)
