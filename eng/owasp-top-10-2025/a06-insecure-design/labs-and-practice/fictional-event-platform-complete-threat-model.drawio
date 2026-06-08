@@ -1,0 +1,910 @@
+<mxfile host="Electron" pages="3">
+  <diagram name="01-System-Context" id="--cSzxmjHi2IZaSDBspM">
+    <mxGraphModel dx="2054" dy="841" grid="1" gridSize="5" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Cm5X8LeQ13L2mxgfqSSz-2" edge="1" parent="1" source="u45uI9m3h3SPdk3-fyHx-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.897;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="Cm5X8LeQ13L2mxgfqSSz-1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="640" y="78" />
+              <mxPoint x="640" y="278" />
+            </Array>
+            <mxPoint x="640" y="405" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Cm5X8LeQ13L2mxgfqSSz-3" connectable="0" parent="Cm5X8LeQ13L2mxgfqSSz-2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rotation=-90;" value="Create payment, request refund" vertex="1">
+          <mxGeometry relative="1" x="0.2122" y="1" as="geometry">
+            <mxPoint x="-11" y="-4" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u45uI9m3h3SPdk3-fyHx-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeWidth=1;dashed=1;dashPattern=8 8;verticalAlign=top;fontStyle=1" value="Event Booking Platform" vertex="1">
+          <mxGeometry height="125" width="375" x="205" y="15" as="geometry" />
+        </mxCell>
+        <mxCell id="u45uI9m3h3SPdk3-fyHx-10" edge="1" parent="1" source="u45uI9m3h3SPdk3-fyHx-2" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.002;entryY=0.227;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" target="u45uI9m3h3SPdk3-fyHx-1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="155" y="195" />
+              <mxPoint x="155" y="43" />
+            </Array>
+            <mxPoint x="155" y="345" as="sourcePoint" />
+            <mxPoint x="205" y="45" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u45uI9m3h3SPdk3-fyHx-12" connectable="0" parent="u45uI9m3h3SPdk3-fyHx-10" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rotation=-90;" value="Browse events, register, book tickets, pay" vertex="1">
+          <mxGeometry relative="1" x="-0.3442" y="-1" as="geometry">
+            <mxPoint x="-11" y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u45uI9m3h3SPdk3-fyHx-2" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="Customer" vertex="1">
+          <mxGeometry height="30" width="15" x="145" y="375" as="geometry" />
+        </mxCell>
+        <mxCell id="u45uI9m3h3SPdk3-fyHx-3" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="Event Organizer" vertex="1">
+          <mxGeometry height="30" width="15" x="295" y="375" as="geometry" />
+        </mxCell>
+        <mxCell id="u45uI9m3h3SPdk3-fyHx-5" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="Platform Administrator" vertex="1">
+          <mxGeometry height="30" width="15" x="445" y="375" as="geometry" />
+        </mxCell>
+        <mxCell id="u45uI9m3h3SPdk3-fyHx-17" edge="1" parent="1" source="Cm5X8LeQ13L2mxgfqSSz-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="130" />
+              <mxPoint x="580" y="130" />
+            </Array>
+            <mxPoint x="580" y="130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u45uI9m3h3SPdk3-fyHx-18" connectable="0" parent="u45uI9m3h3SPdk3-fyHx-17" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rotation=-90;" value="Payment status, refund status" vertex="1">
+          <mxGeometry relative="1" x="-0.129" y="1" as="geometry">
+            <mxPoint x="-9" y="-27" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u45uI9m3h3SPdk3-fyHx-13" edge="1" parent="1" source="u45uI9m3h3SPdk3-fyHx-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.261;entryY=1.004;entryDx=0;entryDy=0;entryPerimeter=0;" target="u45uI9m3h3SPdk3-fyHx-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="u45uI9m3h3SPdk3-fyHx-14" connectable="0" parent="u45uI9m3h3SPdk3-fyHx-13" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rotation=-90;" value="Create events, manage capacity,&lt;div&gt;&amp;nbsp;view bookings&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.0003" y="1" as="geometry">
+            <mxPoint x="-17" y="3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u45uI9m3h3SPdk3-fyHx-15" edge="1" parent="1" source="u45uI9m3h3SPdk3-fyHx-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.661;entryY=1.011;entryDx=0;entryDy=0;entryPerimeter=0;" target="u45uI9m3h3SPdk3-fyHx-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="u45uI9m3h3SPdk3-fyHx-16" connectable="0" parent="u45uI9m3h3SPdk3-fyHx-15" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rotation=-90;" value="Manage users, investigate issues,&lt;div&gt;&amp;nbsp;configure platform&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.036" y="1" as="geometry">
+            <mxPoint x="-17" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Cm5X8LeQ13L2mxgfqSSz-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="External Payment Provider" vertex="1">
+          <mxGeometry height="35" width="100" x="550" y="415" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="ou_ePqaqbKjI4rep3YFI" name="02-Application-DFD">
+    <mxGraphModel dx="1369" dy="561" grid="1" gridSize="5" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" style="locked=1;" value="Architecture" />
+        <mxCell id="yiW97cX9BBf8rP341d2M-4" edge="1" parent="1" source="yiW97cX9BBf8rP341d2M-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="yiW97cX9BBf8rP341d2M-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-8" connectable="0" parent="yiW97cX9BBf8rP341d2M-4" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rotation=-90;" value="HTTPS: pages, forms, user actions" vertex="1">
+          <mxGeometry relative="1" x="0.0095" y="-1" as="geometry">
+            <mxPoint x="-9" y="-6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-1" parent="1" style="shape=umlActor;verticalLabelPosition=top;verticalAlign=bottom;html=1;outlineConnect=0;labelPosition=center;align=center;" value="Customer" vertex="1">
+          <mxGeometry height="60" width="30" x="365" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-11" edge="1" parent="1" source="yiW97cX9BBf8rP341d2M-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" target="yiW97cX9BBf8rP341d2M-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-12" connectable="0" parent="yiW97cX9BBf8rP341d2M-11" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rotation=-90;" value="HTTPS API requests" vertex="1">
+          <mxGeometry relative="1" x="-0.2" y="-4" as="geometry">
+            <mxPoint x="-6" y="4" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;" value="Web Frontend&lt;br&gt;(Browser)" vertex="1">
+          <mxGeometry height="60" width="120" x="320" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-10" edge="1" parent="1" source="yiW97cX9BBf8rP341d2M-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" target="yiW97cX9BBf8rP341d2M-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-13" connectable="0" parent="yiW97cX9BBf8rP341d2M-10" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rotation=-90;" value="HTTPS API responses" vertex="1">
+          <mxGeometry relative="1" x="-0.0526" y="-2" as="geometry">
+            <mxPoint x="-12" y="-5" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-24" edge="1" parent="1" source="yiW97cX9BBf8rP341d2M-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="yiW97cX9BBf8rP341d2M-23" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-29" connectable="0" parent="yiW97cX9BBf8rP341d2M-24" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Authentication and&lt;div&gt;&amp;nbsp;account requests&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.5854" y="-3" as="geometry">
+            <mxPoint x="63" y="-53" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-26" edge="1" parent="1" source="yiW97cX9BBf8rP341d2M-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="yiW97cX9BBf8rP341d2M-25" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-31" connectable="0" parent="yiW97cX9BBf8rP341d2M-26" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Event queries and&lt;div&gt;&amp;nbsp;management requests&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.1644" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-28" edge="1" parent="1" source="yiW97cX9BBf8rP341d2M-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="yiW97cX9BBf8rP341d2M-27" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-30" connectable="0" parent="yiW97cX9BBf8rP341d2M-28" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Booking and&lt;div&gt;&amp;nbsp;ticket requests&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.4348" y="2" as="geometry">
+            <mxPoint x="-5" y="2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;" value="API Gateway" vertex="1">
+          <mxGeometry height="60" width="120" x="320" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-15" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;strokeColor=#FF0000;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="75" y="495" as="sourcePoint" />
+            <mxPoint x="1620" y="495" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-16" connectable="0" parent="yiW97cX9BBf8rP341d2M-15" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Client / Server Trust Boundary" vertex="1">
+          <mxGeometry relative="1" x="0.4114" y="-2" as="geometry">
+            <mxPoint x="-646" y="-2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="liMPZbKIaHp6_0W-zAom-7" edge="1" parent="1" source="yiW97cX9BBf8rP341d2M-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" target="yiW97cX9BBf8rP341d2M-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="liMPZbKIaHp6_0W-zAom-8" connectable="0" parent="liMPZbKIaHp6_0W-zAom-7" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=#b85450;fontFamily=Helvetica;fontSize=12;fontColor=default;fillColor=#f8cecc;gradientColor=none;" value="Identity, session and operation result" vertex="1">
+          <mxGeometry relative="1" x="-0.2522" y="-1" as="geometry">
+            <mxPoint x="79" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-23" parent="1" style="whiteSpace=wrap;html=1;verticalAlign=top;rounded=1;" value="Auth Service" vertex="1">
+          <mxGeometry height="60" width="120" x="10" y="705" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-36" edge="1" parent="1" source="yiW97cX9BBf8rP341d2M-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.067;entryY=0.112;entryDx=0;entryDy=0;entryPerimeter=0;" target="yiW97cX9BBf8rP341d2M-33">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="355" y="1049" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-49" connectable="0" parent="yiW97cX9BBf8rP341d2M-36" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rotation=-90;" value="Create/update events, capacity,&amp;nbsp;&lt;div&gt;ownership&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.1065" y="-1" as="geometry">
+            <mxPoint x="-14" y="6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-25" parent="1" style="whiteSpace=wrap;html=1;verticalAlign=top;rounded=1;" value="Event Service" vertex="1">
+          <mxGeometry height="60" width="120" x="320" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-62" edge="1" parent="1" source="yiW97cX9BBf8rP341d2M-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" target="yiW97cX9BBf8rP341d2M-61">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-67" connectable="0" parent="yiW97cX9BBf8rP341d2M-62" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Create payment or refund request,&lt;br&gt;booking ID and trusted amount" vertex="1">
+          <mxGeometry relative="1" x="-0.1053" as="geometry">
+            <mxPoint x="5" y="-20" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-84" edge="1" parent="1" source="yiW97cX9BBf8rP341d2M-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" target="yiW97cX9BBf8rP341d2M-77">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="1185" />
+              <mxPoint x="827" y="1185" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-95" connectable="0" parent="yiW97cX9BBf8rP341d2M-84" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rotation=-90;" value="Booking confirmation, cancellation and ticket details" vertex="1">
+          <mxGeometry relative="1" x="-0.3049" y="2" as="geometry">
+            <mxPoint x="-17" y="-9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-27" parent="1" style="whiteSpace=wrap;html=1;verticalAlign=top;rounded=1;" value="Booking Service" vertex="1">
+          <mxGeometry height="60" width="120" x="690" y="705" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-32" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" value="&#10;User Database&#10;&#10;" vertex="1">
+          <mxGeometry height="80" width="60" x="40" y="990" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-33" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" value="Event Database" vertex="1">
+          <mxGeometry height="80" width="60" x="350" y="1040" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-34" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" value="Booking Database" vertex="1">
+          <mxGeometry height="80" width="60" x="720" y="1030" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-44" edge="1" parent="1" source="yiW97cX9BBf8rP341d2M-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.855;exitY=0;exitDx=0;exitDy=4.35;exitPerimeter=0;entryX=0.677;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" target="yiW97cX9BBf8rP341d2M-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-45" connectable="0" parent="yiW97cX9BBf8rP341d2M-44" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rotation=-90;" value="User identity, credential hash,&lt;div&gt;&amp;nbsp;role data&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.2448" y="-2" as="geometry">
+            <mxPoint x="17" y="-17" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-35" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.167;entryY=0.125;entryDx=0;entryDy=0;entryPerimeter=0;" target="yiW97cX9BBf8rP341d2M-32">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="50" y="765" />
+            </Array>
+            <mxPoint x="55" y="765" as="sourcePoint" />
+            <mxPoint x="55" y="910" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-41" connectable="0" parent="yiW97cX9BBf8rP341d2M-35" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rotation=-90;" value="Create/update user records, password hashes&lt;div&gt;&amp;nbsp;and roles&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.2604" y="-1" as="geometry">
+            <mxPoint x="-24" y="36" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-47" edge="1" parent="1" source="yiW97cX9BBf8rP341d2M-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.855;exitY=0;exitDx=0;exitDy=4.35;exitPerimeter=0;entryX=0.68;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" target="yiW97cX9BBf8rP341d2M-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-50" connectable="0" parent="yiW97cX9BBf8rP341d2M-47" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rotation=-90;" value="Event details, capacity,&lt;div&gt;&amp;nbsp;organizer data&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.0914" y="-1" as="geometry">
+            <mxPoint x="17" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-51" edge="1" parent="1" source="yiW97cX9BBf8rP341d2M-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.855;exitY=0;exitDx=0;exitDy=4.35;exitPerimeter=0;entryX=0.677;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" target="yiW97cX9BBf8rP341d2M-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-53" connectable="0" parent="yiW97cX9BBf8rP341d2M-51" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rotation=-90;" value="Booking details and ticket state" vertex="1">
+          <mxGeometry relative="1" x="-0.0897" y="2" as="geometry">
+            <mxPoint x="11" y="-9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-37" edge="1" parent="1" source="yiW97cX9BBf8rP341d2M-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.084;entryY=0.134;entryDx=0;entryDy=0;entryPerimeter=0;" target="yiW97cX9BBf8rP341d2M-34">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="725" y="820" />
+              <mxPoint x="725" y="820" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-52" connectable="0" parent="yiW97cX9BBf8rP341d2M-37" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rotation=-90;" value="Create/update bookings and ticket status" vertex="1">
+          <mxGeometry relative="1" x="0.1143" y="-1" as="geometry">
+            <mxPoint x="-14" y="-19" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-54" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;strokeColor=#FF3333;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1395" y="1350" as="sourcePoint" />
+            <mxPoint x="1390" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-59" connectable="0" parent="yiW97cX9BBf8rP341d2M-54" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Internal / Third-Party Trust Boundary" vertex="1">
+          <mxGeometry relative="1" x="0.7656" y="1" as="geometry">
+            <mxPoint x="11" y="60" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-73" edge="1" parent="1" source="yiW97cX9BBf8rP341d2M-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;" target="yiW97cX9BBf8rP341d2M-61">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-74" connectable="0" parent="yiW97cX9BBf8rP341d2M-73" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Signed webhook, payment or refund status" vertex="1">
+          <mxGeometry relative="1" x="0.2222" y="-1" as="geometry">
+            <mxPoint x="46" y="-14" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-55" parent="1" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;" value="External Payment Provider" vertex="1">
+          <mxGeometry height="60" width="120" x="1420" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-68" edge="1" parent="1" source="yiW97cX9BBf8rP341d2M-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" target="yiW97cX9BBf8rP341d2M-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-69" connectable="0" parent="yiW97cX9BBf8rP341d2M-68" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Payment and refund result" vertex="1">
+          <mxGeometry relative="1" x="0.0348" y="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-75" edge="1" parent="1" source="yiW97cX9BBf8rP341d2M-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=-0.001;entryY=0.845;entryDx=0;entryDy=0;entryPerimeter=0;" target="yiW97cX9BBf8rP341d2M-55">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-76" connectable="0" parent="yiW97cX9BBf8rP341d2M-75" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Create payment, request refund" vertex="1">
+          <mxGeometry relative="1" x="-0.1512" y="-1" as="geometry">
+            <mxPoint x="19" y="-16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-86" edge="1" parent="1" source="yiW97cX9BBf8rP341d2M-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;" target="yiW97cX9BBf8rP341d2M-77">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1120" y="1185" />
+              <mxPoint x="947" y="1185" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-96" connectable="0" parent="yiW97cX9BBf8rP341d2M-86" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rotation=90;" value="Payment and refund notification" vertex="1">
+          <mxGeometry relative="1" x="-0.5102" y="-3" as="geometry">
+            <mxPoint x="18" y="-13" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-61" parent="1" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;" value="Payment Service" vertex="1">
+          <mxGeometry height="60" width="120" x="1000" y="705" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-63" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" value="Payment Database" vertex="1">
+          <mxGeometry height="80" width="60" x="1030" y="990" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-64" edge="1" parent="1" source="yiW97cX9BBf8rP341d2M-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.145;exitY=0;exitDx=0;exitDy=4.35;exitPerimeter=0;entryX=0.333;entryY=0.983;entryDx=0;entryDy=0;entryPerimeter=0;" target="yiW97cX9BBf8rP341d2M-61">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1039" y="878" />
+              <mxPoint x="1039" y="878" />
+              <mxPoint x="1039" y="764" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-70" connectable="0" parent="yiW97cX9BBf8rP341d2M-64" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rotation=-90;" value="Create/update payment record," vertex="1">
+          <mxGeometry relative="1" x="-0.2764" y="2" as="geometry">
+            <mxPoint x="-12" y="-16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-65" edge="1" parent="1" source="yiW97cX9BBf8rP341d2M-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.855;entryY=0;entryDx=0;entryDy=4.35;entryPerimeter=0;" target="yiW97cX9BBf8rP341d2M-63">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1081" y="765" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-71" connectable="0" parent="yiW97cX9BBf8rP341d2M-65" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rotation=-90;" value="Payment status and transaction data" vertex="1">
+          <mxGeometry relative="1" x="0.2997" y="-1" as="geometry">
+            <mxPoint x="10" y="-31" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-97" edge="1" parent="1" source="yiW97cX9BBf8rP341d2M-77" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" target="yiW97cX9BBf8rP341d2M-78">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1150" y="1215" />
+              <mxPoint x="1150" y="1215" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-99" connectable="0" parent="yiW97cX9BBf8rP341d2M-97" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&lt;div&gt;Send email using approved template,&lt;/div&gt;&lt;div&gt;recipient and template variables&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.1261" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-77" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Notification Service" vertex="1">
+          <mxGeometry height="60" width="120" x="827" y="1215" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-98" edge="1" parent="1" source="yiW97cX9BBf8rP341d2M-78" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" target="yiW97cX9BBf8rP341d2M-77">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-100" connectable="0" parent="yiW97cX9BBf8rP341d2M-98" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Signed delivery, bounce or failure webhook" vertex="1">
+          <mxGeometry relative="1" x="0.0121" y="-3" as="geometry">
+            <mxPoint y="3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-78" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="External Email Provider" vertex="1">
+          <mxGeometry height="60" width="120" x="1440" y="1215" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-104" edge="1" parent="1" source="yiW97cX9BBf8rP341d2M-102" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0;entryDx=0;entryDy=0;" target="yiW97cX9BBf8rP341d2M-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-106" connectable="0" parent="yiW97cX9BBf8rP341d2M-104" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Event management and&lt;div&gt;&amp;nbsp;booking reports&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.4323" y="-2" as="geometry">
+            <mxPoint x="23" y="-13" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-102" parent="1" style="shape=umlActor;verticalLabelPosition=top;verticalAlign=bottom;html=1;outlineConnect=0;labelPosition=center;align=center;" value="&#10;&lt;span&gt;Event Organizer&lt;/span&gt;&lt;br&gt;&#10;&#10;" vertex="1">
+          <mxGeometry height="60" width="30" x="560" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-105" edge="1" parent="1" source="yiW97cX9BBf8rP341d2M-103" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" target="yiW97cX9BBf8rP341d2M-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="365" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-107" connectable="0" parent="yiW97cX9BBf8rP341d2M-105" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="User and platform administration" vertex="1">
+          <mxGeometry relative="1" x="0.5265" as="geometry">
+            <mxPoint x="15" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yiW97cX9BBf8rP341d2M-103" parent="1" style="shape=umlActor;verticalLabelPosition=top;verticalAlign=bottom;html=1;outlineConnect=0;labelPosition=center;align=center;" value="&#10;Platform Administrator&#10;&#10;" vertex="1">
+          <mxGeometry height="60" width="30" x="685" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5d0qQNJnNJnlVmGS7CHV-1" parent="0" value="Threats" />
+        <object label="%threat_id%" placeholders="1" affected_element="API Gateway → Auth Service authentication, password-reset and role-operation requests" description="An attacker modifies identity, role, password-reset or account-operation values sent to the Auth Service. If client-controlled values are treated as authoritative, the attacker may affect another account or influence a privileged operation." mitigation="Treat all client-supplied identity, role and reset values as untrusted. Derive the acting identity from a validated session or signed token, load roles from trusted server-side data, validate reset tokens and enforce authorization for every sensitive operation." severity="High" status="Open" stride="Tampering" stride_reason="The attacker alters security-sensitive request data as it crosses the client/server trust boundary." threat_id="T-001" title="Manipulation of authentication and role operation requests" verification="Modify user ID, role, email and password-reset token values. The backend must reject unauthorised or invalid requests, make no state change and record the denied attempt." id="liMPZbKIaHp6_0W-zAom-2">
+          <mxCell parent="5d0qQNJnNJnlVmGS7CHV-1" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontSize=9;fontStyle=1;" vertex="1">
+            <mxGeometry height="20" width="40" x="200" y="570" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="%threat_id%" placeholders="1" affected_element="Auth Service role and permission decisions" description="The Auth Service accepts or issues elevated privileges based on a client-controlled role, user ID or account value instead of trusted server-side authorization data." mitigation="Ignore client-supplied roles and permissions. Load authorization data from trusted server-side sources, deny access by default, validate token integrity and require recent authentication for high-risk role changes. Target services must enforce authorization for each sensitive action." severity="High" status="Open" stride="Elevation of Privilege" stride_reason="An authenticated customer may gain administrator or other privileged capabilities beyond their intended permissions." threat_id="T-002" title="Privilege escalation through trusted client-supplied role" verification="Authenticate as a normal customer and submit an administrator role or call role-management and administrator-only operations directly. The backend must return 403 and perform no state change." id="liMPZbKIaHp6_0W-zAom-5">
+          <mxCell parent="5d0qQNJnNJnlVmGS7CHV-1" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontSize=9;fontStyle=1;" vertex="1">
+            <mxGeometry height="20" width="40" x="140" y="700" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="%threat_id%" placeholders="1" affected_element="Auth Service password-reset workflow" description="An attacker obtains, predicts, replays or misuses a password-reset token to set a new password for another user's account." mitigation="Generate cryptographically random high-entropy reset tokens. Bind each token to one account and one reset operation, use a short expiration time, invalidate it immediately after successful use, rate-limit attempts and prevent token leakage through logs, analytics or third-party requests." severity="High" status="Open" stride="Spoofing" stride_reason="A successful reset-token attack lets the attacker impersonate the legitimate account owner." threat_id="T-003" title="Account takeover through insecure password-reset tokens" verification="Replay a used token, submit expired or modified tokens and attempt to use a token with a different account. Every attempt must be rejected without changing the password." id="liMPZbKIaHp6_0W-zAom-6">
+          <mxCell parent="5d0qQNJnNJnlVmGS7CHV-1" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontSize=9;fontStyle=1;" vertex="1">
+            <mxGeometry height="20" width="40" x="140" y="720" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="%threat_id%" placeholders="1" affected_element="Auth Service → API Gateway authentication and recovery responses" description="An attacker compares responses for existing and non-existing usernames or email addresses during login, registration or password recovery. Differences in messages, HTTP status, response length, redirect behaviour or timing may reveal which accounts exist." mitigation="Return consistent responses for existing and non-existing accounts, minimise observable timing differences and apply rate limiting, monitoring and abuse detection to repeated authentication and recovery attempts." severity="Medium" status="Open" stride="Information Disclosure" stride_reason="The application reveals account-existence information that an unauthorised party should not receive." threat_id="T-004" title="Account enumeration through inconsistent authentication responses" verification="Submit equivalent login, registration and password-recovery requests for existing and non-existing accounts. Compare message, status, length, redirect behaviour and timing. Responses must not reliably reveal whether an account exists." id="liMPZbKIaHp6_0W-zAom-9">
+          <mxCell parent="5d0qQNJnNJnlVmGS7CHV-1" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontSize=9;fontStyle=1;" vertex="1">
+            <mxGeometry height="20" width="40" x="110" y="625" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="%threat_id%" placeholders="1" affected_element="Auth Service session and token lifecycle" description="A previously issued or stolen session remains valid after logout, password reset, password change, account disablement or a security-sensitive role change. A person possessing the session token may continue acting as the legitimate user." mitigation="Define an explicit session-revocation policy. Invalidate relevant sessions after logout, reset, password change and account disablement; rotate session identifiers after authentication and privilege changes; validate expiry, account status and revocation state; allow users to revoke other active sessions." severity="High" status="Open" stride="Spoofing" stride_reason="A stale or stolen session allows an attacker to impersonate the authenticated account owner." threat_id="T-005" title="Account impersonation through stale or unrevoked sessions" verification="Log in using two browsers. In the first, perform logout, password reset, password change, account disablement and a sensitive role change. Test the old session in the second browser; it must be rejected according to the defined policy." id="7ta_OMZya2qfGnpnuEg_-1">
+          <mxCell parent="5d0qQNJnNJnlVmGS7CHV-1" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontSize=9;fontStyle=1;" vertex="1">
+            <mxGeometry height="20" width="40" x="140" y="740" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="%threat_id%" placeholders="1" affected_element="Event Service event-management operations" description="An authenticated event organizer changes an event ID and attempts to view, update, publish or delete an event owned by another organizer. If the service checks only that the user is authenticated, the organizer may operate outside their authorised scope." mitigation="Derive the acting identity from a validated session or signed token. Enforce object-level authorization for every event read, update, publish and delete action. Verify ownership or an explicitly assigned management permission, deny by default and do not rely on hidden frontend controls." severity="High" status="Open" stride="Elevation of Privilege" stride_reason="The organizer attempts to extend valid permissions over their own events to events owned by another organizer." threat_id="T-006" title="Unauthorised management of another organizer's event" verification="Create events under organizer accounts A and B. As A, replace event IDs with B's event ID in read, update, publish and delete requests. The backend must reject all unauthorised operations, disclose no private data and make no state change." id="threat-t-006">
+          <mxCell parent="5d0qQNJnNJnlVmGS7CHV-1" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontSize=9;fontStyle=1;" vertex="1">
+            <mxGeometry height="20" width="40" x="450" y="775" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="%threat_id%" placeholders="1" affected_element="Event Service listings, search and event-detail responses" description="A private or restricted event appears in public search results, listings or API responses, or its details can be retrieved directly by an unauthorised user who knows or guesses the event ID." mitigation="Enforce visibility and access rules in the Event Service for every listing, search and detail request. Filter unauthorised records before building responses, ensure caches and search indexes honour visibility changes and return only the minimum authorised fields." severity="High" status="Open" stride="Information Disclosure" stride_reason="Private event information is returned to a user who is not authorised to receive it." threat_id="T-007" title="Disclosure of private events to unauthorised users" verification="Create a private event limited to a selected user or group. As an unauthorised user and unauthenticated visitor, test listings, search, direct detail endpoints and modified event IDs. The event and its private metadata must not be returned." id="threat-t-007">
+          <mxCell parent="5d0qQNJnNJnlVmGS7CHV-1" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontSize=9;fontStyle=1;" vertex="1">
+            <mxGeometry height="20" width="40" x="450" y="797" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="%threat_id%" placeholders="1" affected_element="Event Service create and update operations" description="An organizer manipulates client-controlled values such as capacity, owner ID, publication status or event dates. Without server-side business invariants, the service may store an invalid or unauthorised event state." mitigation="Validate event data server-side. Enforce capacity limits and valid date relationships, derive ownership from trusted identity data, model allowed publication-state transitions and reject unknown, invalid or unauthorised changes before writing to the database." severity="High" status="Open" stride="Tampering" stride_reason="The attacker alters authoritative event data and may cause the system to store an invalid or unauthorised state." threat_id="T-008" title="Invalid or unauthorised event state through manipulated event data" verification="Submit negative, zero and excessively large capacity values, an end date before the start date, a modified owner ID and unauthorised publication transitions. The backend must return a controlled error and make no database change." id="threat-t-008">
+          <mxCell parent="5d0qQNJnNJnlVmGS7CHV-1" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontSize=9;fontStyle=1;" vertex="1">
+            <mxGeometry height="20" width="40" x="450" y="819" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="%threat_id%" placeholders="1" affected_element="Booking Service booking, cancellation and ticket operations" description="An authenticated customer changes a booking ID and attempts to view, update, cancel or download a ticket belonging to another customer. If only authentication is checked, the customer may operate outside their authorised scope." mitigation="Derive the acting identity from a validated session or signed token. Enforce object-level authorization for every booking read, update, cancellation and ticket-download operation. Verify ownership or an explicitly authorised administrative permission and return only minimum authorised data." severity="High" status="Open" stride="Elevation of Privilege" stride_reason="The customer attempts to extend permissions from their own bookings to a booking owned by another user." threat_id="T-009" title="Unauthorised access to another customer's booking" verification="Create bookings with customer accounts A and B. As A, replace the booking ID with B's in read, update, cancellation and ticket-download requests. The backend must reject each attempt, return no booking data and make no state change." id="threat-t-009">
+          <mxCell parent="5d0qQNJnNJnlVmGS7CHV-1" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontSize=9;fontStyle=1;" vertex="1">
+            <mxGeometry height="20" width="40" x="820" y="700" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="%threat_id%" placeholders="1" affected_element="Booking Service booking and ticket lifecycle" description="A customer modifies requests, skips steps, changes their order or replays operations to confirm a pending booking, obtain a valid ticket before payment, reactivate a cancelled booking or continue using a ticket after cancellation or refund." mitigation="Implement an explicit server-side state machine for bookings and tickets. Permit only defined state transitions, derive payment state from trusted Payment Service data, validate the current state before every transition and atomically invalidate tickets after cancellation or refund." severity="High" status="Open" stride="Tampering" stride_reason="The attacker alters authoritative booking or ticket state, or forces the workflow into a state the business rules do not permit." threat_id="T-010" title="Invalid booking and ticket state transitions" verification="Attempt to skip payment, reorder confirmation and payment steps, replay confirmation requests, reactivate a cancelled booking and reuse a ticket after cancellation or refund. Every invalid transition must be rejected without changing state." id="threat-t-010">
+          <mxCell parent="5d0qQNJnNJnlVmGS7CHV-1" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontSize=9;fontStyle=1;" vertex="1">
+            <mxGeometry height="20" width="40" x="820" y="722" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="%threat_id%" placeholders="1" affected_element="Booking Service, Event Service and booking-capacity data flow" description="Multiple simultaneous requests reserve the same final places because availability is checked and updated non-atomically. The system may confirm more tickets than the event capacity permits." mitigation="Enforce the capacity invariant in a transaction or other atomic concurrency control. Use database constraints, locking or compare-and-set semantics where appropriate. Make booking creation idempotent and re-check availability at the authoritative write boundary." severity="High" status="Open" stride="Tampering" stride_reason="Concurrent requests cause unauthorised changes to booking and capacity state, breaking the integrity of the event inventory." threat_id="T-011" title="Overbooking through concurrent booking requests" verification="Create an event with one remaining place and send multiple booking requests concurrently from separate sessions. At most one request may succeed, capacity must never become negative and no duplicate confirmed tickets may be issued." id="threat-t-011">
+          <mxCell parent="5d0qQNJnNJnlVmGS7CHV-1" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontSize=9;fontStyle=1;" vertex="1">
+            <mxGeometry height="20" width="40" x="820" y="744" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="%threat_id%" placeholders="1" affected_element="Booking Service → Payment Service create-payment and refund requests" description="A customer manipulates amount, currency, booking ID or refund value in a request. If the Payment Service trusts values originating from the client or an unverified upstream request, an incorrect payment or refund may be processed." mitigation="Calculate payment and refund amounts from trusted server-side booking, pricing and policy data. Bind payment records to the authenticated customer and booking, validate currency and state, and re-calculate the authoritative amount before creating a payment or refund." severity="High" status="Open" stride="Tampering" stride_reason="The attacker alters financial values used by the payment workflow." threat_id="T-012" title="Payment amount manipulation through untrusted booking data" verification="Modify amount, currency, booking ID and refund value in intercepted requests. The Payment Service must ignore or reject manipulated values and use only the authoritative server-calculated amount." id="threat-t-012">
+          <mxCell parent="5d0qQNJnNJnlVmGS7CHV-1" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontSize=9;fontStyle=1;" vertex="1">
+            <mxGeometry height="20" width="40" x="1130" y="700" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="%threat_id%" placeholders="1" affected_element="External Payment Provider → Payment Service webhook flow" description="An attacker sends a forged payment-status callback or replays a previously valid webhook. If authenticity and freshness are not verified, a booking may be marked paid or refunded without a legitimate provider event." mitigation="Verify provider signatures using the raw payload, validate timestamp and event type, reject stale messages, store provider event IDs and process each event once. Bind the event to the expected payment, booking, amount and currency before changing state." severity="High" status="Open" stride="Spoofing" stride_reason="The attacker impersonates the external payment provider when submitting a false callback." threat_id="T-013" title="False payment confirmation through forged or replayed webhook" verification="Send unsigned, incorrectly signed, modified, expired and replayed webhook payloads. No payment, refund, booking or ticket state may change unless the event is authentic, current, expected and not previously processed." id="threat-t-013">
+          <mxCell parent="5d0qQNJnNJnlVmGS7CHV-1" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontSize=9;fontStyle=1;" vertex="1">
+            <mxGeometry height="20" width="40" x="1280" y="720" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="%threat_id%" placeholders="1" affected_element="Payment Service payment, refund and Payment Database operations" description="Retries, replayed requests or concurrent operations create the same payment or refund more than once because the workflow lacks idempotency and state validation." mitigation="Require unique idempotency keys for payment and refund creation, persist them with unique constraints, model allowed financial state transitions and make repeated identical requests return the original result without executing the operation again." severity="High" status="Open" stride="Tampering" stride_reason="Repeated requests cause duplicate or inconsistent changes to authoritative financial records." threat_id="T-014" title="Duplicate payment or refund through repeated operations" verification="Repeat and concurrently submit identical payment and refund requests using the same business operation. Exactly one financial operation may occur and all retries must return a consistent existing result." id="threat-t-014">
+          <mxCell parent="5d0qQNJnNJnlVmGS7CHV-1" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontSize=9;fontStyle=1;" vertex="1">
+            <mxGeometry height="20" width="40" x="1130" y="744" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="%threat_id%" placeholders="1" affected_element="Notification Service recipient and template-data handling" description="A recipient address, booking reference or template variable is taken from untrusted input or stale mappings, causing ticket, booking or payment information to be sent to an unauthorised person." mitigation="Derive recipients from authoritative account and booking records, authorise notification requests, use approved templates with controlled variables, minimise included personal data and validate that each notification belongs to the intended recipient and workflow state." severity="High" status="Open" stride="Information Disclosure" stride_reason="Sensitive booking, ticket or payment information is disclosed to an unauthorised recipient." threat_id="T-015" title="Sensitive booking or payment data sent to the wrong recipient" verification="Modify recipient, booking ID and template variables in notification-triggering requests. Use two customer accounts and verify that each message contains only the intended customer’s minimum authorised data." id="threat-t-015">
+          <mxCell parent="5d0qQNJnNJnlVmGS7CHV-1" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontSize=9;fontStyle=1;" vertex="1">
+            <mxGeometry height="20" width="40" x="950" y="1215" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="%threat_id%" placeholders="1" affected_element="Booking Service and Payment Service → Notification Service flows" description="An attacker or faulty retry loop repeatedly triggers notification operations, flooding recipients, consuming provider quota and preventing legitimate messages from being delivered." mitigation="Expose notification operations only to authorised internal services. Apply per-event deduplication, rate limits, queue quotas and retry backoff. Use idempotency identifiers for business notifications and monitor unusual send volumes and provider failures." severity="Medium" status="Open" stride="Denial of Service" stride_reason="Repeated notification requests can exhaust service or provider capacity and impair delivery of legitimate messages." threat_id="T-016" title="Notification flooding through unrestricted send operations" verification="Replay and concurrently trigger the same notification event many times. The system must deduplicate the business event, enforce limits and preserve capacity for legitimate messages." id="threat-t-016">
+          <mxCell parent="5d0qQNJnNJnlVmGS7CHV-1" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontSize=9;fontStyle=1;" vertex="1">
+            <mxGeometry height="20" width="40" x="950" y="1237" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="%threat_id%" placeholders="1" affected_element="Backend services → API Gateway → Web Frontend response flows" description="API responses include fields that the current user or frontend does not need, such as internal identifiers, private attendee data, role details, payment metadata or hidden event information." mitigation="Authorise before serialization, use explicit response DTOs or field allowlists, return the minimum data required for the current role and action, and prevent frontend filtering from being treated as a security control." severity="High" status="Open" stride="Information Disclosure" stride_reason="The backend returns sensitive fields to a client that is not authorised or does not need to receive them." threat_id="T-017" title="Excessive sensitive data returned in API responses" verification="Capture responses as customer, organizer, administrator and unauthenticated visitor. Compare fields and test direct API calls. Each role must receive only explicitly authorised and necessary data." id="threat-t-017">
+          <mxCell parent="5d0qQNJnNJnlVmGS7CHV-1" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontSize=9;fontStyle=1;" vertex="1">
+            <mxGeometry height="20" width="40" x="455" y="570" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="%threat_id%" placeholders="1" affected_element="API Gateway and all target service authorization boundaries" description="A sensitive action is protected on one route but remains accessible through an alternate endpoint, API version, batch operation or direct service path with weaker authorization enforcement." mitigation="Define a central authorization policy and enforce it independently in every target service. Deny by default, maintain an endpoint-to-permission matrix, cover alternate and legacy routes, and add automated negative authorization tests for every sensitive operation." severity="High" status="Open" stride="Elevation of Privilege" stride_reason="A user reaches a privileged action through a less-protected path and gains capabilities outside their role." threat_id="T-018" title="Privilege escalation through inconsistent authorization across endpoints" verification="For each sensitive operation, test normal, alternate, legacy, batch and direct API routes using unauthorised roles and modified resource IDs. Every path must return 403 and make no state change." id="threat-t-018">
+          <mxCell parent="5d0qQNJnNJnlVmGS7CHV-1" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontSize=9;fontStyle=1;" vertex="1">
+            <mxGeometry height="20" width="40" x="455" y="592" as="geometry" />
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="bSY4cVBgs5suXnnmbXhh" name="03-Threat-Register">
+    <mxGraphModel dx="2054" dy="841" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1550" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="reg-title" value="Event Booking Platform — Threat Register" style="text;html=1;align=left;verticalAlign=middle;fontSize=22;fontStyle=1;whiteSpace=wrap;overflow=hidden;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="1510" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="reg-note" value="Source of truth: threat markers and metadata on 02-Application-DFD. Statuses remain Open until controls are implemented and verified." style="text;html=1;align=left;verticalAlign=middle;fontSize=11;whiteSpace=wrap;overflow=hidden;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="20" y="65" width="1510" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="h-0" value="ID" style="text;html=1;align=center;verticalAlign=middle;fontStyle=1;whiteSpace=wrap;overflow=hidden;strokeColor=#666666;fillColor=#e6e6e6;" vertex="1" parent="1">
+          <mxGeometry x="20" y="110" width="70" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="h-1" value="Title" style="text;html=1;align=center;verticalAlign=middle;fontStyle=1;whiteSpace=wrap;overflow=hidden;strokeColor=#666666;fillColor=#e6e6e6;" vertex="1" parent="1">
+          <mxGeometry x="90" y="110" width="330" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="h-2" value="Affected element" style="text;html=1;align=center;verticalAlign=middle;fontStyle=1;whiteSpace=wrap;overflow=hidden;strokeColor=#666666;fillColor=#e6e6e6;" vertex="1" parent="1">
+          <mxGeometry x="420" y="110" width="300" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="h-3" value="STRIDE" style="text;html=1;align=center;verticalAlign=middle;fontStyle=1;whiteSpace=wrap;overflow=hidden;strokeColor=#666666;fillColor=#e6e6e6;" vertex="1" parent="1">
+          <mxGeometry x="720" y="110" width="150" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="h-4" value="Why STRIDE applies" style="text;html=1;align=center;verticalAlign=middle;fontStyle=1;whiteSpace=wrap;overflow=hidden;strokeColor=#666666;fillColor=#e6e6e6;" vertex="1" parent="1">
+          <mxGeometry x="870" y="110" width="390" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="h-5" value="Severity" style="text;html=1;align=center;verticalAlign=middle;fontStyle=1;whiteSpace=wrap;overflow=hidden;strokeColor=#666666;fillColor=#e6e6e6;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="110" width="90" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="h-6" value="Status" style="text;html=1;align=center;verticalAlign=middle;fontStyle=1;whiteSpace=wrap;overflow=hidden;strokeColor=#666666;fillColor=#e6e6e6;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="110" width="80" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="r0-c0" value="T-001" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="20" y="152" width="70" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r0-c1" value="Manipulation of authentication and role operation requests" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="90" y="152" width="330" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r0-c2" value="API Gateway → Auth Service authentication, password-reset and role-operation requests" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="152" width="300" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r0-c3" value="Tampering" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="152" width="150" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r0-c4" value="The attacker alters security-sensitive request data as it crosses the client/server trust boundary." style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="152" width="390" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r0-c5" value="High" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="152" width="90" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r0-c6" value="Open" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="152" width="80" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r1-c0" value="T-002" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="20" y="220" width="70" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r1-c1" value="Privilege escalation through trusted client-supplied role" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="90" y="220" width="330" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r1-c2" value="Auth Service role and permission decisions" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="220" width="300" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r1-c3" value="Elevation of Privilege" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="220" width="150" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r1-c4" value="An authenticated customer may gain administrator or other privileged capabilities beyond their intended permissions." style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="220" width="390" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r1-c5" value="High" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="220" width="90" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r1-c6" value="Open" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="220" width="80" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r2-c0" value="T-003" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="20" y="288" width="70" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r2-c1" value="Account takeover through insecure password-reset tokens" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="90" y="288" width="330" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r2-c2" value="Auth Service password-reset workflow" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="288" width="300" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r2-c3" value="Spoofing" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="288" width="150" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r2-c4" value="A successful reset-token attack lets the attacker impersonate the legitimate account owner." style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="288" width="390" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r2-c5" value="High" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="288" width="90" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r2-c6" value="Open" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="288" width="80" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r3-c0" value="T-004" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="20" y="356" width="70" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r3-c1" value="Account enumeration through inconsistent authentication responses" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="90" y="356" width="330" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r3-c2" value="Auth Service → API Gateway authentication and recovery responses" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="356" width="300" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r3-c3" value="Information Disclosure" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="356" width="150" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r3-c4" value="The application reveals account-existence information that an unauthorised party should not receive." style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="356" width="390" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r3-c5" value="Medium" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="356" width="90" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r3-c6" value="Open" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="356" width="80" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r4-c0" value="T-005" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="20" y="424" width="70" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r4-c1" value="Account impersonation through stale or unrevoked sessions" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="90" y="424" width="330" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r4-c2" value="Auth Service session and token lifecycle" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="424" width="300" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r4-c3" value="Spoofing" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="424" width="150" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r4-c4" value="A stale or stolen session allows an attacker to impersonate the authenticated account owner." style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="424" width="390" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r4-c5" value="High" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="424" width="90" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r4-c6" value="Open" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="424" width="80" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r5-c0" value="T-006" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="20" y="492" width="70" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r5-c1" value="Unauthorised management of another organizer's event" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="90" y="492" width="330" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r5-c2" value="Event Service event-management operations" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="492" width="300" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r5-c3" value="Elevation of Privilege" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="492" width="150" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r5-c4" value="The organizer attempts to extend valid permissions over their own events to events owned by another organizer." style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="492" width="390" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r5-c5" value="High" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="492" width="90" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r5-c6" value="Open" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="492" width="80" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r6-c0" value="T-007" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="20" y="560" width="70" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r6-c1" value="Disclosure of private events to unauthorised users" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="90" y="560" width="330" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r6-c2" value="Event Service listings, search and event-detail responses" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="560" width="300" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r6-c3" value="Information Disclosure" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="560" width="150" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r6-c4" value="Private event information is returned to a user who is not authorised to receive it." style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="560" width="390" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r6-c5" value="High" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="560" width="90" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r6-c6" value="Open" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="560" width="80" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r7-c0" value="T-008" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="20" y="628" width="70" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r7-c1" value="Invalid or unauthorised event state through manipulated event data" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="90" y="628" width="330" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r7-c2" value="Event Service create and update operations" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="628" width="300" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r7-c3" value="Tampering" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="628" width="150" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r7-c4" value="The attacker alters authoritative event data and may cause the system to store an invalid or unauthorised state." style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="628" width="390" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r7-c5" value="High" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="628" width="90" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r7-c6" value="Open" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="628" width="80" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r8-c0" value="T-009" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="20" y="696" width="70" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r8-c1" value="Unauthorised access to another customer's booking" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="90" y="696" width="330" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r8-c2" value="Booking Service booking, cancellation and ticket operations" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="696" width="300" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r8-c3" value="Elevation of Privilege" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="696" width="150" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r8-c4" value="The customer attempts to extend permissions from their own bookings to a booking owned by another user." style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="696" width="390" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r8-c5" value="High" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="696" width="90" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r8-c6" value="Open" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="696" width="80" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r9-c0" value="T-010" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="20" y="764" width="70" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r9-c1" value="Invalid booking and ticket state transitions" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="90" y="764" width="330" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r9-c2" value="Booking Service booking and ticket lifecycle" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="764" width="300" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r9-c3" value="Tampering" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="764" width="150" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r9-c4" value="The attacker alters authoritative booking or ticket state, or forces the workflow into a state the business rules do not permit." style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="764" width="390" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r9-c5" value="High" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="764" width="90" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r9-c6" value="Open" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="764" width="80" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r10-c0" value="T-011" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="20" y="832" width="70" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r10-c1" value="Overbooking through concurrent booking requests" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="90" y="832" width="330" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r10-c2" value="Booking Service, Event Service and booking-capacity data flow" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="832" width="300" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r10-c3" value="Tampering" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="832" width="150" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r10-c4" value="Concurrent requests cause unauthorised changes to booking and capacity state, breaking the integrity of the event inventory." style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="832" width="390" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r10-c5" value="High" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="832" width="90" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r10-c6" value="Open" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="832" width="80" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r11-c0" value="T-012" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="20" y="900" width="70" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r11-c1" value="Payment amount manipulation through untrusted booking data" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="90" y="900" width="330" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r11-c2" value="Booking Service → Payment Service create-payment and refund requests" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="900" width="300" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r11-c3" value="Tampering" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="900" width="150" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r11-c4" value="The attacker alters financial values used by the payment workflow." style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="900" width="390" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r11-c5" value="High" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="900" width="90" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r11-c6" value="Open" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="900" width="80" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r12-c0" value="T-013" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="20" y="968" width="70" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r12-c1" value="False payment confirmation through forged or replayed webhook" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="90" y="968" width="330" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r12-c2" value="External Payment Provider → Payment Service webhook flow" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="968" width="300" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r12-c3" value="Spoofing" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="968" width="150" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r12-c4" value="The attacker impersonates the external payment provider when submitting a false callback." style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="968" width="390" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r12-c5" value="High" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="968" width="90" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r12-c6" value="Open" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="968" width="80" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r13-c0" value="T-014" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1036" width="70" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r13-c1" value="Duplicate payment or refund through repeated operations" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="90" y="1036" width="330" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r13-c2" value="Payment Service payment, refund and Payment Database operations" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="1036" width="300" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r13-c3" value="Tampering" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="1036" width="150" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r13-c4" value="Repeated requests cause duplicate or inconsistent changes to authoritative financial records." style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="1036" width="390" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r13-c5" value="High" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="1036" width="90" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r13-c6" value="Open" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="1036" width="80" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r14-c0" value="T-015" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1104" width="70" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r14-c1" value="Sensitive booking or payment data sent to the wrong recipient" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="90" y="1104" width="330" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r14-c2" value="Notification Service recipient and template-data handling" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="1104" width="300" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r14-c3" value="Information Disclosure" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="1104" width="150" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r14-c4" value="Sensitive booking, ticket or payment information is disclosed to an unauthorised recipient." style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="1104" width="390" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r14-c5" value="High" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="1104" width="90" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r14-c6" value="Open" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="1104" width="80" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r15-c0" value="T-016" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1172" width="70" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r15-c1" value="Notification flooding through unrestricted send operations" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="90" y="1172" width="330" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r15-c2" value="Booking Service and Payment Service → Notification Service flows" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="1172" width="300" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r15-c3" value="Denial of Service" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="1172" width="150" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r15-c4" value="Repeated notification requests can exhaust service or provider capacity and impair delivery of legitimate messages." style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="1172" width="390" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r15-c5" value="Medium" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="1172" width="90" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r15-c6" value="Open" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="1172" width="80" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r16-c0" value="T-017" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1240" width="70" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r16-c1" value="Excessive sensitive data returned in API responses" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="90" y="1240" width="330" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r16-c2" value="Backend services → API Gateway → Web Frontend response flows" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="1240" width="300" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r16-c3" value="Information Disclosure" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="1240" width="150" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r16-c4" value="The backend returns sensitive fields to a client that is not authorised or does not need to receive them." style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="1240" width="390" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r16-c5" value="High" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="1240" width="90" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r16-c6" value="Open" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="1240" width="80" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r17-c0" value="T-018" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1308" width="70" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r17-c1" value="Privilege escalation through inconsistent authorization across endpoints" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="90" y="1308" width="330" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r17-c2" value="API Gateway and all target service authorization boundaries" style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="1308" width="300" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r17-c3" value="Elevation of Privilege" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="1308" width="150" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r17-c4" value="A user reaches a privileged action through a less-protected path and gains capabilities outside their role." style="text;html=1;align=left;verticalAlign=top;spacing=6;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="1308" width="390" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r17-c5" value="High" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="1308" width="90" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="r17-c6" value="Open" style="text;html=1;align=center;verticalAlign=middle;spacing=4;whiteSpace=wrap;overflow=hidden;strokeColor=#999999;fillColor=#ffffff;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="1308" width="80" height="68" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
