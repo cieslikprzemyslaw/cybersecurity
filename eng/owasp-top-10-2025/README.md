@@ -32,7 +32,7 @@ A category is complete only when it has:
 | [A04 Cryptographic Failures](a04-cryptographic-failures/01-overview.md) | Completed after two authentication-token labs | Includes PortSwigger weak remember-me cookie labs, Base64/MD5 token review, checklist, learning notes, example finding and regression tests. |
 | [A05: Injection](a05-injection/01-overview.md) | Completed after SQLi, NoSQL, OS Command Injection, and SSTI practice | Includes SQL Injection, NoSQL Injection, OS Command Injection, SSTI, XSS mapping, Prompt Injection awareness, related labs, checklist, learning notes, findings, and regression tests. |
 | [A06: Insecure Design](a06-insecure-design/01-overview.md) | Completed after two business-logic labs and threat modelling | Includes client-controlled pricing, coupon workflow abuse, a draw.io DFD, 18 STRIDE threats, checklist, example finding and regression tests. |
-| A07: Authentication Failures | Planned | Existing authentication bypass and username enumeration notes can be mapped here. |
+| [A07: Authentication Failures](a07-authentication-failures/01-overview.md) | Completed after recovery and MFA bypass labs | Includes TryHackMe IAAA/A07 review, PortSwigger password-reset broken logic and 2FA bypass labs, authentication checklist, learning notes, two findings and regression tests. |
 | A08: Software or Data Integrity Failures | Planned | Practical review task: unsafe updates, CI/CD trust, package integrity. |
 | A09: Security Logging and Alerting Failures | Planned | Practical logging and alerting review task. |
 | A10: Mishandling of Exceptional Conditions | Planned | Practical error-handling and edge-case review task. |
