@@ -32,7 +32,7 @@ Kategoria jest kompletna dopiero wtedy, gdy zawiera:
 | [A04 Cryptographic Failures](a04-cryptographic-failures/01-overview.md) | Ukończone po dwóch labach tokenów uwierzytelniających | Zawiera laby PortSwigger o słabych remember-me cookies, review Base64/MD5, checklistę, learning notes, przykładowe znalezisko i testy regresji. |
 | [A05: Injection](a05-injection/01-overview.md) | Ukończone po praktyce SQLi, NoSQL, OS Command Injection i SSTI | Zawiera SQL Injection, NoSQL Injection, OS Command Injection, SSTI, mapowanie XSS, Prompt Injection awareness, powiązane laby, checklistę, learning notes, findingi i testy regresji. |
 | [A06: Insecure Design](a06-insecure-design/01-overview.md) | Ukończone po dwóch labach business logic i threat modelling | Zawiera cenę kontrolowaną przez klienta, nadużycie workflow kuponów, DFD w draw.io, 18 zagrożeń STRIDE, checklistę, przykładowy finding i testy regresji. |
-| A07: Authentication Failures | Planowane | Istniejące notatki o authentication bypass i username enumeration można zmapować tutaj. |
+| [A07: Authentication Failures](a07-authentication-failures/01-overview.md) | Ukończone po labach recovery i MFA bypass | Zawiera review TryHackMe IAAA/A07, laby PortSwigger dotyczące password-reset broken logic i 2FA bypass, checklistę uwierzytelniania, learning notes, dwa findingi i testy regresji. |
 | A08: Software or Data Integrity Failures | Planowane | Zadanie praktyczne: niebezpieczne aktualizacje, zaufanie w CI/CD, integralność pakietów. |
 | A09: Security Logging and Alerting Failures | Planowane | Praktyczne zadanie review logowania i alertowania. |
 | A10: Mishandling of Exceptional Conditions | Planowane | Praktyczne zadanie review obsługi błędów i edge case'ów. |
