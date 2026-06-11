@@ -2,60 +2,60 @@
 
 ## Summary
 
-Po weryfikacji username i hasła aplikacja tworzy sesję, która może uzyskać dostęp do chronionych zasobów przed ukończeniem drugiego czynnika.
+Po weryfikacji nazwy użytkownika i hasła aplikacja tworzy sesję, która może uzyskać dostęp do chronionych zasobów przed ukończeniem drugiego czynnika.
 
 ## Severity
 
-**High** w przetestowanym scenariuszu, ponieważ atakujący z przejętymi credentials może ominąć kontrolę, która miała chronić konto przed dostępem przy użyciu samego hasła.
+**High** w przetestowanym scenariuszu, ponieważ atakujący z przejętymi danymi logowania może ominąć kontrolę, która miała chronić konto przed dostępem przy użyciu samego hasła.
 
 ## STRIDE
 
-**Spoofing** — aplikacja akceptuje atakującego jako fully authenticated bez wszystkich wymaganych dowodów tożsamości.
+**Spoofing** — aplikacja traktuje atakującego jako w pełni uwierzytelnionego bez wszystkich wymaganych dowodów tożsamości.
 
 ## Affected Flow
 
-Two-factor authentication i dostęp do chronionego konta.
+Uwierzytelnianie dwuskładnikowe i dostęp do chronionego konta.
 
 ## Preconditions
 
-Atakujący posiada poprawny username i hasło, ale nie posiada kodu MFA.
+Atakujący zna poprawną nazwę użytkownika i hasło, ale nie posiada kodu MFA.
 
 ## Evidence
 
-Bez wysłania kodu MFA sesja po weryfikacji hasła uzyskała dostęp do `/my-account` jako ofiara.
+Bez wysłania kodu MFA sesja po weryfikacji hasła uzyskała dostęp do `/my-account` w imieniu ofiary.
 
 ## Reproduction
 
-1. Wyślij poprawny username i hasło ofiary.
-2. Zatrzymaj się na ekranie MFA bez kodu.
-3. Użyj bieżącej sesji do chronionego zasobu.
-4. Zaobserwuj zwrócenie strony konta.
+1. Wyślij poprawną nazwę użytkownika i hasło ofiary.
+2. Zatrzymaj się na ekranie MFA bez podawania kodu.
+3. Użyj bieżącej sesji do wysłania żądania do chronionego zasobu.
+4. Zaobserwuj, że zostaje zwrócona strona konta.
 
 ## Root Cause
 
-Backend nie rozróżnia lub nie egzekwuje stanów `mfa_pending` i `mfa_completed` na chronionych zasobach.
+Backend nie rozróżnia lub nie egzekwuje stanów `mfa_pending` i `mfa_completed` dla chronionych zasobów.
 
 ## Impact
 
-Skradzione lub ponownie użyte credentials wystarczają do wejścia na konto mimo widocznie włączonego MFA.
+Skradzione lub ponownie użyte dane logowania wystarczają do wejścia na konto mimo widocznie włączonego MFA.
 
 ## Security Requirement
 
-> Każda chroniona trasa i API musi wymagać fully authenticated server-side session z ukończonymi wszystkimi obowiązkowymi czynnikami.
+> Każda chroniona trasa i każde API musi wymagać w pełni uwierzytelnionej sesji po stronie serwera, z ukończonymi wszystkimi wymaganymi czynnikami.
 
 ## Remediation
 
-- Utwórz jawny, ograniczony stan pre-auth/MFA-pending.
-- Pozwól mu używać tylko endpointów kończących authentication.
-- Egzekwuj MFA-completed na każdej chronionej trasie i API.
-- Powiąż kod z użytkownikiem, sesją i próbą.
-- Stosuj expiry i rate limiting.
+- Utwórz jawny, ograniczony stan pre-auth / MFA-pending.
+- Zezwól mu wyłącznie na korzystanie z endpointów kończących uwierzytelnianie.
+- Egzekwuj stan MFA-completed na każdej chronionej trasie i w każdym API.
+- Powiąż kod z użytkownikiem, sesją i konkretną próbą logowania.
+- Stosuj wygasanie kodów i rate limiting.
 - Bezpiecznie rotuj lub aktualizuj sesję po poprawnym MFA.
 
 ## Testy regresyjne
 
-- Chronione strony odrzucają MFA-pending session.
-- Chronione API odrzuca MFA-pending session.
-- Direct navigation nie omija MFA.
-- Błędne lub wygasłe kody nie tworzą pełnej sesji.
-- Tylko udane MFA przechodzi do fully authenticated state.
+- Chronione strony odrzucają sesję w stanie MFA-pending.
+- Chronione API odrzuca sesję w stanie MFA-pending.
+- Bezpośrednia nawigacja nie omija MFA.
+- Błędne lub wygasłe kody nie tworzą w pełni uwierzytelnionej sesji.
+- Tylko udane MFA przechodzi do stanu fully authenticated.
