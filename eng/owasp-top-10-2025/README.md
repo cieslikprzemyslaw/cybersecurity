@@ -34,7 +34,7 @@ A category is complete only when it has:
 | [A06: Insecure Design](a06-insecure-design/01-overview.md) | Completed after two business-logic labs and threat modelling | Includes client-controlled pricing, coupon workflow abuse, a draw.io DFD, 18 STRIDE threats, checklist, example finding and regression tests. |
 | [A07: Authentication Failures](a07-authentication-failures/01-overview.md) | Completed after recovery and MFA bypass labs | Includes TryHackMe IAAA/A07 review, PortSwigger password-reset broken logic and 2FA bypass labs, authentication checklist, learning notes, two findings and regression tests. |
 | A08: Software or Data Integrity Failures | Planned | Practical review task: unsafe updates, CI/CD trust, package integrity. |
-| A09: Security Logging and Alerting Failures | Planned | Practical logging and alerting review task. |
+| [A09: Security Logging and Alerting Failures](a09-security-logging-and-alerting-failures/README.md) | Completed after logging and alerting review | Includes A09 overview, detection and audit-log notes, monitoring and response guidance, sensitive-data review, frontend logging notes, checklist, regression tests, learning notes, labs-and-practice notes, and an example finding. |
 | A10: Mishandling of Exceptional Conditions | Planned | Practical error-handling and edge-case review task. |
 
 ## Related internal notes

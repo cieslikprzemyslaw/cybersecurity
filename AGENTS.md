@@ -45,6 +45,17 @@ File and folder names should be lowercase kebab-case, for example `04-sql-inject
 
 Testing is manual review. Check that internal links resolve, language indexes stay aligned, and lab notes avoid publishing sensitive answers or real target data. For security examples, keep the scope defensive and tied to legal labs, local environments, or authorized learning platforms.
 
+## Codex Working Notes
+
+This repository is primarily being curated for Polish AppSec learning notes. When working here, Codex should:
+
+- Review changed Markdown files for factual and AppSec accuracy, not only spelling or structure.
+- Check newly added files for repeated text, duplicated lab lists, duplicated explanations, and copied sections that should be linked or condensed instead.
+- Prefer creating and improving Polish notes under `pl/`, while keeping them aligned with the matching English structure when practical.
+- Keep Polish content clear, natural, and technical: explain root cause, impact, testing approach, remediation, and defensive context.
+- Preserve the repository's educational and legal-lab scope. Avoid real target data, credentials, or unsafely broad exploitation guidance.
+- Update relevant Polish indexes when adding or reorganizing notes.
+
 ## Commit & Pull Request Guidelines
 
 Recent commits use short conventional-style prefixes such as `docs:`, `feat:`, `refactor:`, and `wip:`. Prefer focused messages like `docs: add csrf cheat sheet` or `refactor: reorganize english notes`.
