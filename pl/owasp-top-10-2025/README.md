@@ -34,7 +34,7 @@ Kategoria jest kompletna dopiero wtedy, gdy zawiera:
 | [A06: Insecure Design](a06-insecure-design/01-overview.md) | Ukończone po dwóch labach business logic i threat modelling | Zawiera cenę kontrolowaną przez klienta, nadużycie workflow kuponów, DFD w draw.io, 18 zagrożeń STRIDE, checklistę, przykładowy finding i testy regresji. |
 | [A07: Authentication Failures](a07-authentication-failures/01-overview.md) | Ukończone po labach recovery i MFA bypass | Zawiera review TryHackMe IAAA/A07, laby PortSwigger dotyczące password-reset broken logic i 2FA bypass, checklistę uwierzytelniania, learning notes, dwa findingi i testy regresji. |
 | A08: Software or Data Integrity Failures | Planowane | Zadanie praktyczne: niebezpieczne aktualizacje, zaufanie w CI/CD, integralność pakietów. |
-| A09: Security Logging and Alerting Failures | Planowane | Praktyczne zadanie review logowania i alertowania. |
+| [A09: Security Logging and Alerting Failures](a09-security-logging-and-alerting-failures/README.md) | Ukończone po review logowania i alertowania | Zawiera overview A09, notatki o detection i audit logach, monitoring i response, review danych wrażliwych, notatki o frontendowym loggingu, checklistę, testy regresji, learning notes, notatki z labów i przykładowe znalezisko. |
 | A10: Mishandling of Exceptional Conditions | Planowane | Praktyczne zadanie review obsługi błędów i edge case'ów. |
 
 ## Powiązane notatki wewnętrzne

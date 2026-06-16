@@ -1,47 +1,47 @@
-# A09 — Podsumowanie praktyki
+# Podsumowanie Praktyki A09
 
 ## Co przejrzałem
 
 - application-level security events,
-- event naming dla authentication i MFA,
-- korelację i alert thresholds,
-- log injection w ręcznie składanym Node/Express log line,
-- bezpieczne pola dla audit eventu zmiany roli,
-- frontend telemetry kontra autorytatywne evidence backendu.
+- nazewnictwo eventów authentication i MFA,
+- correlation i progi alertów,
+- log injection w log line zbudowanym ze stringów w Node/Express,
+- bezpieczne pola dla audit eventu zmiany roli uprzywilejowanej,
+- frontend telemetry versus autorytatywny backendowy dowód.
 
-## Główny detection gap
+## Główna luka detekcji
 
-Najważniejszą luką nie był wyłącznie brak logów. Była nią sytuacja, w której eventy istnieją, ale żadna reguła ich nie koreluje, alert nie dociera do ownera albo nie istnieje proces response.
+Najbardziej widoczna luka nie dotyczyła wyłącznie brakujących logów. Chodziło też o sytuację, w której eventy istniały, ale żadna reguła ich nie korelowała, alert nie trafiał do właściciela albo nie istniał proces reakcji.
 
-## Główna lekcja o sensitive data
+## Najważniejsza lekcja o danych wrażliwych
 
-Dochodzenie potrzebuje dowodu aktora, celu, akcji, czasu i rezultatu. Nie potrzebuje haseł, access tokens, session cookies, MFA codes ani pełnych request bodies.
+Do dochodzenia potrzebny jest dowód aktora, celu, akcji, czasu i wyniku. Nie są potrzebne hasła, access tokeny, session cookies, kody MFA ani pełne body requestów.
 
-## Główna lekcja log injection
+## Najważniejsza lekcja o log injection
 
-String interpolation pozwala niezaufanej wartości wpływać na strukturę wpisu. Bezpieczniejszy design korzysta ze structured events, application-controlled metadata, limitów pól i testów newline/control characters.
+Interpolacja stringów pozwalała kontrolowanej wartości wpłynąć na strukturę log line. Bezpieczniejszy design używa structured events, application-controlled metadata, limitów pól i testów regresji przeciwko newline oraz znakom kontrolnym.
 
-## Wymagania bezpieczeństwa
+## Wymagania bezpieczeństwa, które wyniknęły
 
 - Authentication successes i failures muszą tworzyć structured security events.
-- Zmiana roli musi tworzyć audit event z aktorem, celem, poprzednią rolą, nową rolą, timestampem i wynikiem.
+- Privileged role changes muszą tworzyć audit event zawierający actor, target, previous role, new role, timestamp i result.
 - Logi nie mogą zawierać authentication secrets.
-- User-controlled values nie mogą kontrolować struktury, nazwy, severity, result ani reason code eventu.
-- Powtarzające się failures i success-after-failure muszą mieć zdefiniowane reguły detekcji.
-- High-severity alerts muszą mieć ownera i playbook.
-- Security logs muszą być chronione przed nieautoryzowanym odczytem, zmianą i usunięciem.
+- Wartości kontrolowane przez użytkownika nie mogą sterować strukturą eventu, nazwą, severity, wynikiem ani reason code.
+- Powtarzające się failures authentication i wzorzec success-after-failure muszą mieć zdefiniowane reguły detekcji.
+- High-severity alerts muszą mieć właściciela i playbook reakcji.
+- Security logs muszą być chronione przed nieautoryzowanym dostępem, modyfikacją i usunięciem.
 
-## Końcowa ocena
+## Ocena końcowa
 
 **PASS — Frontend Developer przechodzący do AppSec**
 
-Potrafię podczas review zapytać:
+Potrafię przejrzeć prostą funkcję i zadać pytania:
 
 ```text
-what happened?
-what was logged?
-what was excluded?
-what pattern should alert?
-who owns it?
-what evidence proves the flow works?
+co się wydarzyło?
+co zostało zalogowane?
+co zostało wykluczone?
+jaki wzorzec powinien uruchomić alert?
+kto jest właścicielem?
+jaki dowód potwierdza, że przepływ działa?
 ```

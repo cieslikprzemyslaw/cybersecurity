@@ -1,30 +1,30 @@
-# Sensitive Logging Review
+# Review Sensitive Logging
 
 ## Scenariusz
 
-Backend zapisuje audit event zmiany roli użytkownika. Pierwotny obiekt zawierał zarówno potrzebny kontekst, jak i sekrety.
+Backend loguje udaną zmianę roli administratora z polami obejmującymi dane aktora, dane celu, source context, tokeny, body requestu, stare i nowe role oraz wynik.
 
-## Klasyfikacja pól
+## Ostateczna klasyfikacja
 
 | Pole | Klasyfikacja | Uzasadnienie |
-|---|---|---|
-| `timestamp` | Logować bezpośrednio | Potrzebny do osi czasu. |
-| `eventName` | Logować bezpośrednio | Określa typ eventu. |
-| `actorUsername` | Maskować lub logować wyjątkowo | Może być PII; internal ID jest stabilniejszy. |
-| `actorUserId` | Logować bezpośrednio | Kluczowy dowód, kto wykonał akcję. |
-| `targetUserId` | Logować bezpośrednio | Kluczowy dowód, czyje uprawnienia zmieniono. |
-| `sourceIp` | Logować bezpośrednio lub z kontrolą | Przydatny kontekst, ale nie dowód tożsamości. |
-| `userAgent` | Logować zależnie od potrzeby | Wspiera dochodzenie, ale nie zawsze jest konieczny. |
-| `sessionCookie` | Nie logować | Sekret uwierzytelniający. |
-| `accessToken` | Nie logować | Sekret uwierzytelniający; hash nie jest potrzebny. |
-| `requestId` | Logować bezpośrednio | Bezpieczna korelacja. |
-| `errorCode` | Logować, jeśli kontrolowany | Używać safe reason code zamiast stack trace. |
-| `requestBody` | Nie logować | Może zawierać hasło, tokeny i zbędne dane. |
-| `previousRole` | Logować bezpośrednio | Potrzebne do odtworzenia zmiany. |
-| `newRole` | Logować bezpośrednio | Potrzebne do odtworzenia zmiany. |
-| `result` | Logować bezpośrednio | Pokazuje, czy akcja się powiodła. |
+|---|---|---|---|
+| `timestamp` | Log directly | Wymagany do porządkowania eventów i dochodzenia. |
+| `eventName` | Log directly | Definiuje security event. |
+| `actorUsername` | Mask, transform, or controlled use | Może być PII i może się zmieniać; preferowany jest internal ID. |
+| `actorUserId` | Log directly | Niezbędny dowód tego, kto wykonał akcję. |
+| `targetUserId` | Log directly | Niezbędny dowód tego, czyja rola została zmieniona. |
+| `sourceIp` | Direct or transformed by policy | Przydatny kontekst, ale niepewna tożsamość. |
+| `userAgent` | Controlled use | Przydatny w niektórych dochodzeniach, ale nie zawsze konieczny. |
+| `sessionCookie` | Do not log | Sekret uwierzytelniający. |
+| `accessToken` | Do not log | Sekret uwierzytelniający; hashowanie nie jest potrzebne dla tego eventu. |
+| `requestId` | Log directly | Bezpieczna korelacja między usługami. |
+| `errorCode` | Log directly when safe | Użyj application-controlled reason code, a nie stack trace. |
+| `requestBody` | Do not log | Może zawierać hasła, tokeny, tekst uzasadnienia i zbędne dane. |
+| `previousRole` | Log directly | Wymagane do odtworzenia zmiany. |
+| `newRole` | Log directly | Wymagane do odtworzenia zmiany. |
+| `result` | Log directly | Pokazuje, czy akcja się powiodła. |
 
-## Minimalny dowód auditowy
+## Minimalny audit evidence
 
 ```text
 actorUserId
@@ -35,7 +35,7 @@ timestamp
 result
 ```
 
-`eventName` i `requestId` poprawiają czytelność i korelację.
+`eventName` i `requestId` czynią rekord bardziej czytelnym i łatwiejszym do korelacji.
 
 ## Bezpieczny event
 
@@ -54,7 +54,7 @@ logger.warn("User role changed", {
 
 ## Wyjaśnienie CSRF
 
-Nie trzeba logować CSRF tokenu, aby udowodnić wynik walidacji. Logujemy rezultat kontroli:
+CSRF token nie powinien być logowany, aby dowieść, czy walidacja zadziałała. Zamiast tego loguj wynik kontroli:
 
 ```json
 {
@@ -68,6 +68,6 @@ Nie trzeba logować CSRF tokenu, aby udowodnić wynik walidacji. Logujemy rezult
 }
 ```
 
-## Korekta mojego rozumienia
+## Korekta nauki
 
-Początkowo usunąłem actor i target IDs, a hash access tokenu uznałem za dopuszczalny. Korekta: internal IDs są potrzebnym dowodem audytowym, natomiast access token nie jest potrzebny i nie powinien być zapisywany.
+Początkowo usunąłem actor i target IDs, jednocześnie uznając hash access tokenu za akceptowalny. Korekta była taka, że internal IDs aktora i celu są niezbędnym dowodem auditowym, a sam access token nie jest potrzebny i nie powinien być zapisywany.

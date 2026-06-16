@@ -1,43 +1,58 @@
-# Log Injection Review
+# Review Log Injection
 
-## Analizowany kod
+## Zbadany kod
 
 ```ts
-logger.warn(
-  `${new Date().toISOString()} LOGIN_FAILED username=${username} ip=${request.ip}`
-);
+app.post("/login", async (request, response) => {
+  const { username, password } = request.body;
+  const user = await authenticate(username, password);
+
+  if (!user) {
+    logger.warn(
+      `${new Date().toISOString()} LOGIN_FAILED username=${username} ip=${request.ip}`
+    );
+
+    return response.status(401).json({ message: "Invalid credentials" });
+  }
+
+  logger.info(
+    `${new Date().toISOString()} LOGIN_SUCCESS username=${username} ip=${request.ip}`
+  );
+
+  return response.status(200).json({ message: "Logged in" });
+});
 ```
 
-## User-controlled values
+## Dane kontrolowane przez użytkownika
 
-- `username` pochodzi bezpośrednio z request body,
-- `request.ip` może zależeć od konfiguracji proxy i nagłówków takich jak `X-Forwarded-For`,
-- `password` również pochodzi z requestu, ale nie był logowany i nie powinien być.
+- `username` pochodzi bezpośrednio z body requestu.
+- `password` też pochodzi z body requestu, ale nie jest wstawiane do pokazanego log line.
+- `request.ip` zależy od konfiguracji Express i proxy. Przekazane nagłówki mogą być mylące, jeśli `trust proxy` jest ustawione nieprawidłowo.
 
-## Problem
+## Problem z konstrukcją
 
-Log jest budowany jako zwykły string. `username` może wpływać na strukturę line-oriented logu.
+Event jest składany jako plain string. Kontrolowana wartość jest wstawiana do tego samego tekstu, który definiuje granice eventu i nazwy pól.
 
 ```text
-untrusted input
-    -> interpolated text
-    -> parser / viewer / SIEM
-    -> misleading interpretation
+niezaufany username
+    -> interpolowany line
+    -> line parser / viewer / SIEM
 ```
 
-## Możliwe skutki
+## Potencjalny wpływ
 
-- forged-looking second event,
-- uszkodzona struktura,
-- wrong actor albo severity,
-- false positive,
-- false negative,
-- utrata integralności i accountability,
-- utrudnione dochodzenie.
+Atakujący może być w stanie:
 
-Atakujący w tym przykładzie nie musi nadpisywać wcześniejszego logu. Może sprawić, że nowy wpis będzie wyglądał jak kilka wpisów albo zostanie błędnie zinterpretowany.
+- sfałszować wpis wyglądający jak drugi event,
+- uszkodzić strukturę rekordu,
+- ukryć złośliwą aktywność,
+- wywołać false positive albo false negative,
+- przypisać aktywność niewłaściwemu aktorowi,
+- wprowadzić w błąd analityka.
 
-## Bezpieczniejszy projekt
+Ćwiczenie nie dowiodło, że istniejące zapisane rekordy mogły zostać nadpisane. Zwykle wymagałoby to dodatkowego dostępu albo innej podatności.
+
+## Bezpieczniejszy design
 
 ```ts
 logger.warn("Authentication failed", {
@@ -51,24 +66,25 @@ logger.warn("Authentication failed", {
 });
 ```
 
-Dodatkowo:
+Dodatkowe kontrole:
 
-- normalizacja lub encoding control characters,
+- strukturalna serializacja,
 - limity długości pól,
-- application-controlled metadata,
-- brak password i innych sekretów,
-- test parsera i viewerów downstream.
+- obsługa znaków kontrolnych,
+- event name, severity, result i reason code kontrolowane przez aplikację,
+- brak logowania hasła,
+- bezpieczny downstream parsing i display.
 
-## Regression test
+## Test regresji
 
-Test wysyła logowalną wartość ze znakami newline lub control characters i sprawdza:
+1. Wyślij username zawierający newline i znaki kontrolne.
+2. Doprowadź do nieudanego uwierzytelnienia.
+3. Zbierz wysłany event.
+4. Potwierdź, że istnieje dokładnie jeden event.
+5. Potwierdź, że event pozostaje `authn_login_fail` z oczekiwaną severity i result.
+6. Potwierdź, że username jest bezpiecznie zawarty w jednym polu.
+7. Potwierdź, że nie ma hasła ani dodatkowego sfałszowanego rekordu.
 
-- dokładnie jeden structured event,
-- niezmieniony `eventName`, severity, result i reason code,
-- wartość inputu pozostaje wewnątrz jednego pola,
-- brak fałszywego drugiego eventu,
-- brak hasła w zapisanych danych.
+## Główna myśl
 
-## Wniosek
-
-Dane użytkownika mogą być wartością pola logu, ale nie powinny kontrolować struktury, typu, severity ani znaczenia eventu.
+> Niezaufane dane mogą być wartością pola, ale nie mogą kontrolować struktury ani znaczenia security eventu.

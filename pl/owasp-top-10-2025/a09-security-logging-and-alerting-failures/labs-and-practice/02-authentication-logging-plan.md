@@ -1,32 +1,35 @@
-# Authentication Logging and Alerting Plan
+# Plan Logowania i Alertowania dla Authentication
 
 ## Scenariusz
 
 ```text
-3 failed logins
-    -> 1 successful login
-    -> 2 failed MFA attempts
-    -> successful MFA
-    -> authenticated session created
+trzy nieudane logowania
+    -> udana weryfikacja hasła
+    -> dwie nieudane próby MFA
+    -> udane MFA
+    -> utworzona uwierzytelniona sesja
 ```
 
-## Autorytatywne źródło
+## Źródło autorytatywne
 
-Auth Service powinien emitować autorytatywne eventy dotyczące hasła, MFA i utworzenia sesji. Frontend może dostarczać supporting telemetry, ale nie zna wiarygodnego rezultatu kontroli backendowej.
+Identity lub Auth Service powinien emitować autorytatywne eventy authentication, ponieważ weryfikuje credentiale, ukończenie MFA oraz stan sesji.
 
-## Eventy
+Frontend telemetry może rejestrować błędy UX albo request ID, ale nie może dowieść, że authentication się powiodło.
+
+## Oczekiwane eventy
 
 ```text
 authn_login_fail
+authn_login_fail
+authn_login_fail
 authn_login_success
+authn_mfa_fail
 authn_mfa_fail
 authn_mfa_success
 session_created
 ```
 
-Recovery i reset powinny mieć osobne eventy tylko wtedy, gdy konkretny workflow rzeczywiście wystąpił.
-
-## Przykładowy `authn_login_fail`
+## Przykładowy event failed-login
 
 ```json
 {
@@ -35,36 +38,53 @@ Recovery i reset powinny mieć osobne eventy tylko wtedy, gdy konkretny workflow
   "accountId": "usr_123",
   "sourceIp": "203.0.113.24",
   "userAgent": "Mozilla/5.0",
-  "requestId": "req_456",
+  "requestId": "req_a87f",
   "result": "failure",
   "reasonCode": "INVALID_CREDENTIALS"
 }
 ```
 
-Nie logujemy hasła, JWT, access/refresh tokenu, session cookie, MFA code, reset tokenu ani pełnego nagłówka `Authorization`.
+Przykład ma osiem pól. HTTP status albo route mogą być dodane, jeśli odpowiadają na konkretną potrzebę dochodzeniową, ale query string nie może zawierać credentiali.
 
-## Reguła 1 — powtarzające się błędy
+## Wykluczane dane
+
+Nie loguj:
+
+- hasła,
+- kodu MFA,
+- session cookie,
+- access lub refresh tokenu,
+- reset tokenu,
+- pełnego nagłówka `Authorization`,
+- pełnego body requestu logowania.
+
+## Reguła detekcji 1: powtarzające się failures
 
 ```text
-Pattern: authn_login_fail dla jednego account ID
-Threshold: 5
-Window: 5 minut
+Pattern: authn_login_fail
+Correlation: to samo konto
+Threshold: 5 failures
+Window: 5 minutes
 Severity: WARN
-Owner: security team albo on-call
-Response: sprawdzenie źródeł prób, rate limiting, ryzyka konta i powiązanych sesji
+Owner: security team lub on-call owner
+Response: review źródeł, rate limits, account risk i powiązanej aktywności
 ```
 
-## Reguła 2 — sukces po wielu błędach
+## Reguła detekcji 2: success po failures
 
 ```text
-Pattern: authn_login_success po co najmniej 5 authn_login_fail
-Correlation: to samo account ID
-Window: 10 minut
-Severity: HIGH; wyższe dla privileged account
-Owner: security team albo on-call
-Response: review MFA, sesji i aktywności po logowaniu; containment przy wysokiej pewności
+Pattern: authn_login_success po co najmniej 5 eventach authn_login_fail
+Correlation: to samo konto
+Window: 10 minutes
+Severity: HIGH; wyższe dla kont uprzywilejowanych, jeśli polityka tego wymaga
+Owner: security team lub on-call owner
+Response: review MFA, session, source context i działań po logowaniu; zawrzyj, gdy confidence jest wysoka
 ```
 
-## Wniosek
+## Korekta nauki
 
-Pojedynczy event jest dowodem zdarzenia. Detekcja wymaga korelacji, progu i okna czasowego, a alert wymaga ownera i oczekiwanej reakcji.
+Moja pierwsza odpowiedź wymieniała login i MFA eventy, ale nie obejmowała lifecycle sesji ani nie definiowała pełnej reguły detekcji. Musiałem też rozdzielić pojedynczy event od skorelowanego wzorca.
+
+## Główna myśl
+
+> Auth Service emituje evidence. Reguła detekcji zamienia podejrzaną sekwencję tego evidence w actionable alert.
