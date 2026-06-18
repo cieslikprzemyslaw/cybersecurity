@@ -12,15 +12,19 @@ The goal is not to create theory-only notes. Each category should produce practi
 
 ## Definition of Done for each OWASP category
 
-A category is complete only when it has:
+A category is complete only when it has a usable topic structure, not just a placeholder row.
 
+Minimum expected outputs:
+
+- `README.md` as the topic index
 - `01-overview.md`
-- `02-labs-or-practice.md`
-- `03-checklist.md`
-- `04-regression-tests.md`
-- optional `05-learning-notes.md` for longer personal consolidation
-- `security-findings/01-example-finding.md`
-- an entry in `coverage-matrix.md`
+- topic-specific theory or review notes when the subject needs them
+- a checklist file such as `03-checklist.md` or `06-checklist.md`
+- a regression-test file such as `04-regression-tests.md` or `07-regression-tests.md`
+- optional learning notes for longer consolidation
+- `labs-and-practice/` when practical review notes exist
+- at least one example write-up under `security-findings/`
+- an updated entry in `coverage-matrix.md`
 
 ## Current status
 
@@ -35,7 +39,7 @@ A category is complete only when it has:
 | [A07: Authentication Failures](a07-authentication-failures/01-overview.md) | Completed after recovery and MFA bypass labs | Includes TryHackMe IAAA/A07 review, PortSwigger password-reset broken logic and 2FA bypass labs, authentication checklist, learning notes, two findings and regression tests. |
 | A08: Software or Data Integrity Failures | Planned | Practical review task: unsafe updates, CI/CD trust, package integrity. |
 | [A09: Security Logging and Alerting Failures](a09-security-logging-and-alerting-failures/README.md) | Completed after logging and alerting review | Includes A09 overview, detection and audit-log notes, monitoring and response guidance, sensitive-data review, frontend logging notes, checklist, regression tests, learning notes, labs-and-practice notes, and an example finding. |
-| A10: Mishandling of Exceptional Conditions | Planned | Practical error-handling and edge-case review task. |
+| [A10: Mishandling of Exceptional Conditions](a10-mishandling-of-exceptional-conditions/01-overview.md) | Completed after theory and practical review exercises | Includes OWASP A10 theory, OWASP Error Handling Cheat Sheet review, API error handling, partial-state and rollback review, malformed parameter review, timeout and retry review, duplicate submit and race-condition basics, checklist, learning notes, example finding and regression tests. |
 
 ## Related internal notes
 

@@ -39,7 +39,7 @@ A generic `500` response was not enough. Strong evidence came from:
 4. a file containing the output of `whoami`,
 5. successful retrieval of that file through `/image`.
 
-## Main corrections
+## Key clarifications
 
 - Choose parameters through data-flow reasoning, not only validation assumptions.
 - Keep facts separate from guesses about the original backend command.
