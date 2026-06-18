@@ -12,15 +12,19 @@ Celem nie jest tworzenie notatek wyłącznie teoretycznych. Każda kategoria pow
 
 ## Definition of Done dla każdej kategorii OWASP
 
-Kategoria jest kompletna dopiero wtedy, gdy zawiera:
+Kategoria jest kompletna dopiero wtedy, gdy ma użyteczną strukturę tematu, a nie tylko roboczy wpis na liście.
 
+Minimalny oczekiwany zestaw:
+
+- `README.md` jako indeks tematu
 - `01-overview.md`
-- `02-labs-or-practice.md`
-- `03-checklist.md`
-- `04-regression-tests.md`
-- opcjonalny `05-learning-notes.md` dla dłuższej konsolidacji nauki
-- `security-findings/01-example-finding.md`
-- wpis w `coverage-matrix.md`
+- dodatkowe notatki teoretyczne albo review, jeśli temat tego wymaga
+- plik checklisty, na przykład `03-checklist.md` albo `06-checklist.md`
+- plik testów regresji, na przykład `04-regression-tests.md` albo `07-regression-tests.md`
+- opcjonalne learning notes do dłuższej konsolidacji
+- `labs-and-practice/`, gdy istnieją praktyczne notatki z review albo labów
+- przynajmniej jedno przykładowe znalezisko w `security-findings/`
+- zaktualizowany wpis w `coverage-matrix.md`
 
 ## Aktualny status
 
@@ -35,7 +39,7 @@ Kategoria jest kompletna dopiero wtedy, gdy zawiera:
 | [A07: Authentication Failures](a07-authentication-failures/01-overview.md) | Ukończone po labach recovery i MFA bypass | Zawiera review TryHackMe IAAA/A07, laby PortSwigger dotyczące password-reset broken logic i 2FA bypass, checklistę uwierzytelniania, learning notes, dwa findingi i testy regresji. |
 | A08: Software or Data Integrity Failures | Planowane | Zadanie praktyczne: niebezpieczne aktualizacje, zaufanie w CI/CD, integralność pakietów. |
 | [A09: Security Logging and Alerting Failures](a09-security-logging-and-alerting-failures/README.md) | Ukończone po review logowania i alertowania | Zawiera overview A09, notatki o detection i audit logach, monitoring i response, review danych wrażliwych, notatki o frontendowym loggingu, checklistę, testy regresji, learning notes, notatki z labów i przykładowe znalezisko. |
-| A10: Mishandling of Exceptional Conditions | Planowane | Praktyczne zadanie review obsługi błędów i edge case'ów. |
+| [A10: Mishandling of Exceptional Conditions](a10-mishandling-of-exceptional-conditions/01-overview.md) | Ukończone po teorii i ćwiczeniach praktycznych review | Zawiera teorię OWASP A10, review OWASP Error Handling Cheat Sheet, API error handling, partial-state and rollback review, malformed parameter review, timeout and retry review, duplicate submit i podstawy race condition, checklistę, learning notes, przykładowe znalezisko i testy regresji. |
 
 ## Powiązane notatki wewnętrzne
 
