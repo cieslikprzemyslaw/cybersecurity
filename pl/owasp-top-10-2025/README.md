@@ -2,6 +2,8 @@
 
 Ten katalog mapuje moją praktyczną naukę AppSec na kategorie OWASP Top 10 2025.
 
+Sprint mapowania jest ukończony dla A01-A10.
+
 Celem nie jest tworzenie notatek wyłącznie teoretycznych. Każda kategoria powinna prowadzić do praktycznej dokumentacji gotowej do GitHuba, która łączy:
 
 - co oznacza dana kategoria OWASP,
@@ -37,9 +39,9 @@ Minimalny oczekiwany zestaw:
 | [A05: Injection](a05-injection/01-overview.md) | Ukończone po praktyce SQLi, NoSQL, OS Command Injection i SSTI | Zawiera SQL Injection, NoSQL Injection, OS Command Injection, SSTI, mapowanie XSS, Prompt Injection awareness, powiązane laby, checklistę, learning notes, findingi i testy regresji. |
 | [A06: Insecure Design](a06-insecure-design/01-overview.md) | Ukończone po dwóch labach business logic i threat modelling | Zawiera cenę kontrolowaną przez klienta, nadużycie workflow kuponów, DFD w draw.io, 18 zagrożeń STRIDE, checklistę, przykładowy finding i testy regresji. |
 | [A07: Authentication Failures](a07-authentication-failures/01-overview.md) | Ukończone po labach recovery i MFA bypass | Zawiera review TryHackMe IAAA/A07, laby PortSwigger dotyczące password-reset broken logic i 2FA bypass, checklistę uwierzytelniania, learning notes, dwa findingi i testy regresji. |
-| [A08: Software or Data Integrity Failures](a08-software-or-data-integrity-failures/01-overview.md) | Ukończone | Zawiera notatki o integralności i autentyczności, checklistę, przykładowe znalezisko i testy regresji. |
+| [A08: Software or Data Integrity Failures](a08-software-or-data-integrity-failures/README.md) | Ukończone po review integralności i deserializacji | Zawiera notatki o integralności i autentyczności, porównanie A03 versus A08, review insecure deserialization, checklistę, testy regresji, learning notes, notatki z labów i przykładowe znalezisko. |
 | [A09: Security Logging and Alerting Failures](a09-security-logging-and-alerting-failures/README.md) | Ukończone po review logowania i alertowania | Zawiera overview A09, notatki o detection i audit logach, monitoring i response, review danych wrażliwych, notatki o frontendowym loggingu, checklistę, testy regresji, learning notes, notatki z labów i przykładowe znalezisko. |
-| [A10: Mishandling of Exceptional Conditions](a10-mishandling-of-exceptional-conditions/01-overview.md) | Ukończone po teorii i ćwiczeniach praktycznych review | Zawiera teorię OWASP A10, review OWASP Error Handling Cheat Sheet, API error handling, partial-state and rollback review, malformed parameter review, timeout and retry review, duplicate submit i podstawy race condition, checklistę, learning notes, przykładowe znalezisko i testy regresji. |
+| [A10: Mishandling of Exceptional Conditions](a10-mishandling-of-exceptional-conditions/README.md) | Ukończone po teorii i ćwiczeniach praktycznych review | Zawiera teorię OWASP A10, review OWASP Error Handling Cheat Sheet, API error handling, partial-state and rollback review, malformed parameter review, timeout and retry review, duplicate submit i podstawy race condition, checklistę, learning notes, notatki z labów i przykładowe znalezisko. |
 
 ## Powiązane notatki wewnętrzne
 
