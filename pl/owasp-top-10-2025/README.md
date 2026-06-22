@@ -4,6 +4,8 @@ Ten katalog mapuje moją praktyczną naukę AppSec na kategorie OWASP Top 10 202
 
 Sprint mapowania jest ukończony dla A01-A10.
 
+Zobacz też [podsumowanie nauki](learning-summary.md), które zbiera najważniejsze wnioski, powtarzające się wzorce i kolejne kroki.
+
 Celem nie jest tworzenie notatek wyłącznie teoretycznych. Każda kategoria powinna prowadzić do praktycznej dokumentacji gotowej do GitHuba, która łączy:
 
 - co oznacza dana kategoria OWASP,

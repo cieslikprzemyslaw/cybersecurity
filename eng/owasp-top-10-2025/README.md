@@ -4,6 +4,8 @@ This directory maps my practical AppSec learning to the OWASP Top 10 2025 catego
 
 The mapping sprint is completed for A01 through A10.
 
+See the [learning summary](learning-summary.md) for the main takeaways, recurring patterns, and next steps from the sprint.
+
 The goal is not to create theory-only notes. Each category should produce practical, GitHub-ready documentation that connects:
 
 - what the OWASP category means,
