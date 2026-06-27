@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Docker Compose services, networking and storage</title>
+  <desc id="desc">Docker Compose starts migrate, API and web services with internal networking and persistent volumes.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="720" fill="#f8fafc"/>
+  <text x="64" y="72" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" fill="#0f172a">Compose, networking and storage</text>
+  <text x="64" y="108" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" fill="#475569">Compose runs the app as cooperating services, not one large container.</text>
+
+  <rect x="70" y="165" width="1140" height="430" rx="28" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="100" y="210" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20" font-weight="700" fill="#334155">Docker Compose project network</text>
+
+  <rect x="120" y="270" width="240" height="130" rx="20" fill="#fefce8" stroke="#facc15" stroke-width="2" filter="url(#shadow)"/>
+  <text x="240" y="320" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" fill="#713f12">api-migrate</text>
+  <text x="240" y="352" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" fill="#854d0e">migrate deploy</text>
+  <text x="240" y="378" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" fill="#854d0e">then exits</text>
+
+  <rect x="520" y="250" width="260" height="170" rx="22" fill="#ecfdf5" stroke="#34d399" stroke-width="2" filter="url(#shadow)"/>
+  <text x="650" y="305" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" font-weight="700" fill="#064e3b">api</text>
+  <text x="650" y="337" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" fill="#047857">Node / Express</text>
+  <text x="650" y="365" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" fill="#047857">service name: api</text>
+  <text x="650" y="393" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" fill="#047857">published: 3000</text>
+
+  <rect x="925" y="250" width="240" height="170" rx="22" fill="#eff6ff" stroke="#60a5fa" stroke-width="2" filter="url(#shadow)"/>
+  <text x="1045" y="305" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" font-weight="700" fill="#1e3a8a">web</text>
+  <text x="1045" y="337" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" fill="#1d4ed8">nginx</text>
+  <text x="1045" y="365" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" fill="#1d4ed8">serves SPA</text>
+  <text x="1045" y="393" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" fill="#1d4ed8">published: 8080</text>
+
+  <path d="M 370 335 L 505 335" stroke="#2563eb" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <text x="438" y="314" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" fill="#334155">prepares DB</text>
+
+  <path d="M 790 335 L 910 335" stroke="#2563eb" stroke-width="4" fill="none" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="850" y="314" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" fill="#334155">/api, /uploads</text>
+
+  <rect x="455" y="500" width="210" height="90" rx="18" fill="#fff7ed" stroke="#fb923c" stroke-width="2" filter="url(#shadow)"/>
+  <text x="560" y="540" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="19" font-weight="700" fill="#7c2d12">api-data</text>
+  <text x="560" y="568" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" fill="#9a3412">SQLite file</text>
+
+  <rect x="700" y="500" width="210" height="90" rx="18" fill="#fef2f2" stroke="#f87171" stroke-width="2" filter="url(#shadow)"/>
+  <text x="805" y="540" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="19" font-weight="700" fill="#7f1d1d">api-uploads</text>
+  <text x="805" y="568" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" fill="#991b1b">uploaded files</text>
+
+  <path d="M 625 428 L 575 492" stroke="#2563eb" stroke-width="4" fill="none" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <path d="M 685 428 L 790 492" stroke="#2563eb" stroke-width="4" fill="none" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+
+  <text x="1045" y="460" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" fill="#64748b">Host browser uses localhost:8080</text>
+  <text x="650" y="460" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" fill="#64748b">Containers use service names</text>
+</svg>

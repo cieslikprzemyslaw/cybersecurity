@@ -1,0 +1,60 @@
+<svg width="1100" height="620" viewBox="0 0 1100 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">AppSec Report Builder Docker runtime architecture</title>
+  <desc id="desc">Browser connects to nginx web container, nginx proxies API and uploads requests to Node API container, API stores SQLite data and uploads in Docker volumes.</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000000" flood-opacity="0.22"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="1100" height="620" fill="#f8fafc"/>
+  <text x="55" y="60" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="32" font-weight="700" fill="#0f172a">Docker runtime architecture</text>
+  <text x="55" y="92" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" fill="#475569">React/Vite frontend, nginx proxy, Node API, SQLite and uploads as persistent volumes</text>
+
+  <g filter="url(#shadow)">
+    <rect x="55" y="150" width="210" height="110" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+    <text x="160" y="193" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="22" font-weight="700" fill="#0f172a">Browser</text>
+    <text x="160" y="225" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" fill="#475569">localhost:8080</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="395" y="125" width="290" height="160" rx="18" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+    <text x="540" y="168" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="22" font-weight="700" fill="#164e63">web container</text>
+    <text x="540" y="200" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" fill="#155e75">nginx unprivileged</text>
+    <text x="540" y="226" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" fill="#155e75">serves static React/Vite files</text>
+    <text x="540" y="252" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" fill="#155e75">proxies /api and /uploads</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="825" y="125" width="220" height="160" rx="18" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+    <text x="935" y="168" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="22" font-weight="700" fill="#14532d">api container</text>
+    <text x="935" y="200" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" fill="#166534">Node.js / Express</text>
+    <text x="935" y="226" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" fill="#166534">port 3000</text>
+    <text x="935" y="252" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" fill="#166534">health: /api/health</text>
+  </g>
+
+  <path d="M265 205 H395" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="330" y="190" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" fill="#334155">HTTP</text>
+
+  <path d="M685 205 H825" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="755" y="190" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" fill="#334155">Docker DNS: api:3000</text>
+
+  <g filter="url(#shadow)">
+    <rect x="705" y="405" width="160" height="105" rx="16" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+    <text x="785" y="448" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="19" font-weight="700" fill="#7c2d12">api-data</text>
+    <text x="785" y="478" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" fill="#9a3412">SQLite volume</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="910" y="405" width="160" height="105" rx="16" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+    <text x="990" y="448" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="19" font-weight="700" fill="#7f1d1d">api-uploads</text>
+    <text x="990" y="478" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" fill="#991b1b">files volume</text>
+  </g>
+
+  <path d="M910 285 C870 325 820 360 790 405" stroke="#334155" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <path d="M960 285 C980 330 990 360 990 405" stroke="#334155" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+
+  <rect x="55" y="550" width="990" height="1" fill="#cbd5e1"/>
+  <text x="55" y="582" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" fill="#475569">Security idea: build clean runtime images and keep mutable data outside disposable containers.</text>
+</svg>
