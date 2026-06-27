@@ -13,6 +13,7 @@ Start with the fundamentals, then practise threat modeling, then work through th
 | 3 | [Key Web Vulnerabilities](key-web-vulnerabilities/README.md) | study one vulnerability class at a time with notes, checklists and labs. |
 | 4 | [OWASP Top 10 2025 Mapping Sprint](owasp-top-10-2025/README.md) | map practical learning to OWASP categories and review outputs. |
 | 5 | [OWASP Top 10 for LLM Applications 2025](owasp-top-10-for-llm-applications-2025/README.md) | review Prompt Injection, RAG, agents, tools and LLM application controls. |
+| 6 | [Container Security](container-security/README.md) | review Docker hardening, runtime images, Compose networking, volumes and troubleshooting. |
 
 ## Web AppSec Fundamentals
 
@@ -43,6 +44,12 @@ Foundation notes before vulnerability-specific study:
 | 06 | Path Traversal and File Access Bugs | [Index](key-web-vulnerabilities/06-path-traversal-file-access/README.md), [Core Concepts](key-web-vulnerabilities/06-path-traversal-file-access/01-core-concepts.md), [Where to Test](key-web-vulnerabilities/06-path-traversal-file-access/02-where-to-test-cheatsheet.md), [Payloads](key-web-vulnerabilities/06-path-traversal-file-access/03-payloads-and-bypasses-cheatsheet.md), [LFI/RFI](key-web-vulnerabilities/06-path-traversal-file-access/04-lfi-rfi-cheatsheet.md), [Remediation](key-web-vulnerabilities/06-path-traversal-file-access/05-remediation-cheatsheet.md) | [Labs](key-web-vulnerabilities/06-path-traversal-file-access/labs/) |
 | 07 | File Upload Vulnerabilities | [Index](key-web-vulnerabilities/07-file-upload-vulnerabilities/README.md), [Core Concepts](key-web-vulnerabilities/07-file-upload-vulnerabilities/01-core-concepts.md), [Request Anatomy](key-web-vulnerabilities/07-file-upload-vulnerabilities/02-upload-request-anatomy.md), [Bypasses](key-web-vulnerabilities/07-file-upload-vulnerabilities/03-validation-and-filter-bypass-cheatsheet.md), [Testing](key-web-vulnerabilities/07-file-upload-vulnerabilities/04-black-box-testing-methodology.md), [Remediation](key-web-vulnerabilities/07-file-upload-vulnerabilities/05-remediation-cheatsheet.md) | [Labs](key-web-vulnerabilities/07-file-upload-vulnerabilities/labs/), [Test Files](key-web-vulnerabilities/07-file-upload-vulnerabilities/lab-test-files/README.md) |
 | 08 | Server-Side Request Forgery | [Index](key-web-vulnerabilities/08-server-side-request-forgery-ssrf/README.md), [Core Concepts](key-web-vulnerabilities/08-server-side-request-forgery-ssrf/01-core-concepts.md), [Where to Test](key-web-vulnerabilities/08-server-side-request-forgery-ssrf/02-where-to-test-cheatsheet.md), [Workflow](key-web-vulnerabilities/08-server-side-request-forgery-ssrf/03-ssrf-testing-workflow.md), [Bypasses](key-web-vulnerabilities/08-server-side-request-forgery-ssrf/04-bypasses-and-filtering-cheatsheet.md), [Remediation](key-web-vulnerabilities/08-server-side-request-forgery-ssrf/05-remediation-cheatsheet.md) | [Labs](key-web-vulnerabilities/08-server-side-request-forgery-ssrf/labs/) |
+
+## Container Security
+
+| Topic | Notes |
+|---|---|
+| Docker hardening | [Index](container-security/docker-hardening/00-index.md), [Mental Model](container-security/docker-hardening/01-container-mental-model.md), [Multi-stage Builds](container-security/docker-hardening/02-dockerfile-and-multi-stage-builds.md), [Runtime Images](container-security/docker-hardening/03-node-api-and-react-nginx-runtime.md), [Compose and Storage](container-security/docker-hardening/04-compose-volumes-networking-and-storage.md), [Troubleshooting](container-security/docker-hardening/05-runtime-troubleshooting.md), [Checklist](container-security/docker-hardening/06-hardening-checklist.md), [Lab](container-security/docker-hardening/07-appsec-report-builder-lab.md) |
 
 ## OWASP Top 10 2025 Mapping
 
@@ -82,6 +89,7 @@ Foundation notes before vulnerability-specific study:
 10. Threat modeling mini-project.
 11. OWASP Top 10 2025 mapping.
 12. LLM01 Prompt Injection awareness.
+13. Docker hardening and container runtime review.
 
 ## File Role Guide
 

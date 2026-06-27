@@ -14,6 +14,8 @@ This repository is defensive and developer-oriented. It focuses on understanding
 | OWASP Top 10 2025 PL | [pl/owasp-top-10-2025/README.md](pl/owasp-top-10-2025/README.md) | Polish OWASP mapping sprint. |
 | Coverage Matrix EN | [eng/owasp-top-10-2025/coverage-matrix.md](eng/owasp-top-10-2025/coverage-matrix.md) | Current OWASP coverage and next actions. |
 | Coverage Matrix PL | [pl/owasp-top-10-2025/coverage-matrix.md](pl/owasp-top-10-2025/coverage-matrix.md) | Polish coverage tracking. |
+| Container Security EN | [eng/container-security/README.md](eng/container-security/README.md) | Docker hardening notes and container runtime security. |
+| Container Security PL | [pl/container-security/README.md](pl/container-security/README.md) | Polskie notatki o Docker hardening i runtime security. |
 
 ## What This Repository Covers
 
@@ -25,7 +27,8 @@ The notes are built around practical AppSec learning:
 - XSS, SQL injection, CSRF, path traversal, file upload bugs and SSRF,
 - API and configuration security,
 - OWASP Top 10 2025 mapping,
-- developer-friendly remediation and regression testing.
+- developer-friendly remediation and regression testing,
+- Docker hardening, container runtime design, Compose networking and persistent storage.
 
 The goal is to connect AppSec concepts with real development work:
 
@@ -54,9 +57,11 @@ For each topic, the focus is root cause, impact, trust boundaries, developer mis
 | `eng/fundamentals/` | Reusable Web AppSec foundations before vulnerability-specific study. |
 | `eng/key-web-vulnerabilities/` | English topic modules for common web vulnerability classes. |
 | `eng/owasp-top-10-2025/` | Practical OWASP Top 10 2025 mapping sprint in English. |
+| `eng/container-security/` | Docker hardening and container runtime security notes in English. |
 | `pl/fundamentals/` | Polish fundamentals. |
 | `pl/key-web-vulnerabilities/` | Polish topic modules. |
 | `pl/owasp-top-10-2025/` | Polish OWASP Top 10 2025 mapping sprint. |
+| `pl/container-security/` | Polskie notatki o Docker hardening i bezpieczeństwie runtime kontenerów. |
 | `labs/` folders | Short summaries of legal training labs. |
 | `overview.md` files | Concise source-of-truth notes for each topic. |
 | `cheat-sheet.md` files | Practical testing, review and remediation checklists. |
@@ -67,7 +72,8 @@ For each topic, the focus is root cause, impact, trust boundaries, developer mis
 2. Complete the Web AppSec fundamentals.
 3. Work through the Key Web Vulnerabilities topics in order.
 4. Use the OWASP Top 10 2025 mapping to connect topics with review-style outputs.
-5. Revisit checklists and regression-test notes during future code or AppSec reviews.
+5. Use the container security notes when reviewing Dockerfiles, Compose setup, runtime images and persistent storage.
+6. Revisit checklists and regression-test notes during future code or AppSec reviews.
 
 ## Topic Workflow
 
