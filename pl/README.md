@@ -2,18 +2,19 @@
 
 Ten katalog jest polską wersją praktycznej ścieżki nauki Web AppSec.
 
-Najpierw warto przejść przez fundamenty, potem threat modeling, a nastepnie moduły z konkretnymi podatnościami. Mapowanie OWASP Top 10 2025 przydaje się wtedy, gdy chcesz połączyć notatki z szerszym frameworkiem review AppSec.
+Najpierw warto przejść przez fundamenty, potem threat modeling, a następnie moduły z konkretnymi podatnościami. Mapowanie OWASP Top 10 2025 przydaje się wtedy, gdy chcesz połączyć notatki z szerszym frameworkiem review AppSec.
 
 ## Zacznij tutaj
 
 | Krok | Obszar | Użyj, gdy chcesz... |
 |---:|---|---|
 | 1 | [Fundamenty Web AppSec](fundamentals/README.md) | zbudować podstawy request/response, auth, Burpa i attack surface. |
-| 2 | [Threat Modeling](threat-modeling/README.md) | identyfikowac zagrozenia projektowe, granice zaufania, pomysly na walidacje i mitygacje. |
+| 2 | [Threat Modeling](threat-modeling/README.md) | identyfikować zagrożenia projektowe, granice zaufania, pomysły na walidację i mitygacje. |
 | 3 | [Key Web Vulnerabilities](key-web-vulnerabilities/README.md) | uczyć się po jednej klasie podatności: notatki, checklisty i laby. |
 | 4 | [OWASP Top 10 2025 Mapping Sprint](owasp-top-10-2025/README.md) | zmapować praktykę na kategorie OWASP i format review. |
 | 5 | [OWASP Top 10 for LLM Applications 2025](owasp-top-10-for-llm-applications-2025/README.md) | przejrzeć Prompt Injection, RAG, agentów, tools i kontrole aplikacji LLM. |
 | 6 | [Container Security](container-security/README.md) | przejrzeć Docker hardening, runtime images, Compose networking, wolumeny i troubleshooting. |
+| 7 | [Bezpieczeństwo CI/CD](ci-cd-security/README.md) | przejrzeć utwardzanie GitHub Actions, bezpieczeństwo zależności, SAST i ochronę repozytorium. |
 
 ## Fundamenty Web AppSec
 
@@ -50,6 +51,12 @@ Podstawy przed przejściem do konkretnych podatności:
 | Temat | Notatki |
 |---|---|
 | Docker hardening | [Indeks](container-security/docker-hardening/00-index.md), [Mental Model](container-security/docker-hardening/01-container-mental-model.md), [Multi-stage Builds](container-security/docker-hardening/02-dockerfile-and-multi-stage-builds.md), [Runtime Images](container-security/docker-hardening/03-node-api-and-react-nginx-runtime.md), [Compose i Storage](container-security/docker-hardening/04-compose-volumes-networking-and-storage.md), [Troubleshooting](container-security/docker-hardening/05-runtime-troubleshooting.md), [Checklista](container-security/docker-hardening/06-hardening-checklist.md), [Lab](container-security/docker-hardening/07-appsec-report-builder-lab.md) |
+
+## Bezpieczeństwo CI/CD
+
+| Temat | Notatki |
+|---|---|
+| Utwardzanie GitHub Actions | [Indeks](ci-cd-security/github-actions-hardening/00-index.md), [Model mentalny](ci-cd-security/github-actions-hardening/01-model-mentalny-pipeline.md), [Lab](ci-cd-security/github-actions-hardening/02-lab-appsec-report-builder.md), [Checklista](ci-cd-security/github-actions-hardening/03-checklista.md), [Dowody](ci-cd-security/github-actions-hardening/04-dowody.md) |
 
 ## OWASP Top 10 2025 Mapping
 
@@ -90,6 +97,7 @@ Podstawy przed przejściem do konkretnych podatności:
 11. Mapowanie OWASP Top 10 2025.
 12. LLM01 Prompt Injection awareness.
 13. Docker hardening i review runtime kontenerów.
+14. Utwardzanie GitHub Actions i review bezpieczeństwa CI/CD.
 
 ## Rola plików
 

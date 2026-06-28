@@ -14,6 +14,7 @@ Start with the fundamentals, then practise threat modeling, then work through th
 | 4 | [OWASP Top 10 2025 Mapping Sprint](owasp-top-10-2025/README.md) | map practical learning to OWASP categories and review outputs. |
 | 5 | [OWASP Top 10 for LLM Applications 2025](owasp-top-10-for-llm-applications-2025/README.md) | review Prompt Injection, RAG, agents, tools and LLM application controls. |
 | 6 | [Container Security](container-security/README.md) | review Docker hardening, runtime images, Compose networking, volumes and troubleshooting. |
+| 7 | [CI/CD Security](ci-cd-security/README.md) | review GitHub Actions hardening, dependency security, SAST and repository protection. |
 
 ## Web AppSec Fundamentals
 
@@ -50,6 +51,12 @@ Foundation notes before vulnerability-specific study:
 | Topic | Notes |
 |---|---|
 | Docker hardening | [Index](container-security/docker-hardening/00-index.md), [Mental Model](container-security/docker-hardening/01-container-mental-model.md), [Multi-stage Builds](container-security/docker-hardening/02-dockerfile-and-multi-stage-builds.md), [Runtime Images](container-security/docker-hardening/03-node-api-and-react-nginx-runtime.md), [Compose and Storage](container-security/docker-hardening/04-compose-volumes-networking-and-storage.md), [Troubleshooting](container-security/docker-hardening/05-runtime-troubleshooting.md), [Checklist](container-security/docker-hardening/06-hardening-checklist.md), [Lab](container-security/docker-hardening/07-appsec-report-builder-lab.md) |
+
+## CI/CD Security
+
+| Topic | Notes |
+|---|---|
+| GitHub Actions hardening | [Index](ci-cd-security/github-actions-hardening/00-index.md), [Mental Model](ci-cd-security/github-actions-hardening/01-pipeline-mental-model.md), [Lab](ci-cd-security/github-actions-hardening/02-appsec-report-builder-lab.md), [Checklist](ci-cd-security/github-actions-hardening/03-checklist.md), [Evidence](ci-cd-security/github-actions-hardening/04-evidence.md) |
 
 ## OWASP Top 10 2025 Mapping
 
@@ -90,6 +97,7 @@ Foundation notes before vulnerability-specific study:
 11. OWASP Top 10 2025 mapping.
 12. LLM01 Prompt Injection awareness.
 13. Docker hardening and container runtime review.
+14. GitHub Actions and CI/CD security review.
 
 ## File Role Guide
 
